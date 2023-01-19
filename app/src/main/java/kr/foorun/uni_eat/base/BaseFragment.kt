@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import kr.foorun.uni_eat.base.mvvm.BaseViewModel
+import kr.foorun.uni_eat.feature.map.dialog.ShopBottomSheetFragment
 import java.util.*
 
 typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
@@ -30,6 +31,7 @@ abstract class BaseFragment <T : ViewDataBinding, V : BaseViewModel>(private val
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         _binding = inflate.invoke(inflater,container,false)
+        afterBinding(inflater, container, savedInstanceState)
 //        updateLocale()
         return binding.root
     }
@@ -44,7 +46,8 @@ abstract class BaseFragment <T : ViewDataBinding, V : BaseViewModel>(private val
     }
 
     abstract fun observeAndInitViewModel()
-//    abstract fun updateLocale()
+    //    abstract fun updateLocale()
+    abstract fun afterBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?)
 
     fun changeLocale(locale: Locale) {
         Locale.setDefault(locale)
@@ -54,24 +57,23 @@ abstract class BaseFragment <T : ViewDataBinding, V : BaseViewModel>(private val
         fragmentViewModel.changeResourcesLocale()
     }
 
-
     protected fun binding(action: T.() -> Unit) {
         binding.run(action)
     }
 
     // navigateToAct(act::class) { putExtra(..) }
-    inline fun navigateToAct(
+    protected inline fun navigateToAct(
         act: Class<*>,
         crossinline body: Intent.() -> Unit
     ) = Intent(requireContext(),act).let {
         body(it)
         startActivity(it)
     }
-    fun navigateToAct(act : Class<*>) = startActivity(Intent(requireContext(),act))
-    fun navigateToFrag(act : NavDirections) = findNavController().navigate(act)
+    protected fun navigateToAct(act : Class<*>) = startActivity(Intent(requireContext(),act))
+    protected fun navigateToFrag(act : NavDirections) = findNavController().navigate(act)
 
     @SuppressLint("ResourceType")
-    fun fetchFrag(layoutResId: Int, fragment: Fragment){
+    protected fun fetchFrag(layoutResId: Int, fragment: Fragment){
         childFragmentManager.run{
             if(findFragmentById(layoutResId) == null)
                 beginTransaction()
@@ -86,10 +88,10 @@ abstract class BaseFragment <T : ViewDataBinding, V : BaseViewModel>(private val
         }
     }
 
-    fun toast(string: String)
+    protected fun toast(string: String)
             = Toast.makeText(requireContext(),string,Toast.LENGTH_SHORT).show()
 
-    fun Fragment.hideKeyboard() = requireActivity().currentFocus?.also { it.hideKeyboard() }
+    protected fun Fragment.hideKeyboard() = requireActivity().currentFocus?.also { it.hideKeyboard() }
 
     private fun View.hideKeyboard() =
         (context.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager)?.also {

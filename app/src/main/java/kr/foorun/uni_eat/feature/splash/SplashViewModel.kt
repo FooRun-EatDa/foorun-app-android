@@ -1,6 +1,5 @@
 package kr.foorun.uni_eat.feature.splash
 
-import android.util.Log
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay

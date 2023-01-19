@@ -10,11 +10,13 @@ class MainActivity : BaseActivity<ActivityMainBinding,MainViewModel>({ActivityMa
 
     override val activityViewModel: MainViewModel by viewModels()
 
+    override fun afterBinding() {}
+
     override fun observeAndInitViewModel() {
         binding {
             viewModel = activityViewModel.apply {
-
             }
         }
     }
+
 }

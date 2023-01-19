@@ -34,12 +34,14 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel>(
         binding = bindingFactory(layoutInflater)
         setContentView(binding.root)
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
+        afterBinding()
 //        updateLocale()
         observeAndInitViewModel()
     }
 
     abstract fun observeAndInitViewModel()
 //    abstract fun updateLocale()
+    abstract fun afterBinding()
 
     fun changeLocale(locale: Locale) {
         Locale.setDefault(locale)

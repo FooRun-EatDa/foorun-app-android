@@ -15,18 +15,27 @@
         tools:targetApi="33">
 
         <activity
+            android:name=".feature.map.dialog.shop_detail.ShopDetailActivity"
+            android:exported="false">
+        </activity>
+
+        <activity
+            android:name=".feature.map.MapActivity"
+            android:exported="false"/>
+
+        <activity
+            android:name=".feature.main.MainActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".feature.splash.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".feature.main.MainActivity"
-            android:exported="false"/>
-
     </application>
 
 </manifest>
