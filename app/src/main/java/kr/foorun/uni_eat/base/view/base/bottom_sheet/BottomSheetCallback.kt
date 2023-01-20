@@ -48,15 +48,9 @@ class BottomSheetCallback(
     }
 
     private fun setRootBackgroundColor(slideOffset: Float) {
-//        if(slideOffset in 0.4..1.0 || behavior.state == BottomSheetBehavior.STATE_COLLAPSED){
-//            colorDrawable.alpha = (slideOffset * COLOR_ALPHA_RATIO).toInt()
-//            rootView.setBackgroundColor(colorDrawable.color)
-//        }
-
         val isCollapsed = slideOffset == (-1.0).toFloat()
         if (isCollapsed) setBlur(false)
         else setBlur(true)
-
     }
 
     private fun setBlur(toBlur: Boolean){

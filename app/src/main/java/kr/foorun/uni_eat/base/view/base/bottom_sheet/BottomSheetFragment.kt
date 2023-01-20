@@ -1,6 +1,7 @@
 package kr.foorun.uni_eat.base.view.base.bottom_sheet
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +25,8 @@ abstract class BottomSheetFragment <CollapseBinding : ViewDataBinding, V : BaseV
     @Suppress("MemberVisibilityCanBePrivate")
     protected lateinit var collapseBinding: CollapseBinding
 
+    private lateinit var bottomCallback : BottomSheetCallback
+
     @Suppress("MemberVisibilityCanBePrivate")
     val isExpanded: Boolean
         get() = when (bottomSheetBehavior.state) {
@@ -35,7 +38,7 @@ abstract class BottomSheetFragment <CollapseBinding : ViewDataBinding, V : BaseV
         }
 
     override fun afterBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) {
-        binding.apply {
+        binding.run {
             collapseBinding = DataBindingUtil.inflate(inflater,
                 collapseResId,
                 viewContainer,
@@ -55,7 +58,7 @@ abstract class BottomSheetFragment <CollapseBinding : ViewDataBinding, V : BaseV
     }
 
     private fun setupBottomSheetBehavior() = with(bottomSheetBehavior) {
-        val bottomSheetCallback =
+        bottomCallback =
             BottomSheetCallback(
                 this,
                 binding.root,
@@ -63,10 +66,14 @@ abstract class BottomSheetFragment <CollapseBinding : ViewDataBinding, V : BaseV
                 binding.viewContainer,
                 null
             )
-        addBottomSheetCallback(bottomSheetCallback)
+        addBottomSheetCallback(bottomCallback)
+        setPeekHeight(false)
+    }
 
-        collapseBinding.root.doOnLayout {
-            peekHeight = it.height
+    private fun setPeekHeight(isZero : Boolean){
+        if(isZero) bottomSheetBehavior.peekHeight = 0
+        else collapseBinding.root.doOnLayout {
+            bottomSheetBehavior.peekHeight = it.height
         }
     }
 
@@ -81,9 +88,15 @@ abstract class BottomSheetFragment <CollapseBinding : ViewDataBinding, V : BaseV
     }
 
     @Suppress("MemberVisibilityCanBePrivate")
+    fun remove() {
+        setPeekHeight(true)
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+    }
+
+    @Suppress("MemberVisibilityCanBePrivate")
     open fun handleBackKeyEvent() =
         when {
-            !isAdded -> false
+            isAdded -> true
             childFragmentManager.backStackEntryCount > 0 -> {
                 childFragmentManager.popBackStackImmediate()
                 true

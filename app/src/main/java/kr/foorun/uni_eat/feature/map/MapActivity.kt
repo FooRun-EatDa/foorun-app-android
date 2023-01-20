@@ -11,24 +11,35 @@ class MapActivity : BaseActivity<ActivityMapBinding,MapViewModel>({ActivityMapBi
     override val activityViewModel: MapViewModel by viewModels()
     private lateinit var shopBottomSheetFragment : ShopBottomSheetFragment
 
-    override fun afterBinding() {}
-
-    override fun observeAndInitViewModel() {
+    override fun afterBinding() {
         binding {
-            viewModel = activityViewModel.apply {
-                shopBottomSheetFragment = ShopBottomSheetFragment()
-                shopBottomSheetFragment.show(supportFragmentManager, R.id.view_bottom_sheet)
+            showBottomSheet()
+
+            test.setOnClickListener {
+                showBottomSheet()
             }
         }
     }
 
+    override fun observeAndInitViewModel() {
+        binding {
+            viewModel = activityViewModel.apply {
+
+            }
+        }
+    }
+
+    private fun showBottomSheet() {
+        shopBottomSheetFragment =
+            ShopBottomSheetFragment().show(supportFragmentManager, R.id.view_bottom_sheet)
+    }
+
     override fun onBackPressed() {
         if (shopBottomSheetFragment.handleBackKeyEvent()) {
-            // no-op
+            shopBottomSheetFragment.remove()
         } else {
             super.onBackPressed()
         }
-
     }
 
 }
