@@ -1,11 +1,10 @@
 package kr.foorun.uni_eat.feature.map
 
-import android.util.Log
 import androidx.activity.viewModels
 import kr.foorun.uni_eat.R
 import kr.foorun.uni_eat.base.BaseActivity
 import kr.foorun.uni_eat.databinding.ActivityMapBinding
-import kr.foorun.uni_eat.feature.map.dialog.ShopBottomSheetFragment
+import kr.foorun.uni_eat.feature.map.bottom_sheet.fragment.ShopBottomSheetFragment
 
 class MapActivity : BaseActivity<ActivityMapBinding,MapViewModel>({ActivityMapBinding.inflate(it)}){
     override val activityViewModel: MapViewModel by viewModels()
@@ -31,12 +30,13 @@ class MapActivity : BaseActivity<ActivityMapBinding,MapViewModel>({ActivityMapBi
 
     private fun showBottomSheet() {
         shopBottomSheetFragment =
-            ShopBottomSheetFragment().show(supportFragmentManager, R.id.view_bottom_sheet)
+            ShopBottomSheetFragment{ onBackPressed() }
+                .show(supportFragmentManager, R.id.view_bottom_sheet)
     }
 
     override fun onBackPressed() {
         if (shopBottomSheetFragment.handleBackKeyEvent()) {
-            shopBottomSheetFragment.remove()
+            shopBottomSheetFragment.hide()
         } else {
             super.onBackPressed()
         }

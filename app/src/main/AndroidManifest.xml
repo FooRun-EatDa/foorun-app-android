@@ -15,7 +15,7 @@
         tools:targetApi="33">
 
         <activity
-            android:name=".feature.map.dialog.shop_detail.ShopDetailActivity"
+            android:name=".feature.map.bottom_sheet.shop_detail.ShopDetailActivity"
             android:exported="false">
         </activity>
 

@@ -1,4 +1,4 @@
-package kr.foorun.uni_eat.feature.map.dialog.shop_detail.fragment
+package kr.foorun.uni_eat.feature.map.bottom_sheet.shop_detail.fragment
 
 import kr.foorun.uni_eat.base.mvvm.BaseViewModel
 

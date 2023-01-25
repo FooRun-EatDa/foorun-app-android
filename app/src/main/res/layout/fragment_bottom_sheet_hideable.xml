@@ -1,6 +1,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="kr.foorun.uni_eat.base.mvvm.BaseViewModel" />
+    </data>
+
     <FrameLayout
         android:id="@+id/root"
         android:layout_width="match_parent"
@@ -17,6 +23,8 @@
                 android:layout_height="match_parent">
 
                 <ImageView
+                    android:id="@+id/back_BTN"
+                    android:onClick="@{() -> viewModel.backClicked()}"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_marginStart="21dp"

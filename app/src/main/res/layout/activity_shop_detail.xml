@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".feature.map.dialog.shop_detail.ShopDetailActivity">
+        tools:context=".feature.map.bottom_sheet.shop_detail.ShopDetailActivity">
 
         <TextView
             android:layout_width="wrap_content"

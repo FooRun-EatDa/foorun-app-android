@@ -43,6 +43,12 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel>(
 //    abstract fun updateLocale()
     abstract fun afterBinding()
 
+    fun BaseViewModel.onViewEvent( action : (event : Any) -> Unit){
+        this.viewEvent.observe(this@BaseActivity) {
+            it.getContentIfNotHandled()?.let { action(it) }
+        }
+    }
+
     fun changeLocale(locale: Locale) {
         Locale.setDefault(locale)
         val config = resources.configuration

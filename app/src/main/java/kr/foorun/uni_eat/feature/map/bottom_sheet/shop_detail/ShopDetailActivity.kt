@@ -1,4 +1,4 @@
-package kr.foorun.uni_eat.feature.map.dialog.shop_detail
+package kr.foorun.uni_eat.feature.map.bottom_sheet.shop_detail
 
 import androidx.activity.viewModels
 import kr.foorun.uni_eat.base.BaseActivity

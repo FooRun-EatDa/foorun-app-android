@@ -8,7 +8,7 @@
     <data>
         <variable
             name="viewModel"
-            type="kr.foorun.uni_eat.feature.map.dialog.ShopBottomSheetViewModel" />
+            type="kr.foorun.uni_eat.feature.map.bottom_sheet.fragment.CollapseViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,6 +27,7 @@
                 android:id="@+id/arrowUp_IV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.arrowClicked()}"
                 android:src="@drawable/arrow_up"
                 android:layout_marginTop="9dp"
                 android:layout_marginBottom="19dp"

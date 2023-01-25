@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,8 +15,9 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kr.foorun.uni_eat.base.mvvm.BaseViewModel
-import kr.foorun.uni_eat.feature.map.dialog.ShopBottomSheetFragment
+import kr.foorun.uni_eat.feature.map.bottom_sheet.fragment.CollapseViewModel
 import java.util.*
 
 typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
@@ -40,11 +42,18 @@ abstract class BaseFragment <T : ViewDataBinding, V : BaseViewModel>(private val
         observeAndInitViewModel()
     }
 
+    fun BaseViewModel.onViewEvent( action : (event : Any) -> Unit){
+        this.viewEvent.observe(viewLifecycleOwner) {
+            it.getContentIfNotHandled()?.let { action(it) }
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
+//    abstract fun onViewEvent(event : Any)
     abstract fun observeAndInitViewModel()
     //    abstract fun updateLocale()
     abstract fun afterBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?)

@@ -1,21 +1,20 @@
 package kr.foorun.uni_eat.base.view.base.bottom_sheet
 
 import android.graphics.drawable.ColorDrawable
-import android.util.Log
 import android.view.View
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.isInvisible
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kr.foorun.uni_eat.R
 
 
-class BottomSheetCallback(
+class BaseBottomSheetCallback(
     private val behavior: BottomSheetBehavior<out View>,
     private val rootView: View,
     private val containerView: View,
     private val collapseView: View,
     private val expandView: View?,
+    private val stateCallBack: (state : Int) -> Unit
 ) : BottomSheetBehavior.BottomSheetCallback() {
 
     private val context = rootView.context
@@ -32,17 +31,18 @@ class BottomSheetCallback(
     }
 
     private fun setupListener() {
-        rootView.setOnClickListener {
-            if (behavior.state == BottomSheetBehavior.STATE_EXPANDED) {
-                behavior.state = BottomSheetBehavior.STATE_COLLAPSED
-            }
-        }
+//        rootView.setOnClickListener {
+//            if (behavior.state == BottomSheetBehavior.STATE_COLLAPSED) {
+//                behavior.state = BottomSheetBehavior.STATE_HIDDEN
+//            }
+//        }
         containerView.setOnClickListener {
             // no-op
         }
     }
 
     override fun onSlide(bottomSheet: View, slideOffset: Float) {
+        //슬라이드 될때 slideOffset => hide -1.0 ~ collapsed 0.0 ~ expended 1.0
         setRootBackgroundColor(slideOffset)
         setCollapseVisible(slideOffset)
     }
@@ -79,6 +79,7 @@ class BottomSheetCallback(
         collapseView.isInvisible = isCollapseInvisible
         expandView?.isInvisible = isExpandInvisible
 
+        stateCallBack(newState)
     }
 
     companion object {

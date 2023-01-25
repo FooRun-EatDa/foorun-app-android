@@ -11,7 +11,7 @@ import java.util.*
 import javax.inject.Inject
 
 //Don't use ObservableField if you wanna use that one , make sure about the lifecycle
-abstract class BaseViewModel: ViewModel(){
+open class BaseViewModel: ViewModel(){
 
     companion object {
         private val ENGLISH = Locale.US.toLanguageTag()
