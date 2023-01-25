@@ -110,6 +110,11 @@ abstract class BasePersistBottomSheetFragment<CollapseBinding : ViewDataBinding,
     }
 
     @Suppress("MemberVisibilityCanBePrivate")
+    fun hide() {
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+    }
+
+    @Suppress("MemberVisibilityCanBePrivate")
     open fun handleBackKeyEvent() =
         when {
             !isAdded -> false

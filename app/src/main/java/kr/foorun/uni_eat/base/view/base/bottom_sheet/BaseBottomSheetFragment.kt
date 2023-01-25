@@ -61,12 +61,7 @@ abstract class BaseBottomSheetFragment <CollapseBinding : ViewDataBinding>(
         collapseBinding.init()
 
         binding.viewModel = fragmentViewModel.apply {
-            this.onViewEvent {
-                if(it == BACK) {
-                    bottomSheetBackClicked()
-//                    if(handleBackKeyEvent()) hide()
-//                    else bottomSheetBackClicked()
-            } }
+            this.onViewEvent { if(it == BACK) { bottomSheetBackClicked() } }
         }
     }
 

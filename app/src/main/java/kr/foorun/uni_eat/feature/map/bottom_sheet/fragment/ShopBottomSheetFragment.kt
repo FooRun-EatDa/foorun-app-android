@@ -9,17 +9,32 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kr.foorun.uni_eat.R
 import kr.foorun.uni_eat.base.view.base.bottom_sheet.BaseBottomSheetFragment
 import kr.foorun.uni_eat.databinding.LayoutShopBottomCollapseBinding
+import kr.foorun.uni_eat.feature.map.bottom_sheet.adapter.ShopBottomSheetAdapter
+import kr.foorun.uni_eat.feature.map.bottom_sheet.adapter.ShopBottomSheetItemViewModel
 import kr.foorun.uni_eat.feature.map.bottom_sheet.fragment.CollapseViewModel.Companion.ARROW_CLICKED
 import kr.foorun.uni_eat.feature.map.bottom_sheet.shop_detail.ShopDetailActivity
 
-class ShopBottomSheetFragment(private val action : () -> Unit) :
+class ShopBottomSheetFragment(private val backAction : () -> Unit) :
     BaseBottomSheetFragment<LayoutShopBottomCollapseBinding>
         (R.layout.layout_shop_bottom_collapse) {
 
+    private val shopAdapter: ShopBottomSheetAdapter by lazy { ShopBottomSheetAdapter(shopAdapterViewModel) }
     private val collapseViewModel: CollapseViewModel by viewModels()
+    private val shopAdapterViewModel: ShopBottomSheetItemViewModel by viewModels()
 
     override fun observeAndInitViewModel() {
+        collapseBinding.shopImagesRV.adapter = shopAdapter
+
         collapseBinding.viewModel = collapseViewModel.apply {
+
+            loadArticles()
+
+            articles.observe(this@ShopBottomSheetFragment){
+                Log.e("popo","${it[0].shopImages[0]}")
+                shopAdapter.submitList(it)
+                shopAdapter.notifyDataSetChanged()
+            }
+
             this.onViewEvent{
                 when (it) {
                     ARROW_CLICKED -> {
@@ -52,11 +67,11 @@ class ShopBottomSheetFragment(private val action : () -> Unit) :
         @IdRes containerViewId: Int,
     ): ShopBottomSheetFragment =
         fragmentManager.findFragmentByTag(tag) as? ShopBottomSheetFragment
-            ?: ShopBottomSheetFragment(action).apply {
+            ?: ShopBottomSheetFragment(backAction).apply {
                 fragmentManager.beginTransaction()
                     .replace(containerViewId, this, tag)
                     .commitAllowingStateLoss()
             }
 
-    override fun bottomSheetBackClicked() { action() }
+    override fun bottomSheetBackClicked() { backAction() }
 }

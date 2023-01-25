@@ -29,6 +29,7 @@ class ShopBottomSheetAdapter(
 
     override fun onBindViewHolder(holder: ItemShopViewHolder, position: Int) {
         holder.run {
+            binding.article = getItem(position)
             binding.viewModel = adapterViewModel
         }
     }

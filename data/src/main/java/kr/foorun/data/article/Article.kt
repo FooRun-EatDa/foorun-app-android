@@ -6,5 +6,5 @@ data class Article(
     val shopName : String,
     val title : String,
     val tags : String,
-    val shopImages : List<String>
+    val shopImages : List<String>,
 ): Serializable
