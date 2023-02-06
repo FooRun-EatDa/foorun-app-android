@@ -14,13 +14,13 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kr.foorun.data.const.Constant.Companion.BACK
 import kr.foorun.uni_eat.base.BaseFragment
 import kr.foorun.uni_eat.base.mvvm.BaseViewModel
-import kr.foorun.uni_eat.databinding.FragmentBottomSheetHideableBinding
+import kr.foorun.uni_eat.databinding.FragmentShopBottomSheetBinding
 
 
 abstract class BaseBottomSheetFragment <CollapseBinding : ViewDataBinding>(
     @LayoutRes private val collapseResId: Int,
     private val heightType: HeightType = HeightType.MATCH,
-) : BaseFragment<FragmentBottomSheetHideableBinding, BaseViewModel>(FragmentBottomSheetHideableBinding::inflate) {
+) : BaseFragment<FragmentShopBottomSheetBinding, BaseViewModel>(FragmentShopBottomSheetBinding::inflate) {
 
     @Suppress("MemberVisibilityCanBePrivate")
     protected val bottomSheetBehavior by lazy { BottomSheetBehavior.from(binding.flContainer) }
@@ -111,6 +111,7 @@ abstract class BaseBottomSheetFragment <CollapseBinding : ViewDataBinding>(
     @Suppress("MemberVisibilityCanBePrivate")
     open fun handleBackKeyEvent() =
         when {
+            !isAdded -> false
             isAdded -> true
             childFragmentManager.backStackEntryCount > 0 -> {
                 childFragmentManager.popBackStackImmediate()

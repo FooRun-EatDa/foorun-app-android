@@ -22,10 +22,11 @@ class BaseBottomSheetCallback(
 
     init {
         collapseView.alpha = 1f
-        expandView?.alpha = 0f
-        expandView?.isInvisible = true
+        expandView?.run {
+            alpha = 0f
+            isInvisible = true
+        }
         setBlur(true)
-
         setupListener()
         rootView.isClickable = false
     }
@@ -54,7 +55,7 @@ class BaseBottomSheetCallback(
     }
 
     private fun setBlur(toBlur: Boolean){
-        if(toBlur){
+        if(toBlur && expandView == null){
             val blur = (COLOR_ALPHA_RATIO * 0.48).toInt()
             colorDrawable.alpha = blur
             rootView.setBackgroundColor(colorDrawable.color)

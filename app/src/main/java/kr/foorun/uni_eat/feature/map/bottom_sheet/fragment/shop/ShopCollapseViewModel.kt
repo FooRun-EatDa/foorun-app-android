@@ -1,11 +1,11 @@
-package kr.foorun.uni_eat.feature.map.bottom_sheet.fragment
+package kr.foorun.uni_eat.feature.map.bottom_sheet.fragment.shop
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import kr.foorun.data.article.Article
 import kr.foorun.uni_eat.base.mvvm.BaseViewModel
 
-class CollapseViewModel : BaseViewModel(){
+class ShopCollapseViewModel : BaseViewModel(){
 
     private val _articles = MutableLiveData<List<Article>>()
     val articles : LiveData<List<Article>>

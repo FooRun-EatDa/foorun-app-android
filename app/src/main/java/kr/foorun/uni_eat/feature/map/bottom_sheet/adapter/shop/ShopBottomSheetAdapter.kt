@@ -1,4 +1,4 @@
-package kr.foorun.uni_eat.feature.map.bottom_sheet.adapter
+package kr.foorun.uni_eat.feature.map.bottom_sheet.adapter.shop
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

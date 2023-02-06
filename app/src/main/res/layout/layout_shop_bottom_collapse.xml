@@ -8,7 +8,7 @@
     <data>
         <variable
             name="viewModel"
-            type="kr.foorun.uni_eat.feature.map.bottom_sheet.fragment.CollapseViewModel" />
+            type="kr.foorun.uni_eat.feature.map.bottom_sheet.fragment.shop.ShopCollapseViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

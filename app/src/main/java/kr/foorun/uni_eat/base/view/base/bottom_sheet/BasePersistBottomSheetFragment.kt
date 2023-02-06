@@ -6,23 +6,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.core.view.doOnLayout
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import kr.foorun.uni_eat.databinding.FragmentPersistBottomSheetBinding
+import kr.foorun.data.const.Constant
+import kr.foorun.uni_eat.base.BaseFragment
+import kr.foorun.uni_eat.base.mvvm.BaseViewModel
+import kr.foorun.uni_eat.databinding.FragmentSearchBottomSheetBinding
 
 abstract class BasePersistBottomSheetFragment<CollapseBinding : ViewDataBinding, ExpandBinding : ViewDataBinding>(
     @LayoutRes private val collapseResId: Int,
     @LayoutRes private val expandResId: Int,
     private val heightType: HeightType = HeightType.MATCH,
-) : Fragment() {
-
-    private var _binding: FragmentPersistBottomSheetBinding? = null
-
-    @Suppress("MemberVisibilityCanBePrivate")
-    protected val binding: FragmentPersistBottomSheetBinding
-        get() = _binding ?: throw IllegalAccessException("Can not access destroyed view")
+) : BaseFragment<FragmentSearchBottomSheetBinding,BaseViewModel>(FragmentSearchBottomSheetBinding::inflate) {
 
     @Suppress("MemberVisibilityCanBePrivate")
     protected val bottomSheetBehavior by lazy { BottomSheetBehavior.from(binding.flContainer) }
@@ -32,6 +30,8 @@ abstract class BasePersistBottomSheetFragment<CollapseBinding : ViewDataBinding,
 
     @Suppress("MemberVisibilityCanBePrivate")
     protected lateinit var expandBinding: ExpandBinding
+
+    public override val fragmentViewModel: BaseViewModel by viewModels()
 
     abstract fun onStateChanged(state : Int)
 
@@ -45,12 +45,12 @@ abstract class BasePersistBottomSheetFragment<CollapseBinding : ViewDataBinding,
             else -> false
         }
 
-    override fun onCreateView(
+    override fun afterBinding(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        _binding = FragmentPersistBottomSheetBinding.inflate(inflater, container, false).apply {
+        savedInstanceState: Bundle?
+    ) {
+        binding{
             collapseBinding = DataBindingUtil.inflate(inflater,
                 collapseResId,
                 viewCollapseContainer,
@@ -62,25 +62,22 @@ abstract class BasePersistBottomSheetFragment<CollapseBinding : ViewDataBinding,
 
             viewContent.layoutParams.height = heightType.layoutParamHeight
         }
-
-        return _binding?.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupBottomSheetBehavior()
         collapseBinding.init()
         expandBinding.init()
+
+        binding.viewModel = fragmentViewModel.apply {
+            this.onViewEvent { if(it == Constant.BACK) { bottomSheetBackClicked() } }
+        }
+
     }
 
     private fun ViewDataBinding.init() {
         lifecycleOwner = this@BasePersistBottomSheetFragment
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun setupBottomSheetBehavior() = with(bottomSheetBehavior) {
@@ -111,13 +108,17 @@ abstract class BasePersistBottomSheetFragment<CollapseBinding : ViewDataBinding,
 
     @Suppress("MemberVisibilityCanBePrivate")
     fun hide() {
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+        if(bottomSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED)
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+        else
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
     }
 
     @Suppress("MemberVisibilityCanBePrivate")
     open fun handleBackKeyEvent() =
         when {
             !isAdded -> false
+            isAdded -> true
             childFragmentManager.backStackEntryCount > 0 -> {
                 childFragmentManager.popBackStackImmediate()
                 true
@@ -129,6 +130,8 @@ abstract class BasePersistBottomSheetFragment<CollapseBinding : ViewDataBinding,
             else -> false
         }
 
+    abstract fun bottomSheetBackClicked()
+
     fun changeHeightType(heightType: HeightType) {
         binding.viewContent.layoutParams.height = heightType.layoutParamHeight
     }
@@ -136,5 +139,9 @@ abstract class BasePersistBottomSheetFragment<CollapseBinding : ViewDataBinding,
     enum class HeightType(val layoutParamHeight: Int) {
         WRAP(ViewGroup.LayoutParams.WRAP_CONTENT),
         MATCH(ViewGroup.LayoutParams.MATCH_PARENT)
+    }
+
+    fun backButtonVisible(show : Boolean){
+        binding.backBTN.isVisible = show
     }
 }
