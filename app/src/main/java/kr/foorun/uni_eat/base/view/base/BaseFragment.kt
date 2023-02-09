@@ -76,13 +76,11 @@ abstract class BaseFragment <T : ViewDataBinding, V : BaseViewModel>(private val
         }
     }
 
-    protected fun toast(string: String)
-            = Toast.makeText(requireContext(),string,Toast.LENGTH_SHORT).show()
+    protected fun toast(string: String) = Toast.makeText(requireContext(),string,Toast.LENGTH_SHORT).show()
 
     protected fun Fragment.hideKeyboard() = requireActivity().currentFocus?.also { it.hideKeyboard() }
 
     private fun View.hideKeyboard() =
         (context.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager)?.also {
-            it.hideSoftInputFromWindow(windowToken, 0)
-        }
+            it.hideSoftInputFromWindow(windowToken, 0) }
 }

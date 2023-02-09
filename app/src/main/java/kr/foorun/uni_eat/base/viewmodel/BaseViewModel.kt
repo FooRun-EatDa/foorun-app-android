@@ -10,15 +10,15 @@ open class BaseViewModel: ViewModel(){
 
     @Inject protected lateinit var preferenceManager: PreferenceManager
 
-    sealed class BaseEvent {
-        data class Back(val unit: Unit? = null) : BaseEvent()
-    }
-
     private val _viewBaseEvent = MutableEventFlow<BaseEvent>()
     val viewEvent = _viewBaseEvent.asEventFlow()
 
     fun backClicked() = viewModelScope.launch {
         _viewBaseEvent.emit(BaseEvent.Back(Unit))
+    }
+
+    sealed class BaseEvent {
+        data class Back(val unit: Unit? = null) : BaseEvent()
     }
 
 //    fun viewEvent(content: Any) { _viewEvent.value = Event(content) }

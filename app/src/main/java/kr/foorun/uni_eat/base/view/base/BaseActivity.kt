@@ -95,6 +95,5 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel>(
 
     private fun View.hideKeyboard() =
         (context.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager)?.also {
-            it.hideSoftInputFromWindow(windowToken, 0)
-        }
+            it.hideSoftInputFromWindow(windowToken, 0) }
 }

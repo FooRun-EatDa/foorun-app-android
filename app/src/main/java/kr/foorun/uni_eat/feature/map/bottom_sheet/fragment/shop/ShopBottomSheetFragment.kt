@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.annotation.IdRes
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kr.foorun.uni_eat.R
 import kr.foorun.uni_eat.base.view.base.bottom_sheet.BaseBottomSheetFragment
@@ -31,9 +32,11 @@ class ShopBottomSheetFragment(
 
             loadArticles()
 
-            articles.observe(this@ShopBottomSheetFragment){
-                shopAdapter.submitList(it)
-                shopAdapter.notifyDataSetChanged()
+            lifecycleScope.launchWhenCreated {
+                collapseViewModel.articles.collect{
+                    shopAdapter.submitList(it)
+                    shopAdapter.notifyDataSetChanged()
+                }
             }
 
             repeatOnStarted { eventFlow.collect{ handleEvent(it)} }

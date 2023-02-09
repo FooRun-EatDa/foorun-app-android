@@ -27,33 +27,6 @@ class MapActivity : BaseActivity<ActivityMapBinding, MapViewModel>({ActivityMapB
             showSearchBottomSheet()
             shop.setOnClickListener { showShopBottomSheet() }
             search.setOnClickListener { showSearchBottomSheet() }
-            mapFL.addView(kakaoMapView(this@MapActivity).apply {
-                setPOIItemEventListener(object : POIItemEventListener{
-                    override fun onPOIItemSelected(p0: MapView?, p1: MapPOIItem?) {
-                        Log.e("popo","p1 : $p1")
-                    }
-
-                    @Deprecated("Deprecated in Java")
-                    override fun onCalloutBalloonOfPOIItemTouched(p0: MapView?, p1: MapPOIItem?) {}
-
-                    override fun onCalloutBalloonOfPOIItemTouched(
-                        p0: MapView?,
-                        p1: MapPOIItem?,
-                        p2: MapPOIItem.CalloutBalloonButtonType?
-                    ) {
-                        TODO("Not yet implemented")
-                    }
-
-                    override fun onDraggablePOIItemMoved(
-                        p0: MapView?,
-                        p1: MapPOIItem?,
-                        p2: MapPoint?
-                    ) {
-                        TODO("Not yet implemented")
-                    }
-
-                })
-            })
         }
     }
 
