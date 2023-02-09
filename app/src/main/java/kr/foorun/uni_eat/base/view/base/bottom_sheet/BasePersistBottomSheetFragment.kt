@@ -11,16 +11,16 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.viewModels
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import kr.foorun.data.const.Constant
-import kr.foorun.uni_eat.base.BaseFragment
-import kr.foorun.uni_eat.base.mvvm.BaseViewModel
+import kr.foorun.uni_eat.base.view.base.BaseFragment
+import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
+import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 import kr.foorun.uni_eat.databinding.FragmentSearchBottomSheetBinding
 
 abstract class BasePersistBottomSheetFragment<CollapseBinding : ViewDataBinding, ExpandBinding : ViewDataBinding>(
     @LayoutRes private val collapseResId: Int,
     @LayoutRes private val expandResId: Int,
     private val heightType: HeightType = HeightType.MATCH,
-) : BaseFragment<FragmentSearchBottomSheetBinding,BaseViewModel>(FragmentSearchBottomSheetBinding::inflate) {
+) : BaseFragment<FragmentSearchBottomSheetBinding, BaseViewModel>(FragmentSearchBottomSheetBinding::inflate) {
 
     @Suppress("MemberVisibilityCanBePrivate")
     protected val bottomSheetBehavior by lazy { BottomSheetBehavior.from(binding.flContainer) }
@@ -71,9 +71,12 @@ abstract class BasePersistBottomSheetFragment<CollapseBinding : ViewDataBinding,
         expandBinding.init()
 
         binding.viewModel = fragmentViewModel.apply {
-            this.onViewEvent { if(it == Constant.BACK) { bottomSheetBackClicked() } }
+            repeatOnStarted { fragmentViewModel.viewEvent.collect{ handleEvent(it) } }
         }
+    }
 
+    private fun handleEvent(event: BaseViewModel.BaseEvent) = when (event) {
+        is BaseViewModel.BaseEvent.Back -> bottomSheetBackClicked()
     }
 
     private fun ViewDataBinding.init() {

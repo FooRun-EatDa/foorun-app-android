@@ -1,4 +1,4 @@
-package kr.foorun.uni_eat.base.view
+package kr.foorun.uni_eat.base.view.binding
 
 import android.text.TextWatcher
 import android.view.View

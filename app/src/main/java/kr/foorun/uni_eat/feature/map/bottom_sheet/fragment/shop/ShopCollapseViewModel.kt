@@ -2,10 +2,17 @@ package kr.foorun.uni_eat.feature.map.bottom_sheet.fragment.shop
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
 import kr.foorun.data.article.Article
-import kr.foorun.uni_eat.base.mvvm.BaseViewModel
+import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
+import kr.foorun.uni_eat.base.viewmodel.MutableEventFlow
+import kr.foorun.uni_eat.base.viewmodel.asEventFlow
 
 class ShopCollapseViewModel : BaseViewModel(){
+
+    private val _eventFlow = MutableEventFlow<ShopCollapsedEvent>()
+    val eventFlow = _eventFlow.asEventFlow()
 
     private val _articles = MutableLiveData<List<Article>>()
     val articles : LiveData<List<Article>>
@@ -21,9 +28,11 @@ class ShopCollapseViewModel : BaseViewModel(){
         )}
     }
 
-    fun arrowClicked() = viewEvent(ARROW_CLICKED)
+    fun arrowClicked() = event(ShopCollapsedEvent.ClickArrow())
 
-    companion object{
-        const val ARROW_CLICKED = 0
+    private fun event(event: ShopCollapsedEvent) = viewModelScope.launch { _eventFlow.emit(event) }
+
+    sealed class ShopCollapsedEvent{
+        data class ClickArrow(val unit: Unit? = null) : ShopCollapsedEvent()
     }
 }

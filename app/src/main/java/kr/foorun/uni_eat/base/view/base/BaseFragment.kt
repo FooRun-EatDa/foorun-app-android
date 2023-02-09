@@ -1,4 +1,4 @@
-package kr.foorun.uni_eat.base
+package kr.foorun.uni_eat.base.view.base
 
 
 import android.annotation.SuppressLint
@@ -14,7 +14,8 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
-import kr.foorun.uni_eat.base.mvvm.BaseViewModel
+import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
+import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 import java.util.*
 
 typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
@@ -31,41 +32,22 @@ abstract class BaseFragment <T : ViewDataBinding, V : BaseViewModel>(private val
     ): View? {
         _binding = inflate.invoke(inflater,container,false)
         afterBinding(inflater, container, savedInstanceState)
-//        updateLocale()
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        observeAndInitViewModel()
-    }
-
-    fun BaseViewModel.onViewEvent( action : (event : Any) -> Unit){
-        this.viewEvent.observe(viewLifecycleOwner) {
-            it.getContentIfNotHandled()?.let { action(it) }
-        }
-    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) { observeAndInitViewModel() }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
-//    abstract fun onViewEvent(event : Any)
+    //    abstract fun onViewEvent(event : Any)
     abstract fun observeAndInitViewModel()
     //    abstract fun updateLocale()
     abstract fun afterBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?)
 
-    fun changeLocale(locale: Locale) {
-        Locale.setDefault(locale)
-        val config = resources.configuration
-        config.setLocale(locale)
-        resources.updateConfiguration(config, resources.displayMetrics)
-        fragmentViewModel.changeResourcesLocale()
-    }
-
-    protected fun binding(action: T.() -> Unit) {
-        binding.run(action)
-    }
+    protected fun binding(action: T.() -> Unit) { binding.run(action) }
 
     // navigateToAct(act::class) { putExtra(..) }
     protected inline fun navigateToAct(

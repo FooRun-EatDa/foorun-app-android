@@ -1,4 +1,4 @@
-package kr.foorun.uni_eat.base
+package kr.foorun.uni_eat.base.view.base
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -15,7 +15,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import kr.foorun.uni_eat.base.mvvm.BaseViewModel
+import kotlinx.coroutines.flow.collect
+import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
+import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 import java.util.*
 
 abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel>(
@@ -35,27 +37,12 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel>(
         setContentView(binding.root)
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
         afterBinding()
-//        updateLocale()
         observeAndInitViewModel()
     }
 
     abstract fun observeAndInitViewModel()
 //    abstract fun updateLocale()
     abstract fun afterBinding()
-
-    fun BaseViewModel.onViewEvent( action : (event : Any) -> Unit){
-        this.viewEvent.observe(this@BaseActivity) {
-            it.getContentIfNotHandled()?.let { action(it) }
-        }
-    }
-
-    fun changeLocale(locale: Locale) {
-        Locale.setDefault(locale)
-        val config = resources.configuration
-        config.setLocale(locale)
-        resources.updateConfiguration(config, resources.displayMetrics)
-        activityViewModel.changeResourcesLocale()
-    }
 
     protected fun binding(action: T.() -> Unit) {
         binding.run(action)

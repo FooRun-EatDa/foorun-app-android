@@ -1,12 +1,10 @@
 package kr.foorun.uni_eat.feature.splash
 
 import android.annotation.SuppressLint
-import android.util.Log
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
-import kr.foorun.uni_eat.feature.splash.SplashViewModel.Companion.TIMER_DONE
-import kr.foorun.uni_eat.feature.main.MainActivity
-import kr.foorun.uni_eat.base.BaseActivity
+import kr.foorun.uni_eat.base.view.base.BaseActivity
+import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 import kr.foorun.uni_eat.databinding.ActivitySplashBinding
 import kr.foorun.uni_eat.feature.map.MapActivity
 
@@ -21,13 +19,11 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>({Act
     override fun observeAndInitViewModel() {
         activityViewModel.run {
             timerStart()
-
-            viewEvent.observe(this@SplashActivity) {
-                it.getContentIfNotHandled()?.let { event ->
-                    when (event) {
-                        TIMER_DONE -> navigateToAct(MapActivity::class.java){ finish() }
-                    } } }
+            repeatOnStarted { eventFlow.collect{ handleEvent(it) } }
         }
     }
 
+    private fun handleEvent(event: SplashViewModel.Event) = when (event) {
+        is SplashViewModel.Event.SplashDone -> navigateToAct(MapActivity::class.java){ finish() }
+    }
 }

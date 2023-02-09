@@ -1,18 +1,23 @@
 package kr.foorun.uni_eat.feature.map
 
 import android.content.Intent
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kr.foorun.uni_eat.R
-import kr.foorun.uni_eat.base.BaseActivity
+import kr.foorun.uni_eat.base.view.base.BaseActivity
+import kr.foorun.uni_eat.base.view.kakao_map.kakaoMapView
 import kr.foorun.uni_eat.databinding.ActivityMapBinding
 import kr.foorun.uni_eat.feature.map.bottom_sheet.fragment.search.SearchBottomSheetFragment
 import kr.foorun.uni_eat.feature.map.bottom_sheet.fragment.shop.ShopBottomSheetFragment
 import kr.foorun.uni_eat.feature.map.bottom_sheet.shop_detail.ShopDetailActivity
+import net.daum.mf.map.api.MapPOIItem
+import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView
+import net.daum.mf.map.api.MapView.POIItemEventListener
 
-class MapActivity : BaseActivity<ActivityMapBinding,MapViewModel>({ActivityMapBinding.inflate(it)}){
+class MapActivity : BaseActivity<ActivityMapBinding, MapViewModel>({ActivityMapBinding.inflate(it)}){
     override val activityViewModel: MapViewModel by viewModels()
     private var shopBottomSheetFragment : ShopBottomSheetFragment? = null
     private var searchBottomSheetFragment : SearchBottomSheetFragment? = null
@@ -22,7 +27,33 @@ class MapActivity : BaseActivity<ActivityMapBinding,MapViewModel>({ActivityMapBi
             showSearchBottomSheet()
             shop.setOnClickListener { showShopBottomSheet() }
             search.setOnClickListener { showSearchBottomSheet() }
-            mapFL.addView(MapView(this@MapActivity))
+            mapFL.addView(kakaoMapView(this@MapActivity).apply {
+                setPOIItemEventListener(object : POIItemEventListener{
+                    override fun onPOIItemSelected(p0: MapView?, p1: MapPOIItem?) {
+                        Log.e("popo","p1 : $p1")
+                    }
+
+                    @Deprecated("Deprecated in Java")
+                    override fun onCalloutBalloonOfPOIItemTouched(p0: MapView?, p1: MapPOIItem?) {}
+
+                    override fun onCalloutBalloonOfPOIItemTouched(
+                        p0: MapView?,
+                        p1: MapPOIItem?,
+                        p2: MapPOIItem.CalloutBalloonButtonType?
+                    ) {
+                        TODO("Not yet implemented")
+                    }
+
+                    override fun onDraggablePOIItemMoved(
+                        p0: MapView?,
+                        p1: MapPOIItem?,
+                        p2: MapPoint?
+                    ) {
+                        TODO("Not yet implemented")
+                    }
+
+                })
+            })
         }
     }
 

@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import kr.foorun.uni_eat.base.BaseFragment
+import kr.foorun.uni_eat.base.view.base.BaseFragment
 import kr.foorun.uni_eat.databinding.FragmentShopDetailBinding
 
 class ShopDetailFragment : BaseFragment<FragmentShopDetailBinding, ShopDetailViewModel>(FragmentShopDetailBinding::inflate) {

@@ -3,11 +3,10 @@ package kr.foorun.uni_eat.base.view.base
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.inputmethod.EditorInfo
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
 import kr.foorun.uni_eat.R
-import kr.foorun.uni_eat.base.mvvm.BaseViewModel
+import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
 import kr.foorun.uni_eat.databinding.BaseConstraintBinding
 
 class BaseConstraintView : ConstraintLayout {

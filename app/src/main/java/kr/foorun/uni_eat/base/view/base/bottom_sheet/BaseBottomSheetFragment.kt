@@ -1,7 +1,6 @@
 package kr.foorun.uni_eat.base.view.base.bottom_sheet
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +10,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.viewModels
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import kr.foorun.data.const.Constant.Companion.BACK
-import kr.foorun.uni_eat.base.BaseFragment
-import kr.foorun.uni_eat.base.mvvm.BaseViewModel
+import kr.foorun.uni_eat.base.view.base.BaseFragment
+import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
+import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 import kr.foorun.uni_eat.databinding.FragmentShopBottomSheetBinding
 
 
@@ -61,8 +60,12 @@ abstract class BaseBottomSheetFragment <CollapseBinding : ViewDataBinding>(
         collapseBinding.init()
 
         binding.viewModel = fragmentViewModel.apply {
-            this.onViewEvent { if(it == BACK) { bottomSheetBackClicked() } }
+            repeatOnStarted { fragmentViewModel.viewEvent.collect{ handleEvent(it) } }
         }
+    }
+
+    private fun handleEvent(event: BaseViewModel.BaseEvent) = when (event) {
+        is BaseViewModel.BaseEvent.Back -> bottomSheetBackClicked()
     }
 
     private fun ViewDataBinding.init() {
