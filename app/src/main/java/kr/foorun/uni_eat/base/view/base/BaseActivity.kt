@@ -15,9 +15,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import kotlinx.coroutines.flow.collect
 import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
-import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 import java.util.*
 
 abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel>(

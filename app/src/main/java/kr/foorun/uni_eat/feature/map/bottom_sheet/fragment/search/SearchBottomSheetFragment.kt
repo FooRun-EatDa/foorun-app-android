@@ -1,5 +1,6 @@
 package kr.foorun.uni_eat.feature.map.bottom_sheet.fragment.search
 
+import android.util.Log
 import androidx.annotation.IdRes
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
@@ -57,6 +58,12 @@ class SearchBottomSheetFragment(
                     .replace(containerViewId, this, tag)
                     .commitAllowingStateLoss()
             }
+
+    fun dismiss(fragmentManager: FragmentManager) {
+        fragmentManager.beginTransaction()
+            .remove(this)
+            .commit()
+    }
 
     override fun bottomSheetBackClicked() { backAction() }
 }

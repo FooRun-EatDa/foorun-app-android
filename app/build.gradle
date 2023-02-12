@@ -62,6 +62,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
+    //livedata
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"
+
     //kakao map
     implementation files('libs/libDaumMapAndroid.jar')
 

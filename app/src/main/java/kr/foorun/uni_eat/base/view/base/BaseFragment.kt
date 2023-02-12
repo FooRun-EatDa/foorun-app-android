@@ -15,7 +15,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
-import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 import java.util.*
 
 typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
