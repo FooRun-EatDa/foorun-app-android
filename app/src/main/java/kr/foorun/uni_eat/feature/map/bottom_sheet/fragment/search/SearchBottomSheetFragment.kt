@@ -1,6 +1,5 @@
 package kr.foorun.uni_eat.feature.map.bottom_sheet.fragment.search
 
-import android.util.Log
 import androidx.annotation.IdRes
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
@@ -61,7 +60,7 @@ class SearchBottomSheetFragment(
 
     fun dismiss(fragmentManager: FragmentManager) {
         fragmentManager.beginTransaction()
-            .remove(this)
+            .hide(this)
             .commit()
     }
 

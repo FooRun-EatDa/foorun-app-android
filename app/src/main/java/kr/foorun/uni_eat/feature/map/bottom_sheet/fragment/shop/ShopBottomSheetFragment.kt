@@ -16,8 +16,7 @@ import kr.foorun.uni_eat.feature.map.bottom_sheet.adapter.shop.ShopBottomSheetIt
 class ShopBottomSheetFragment(
     private val backAction : () -> Unit,
     private val stateListener: (state: Int) -> Unit
-) :
-    BaseBottomSheetFragment<LayoutShopBottomCollapseBinding>
+) : BaseBottomSheetFragment<LayoutShopBottomCollapseBinding>
         (R.layout.layout_shop_bottom_collapse) {
 
     private val shopAdapter: ShopBottomSheetAdapter by lazy { ShopBottomSheetAdapter(shopAdapterViewModel) }
@@ -32,11 +31,9 @@ class ShopBottomSheetFragment(
 
             loadArticles()
 
-            lifecycleScope.launchWhenCreated {
-                collapseViewModel.articles.collect{
-                    shopAdapter.submitList(it)
-                    shopAdapter.notifyDataSetChanged()
-                }
+            collapseViewModel.articles.observe(this@ShopBottomSheetFragment) {
+                shopAdapter.submitList(it)
+                shopAdapter.notifyDataSetChanged()
             }
 
             repeatOnStarted { eventFlow.collect{ handleEvent(it)} }
@@ -66,6 +63,12 @@ class ShopBottomSheetFragment(
                     .replace(containerViewId, this, tag)
                     .commitAllowingStateLoss()
             }
+
+    fun dismiss(fragmentManager: FragmentManager) {
+        fragmentManager.beginTransaction()
+            .hide(this)
+            .commit()
+    }
 
     override fun bottomSheetBackClicked() { backAction() }
 }

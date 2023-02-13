@@ -19,7 +19,6 @@ class BaseTextView : AppCompatTextView {
 
     @SuppressLint("Recycle")
     fun init(attrs: AttributeSet?) {
-        gravity = TEXT_ALIGNMENT_CENTER
 //        setTextColor(ContextCompat.getColor(context,R.color.LargeTextColor))
         val attributeArray = context.obtainStyledAttributes(attrs, R.styleable.BaseTextView)
         val t = attributeArray.getString(R.styleable.BaseTextView_android_text) ?: ""
@@ -28,6 +27,10 @@ class BaseTextView : AppCompatTextView {
         val c = attributeArray.getColor(R.styleable.BaseTextView_android_textColor,
         ContextCompat.getColor(context,R.color.LargeTextColor))
         setTextColor(c)
+
+        val g = attributeArray.getInt(R.styleable.BaseTextView_android_gravity,TEXT_ALIGNMENT_CENTER)
+        gravity = g
+
 //
 //        val font = FontEnum.values()[(attributeArray.getString(R.styleable.BaseTextView_textFont) ?: "0").toInt()].name
 //

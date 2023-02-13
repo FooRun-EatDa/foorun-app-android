@@ -1,5 +1,6 @@
 package kr.foorun.uni_eat.feature.map.bottom_sheet.fragment.shop
 
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -15,7 +16,7 @@ class ShopCollapseViewModel : BaseViewModel(){
     val eventFlow = _eventFlow.asEventFlow()
 
     private val _articles = MutableStateFlow<List<Article>?>(null)
-    val articles = _articles.asStateFlow()
+    val articles = _articles.asLiveData()
 
     fun loadArticles() = viewModelScope.launch {
         //todo for test, need to get data from server to attach articles

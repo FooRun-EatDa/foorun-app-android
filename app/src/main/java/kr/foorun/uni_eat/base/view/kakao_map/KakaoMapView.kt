@@ -1,10 +1,11 @@
 package kr.foorun.uni_eat.base.view.kakao_map
 
 import androidx.appcompat.app.AppCompatActivity
-import net.daum.android.map.MapViewTouchEventListener
 import net.daum.mf.map.api.MapView
 
-class kakaoMapView(activity : AppCompatActivity) : MapView(activity) {
+class KakaoMapView(
+    activity : AppCompatActivity
+) : MapView(activity) {
 
     init {
         setCache(true)

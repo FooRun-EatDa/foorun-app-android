@@ -3,5 +3,6 @@
     <declare-styleable name="BaseTextView">
         <attr name="android:text"/>
         <attr name="android:textColor"/>
+        <attr name="android:gravity"/>
     </declare-styleable>
 </resources>
