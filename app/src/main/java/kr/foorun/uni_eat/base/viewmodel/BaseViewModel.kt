@@ -3,19 +3,13 @@ package kr.foorun.uni_eat.base.viewmodel
 
 import androidx.lifecycle.*
 import kotlinx.coroutines.launch
-import kr.foorun.data.local.PreferenceManager
-import javax.inject.Inject
 
 open class BaseViewModel: ViewModel(){
-
-    @Inject protected lateinit var preferenceManager: PreferenceManager
 
     private val _viewBaseEvent = MutableEventFlow<BaseEvent>()
     val viewEvent = _viewBaseEvent.asEventFlow()
 
-    fun backClicked() = viewModelScope.launch {
-        _viewBaseEvent.emit(BaseEvent.Back(Unit))
-    }
+    fun backClicked() = viewModelScope.launch { _viewBaseEvent.emit(BaseEvent.Back()) }
 
     sealed class BaseEvent {
         data class Back(val unit: Unit? = null) : BaseEvent()

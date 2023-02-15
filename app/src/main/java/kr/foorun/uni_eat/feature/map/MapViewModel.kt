@@ -17,20 +17,34 @@ class MapViewModel : BaseViewModel() {
     private val _searchTags = MutableStateFlow(listOf(SearchTag("")))
     val searchTags = _searchTags.asLiveData()
 
-    fun loadTags() = viewModelScope.launch { _searchTags.emit(listOf( //test
+    private val _searchWord = MutableStateFlow("")
+    val searchWord = _searchWord.asLiveData()
+
+    private val _visibleMainSearch = MutableStateFlow(true)
+    val visibleMainSearch = _visibleMainSearch.asLiveData()
+
+    init {
+        loadTags()
+    }
+
+    fun loadTags() = viewModelScope.launch { _searchTags.emit(listOf( //fixme test
         SearchTag("#한식"),
         SearchTag("#중식"),
         SearchTag("일식"))) }
 
     fun setTags(tags: List<SearchTag>) = viewModelScope.launch { _searchTags.emit(tags) }
+    fun setWord(searchWord: String) = viewModelScope.launch { _searchWord.emit(searchWord) }
+    fun setVisibleMainSearch(visible: Boolean) = viewModelScope.launch { _visibleMainSearch.emit(visible) }
 
     fun event (event : MapEvent) = viewModelScope.launch { _eventFlow.emit(event) }
 
     sealed class MapEvent {
         data class ShowShop(val unit: Unit? = null) : MapEvent()
         data class ShowSearch(val unit: Unit? = null) : MapEvent()
+        data class NavigateToSearch(val unit: Unit? = null) : MapEvent()
     }
 
     fun showShopBottom() = event(MapEvent.ShowShop())
     fun showSearchBottom() = event(MapEvent.ShowSearch())
+    fun navigateToSearch() = event(MapEvent.NavigateToSearch())
 }

@@ -30,6 +30,7 @@ abstract class BaseFragment <T : ViewDataBinding, V : BaseViewModel>(private val
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         _binding = inflate.invoke(inflater,container,false)
+        binding.lifecycleOwner = this
         afterBinding(inflater, container, savedInstanceState)
         return binding.root
     }

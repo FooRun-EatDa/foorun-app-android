@@ -16,6 +16,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/mainSearch_CL"
+            android:animateLayoutChanges="true"
+            app:topAnimVisible="@{viewModel.visibleMainSearch}"
             android:layout_width="match_parent"
             android:layout_height="187dp"
             android:background="@drawable/gradient_bottom_28"
@@ -39,6 +41,7 @@
             <kr.foorun.uni_eat.base.view.base.BaseImageView
                 android:layout_width="310dp"
                 android:layout_height="38dp"
+                android:onClick="@{() -> viewModel.navigateToSearch()}"
                 android:layout_marginStart="44dp"
                 android:layout_marginTop="62dp"
                 android:layout_marginEnd="21dp"

@@ -3,6 +3,7 @@ package kr.foorun.data.const
 class Constant {
 
     companion object{
+        const val SEARCH_WORD = "searchWord"
         const val LANGUAGE = "language"
         const val DELAY_TIME = 500.toLong()
 

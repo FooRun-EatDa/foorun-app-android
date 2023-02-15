@@ -2,14 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:name="kr.foorun.core.CustomApplication"
         android:allowBackup="true"
-        android:usesCleartextTraffic="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -17,25 +16,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UNIEAT"
+        android:usesCleartextTraffic="true"
         tools:targetApi="33">
-
-        <!--        kakao map       -->
-        <meta-data android:name="com.kakao.sdk.AppKey" android:value="5fd54357215a25a942cfa3b7d999cacc"/>
+        <activity
+            android:name=".feature.map.fragment.search.MapSearchActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <!-- kakao map -->
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="5fd54357215a25a942cfa3b7d999cacc" />
 
         <activity
             android:name=".feature.map.bottom_sheet.shop_detail.ShopDetailActivity"
-            android:exported="false">
-        </activity>
-
+            android:exported="false"/>
         <activity
             android:name=".feature.map.MapActivity"
-            android:exported="false">
-        </activity>
-
+            android:exported="false"/>
         <activity
             android:name=".feature.main.MainActivity"
             android:exported="false" />
-
         <activity
             android:name=".feature.splash.SplashActivity"
             android:exported="true">

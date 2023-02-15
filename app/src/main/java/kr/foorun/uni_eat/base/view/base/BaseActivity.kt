@@ -34,6 +34,7 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel>(
         binding = bindingFactory(layoutInflater)
         setContentView(binding.root)
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
+        binding.lifecycleOwner = this
         afterBinding()
         observeAndInitViewModel()
     }

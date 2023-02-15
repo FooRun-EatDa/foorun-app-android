@@ -4,9 +4,8 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.util.Log
 import androidx.activity.viewModels
-import androidx.lifecycle.viewModelScope
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import kotlinx.coroutines.launch
+import dagger.hilt.android.AndroidEntryPoint
 import kr.foorun.data.tag.SearchTag
 import kr.foorun.uni_eat.R
 import kr.foorun.uni_eat.base.view.base.BaseActivity
@@ -15,10 +14,12 @@ import kr.foorun.uni_eat.databinding.ActivityMapBinding
 import kr.foorun.uni_eat.feature.map.bottom_sheet.fragment.search.SearchBottomSheetFragment
 import kr.foorun.uni_eat.feature.map.bottom_sheet.fragment.shop.ShopBottomSheetFragment
 import kr.foorun.uni_eat.feature.map.bottom_sheet.shop_detail.ShopDetailActivity
+import kr.foorun.uni_eat.feature.map.fragment.search.MapSearchFragment
 import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView
 import net.daum.mf.map.api.MapView.MapViewEventListener
 
+@AndroidEntryPoint
 class MapActivity
     : BaseActivity<ActivityMapBinding, MapViewModel>({ActivityMapBinding.inflate(it)})
     , MapViewEventListener // doesn't work if using object way but implementation works (Listener is detached when fragment gone)
@@ -42,11 +43,19 @@ class MapActivity
     @SuppressLint("NotifyDataSetChanged")
     override fun observeAndInitViewModel() {
         binding.viewModel = activityViewModel.apply {
-            loadTags()
 
             searchTags.observe(this@MapActivity) {
                 searchTagAdapter.submitList(it)
                 searchTagAdapter.notifyDataSetChanged()
+                if(it[0].isPicked) showShopBottom() //fixme test
+                if(it[1].isPicked) { //fixme test
+                    showSearchBottom()
+                    setVisibleMainSearch(false)
+                }
+            }
+
+            searchWord.observe(this@MapActivity){
+                //todo pick the shop given from MapSearchFragment on the map with lng things
             }
 
             repeatOnStarted { eventFlow.collect { handleEvent(it) } }
@@ -66,7 +75,10 @@ class MapActivity
 
     private fun showSearchBottomSheet() {
         searchBottomSheetFragment = SearchBottomSheetFragment( { onBackPressed() } , {
-            if(it == BottomSheetBehavior.STATE_HIDDEN) dismissSearchBottomSheet()
+            if(it == BottomSheetBehavior.STATE_HIDDEN) {
+                dismissSearchBottomSheet()
+                activityViewModel.setVisibleMainSearch(true)
+            }
         }).show(supportFragmentManager, R.id.view_bottom_sheet)
     }
 
@@ -93,6 +105,9 @@ class MapActivity
     private fun handleEvent(event: MapViewModel.MapEvent) = when (event) {
         is MapViewModel.MapEvent.ShowShop -> showShopBottomSheet()
         is MapViewModel.MapEvent.ShowSearch -> showSearchBottomSheet()
+        is MapViewModel.MapEvent.NavigateToSearch -> MapSearchFragment{
+            activityViewModel.setWord(it)
+        }.show(supportFragmentManager,"")
     }
 
     private fun tgaHandleEvent(event: SearchTagViewModel.TagEvent) = when (event) {
