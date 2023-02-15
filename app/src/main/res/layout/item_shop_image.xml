@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="article"
+            type="kr.foorun.data.article.Article" />
+
+        <variable
+            name="viewModel"
+            type="kr.foorun.uni_eat.feature.map.bottom_sheet.adapter.shop.ShopBottomSheetItemViewModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_marginEnd="5dp"
+        app:cardCornerRadius="4dp"
+        android:layout_width="103dp"
+        android:layout_height="103dp">
+
+        <kr.foorun.uni_eat.base.view.base.BaseImageView
+            android:id="@+id/shopImage_IV"
+            app:glide="@{article.shopImages[0]}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -9,4 +9,10 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="searchResult">검색결과</string>
+    <string name="recommendOrder">추천순</string>
+    <string name="searchHint">지역 / 매장명 / 메뉴 검색</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="recentWords">최근검색어</string>
 </resources>

@@ -27,8 +27,8 @@ class BaseEditTextLayout : ConstraintLayout {
 
     @SuppressLint("Recycle", "CustomViewStyleable")
     fun init(attrs: AttributeSet?) {
-        backgroundTintList = ContextCompat.getColorStateList(context, R.color.black)
         binding.edittext.isSingleLine = true
+
         val attributeArray = context.obtainStyledAttributes(attrs, R.styleable.BaseEditTextLayout)
 
         val inputType = attributeArray.getInt(R.styleable.BaseEditTextLayout_android_inputType, EditorInfo.TYPE_NULL)
@@ -39,6 +39,11 @@ class BaseEditTextLayout : ConstraintLayout {
 
         val hint = attributeArray.getString(R.styleable.BaseEditTextLayout_android_hint) ?: ""
         binding.edittext.hint = hint
+
+        val c = attributeArray.getColor(R.styleable.BaseTextView_android_textColor,
+            ContextCompat.getColor(context,R.color.LargeTextColor))
+
+        binding.edittext.setTextColor(c)
 
 //        val font = FontEnum.values()[(attributeArray.getString(R.styleable.BaseEditText_textFont) ?: "0").toInt()].name
 //

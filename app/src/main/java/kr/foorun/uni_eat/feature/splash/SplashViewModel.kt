@@ -1,31 +1,31 @@
 package kr.foorun.uni_eat.feature.splash
 
-import android.util.Log
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
-import kr.foorun.data.const.Constant.Companion.DELAY_TIME
-import kr.foorun.data.const.CoroutineUtil.Companion.coroutineMain
-import kr.foorun.uni_eat.base.mvvm.BaseViewModel
+import kotlinx.coroutines.launch
+import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
+import kr.foorun.uni_eat.base.viewmodel.MutableEventFlow
+import kr.foorun.uni_eat.base.viewmodel.asEventFlow
 import javax.inject.Inject
 
 @HiltViewModel
 class SplashViewModel @Inject constructor(
-
 ) : BaseViewModel() {
-    private lateinit var a : Job
+
+    private val _eventFlow = MutableEventFlow<Event>()
+    val eventFlow = _eventFlow.asEventFlow()
 
     fun timerStart(){
-        if(::a.isInitialized) a.cancel()
-
-        a = coroutineMain {
-            //todo load data
-            delay(DELAY_TIME)
-            viewEvent(TIMER_DONE)
+        viewModelScope.launch {
+            delay(1000)
+            event(Event.SplashDone())
         }
     }
 
-    companion object{
-        const val TIMER_DONE = 0
+    fun event (event : Event) = viewModelScope.launch { _eventFlow.emit(event) }
+
+    sealed class Event {
+        data class SplashDone(val unit: Unit? = null) : Event()
     }
 }

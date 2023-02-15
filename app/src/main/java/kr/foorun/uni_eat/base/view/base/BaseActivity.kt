@@ -1,4 +1,4 @@
-package kr.foorun.uni_eat.base
+package kr.foorun.uni_eat.base.view.base
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -15,7 +15,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import kr.foorun.uni_eat.base.mvvm.BaseViewModel
+import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
 import java.util.*
 
 abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel>(
@@ -34,20 +34,14 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel>(
         binding = bindingFactory(layoutInflater)
         setContentView(binding.root)
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
-//        updateLocale()
+        binding.lifecycleOwner = this
+        afterBinding()
         observeAndInitViewModel()
     }
 
     abstract fun observeAndInitViewModel()
 //    abstract fun updateLocale()
-
-    fun changeLocale(locale: Locale) {
-        Locale.setDefault(locale)
-        val config = resources.configuration
-        config.setLocale(locale)
-        resources.updateConfiguration(config, resources.displayMetrics)
-        activityViewModel.changeResourcesLocale()
-    }
+    abstract fun afterBinding()
 
     protected fun binding(action: T.() -> Unit) {
         binding.run(action)
@@ -100,6 +94,5 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel>(
 
     private fun View.hideKeyboard() =
         (context.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager)?.also {
-            it.hideSoftInputFromWindow(windowToken, 0)
-        }
+            it.hideSoftInputFromWindow(windowToken, 0) }
 }
