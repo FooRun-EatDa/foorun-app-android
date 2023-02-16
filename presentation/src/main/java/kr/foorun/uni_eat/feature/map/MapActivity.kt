@@ -1,8 +1,8 @@
 package kr.foorun.uni_eat.feature.map
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.util.Log
 import androidx.activity.viewModels
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,15 +22,18 @@ import net.daum.mf.map.api.MapView.MapViewEventListener
 @AndroidEntryPoint
 class MapActivity
     : BaseActivity<ActivityMapBinding, MapViewModel>({ActivityMapBinding.inflate(it)})
+    , MapView.CurrentLocationEventListener
     , MapViewEventListener // doesn't work if using object way but implementation works (Listener is detached when fragment gone)
 {
     override val activityViewModel: MapViewModel by viewModels()
     private val searchTagViewModel: SearchTagViewModel by viewModels()
     private var shopBottomSheetFragment : ShopBottomSheetFragment? = null
     private var searchBottomSheetFragment : SearchBottomSheetFragment? = null
-    private val mapView by lazy { MapView(this).apply { setMapViewEventListener(this@MapActivity) } }
+    private val mapView by lazy { MapView(this).apply {
+        setCurrentLocationEventListener(this@MapActivity)
+        setMapViewEventListener(this@MapActivity) } }
     private val searchTagAdapter by lazy { SearchTagAdapter(searchTagViewModel.apply {
-        repeatOnStarted { eventFlow.collect{ tgaHandleEvent(it)} } }) }
+        repeatOnStarted { eventFlow.collect{ tagHandleEvent(it)} } }) }
 
     override fun afterBinding() {
         binding {
@@ -108,9 +111,10 @@ class MapActivity
         is MapViewModel.MapEvent.NavigateToSearch -> MapSearchFragment{
             activityViewModel.setWord(it)
         }.show(supportFragmentManager,"")
+        is MapViewModel.MapEvent.LocateMap -> checkLocationService { locationPermission() }
     }
 
-    private fun tgaHandleEvent(event: SearchTagViewModel.TagEvent) = when (event) {
+    private fun tagHandleEvent(event: SearchTagViewModel.TagEvent) = when (event) {
         is SearchTagViewModel.TagEvent.TagClick -> {
             val tag = event.searchTag
             val arr = ArrayList<SearchTag>()
@@ -118,6 +122,18 @@ class MapActivity
             for( i in arr.indices ) if(arr[i].tagName == tag.tagName) arr[i] = SearchTag(tag.tagName,!tag.isPicked)
             activityViewModel.setTags(arr)
         }
+    }
+
+    private fun locationPermission() = askPermission(
+        Manifest.permission.ACCESS_FINE_LOCATION,
+        Manifest.permission.ACCESS_COARSE_LOCATION,
+        deniedMessage = getString(R.string.location_permission_deniedMessage),
+        onGranted = { locateMe() }, onDenied = { finish() })
+
+    private fun locateMe() { mapView.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading }
+    private fun locatePoint(lat : Double, lng: Double) {
+        mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(lat, lng), true)
+        //todo make marker at point
     }
 
     override fun onMapViewInitialized(p0: MapView?) {}
@@ -132,5 +148,13 @@ class MapActivity
     override fun onMapViewDragStarted(p0: MapView?, p1: MapPoint?) {}
     override fun onMapViewDragEnded(p0: MapView?, p1: MapPoint?) {}
     override fun onMapViewMoveFinished(p0: MapView?, p1: MapPoint?) {}
+    override fun onCurrentLocationUpdate(map: MapView?, p1: MapPoint?, p2: Float) {
+        map?.setMapCenterPoint(p1,true)
+        if(map?.currentLocationTrackingMode != MapView.CurrentLocationTrackingMode.TrackingModeOff)
+            map?.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOff
+    }
+    override fun onCurrentLocationDeviceHeadingUpdate(p0: MapView?, p1: Float) {}
+    override fun onCurrentLocationUpdateFailed(p0: MapView?) {}
+    override fun onCurrentLocationUpdateCancelled(p0: MapView?) {}
 
 }
