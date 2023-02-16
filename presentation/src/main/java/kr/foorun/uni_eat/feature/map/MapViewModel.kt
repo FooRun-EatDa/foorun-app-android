@@ -27,7 +27,7 @@ class MapViewModel : BaseViewModel() {
         loadTags()
     }
 
-    fun loadTags() = viewModelScope.launch { _searchTags.emit(listOf( //fixme test
+    private fun loadTags() = viewModelScope.launch { _searchTags.emit(listOf( //fixme test
         SearchTag("#한식"),
         SearchTag("#중식"),
         SearchTag("일식"))) }
@@ -42,9 +42,11 @@ class MapViewModel : BaseViewModel() {
         data class ShowShop(val unit: Unit? = null) : MapEvent()
         data class ShowSearch(val unit: Unit? = null) : MapEvent()
         data class NavigateToSearch(val unit: Unit? = null) : MapEvent()
+        data class LocateMap(val unit: Unit? = null) : MapEvent()
     }
 
     fun showShopBottom() = event(MapEvent.ShowShop())
     fun showSearchBottom() = event(MapEvent.ShowSearch())
     fun navigateToSearch() = event(MapEvent.NavigateToSearch())
+    fun locateMap() = event(MapEvent.LocateMap())
 }
