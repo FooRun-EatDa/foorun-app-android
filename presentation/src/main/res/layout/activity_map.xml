@@ -75,7 +75,24 @@
             app:layout_constraintTop_toBottomOf="@id/mainSearch_CL"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/locate_BTN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="0dp"
+                android:src="@drawable/gps_fixed_light"
+                android:backgroundTint="@color/search_tag_pick"
+                app:borderWidth="0dp"
+                app:maxImageSize="36dp"
+                app:fabCustomSize="60dp"
+                android:onClick="@{() -> viewModel.locateMap()}"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="70dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"/>
+        </RelativeLayout>
 
         <FrameLayout
             android:id="@+id/view_bottom_sheet"
