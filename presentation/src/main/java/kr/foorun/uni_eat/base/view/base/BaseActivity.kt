@@ -1,5 +1,7 @@
 package kr.foorun.uni_eat.base.view.base
 
+import android.Manifest
+import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
