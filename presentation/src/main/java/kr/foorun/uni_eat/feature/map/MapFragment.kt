@@ -3,51 +3,76 @@ package kr.foorun.uni_eat.feature.map
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.activity.viewModels
+import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.widget.RelativeLayout
+import androidx.activity.OnBackPressedCallback
+import androidx.core.view.children
+import androidx.core.view.contains
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
 import kr.foorun.data.tag.SearchTag
 import kr.foorun.uni_eat.R
-import kr.foorun.uni_eat.base.view.base.BaseActivity
+import kr.foorun.uni_eat.base.view.base.BaseFragment
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
-import kr.foorun.uni_eat.databinding.ActivityMapBinding
+import kr.foorun.uni_eat.databinding.FragmentMapBinding
 import kr.foorun.uni_eat.feature.map.bottom_sheet.fragment.search.SearchBottomSheetFragment
 import kr.foorun.uni_eat.feature.map.bottom_sheet.fragment.shop.ShopBottomSheetFragment
-import kr.foorun.uni_eat.feature.map.bottom_sheet.shop_detail.ShopDetailActivity
 import kr.foorun.uni_eat.feature.map.fragment.search.MapSearchFragment
 import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView
 import net.daum.mf.map.api.MapView.MapViewEventListener
 
 @AndroidEntryPoint
-class MapActivity
-    : BaseActivity<ActivityMapBinding, MapViewModel>({ActivityMapBinding.inflate(it)})
+class MapFragment
+    : BaseFragment<FragmentMapBinding, MapViewModel>(FragmentMapBinding::inflate)
     , MapView.CurrentLocationEventListener
     , MapViewEventListener // doesn't work if using object way but implementation works (Listener is detached when fragment gone)
 {
-    override val activityViewModel: MapViewModel by viewModels()
+    override val fragmentViewModel: MapViewModel by viewModels()
     private val searchTagViewModel: SearchTagViewModel by viewModels()
     private var shopBottomSheetFragment : ShopBottomSheetFragment? = null
     private var searchBottomSheetFragment : SearchBottomSheetFragment? = null
-    private val mapView by lazy { MapView(this).apply {
-        setCurrentLocationEventListener(this@MapActivity)
-        setMapViewEventListener(this@MapActivity) } }
+    private var mapView : MapView? = null
+
     private val searchTagAdapter by lazy { SearchTagAdapter(searchTagViewModel.apply {
         repeatOnStarted { eventFlow.collect{ tagHandleEvent(it)} } }) }
 
-    override fun afterBinding() {
+    override fun afterBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) {
+        onBackPressedListener()
         binding {
-            mapFL.addView(mapView)
             mainSearchCL.bringToFront() // to put the view above mapView
             searchTagRC.adapter = searchTagAdapter
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        if(mapView != null){
+            if(!binding.mapFL.contains(mapView!!)) binding.mapFL.addView(mapView)
+        } else {
+            mapView = MapView(requireActivity()).apply {
+                setCurrentLocationEventListener(this@MapFragment)
+                setMapViewEventListener(this@MapFragment)}
+            binding.mapFL.addView(mapView)
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        binding.mapFL.removeView(mapView)
+        mapView = null
+    }
+
     @SuppressLint("NotifyDataSetChanged")
     override fun observeAndInitViewModel() {
-        binding.viewModel = activityViewModel.apply {
+        binding.viewModel = fragmentViewModel.apply {
 
-            searchTags.observe(this@MapActivity) {
+            searchTags.observe(this@MapFragment) {
                 searchTagAdapter.submitList(it)
                 searchTagAdapter.notifyDataSetChanged()
                 if(it[0].isPicked) showShopBottom() //fixme test
@@ -57,7 +82,7 @@ class MapActivity
                 }
             }
 
-            searchWord.observe(this@MapActivity){
+            searchWord.observe(this@MapFragment){
                 //todo pick the shop given from MapSearchFragment on the map with lng things
             }
 
@@ -66,51 +91,56 @@ class MapActivity
     }
 
     private fun showShopBottomSheet() {
-        shopBottomSheetFragment = ShopBottomSheetFragment ( { onBackPressed() },{
-            if(it == BottomSheetBehavior.STATE_EXPANDED)
-                navigateToAct(ShopDetailActivity::class.java) {
-                addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+        shopBottomSheetFragment = ShopBottomSheetFragment ( { onBackPressedListener() },{
+            if(it == BottomSheetBehavior.STATE_EXPANDED) {
+                navigateToFrag(MapFragmentDirections.actionMapFragmentToShopDetailFragment())
                 shopBottomSheetFragment?.collapse()
             }
             if(it == BottomSheetBehavior.STATE_HIDDEN) dismissShopBottomSheet()
-        }).show(supportFragmentManager, R.id.view_bottom_sheet)
+        }).show(requireActivity().supportFragmentManager, R.id.view_bottom_sheet)
     }
 
     private fun showSearchBottomSheet() {
-        searchBottomSheetFragment = SearchBottomSheetFragment( { onBackPressed() } , {
+        searchBottomSheetFragment = SearchBottomSheetFragment( { onBackPressedListener() } , {
             if(it == BottomSheetBehavior.STATE_HIDDEN) {
                 dismissSearchBottomSheet()
-                activityViewModel.setVisibleMainSearch(true)
+                fragmentViewModel.setVisibleMainSearch(true)
             }
-        }).show(supportFragmentManager, R.id.view_bottom_sheet)
+        }).show(requireActivity().supportFragmentManager, R.id.view_bottom_sheet)
     }
 
     private fun dismissShopBottomSheet() {
-        shopBottomSheetFragment?.dismiss(supportFragmentManager)
+        shopBottomSheetFragment?.dismiss(requireActivity().supportFragmentManager)
         shopBottomSheetFragment = null
     }
 
     private fun dismissSearchBottomSheet() {
-        searchBottomSheetFragment?.dismiss(supportFragmentManager)
+        searchBottomSheetFragment?.dismiss(requireActivity().supportFragmentManager)
         searchBottomSheetFragment = null
     }
 
-    override fun onBackPressed() {
-        if (shopBottomSheetFragment != null && shopBottomSheetFragment!!.handleBackKeyEvent())
-            shopBottomSheetFragment?.hide()
+    private fun onBackPressedListener() {
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true /* enabled by default */) {
+                override fun handleOnBackPressed() {
+                    if (shopBottomSheetFragment != null && shopBottomSheetFragment!!.handleBackKeyEvent())
+                        shopBottomSheetFragment?.hide()
 
-        else if (searchBottomSheetFragment != null && searchBottomSheetFragment!!.handleBackKeyEvent())
-            searchBottomSheetFragment?.hide()
+                    else if (searchBottomSheetFragment != null && searchBottomSheetFragment!!.handleBackKeyEvent())
+                        searchBottomSheetFragment?.hide()
 
-        else super.onBackPressed()
+                    else findNavController().popBackStack()
+                }
+            }
+//        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
     }
 
     private fun handleEvent(event: MapViewModel.MapEvent) = when (event) {
         is MapViewModel.MapEvent.ShowShop -> showShopBottomSheet()
         is MapViewModel.MapEvent.ShowSearch -> showSearchBottomSheet()
         is MapViewModel.MapEvent.NavigateToSearch -> MapSearchFragment{
-            activityViewModel.setWord(it)
-        }.show(supportFragmentManager,"")
+            fragmentViewModel.setWord(it)
+        }.show(requireActivity().supportFragmentManager,"")
         is MapViewModel.MapEvent.LocateMap -> checkLocationService { locationPermission() }
     }
 
@@ -118,9 +148,9 @@ class MapActivity
         is SearchTagViewModel.TagEvent.TagClick -> {
             val tag = event.searchTag
             val arr = ArrayList<SearchTag>()
-            activityViewModel.searchTags.value?.map { arr.add(it) }
+            fragmentViewModel.searchTags.value?.map { arr.add(it) }
             for( i in arr.indices ) if(arr[i].tagName == tag.tagName) arr[i] = SearchTag(tag.tagName,!tag.isPicked)
-            activityViewModel.setTags(arr)
+            fragmentViewModel.setTags(arr)
         }
     }
 
@@ -128,11 +158,11 @@ class MapActivity
         Manifest.permission.ACCESS_FINE_LOCATION,
         Manifest.permission.ACCESS_COARSE_LOCATION,
         deniedMessage = getString(R.string.location_permission_deniedMessage),
-        onGranted = { locateMe() }, onDenied = { finish() })
+        onGranted = { locateMe() }, onDenied = {  })
 
-    private fun locateMe() { mapView.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading }
+    private fun locateMe() { mapView?.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading }
     private fun locatePoint(lat : Double, lng: Double) {
-        mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(lat, lng), true)
+        mapView?.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(lat, lng), true)
         //todo make marker at point
     }
 
