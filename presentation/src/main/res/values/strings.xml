@@ -17,4 +17,5 @@
     <string name="recentWords">최근검색어</string>
     <string name="turnOn_GPS">"단말기의 GPS를 켜주세요."</string>
     <string name="location_permission_deniedMessage">지도에서 내 위치를 확인하여 서비스를 이용하기 위해 권한이 필요합니다. (필수권한)</string>
+    <string name="login_text">가입을 진행할 경우 , 아래의 정책에 동의한 것으로 간주됩니다. \n서비스 이용약관 및 개인정보처리방침</string>
 </resources>

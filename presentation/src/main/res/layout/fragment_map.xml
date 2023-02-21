@@ -87,7 +87,7 @@
                 app:borderWidth="0dp"
                 app:maxImageSize="36dp"
                 app:fabCustomSize="60dp"
-                android:onClick="@{() -> viewModel.locateMap()}"
+                android:onClick="@{() -> viewModel.clickedLocateMap()}"
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="70dp"
                 android:layout_alignParentBottom="true"

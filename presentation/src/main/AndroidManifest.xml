@@ -25,20 +25,10 @@
             android:value="5fd54357215a25a942cfa3b7d999cacc" />
 
         <activity
-            android:name=".feature.map.bottom_sheet.shop_detail.ShopDetailActivity"
-            android:exported="false"/>
-        <activity
-            android:name=".feature.map.MapActivity"
-            android:exported="false"/>
-        <activity
             android:name=".feature.main.MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".feature.splash.SplashActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

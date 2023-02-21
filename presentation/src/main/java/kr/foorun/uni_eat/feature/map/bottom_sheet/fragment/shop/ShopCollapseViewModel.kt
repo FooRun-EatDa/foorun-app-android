@@ -2,6 +2,7 @@ package kr.foorun.uni_eat.feature.map.bottom_sheet.fragment.shop
 
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -9,8 +10,10 @@ import kr.foorun.data.article.Article
 import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
 import kr.foorun.uni_eat.base.viewmodel.MutableEventFlow
 import kr.foorun.uni_eat.base.viewmodel.asEventFlow
+import javax.inject.Inject
 
-class ShopCollapseViewModel : BaseViewModel(){
+@HiltViewModel
+class ShopCollapseViewModel @Inject constructor(): BaseViewModel(){
 
     private val _eventFlow = MutableEventFlow<ShopCollapsedEvent>()
     val eventFlow = _eventFlow.asEventFlow()

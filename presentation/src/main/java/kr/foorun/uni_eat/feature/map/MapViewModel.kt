@@ -2,14 +2,17 @@ package kr.foorun.uni_eat.feature.map
 
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import kr.foorun.data.tag.SearchTag
 import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
 import kr.foorun.uni_eat.base.viewmodel.MutableEventFlow
 import kr.foorun.uni_eat.base.viewmodel.asEventFlow
+import javax.inject.Inject
 
-class MapViewModel : BaseViewModel() {
+@HiltViewModel
+class MapViewModel @Inject constructor(): BaseViewModel() {
 
     private val _eventFlow = MutableEventFlow<MapEvent>()
     val eventFlow = _eventFlow.asEventFlow()
@@ -48,5 +51,5 @@ class MapViewModel : BaseViewModel() {
     fun showShopBottom() = event(MapEvent.ShowShop())
     fun showSearchBottom() = event(MapEvent.ShowSearch())
     fun navigateToSearch() = event(MapEvent.NavigateToSearch())
-    fun locateMap() = event(MapEvent.LocateMap())
+    fun clickedLocateMap() = event(MapEvent.LocateMap())
 }
