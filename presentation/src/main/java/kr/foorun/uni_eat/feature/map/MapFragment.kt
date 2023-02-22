@@ -166,8 +166,8 @@ class MapFragment
     override fun onMapViewCenterPointMoved(p0: MapView?, p1: MapPoint?) {}
     override fun onMapViewZoomLevelChanged(p0: MapView?, p1: Int) {}
     override fun onMapViewSingleTapped(p0: MapView?, p1: MapPoint?) {
-        dismissShopBottomSheet()
-        dismissSearchBottomSheet()
+        shopBottomSheetFragment?.hide()
+        searchBottomSheetFragment?.hide()
     }
     override fun onMapViewDoubleTapped(p0: MapView?, p1: MapPoint?) {}
     override fun onMapViewLongPressed(p0: MapView?, p1: MapPoint?) {}
