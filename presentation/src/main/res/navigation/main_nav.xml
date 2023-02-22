@@ -37,6 +37,6 @@
     </fragment>
     <fragment
         android:id="@+id/shopDetailFragment"
-        android:name="kr.foorun.uni_eat.feature.map.bottom_sheet.shop_detail.fragment.ShopDetailFragment"
+        android:name="kr.foorun.uni_eat.feature.map.shop_detail.fragment.ShopDetailFragment"
         android:label="ShopDetailFragment" />
 </navigation>

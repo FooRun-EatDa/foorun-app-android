@@ -8,7 +8,7 @@
             type="String" />
         <variable
             name="viewModel"
-            type="kr.foorun.uni_eat.feature.map.fragment.search.adapter.RecentSearchViewModel" />
+            type="kr.foorun.uni_eat.feature.map.search.adapter.RecentSearchViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

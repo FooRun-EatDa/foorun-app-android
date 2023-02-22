@@ -6,6 +6,6 @@
     app:startDestination="@id/mapSearchFragment">
     <fragment
         android:id="@+id/mapSearchFragment"
-        android:name="kr.foorun.uni_eat.feature.map.fragment.search.MapSearchFragment"
+        android:name="kr.foorun.uni_eat.feature.map.search.fragment.MapSearchFragment"
         android:label="MapSearchFragment" />
 </navigation>

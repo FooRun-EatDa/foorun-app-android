@@ -1,4 +1,4 @@
-package kr.foorun.uni_eat.feature.map.fragment.search.adapter
+package kr.foorun.uni_eat.feature.map.search.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

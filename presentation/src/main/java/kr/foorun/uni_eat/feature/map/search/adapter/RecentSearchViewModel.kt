@@ -1,4 +1,4 @@
-package kr.foorun.uni_eat.feature.map.fragment.search.adapter
+package kr.foorun.uni_eat.feature.map.search.adapter
 
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
@@ -13,7 +13,7 @@ class RecentSearchViewModel : BaseViewModel() {
 
     fun clickedRemove(word: String) = event(RecentSearchEvent.Remove(word))
 
-    fun event(event:RecentSearchEvent) = viewModelScope.launch { _eventFlow.emit(event) }
+    fun event(event: RecentSearchEvent) = viewModelScope.launch { _eventFlow.emit(event) }
 
     sealed class RecentSearchEvent{
         data class Remove(val word: String) : RecentSearchEvent()

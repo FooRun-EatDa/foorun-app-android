@@ -1,4 +1,4 @@
-package kr.foorun.uni_eat.feature.map.fragment.search
+package kr.foorun.uni_eat.feature.map.search.fragment
 
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.asLiveData

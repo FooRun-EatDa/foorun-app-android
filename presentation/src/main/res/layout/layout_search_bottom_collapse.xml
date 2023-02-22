@@ -79,7 +79,7 @@
                 <kr.foorun.uni_eat.base.view.base.BaseTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/recommendOrder"
+                    android:text="@string/recommend_order"
                     android:layout_marginEnd="5dp"
                     android:textSize="13sp"/>
 

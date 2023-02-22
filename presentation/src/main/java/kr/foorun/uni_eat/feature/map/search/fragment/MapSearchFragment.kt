@@ -1,9 +1,8 @@
-package kr.foorun.uni_eat.feature.map.fragment.search
+package kr.foorun.uni_eat.feature.map.search.fragment
 
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,14 +11,11 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 import kr.foorun.uni_eat.R
-import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 import kr.foorun.uni_eat.databinding.FragmentMapSearchBinding
-import kr.foorun.uni_eat.feature.map.fragment.search.adapter.RecentSearchAdapter
-import kr.foorun.uni_eat.feature.map.fragment.search.adapter.RecentSearchViewModel
+import kr.foorun.uni_eat.feature.map.search.adapter.RecentSearchAdapter
+import kr.foorun.uni_eat.feature.map.search.adapter.RecentSearchViewModel
 
 @AndroidEntryPoint
 class MapSearchFragment(val searchDone : (word : String) -> Unit): DialogFragment() {

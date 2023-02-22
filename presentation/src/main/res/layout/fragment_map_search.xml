@@ -6,13 +6,13 @@
     <data>
         <variable
             name="viewModel"
-            type="kr.foorun.uni_eat.feature.map.fragment.search.MapSearchViewModel" />
+            type="kr.foorun.uni_eat.feature.map.search.fragment.MapSearchViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".feature.map.fragment.search.MapSearchFragment">
+        tools:context=".feature.map.search.fragment.MapSearchFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/mainSearch_CL"
@@ -65,7 +65,7 @@
                 android:id="@+id/recentWords_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/recentWords"
+                android:text="@string/recent_words"
                 android:textStyle="bold"
                 android:textSize="19sp"
                 android:layout_marginTop="25dp"

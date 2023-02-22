@@ -2,14 +2,10 @@ package kr.foorun.uni_eat.feature.map
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.RelativeLayout
 import androidx.activity.OnBackPressedCallback
-import androidx.core.view.children
 import androidx.core.view.contains
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -22,7 +18,7 @@ import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 import kr.foorun.uni_eat.databinding.FragmentMapBinding
 import kr.foorun.uni_eat.feature.map.bottom_sheet.fragment.search.SearchBottomSheetFragment
 import kr.foorun.uni_eat.feature.map.bottom_sheet.fragment.shop.ShopBottomSheetFragment
-import kr.foorun.uni_eat.feature.map.fragment.search.MapSearchFragment
+import kr.foorun.uni_eat.feature.map.search.fragment.MapSearchFragment
 import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView
 import net.daum.mf.map.api.MapView.MapViewEventListener
@@ -132,7 +128,7 @@ class MapFragment
                     else findNavController().popBackStack()
                 }
             }
-//        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
     }
 
     private fun handleEvent(event: MapViewModel.MapEvent) = when (event) {

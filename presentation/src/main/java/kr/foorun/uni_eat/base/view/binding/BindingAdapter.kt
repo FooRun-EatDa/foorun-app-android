@@ -16,7 +16,6 @@ import androidx.databinding.BindingAdapter
 import kr.foorun.uni_eat.R
 import kr.foorun.uni_eat.base.view.base.BaseEditTextLayout
 
-
 object BindingAdapter {
 
     @JvmStatic

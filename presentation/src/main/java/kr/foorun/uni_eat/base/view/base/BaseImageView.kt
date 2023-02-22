@@ -25,7 +25,9 @@ class BaseImageView : AppCompatImageView {
         fun setImage(view : BaseImageView , image : String){
             Glide.with(view.context)
                 .load(image)
-//                .error() //todo add an image in case of error
+                .centerCrop()
+//                .placeholder() //todo add preImage before loaded image
+//                .error() //todo add an image in case of an error
                 .into(view)
         }
     }
