@@ -1,4 +1,4 @@
-package kr.foorun.data.tag
+package kr.foorun.model.tag
 
 data class SearchTag(
     val tagName: String,

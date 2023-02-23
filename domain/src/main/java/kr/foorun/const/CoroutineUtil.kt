@@ -1,4 +1,4 @@
-package kr.foorun.data.const
+package kr.foorun.const
 
 import android.util.Log
 import kotlinx.coroutines.*

@@ -1,4 +1,4 @@
-package kr.foorun.core
+package kr.foorun.di
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

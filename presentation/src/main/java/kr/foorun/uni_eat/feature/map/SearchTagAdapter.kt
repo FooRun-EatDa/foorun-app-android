@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import kr.foorun.data.tag.SearchTag
-import kr.foorun.uni_eat.databinding.ItemSearchTagBinding
+import kr.foorun.model.tag.SearchTag
+import kr.foorun.presentation.databinding.ItemSearchTagBinding
 
 class ItemSearchTagViewHolder(val binding: ItemSearchTagBinding) : RecyclerView.ViewHolder(binding.root)
 

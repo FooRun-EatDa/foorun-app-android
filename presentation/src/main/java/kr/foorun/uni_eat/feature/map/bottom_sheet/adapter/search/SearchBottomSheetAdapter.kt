@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import kr.foorun.data.article.Article
-import kr.foorun.uni_eat.databinding.ItemSearchArticlesBinding
+import kr.foorun.model.article.Article
+import kr.foorun.presentation.databinding.ItemSearchArticlesBinding
 
 class ItemSearchViewHolder(val binding: ItemSearchArticlesBinding) : RecyclerView.ViewHolder(binding.root)
 

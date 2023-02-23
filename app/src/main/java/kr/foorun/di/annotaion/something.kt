@@ -1,4 +1,4 @@
-package kr.foorun.data.annotaion
+package kr.foorun.di.annotaion
 
 import javax.inject.Qualifier
 

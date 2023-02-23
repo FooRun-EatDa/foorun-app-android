@@ -5,7 +5,7 @@ import android.content.Context
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
-import kr.foorun.uni_eat.R
+import kr.foorun.presentation.R
 import java.util.*
 
 class BaseTextView : AppCompatTextView {

@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import kr.foorun.uni_eat.databinding.ItemDetailImageBinding
+import kr.foorun.presentation.databinding.ItemDetailImageBinding
 
 class ItemDetailImageViewHolder(val binding: ItemDetailImageBinding) : RecyclerView.ViewHolder(binding.root)
 

@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
@@ -7,25 +7,16 @@ plugins {
     id 'kotlin-parcelize'
 }
 
-Properties properties = new Properties()
-properties.load(project.rootProject.file('gradle.properties').newDataInputStream())
-
 android {
-    namespace 'kr.foorun.uni_eat'
+    namespace 'kr.foorun.presentation'
     compileSdk 33
 
     defaultConfig {
-        applicationId "kr.akaai.alive_android"
         minSdk 23
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-//        buildConfigField "String", "RESET_URL", properties['api.url_reset']
-//        buildConfigField "String", "RESET_KEY", properties['api.key_reset']
-//        buildConfigField "String", "CLIENT_KEY", properties['api.key_client']
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -34,10 +25,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
@@ -51,11 +44,10 @@ android {
 dependencies {
 
     implementation project(':domain')
-    implementation project(':data')
 
     implementation 'androidx.test:core-ktx:1.5.0'
-    implementation 'androidx.appcompat:appcompat:1.4.9'
-    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
     implementation 'com.android.support.constraint:constraint-layout:2.0.4'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.13.2'
@@ -77,8 +69,8 @@ dependencies {
     implementation files('libs/libDaumMapAndroid.jar')
 
     //glide
-    implementation 'com.github.bumptech.glide:glide:4.11.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation 'com.github.bumptech.glide:glide:4.14.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.14.1'
 
     //edittext library https://github.com/ChaosLeung/PinView
     implementation 'io.github.chaosleung:pinview:1.4.4'
@@ -115,10 +107,4 @@ dependencies {
     testImplementation 'androidx.test.ext:junit:1.1.4'
     testImplementation "org.robolectric:robolectric:4.4"
 
-    androidTestImplementation "junit:junit:4.13.2"
-    androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
-    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.3"
-    androidTestImplementation "com.google.truth:truth:1.0.1"
-    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
 }

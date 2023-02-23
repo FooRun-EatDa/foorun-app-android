@@ -11,23 +11,22 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
-import kr.foorun.data.tag.SearchTag
-import kr.foorun.uni_eat.R
+import kr.foorun.model.tag.SearchTag
+import kr.foorun.presentation.R
+import kr.foorun.presentation.databinding.FragmentMapBinding
 import kr.foorun.uni_eat.base.view.base.BaseFragment
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
-import kr.foorun.uni_eat.databinding.FragmentMapBinding
 import kr.foorun.uni_eat.feature.map.bottom_sheet.fragment.search.SearchBottomSheetFragment
 import kr.foorun.uni_eat.feature.map.bottom_sheet.fragment.shop.ShopBottomSheetFragment
 import kr.foorun.uni_eat.feature.map.search.fragment.MapSearchFragment
 import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView
-import net.daum.mf.map.api.MapView.MapViewEventListener
 
 @AndroidEntryPoint
 class MapFragment
     : BaseFragment<FragmentMapBinding, MapViewModel>(FragmentMapBinding::inflate)
     , MapView.CurrentLocationEventListener
-    , MapViewEventListener // doesn't work if using object way but implementation works (Listener is detached when fragment gone)
+    , MapView.MapViewEventListener // doesn't work if using object way but implementation works (Listener is detached when fragment gone)
 {
     override val fragmentViewModel: MapViewModel by viewModels()
     private val searchTagViewModel: SearchTagViewModel by viewModels()

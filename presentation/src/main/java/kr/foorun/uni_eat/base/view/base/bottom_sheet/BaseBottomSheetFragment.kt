@@ -10,11 +10,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.viewModels
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import kr.foorun.presentation.databinding.FragmentShopBottomSheetBinding
 import kr.foorun.uni_eat.base.view.base.BaseFragment
 import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
-import kr.foorun.uni_eat.databinding.FragmentShopBottomSheetBinding
-
 
 abstract class BaseBottomSheetFragment <CollapseBinding : ViewDataBinding>(
     @LayoutRes private val collapseResId: Int,

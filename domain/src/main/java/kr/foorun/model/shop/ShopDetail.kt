@@ -1,7 +1,6 @@
-package kr.foorun.data.shop
+package kr.foorun.model.shop
 
-import com.google.gson.annotations.SerializedName
-import kr.foorun.data.article.Article
+import kr.foorun.model.article.Article
 import java.io.Serializable
 
 data class ShopDetail(

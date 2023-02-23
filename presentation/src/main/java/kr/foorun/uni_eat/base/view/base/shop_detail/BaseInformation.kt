@@ -2,15 +2,12 @@ package kr.foorun.uni_eat.base.view.base.shop_detail
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.inputmethod.EditorInfo
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
-import androidx.databinding.BindingAdapter
-import kr.foorun.uni_eat.R
-import kr.foorun.uni_eat.databinding.BaseInformationBinding
+import kr.foorun.presentation.R
+import kr.foorun.presentation.databinding.BaseInformationBinding
 
 class BaseInformation : ConstraintLayout {
 

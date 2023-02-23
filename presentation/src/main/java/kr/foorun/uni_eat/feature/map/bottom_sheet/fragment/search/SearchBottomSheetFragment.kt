@@ -5,11 +5,11 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPSED
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
-import kr.foorun.uni_eat.R
+import kr.foorun.presentation.R
+import kr.foorun.presentation.databinding.LayoutSearchBottomCollapseBinding
+import kr.foorun.presentation.databinding.LayoutSearchBottomExpandBinding
 import kr.foorun.uni_eat.base.view.base.bottom_sheet.BasePersistBottomSheetFragment
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
-import kr.foorun.uni_eat.databinding.LayoutSearchBottomCollapseBinding
-import kr.foorun.uni_eat.databinding.LayoutSearchBottomExpandBinding
 import kr.foorun.uni_eat.feature.map.bottom_sheet.adapter.search.SearchBottomSheetAdapter
 import kr.foorun.uni_eat.feature.map.bottom_sheet.adapter.search.SearchBottomSheetItemViewModel
 

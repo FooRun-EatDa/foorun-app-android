@@ -1,4 +1,4 @@
-package kr.foorun.data.article
+package kr.foorun.model.article
 
 import java.io.Serializable
 

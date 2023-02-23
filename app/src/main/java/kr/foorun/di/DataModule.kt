@@ -1,4 +1,4 @@
-package kr.foorun.core.di
+package kr.foorun.di
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -7,7 +7,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import kr.foorun.data.local.PreferenceManager
+import kr.foorun.local.PreferenceManager
 import javax.inject.Singleton
 
 

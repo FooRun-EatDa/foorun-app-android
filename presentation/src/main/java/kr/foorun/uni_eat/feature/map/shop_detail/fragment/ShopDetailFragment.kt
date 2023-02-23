@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import dagger.hilt.android.AndroidEntryPoint
+import kr.foorun.presentation.databinding.FragmentShopDetailBinding
 import kr.foorun.uni_eat.base.view.base.BaseFragment
-import kr.foorun.uni_eat.databinding.FragmentShopDetailBinding
 import kr.foorun.uni_eat.feature.map.shop_detail.viewpager.ShopImageAdapter
 
 @AndroidEntryPoint

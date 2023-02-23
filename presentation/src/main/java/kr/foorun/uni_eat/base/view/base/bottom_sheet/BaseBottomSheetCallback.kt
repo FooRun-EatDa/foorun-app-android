@@ -5,7 +5,7 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.view.isInvisible
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import kr.foorun.uni_eat.R
+import kr.foorun.presentation.R
 
 
 class BaseBottomSheetCallback(

@@ -1,4 +1,4 @@
-package kr.foorun.data.local
+package kr.foorun.local
 
 import android.annotation.SuppressLint
 import android.content.Context

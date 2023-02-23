@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import kr.foorun.uni_eat.databinding.ItemRecentWrodsBinding
+import kr.foorun.presentation.databinding.ItemRecentWrodsBinding
 
 class ItemRecentSearchViewHolder(val binding: ItemRecentWrodsBinding) : RecyclerView.ViewHolder(binding.root)
 

@@ -5,7 +5,7 @@
     <data>
         <variable
             name="searchTag"
-            type="kr.foorun.data.tag.SearchTag" />
+            type="kr.foorun.model.tag.SearchTag" />
         <variable
             name="viewModel"
             type="kr.foorun.uni_eat.feature.map.SearchTagViewModel" />

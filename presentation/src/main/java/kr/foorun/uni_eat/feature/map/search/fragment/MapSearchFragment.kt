@@ -11,9 +11,9 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
-import kr.foorun.uni_eat.R
+import kr.foorun.presentation.R
+import kr.foorun.presentation.databinding.FragmentMapSearchBinding
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
-import kr.foorun.uni_eat.databinding.FragmentMapSearchBinding
 import kr.foorun.uni_eat.feature.map.search.adapter.RecentSearchAdapter
 import kr.foorun.uni_eat.feature.map.search.adapter.RecentSearchViewModel
 

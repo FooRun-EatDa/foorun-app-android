@@ -9,8 +9,8 @@ import android.view.inputmethod.EditorInfo
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
-import kr.foorun.uni_eat.R
-import kr.foorun.uni_eat.databinding.BaseEdittextBinding
+import kr.foorun.presentation.R
+import kr.foorun.presentation.databinding.BaseEdittextBinding
 
 class BaseEditTextLayout : ConstraintLayout {
 

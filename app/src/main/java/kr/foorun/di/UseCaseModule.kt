@@ -1,4 +1,4 @@
-package kr.foorun.core.di
+package kr.foorun.di
 
 import dagger.Module
 import dagger.hilt.InstallIn

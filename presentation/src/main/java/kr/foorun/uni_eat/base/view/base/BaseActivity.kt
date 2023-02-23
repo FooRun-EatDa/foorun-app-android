@@ -18,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.gun0912.tedpermission.rx3.TedPermission
-import kr.foorun.uni_eat.R
+import kr.foorun.presentation.R
 import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
 import java.util.*
 

@@ -7,8 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
-import kr.foorun.uni_eat.R
-import kr.foorun.uni_eat.databinding.BaseIndicatorBinding
+import kr.foorun.presentation.R
+import kr.foorun.presentation.databinding.BaseIndicatorBinding
 
 class BaseIndicatorLayout : ConstraintLayout {
 
