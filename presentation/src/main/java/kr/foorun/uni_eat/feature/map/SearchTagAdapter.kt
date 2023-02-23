@@ -11,7 +11,7 @@ import kr.foorun.presentation.databinding.ItemSearchTagBinding
 class ItemSearchTagViewHolder(val binding: ItemSearchTagBinding) : RecyclerView.ViewHolder(binding.root)
 
 class SearchTagAdapter (
-    private val adapterViewModel: SearchTagViewModel
+    private val adapterViewModel: SearchTagViewModel? = null
 ) : ListAdapter<SearchTag, ItemSearchTagViewHolder>(object : DiffUtil.ItemCallback<SearchTag>(){
     override fun areItemsTheSame(oldItem: SearchTag, newItem: SearchTag): Boolean {
         return oldItem.tagName == newItem.tagName

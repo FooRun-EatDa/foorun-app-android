@@ -3,14 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="article"
+            type="kr.foorun.model.article.Article" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_margin="7dp"
         android:layout_width="167dp"
         android:layout_height="238dp">
 
         <kr.foorun.uni_eat.base.view.base.BaseImageView
-            android:background="@color/black"
+            app:glide="@{article.shopImages.get(0)}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
         
@@ -28,7 +32,7 @@
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="차츰"
+                android:text="@{article.shopName}"
                 android:textStyle="bold"
                 android:textSize="19sp"
                 android:textColor="@color/white"
@@ -49,7 +53,7 @@
             <kr.foorun.uni_eat.base.view.base.BaseTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="# 조용한 # 데이트 #술집···"
+                android:text="@{article.tags}"
                 android:layout_marginTop="10dp"
                 android:textSize="13sp"
                 android:singleLine="true"

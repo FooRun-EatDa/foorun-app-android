@@ -37,7 +37,7 @@
                     android:layout_height="wrap_content">
 
                     <androidx.viewpager2.widget.ViewPager2
-                        android:id="@+id/detail_RC"
+                        android:id="@+id/detail_recycler"
                         android:layout_width="match_parent"
                         android:layout_height="535dp"
                         android:orientation="horizontal"
@@ -48,13 +48,13 @@
                         app:layout_constraintEnd_toEndOf="parent"/>
 
                     <kr.foorun.uni_eat.base.view.base.shop_detail.indicator.CircleIndicator
-                        android:id="@+id/test2"
+                        android:id="@+id/viewpager_indicator"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintBottom_toBottomOf="@id/detail_RC" />
+                        app:layout_constraintBottom_toBottomOf="@id/detail_recycler" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -191,12 +191,13 @@
                     android:layout_marginEnd="21dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="@{() -> viewModel.onClickMenu()}"
                     app:information="@string/menu"
                     app:show_arrow="true" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/menu_recycler"
-                    android:visibility="gone"
+                    app:visible="@{viewModel.isShowMenu()}"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="21dp"
                     android:layout_marginEnd="21dp"
@@ -206,14 +207,13 @@
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/tag_recycler"
-                    android:visibility="gone"
+                    android:id="@+id/searchTag_recycler"
                     android:layout_marginTop="16dp"
                     android:layout_marginStart="21dp"
                     android:layout_marginEnd="21dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
             
                 <kr.foorun.uni_eat.base.view.base.BaseTextView
@@ -238,12 +238,13 @@
                     android:textStyle="bold"/>
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/article_recycler"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:visibility="gone"
                     android:layout_marginTop="13dp"
-                    android:layout_marginStart="21dp"
-                    android:layout_marginEnd="21dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
             </LinearLayout>
