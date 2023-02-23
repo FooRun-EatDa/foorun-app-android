@@ -1,4 +1,4 @@
-package kr.foorun.core.usecase
+package kr.foorun.usecase
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
