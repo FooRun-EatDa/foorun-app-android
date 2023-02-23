@@ -59,7 +59,7 @@ abstract class BaseBottomSheetFragment <CollapseBinding : ViewDataBinding>(
         collapseBinding.init()
 
         binding.viewModel = fragmentViewModel.apply {
-            repeatOnStarted { fragmentViewModel.viewEvent.collect{ handleEvent(it) } }
+            repeatOnStarted { viewEvent.collect{ handleEvent(it) } }
         }
     }
 

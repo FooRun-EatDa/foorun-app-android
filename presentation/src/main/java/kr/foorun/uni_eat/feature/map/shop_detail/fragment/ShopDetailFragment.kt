@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 import kr.foorun.presentation.databinding.FragmentShopDetailBinding
 import kr.foorun.uni_eat.base.view.base.BaseFragment
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
@@ -52,12 +54,16 @@ class ShopDetailFragment : BaseFragment<FragmentShopDetailBinding, ShopDetailVie
             repeatOnStarted {
                 eventFlow.collect{ handleEvent(it) }
             }
+
+            repeatOnStarted {
+                viewEvent.collect{ findNavController().popBackStack() }
+            }
         }
     }
 
     override fun afterBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) {
         binding {
-            test.bringToFront()
+            whiteBackButton.bringToFront()
             viewpagerIndicator.createIndicator(4)
 
             detailRecycler.adapter = shopImageAdapter

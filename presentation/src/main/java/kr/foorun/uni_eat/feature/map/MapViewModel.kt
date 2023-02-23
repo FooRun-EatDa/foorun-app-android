@@ -43,13 +43,11 @@ class MapViewModel @Inject constructor(): BaseViewModel() {
 
     sealed class MapEvent {
         data class ShowShop(val unit: Unit? = null) : MapEvent()
-        data class ShowSearch(val unit: Unit? = null) : MapEvent()
         data class NavigateToSearch(val unit: Unit? = null) : MapEvent()
         data class LocateMap(val unit: Unit? = null) : MapEvent()
     }
 
     fun showShopBottom() = event(MapEvent.ShowShop())
-    fun showSearchBottom() = event(MapEvent.ShowSearch())
     fun navigateToSearch() = event(MapEvent.NavigateToSearch())
     fun clickedLocateMap() = event(MapEvent.LocateMap())
 }

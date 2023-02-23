@@ -26,7 +26,7 @@ class BaseConstraintView : ConstraintLayout {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.BaseConstraintView)
 
         val src = typedArray.getResourceId(R.styleable.BaseConstraintView_android_src,R.drawable.back)
-        binding.backBTN.setBackgroundResource(src)
+        binding.backButton.setBackgroundResource(src)
 
         val backgroundColor = typedArray.getResourceId(R.styleable.BaseConstraintView_android_background,R.color.white)
         binding.root.setBackgroundResource(backgroundColor)
@@ -39,7 +39,7 @@ class BaseConstraintView : ConstraintLayout {
         fun setViewModel(view: BaseConstraintView, baseViewModel: BaseViewModel) {
             view.binding.run {
                 viewModel = baseViewModel
-                backBTN.setOnClickListener{ baseViewModel.backClicked() }
+                backButton.setOnClickListener{ baseViewModel.backClicked() }
             }
         }
     }

@@ -24,7 +24,7 @@ class ShopBottomSheetFragment(
 
     @SuppressLint("NotifyDataSetChanged")
     override fun observeAndInitViewModel() {
-        collapseBinding.shopImagesRV.adapter = shopAdapter
+        collapseBinding.shopImagesRecycler.adapter = shopAdapter
 
         collapseBinding.viewModel = collapseViewModel.apply {
 

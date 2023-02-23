@@ -3,6 +3,7 @@ package kr.foorun.uni_eat.feature.map.search.fragment
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,8 @@ import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import kr.foorun.presentation.R
 import kr.foorun.presentation.databinding.FragmentMapSearchBinding
+import kr.foorun.uni_eat.base.viewmodel.nonEmptyObserver
+import kr.foorun.uni_eat.base.viewmodel.nonNullObserver
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 import kr.foorun.uni_eat.feature.map.search.adapter.RecentSearchAdapter
 import kr.foorun.uni_eat.feature.map.search.adapter.RecentSearchViewModel
@@ -35,11 +38,12 @@ class MapSearchFragment(val searchDone : (word : String) -> Unit): DialogFragmen
         setRecycler()
 
         binding.viewModel = searchViewModel.apply {
-
-            searchWord.observe(this@MapSearchFragment){ //when search done
+            searchWord.nonEmptyObserver(this@MapSearchFragment){ //when search done
                 //todo if there is only one result: pass word back ( _isNonSearch(false) )
                 //todo if there are results: show list of shops ( _isNonSearch(false) )
                 //todo if there isn't any result: show no result ( _isNonSearch(true) )
+                    searchDone(it)
+                    dismiss()
             }
 
             recentWords.observe(this@MapSearchFragment){
@@ -54,7 +58,7 @@ class MapSearchFragment(val searchDone : (word : String) -> Unit): DialogFragmen
     }
 
     private fun setRecycler() {
-        binding.recentWordsRC.adapter = recentSearchAdapter
+        binding.recentWordsRecycler.adapter = recentSearchAdapter
     }
 
     private fun handleAdapterEvent(event: RecentSearchViewModel.RecentSearchEvent) = when(event) {

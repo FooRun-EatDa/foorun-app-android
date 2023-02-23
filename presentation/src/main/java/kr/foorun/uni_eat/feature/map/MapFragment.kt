@@ -15,6 +15,7 @@ import kr.foorun.model.tag.SearchTag
 import kr.foorun.presentation.R
 import kr.foorun.presentation.databinding.FragmentMapBinding
 import kr.foorun.uni_eat.base.view.base.BaseFragment
+import kr.foorun.uni_eat.base.viewmodel.nonEmptyObserver
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 import kr.foorun.uni_eat.feature.map.bottom_sheet.fragment.search.SearchBottomSheetFragment
 import kr.foorun.uni_eat.feature.map.bottom_sheet.fragment.shop.ShopBottomSheetFragment
@@ -38,28 +39,28 @@ class MapFragment
         repeatOnStarted { eventFlow.collect{ tagHandleEvent(it)} } }) }
 
     override fun afterBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) {
-        onBackPressedListener()
+        doOnBackPressed()
         binding {
-            mainSearchCL.bringToFront() // to put the view above mapView
-            searchTagRC.adapter = searchTagAdapter
+            mainSearchConstraint.bringToFront() // to put the view above mapView
+            searchTagRecycler.adapter = searchTagAdapter
         }
     }
 
     override fun onResume() {
         super.onResume()
         if(mapView != null){
-            if(!binding.mapFL.contains(mapView!!)) binding.mapFL.addView(mapView)
+            if(!binding.mapFrame.contains(mapView!!)) binding.mapFrame.addView(mapView)
         } else {
             mapView = MapView(requireActivity()).apply {
                 setCurrentLocationEventListener(this@MapFragment)
                 setMapViewEventListener(this@MapFragment)}
-            binding.mapFL.addView(mapView)
+            binding.mapFrame.addView(mapView)
         }
     }
 
     override fun onStop() {
         super.onStop()
-        binding.mapFL.removeView(mapView)
+        binding.mapFrame.removeView(mapView)
         mapView = null
     }
 
@@ -71,14 +72,11 @@ class MapFragment
                 searchTagAdapter.submitList(it)
                 searchTagAdapter.notifyDataSetChanged()
                 if(it[0].isPicked) showShopBottom() //fixme test
-                if(it[1].isPicked) { //fixme test
-                    showSearchBottom()
-                    setVisibleMainSearch(false)
-                }
             }
 
-            searchWord.observe(this@MapFragment){
-                //todo pick the shop given from MapSearchFragment on the map with lng things
+            searchWord.nonEmptyObserver(this@MapFragment) {
+                showSearchBottomSheet(it)
+                setVisibleMainSearch(false)
             }
 
             repeatOnStarted { eventFlow.collect { handleEvent(it) } }
@@ -86,7 +84,7 @@ class MapFragment
     }
 
     private fun showShopBottomSheet() {
-        shopBottomSheetFragment = ShopBottomSheetFragment ( { onBackPressedListener() },{
+        shopBottomSheetFragment = ShopBottomSheetFragment ( { hideBottomSheet() },{
             if(it == BottomSheetBehavior.STATE_EXPANDED) {
                 navigateToFrag(MapFragmentDirections.actionMapFragmentToShopDetailFragment())
                 shopBottomSheetFragment?.collapse()
@@ -95,8 +93,8 @@ class MapFragment
         }).show(requireActivity().supportFragmentManager, R.id.view_bottom_sheet)
     }
 
-    private fun showSearchBottomSheet() {
-        searchBottomSheetFragment = SearchBottomSheetFragment( { onBackPressedListener() } , {
+    private fun showSearchBottomSheet(searchWord: String) {
+        searchBottomSheetFragment = SearchBottomSheetFragment( searchWord, { hideBottomSheet() } , {
             if(it == BottomSheetBehavior.STATE_HIDDEN) {
                 dismissSearchBottomSheet()
                 fragmentViewModel.setVisibleMainSearch(true)
@@ -112,30 +110,29 @@ class MapFragment
     private fun dismissSearchBottomSheet() {
         searchBottomSheetFragment?.dismiss(requireActivity().supportFragmentManager)
         searchBottomSheetFragment = null
+        fragmentViewModel.setWord("")
     }
 
-    private fun onBackPressedListener() {
-        val callback: OnBackPressedCallback =
-            object : OnBackPressedCallback(true /* enabled by default */) {
-                override fun handleOnBackPressed() {
-                    if (shopBottomSheetFragment != null && shopBottomSheetFragment!!.handleBackKeyEvent())
-                        shopBottomSheetFragment?.hide()
+    private fun doOnBackPressed() {
+        onBackPressedListener {
+            if (shopBottomSheetFragment != null && shopBottomSheetFragment!!.handleBackKeyEvent())
+                shopBottomSheetFragment?.hide()
+            else if (searchBottomSheetFragment != null && searchBottomSheetFragment!!.handleBackKeyEvent())
+                searchBottomSheetFragment?.hide()
+            else findNavController().popBackStack()
+        }
+    }
 
-                    else if (searchBottomSheetFragment != null && searchBottomSheetFragment!!.handleBackKeyEvent())
-                        searchBottomSheetFragment?.hide()
-
-                    else findNavController().popBackStack()
-                }
-            }
-        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+    private fun hideBottomSheet() {
+        if (shopBottomSheetFragment != null && shopBottomSheetFragment!!.handleBackKeyEvent())
+            shopBottomSheetFragment?.hide()
+        else if (searchBottomSheetFragment != null && searchBottomSheetFragment!!.handleBackKeyEvent())
+            searchBottomSheetFragment?.hide()
     }
 
     private fun handleEvent(event: MapViewModel.MapEvent) = when (event) {
         is MapViewModel.MapEvent.ShowShop -> showShopBottomSheet()
-        is MapViewModel.MapEvent.ShowSearch -> showSearchBottomSheet()
-        is MapViewModel.MapEvent.NavigateToSearch -> MapSearchFragment{
-            fragmentViewModel.setWord(it)
-        }.show(requireActivity().supportFragmentManager,"")
+        is MapViewModel.MapEvent.NavigateToSearch -> MapSearchFragment{ fragmentViewModel.setWord(it) }.show(requireActivity().supportFragmentManager,"")
         is MapViewModel.MapEvent.LocateMap -> checkLocationService { locationPermission() }
     }
 

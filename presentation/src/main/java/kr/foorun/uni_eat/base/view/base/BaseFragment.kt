@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
@@ -104,6 +105,14 @@ abstract class BaseFragment <T : ViewDataBinding, V : BaseViewModel>(private val
                 else -> onDenied()
             }
         }
+    }
+
+    protected fun onBackPressedListener(action: () -> Unit) {
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true /* enabled by default */) {
+                override fun handleOnBackPressed() { action() }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
     }
 
     fun log(str: String) = Log.e("popo",str) //for test

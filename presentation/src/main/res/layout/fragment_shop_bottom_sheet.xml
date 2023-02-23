@@ -23,7 +23,7 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/back_BTN"
+                    android:id="@+id/back_button"
                     android:onClick="@{() -> viewModel.backClicked()}"
                     android:layout_width="32dp"
                     android:layout_height="32dp"

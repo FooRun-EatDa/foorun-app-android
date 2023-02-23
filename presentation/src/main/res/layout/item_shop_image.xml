@@ -19,7 +19,7 @@
         android:layout_height="103dp">
 
         <kr.foorun.uni_eat.base.view.base.BaseImageView
-            android:id="@+id/shopImage_IV"
+            android:id="@+id/shop_image"
             app:glide="@{article.shopImages[0]}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>

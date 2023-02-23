@@ -9,7 +9,7 @@
     </data>
 
     <kr.foorun.uni_eat.base.view.base.BaseImageView
-        android:id="@+id/shopImage_IV"
+        android:id="@+id/shop_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:glide="@{image}" />

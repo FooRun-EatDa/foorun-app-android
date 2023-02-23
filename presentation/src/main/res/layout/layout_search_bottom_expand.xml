@@ -14,7 +14,7 @@
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/head_CL"
+            android:id="@+id/head_constraint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -22,7 +22,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/arrowUp_IV"
+                android:id="@+id/arrow_up_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="9dp"
@@ -35,14 +35,14 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
-                android:id="@+id/search_LL"
+                android:id="@+id/search_linear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginEnd="186dp"
                 android:layout_marginTop="49dp"
                 android:layout_marginBottom="29dp"
-                app:layout_constraintEnd_toStartOf="@+id/order_LL"
+                app:layout_constraintEnd_toStartOf="@+id/order_linear"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
@@ -65,13 +65,13 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/order_LL"
+                android:id="@+id/order_linear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="54dp"
                 android:layout_marginEnd="20.94dp"
                 android:layout_marginBottom="33dp"
-                app:layout_constraintStart_toEndOf="@+id/search_LL"
+                app:layout_constraintStart_toEndOf="@+id/search_linear"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent">
@@ -96,7 +96,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/head_CL"
+            app:layout_constraintTop_toBottomOf="@+id/head_constraint"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>

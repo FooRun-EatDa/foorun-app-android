@@ -14,11 +14,13 @@ import kr.foorun.uni_eat.feature.map.bottom_sheet.adapter.search.SearchBottomShe
 import kr.foorun.uni_eat.feature.map.bottom_sheet.adapter.search.SearchBottomSheetItemViewModel
 
 class SearchBottomSheetFragment(
+    private val searchWord: String,
     private val backAction: () -> Unit,
-    private val stateListener: (state: Int) -> Unit
+    private val stateListener: (state: Int) -> Unit,
 ) : BasePersistBottomSheetFragment<LayoutSearchBottomCollapseBinding, LayoutSearchBottomExpandBinding>(
         R.layout.layout_search_bottom_collapse,
-        R.layout.layout_search_bottom_expand
+        R.layout.layout_search_bottom_expand,
+        searchWord = searchWord
     ) {
 
     private val collapseViewModel: SearchCollapseViewModel by viewModels()
@@ -52,7 +54,7 @@ class SearchBottomSheetFragment(
         @IdRes containerViewId: Int,
     ): SearchBottomSheetFragment =
         fragmentManager.findFragmentByTag(tag) as? SearchBottomSheetFragment
-            ?: SearchBottomSheetFragment(backAction, stateListener).apply {
+            ?: SearchBottomSheetFragment(searchWord,backAction, stateListener).apply {
                 fragmentManager.beginTransaction()
                     .replace(containerViewId, this, tag)
                     .commitAllowingStateLoss()

@@ -20,6 +20,7 @@ abstract class BasePersistBottomSheetFragment<CollapseBinding : ViewDataBinding,
     @LayoutRes private val collapseResId: Int,
     @LayoutRes private val expandResId: Int,
     private val heightType: HeightType = HeightType.MATCH,
+    private val searchWord: String
 ) : BaseFragment<FragmentSearchBottomSheetBinding, BaseViewModel>(FragmentSearchBottomSheetBinding::inflate) {
 
     @Suppress("MemberVisibilityCanBePrivate")
@@ -51,10 +52,13 @@ abstract class BasePersistBottomSheetFragment<CollapseBinding : ViewDataBinding,
         savedInstanceState: Bundle?
     ) {
         binding{
+            word = searchWord
+
             collapseBinding = DataBindingUtil.inflate(inflater,
                 collapseResId,
                 viewCollapseContainer,
                 true)
+
             expandBinding = DataBindingUtil.inflate(inflater,
                 expandResId,
                 viewExpandContainer,
@@ -145,6 +149,6 @@ abstract class BasePersistBottomSheetFragment<CollapseBinding : ViewDataBinding,
     }
 
     fun backButtonVisible(show : Boolean){
-        binding.backBTN.isVisible = show
+        binding.backButton.isVisible = show
     }
 }
