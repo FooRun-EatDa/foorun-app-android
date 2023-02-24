@@ -45,5 +45,7 @@ class MapSearchViewModel @Inject constructor(
         _recentWords.emit(res)
     }
 
+    fun setSearchWord(word: String) = viewModelScope.launch { _searchWord.emit(word) }
+
     fun setIsNonSearch(boolean: Boolean) = viewModelScope.launch { _isNonSearch.emit(boolean) }
 }

@@ -11,8 +11,8 @@ import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
 
 class BaseConstraintView : ConstraintLayout {
 
-    private val binding : BaseConstraintBinding =
-        BaseConstraintBinding.inflate(LayoutInflater.from(context), this, true)
+    private val binding : BaseConstraintBinding by lazy {
+        BaseConstraintBinding.inflate(LayoutInflater.from(context), this, true) }
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {

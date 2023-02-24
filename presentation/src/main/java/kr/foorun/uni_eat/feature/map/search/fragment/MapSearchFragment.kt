@@ -63,6 +63,7 @@ class MapSearchFragment(val searchDone : (word : String) -> Unit): DialogFragmen
 
     private fun handleAdapterEvent(event: RecentSearchViewModel.RecentSearchEvent) = when(event) {
         is RecentSearchViewModel.RecentSearchEvent.Remove -> searchViewModel.removeRecentWord(event.word)
+        is RecentSearchViewModel.RecentSearchEvent.Clicked -> searchViewModel.setSearchWord(event.word)
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {

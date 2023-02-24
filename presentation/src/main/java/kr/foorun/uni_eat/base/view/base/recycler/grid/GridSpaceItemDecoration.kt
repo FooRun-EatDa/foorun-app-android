@@ -1,10 +1,14 @@
-package kr.foorun.uni_eat.base.view.base.recycler
+package kr.foorun.uni_eat.base.view.base.recycler.grid
 
 import android.graphics.Rect
 import android.view.View
+import androidx.core.view.marginRight
 import androidx.recyclerview.widget.RecyclerView
+import kr.foorun.uni_eat.base.view.base.dp
 
 class GridSpaceItemDecoration(private val spanCount: Int, private val space: Int): RecyclerView.ItemDecoration() {
+
+    private val dp = space.dp
 
     override fun getItemOffsets(
         outRect: Rect,
@@ -17,16 +21,16 @@ class GridSpaceItemDecoration(private val spanCount: Int, private val space: Int
 
         /** 마지막 열(column-N)에 있는 아이템인 경우 우측에 [space] 만큼의 여백을 추가한다 */
         if (column == spanCount){
-            outRect.right = space + 10
+            outRect.right = dp
         }
 
         if (column == 1){
-            outRect.left = space + 10
-            outRect.right = space
+            outRect.left = dp
+            outRect.right = dp
         }
 
         outRect.run {
-            bottom = space
+            bottom = dp
         }
     }
 }

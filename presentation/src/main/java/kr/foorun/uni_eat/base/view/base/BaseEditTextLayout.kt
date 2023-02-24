@@ -14,8 +14,8 @@ import kr.foorun.presentation.databinding.BaseEdittextBinding
 
 class BaseEditTextLayout : ConstraintLayout {
 
-    private val binding : BaseEdittextBinding =
-        BaseEdittextBinding.inflate(LayoutInflater.from(context), this, true)
+    private val binding : BaseEdittextBinding by lazy {
+        BaseEdittextBinding.inflate(LayoutInflater.from(context), this, true) }
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {

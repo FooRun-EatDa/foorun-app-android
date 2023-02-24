@@ -9,7 +9,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDE
 import kr.foorun.presentation.R
 import kr.foorun.presentation.databinding.LayoutSearchBottomCollapseBinding
 import kr.foorun.presentation.databinding.LayoutSearchBottomExpandBinding
-import kr.foorun.uni_eat.base.view.base.recycler.GridSpaceItemDecoration
+import kr.foorun.uni_eat.base.view.base.recycler.grid.GridSpaceItemDecoration
 import kr.foorun.uni_eat.base.view.base.bottom_sheet.BasePersistBottomSheetFragment
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 import kr.foorun.uni_eat.feature.map.shop_detail.article.ShopDetailArticleAdapter
@@ -66,7 +66,7 @@ class SearchBottomSheetFragment(
         @IdRes containerViewId: Int,
     ): SearchBottomSheetFragment =
         fragmentManager.findFragmentByTag(tag) as? SearchBottomSheetFragment
-            ?: SearchBottomSheetFragment(searchWord,backAction, stateListener).apply {
+            ?: SearchBottomSheetFragment(searchWord, backAction, stateListener).apply {
                 fragmentManager.beginTransaction()
                     .replace(containerViewId, this, tag)
                     .commitAllowingStateLoss()

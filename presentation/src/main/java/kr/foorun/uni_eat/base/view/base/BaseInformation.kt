@@ -11,8 +11,8 @@ import kr.foorun.presentation.databinding.BaseInformationBinding
 
 class BaseInformation : ConstraintLayout {
 
-    private val binding: BaseInformationBinding =
-        BaseInformationBinding.inflate(LayoutInflater.from(context), this, true)
+    private val binding: BaseInformationBinding by lazy {
+        BaseInformationBinding.inflate(LayoutInflater.from(context), this, true) }
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {

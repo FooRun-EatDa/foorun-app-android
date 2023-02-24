@@ -19,7 +19,6 @@ class BaseTextView : AppCompatTextView {
 
     @SuppressLint("Recycle")
     fun init(attrs: AttributeSet?) {
-//        setTextColor(ContextCompat.getColor(context,R.color.LargeTextColor))
         val attributeArray = context.obtainStyledAttributes(attrs, R.styleable.BaseTextView)
         val t = attributeArray.getString(R.styleable.BaseTextView_android_text) ?: ""
         text = t

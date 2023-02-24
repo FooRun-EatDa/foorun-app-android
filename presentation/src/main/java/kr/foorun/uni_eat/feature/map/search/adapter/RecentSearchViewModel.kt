@@ -12,10 +12,12 @@ class RecentSearchViewModel : BaseViewModel() {
     val eventFlow = _eventFlow.asEventFlow()
 
     fun clickedRemove(word: String) = event(RecentSearchEvent.Remove(word))
+    fun clicked(word: String) = event(RecentSearchEvent.Clicked(word))
 
     fun event(event: RecentSearchEvent) = viewModelScope.launch { _eventFlow.emit(event) }
 
     sealed class RecentSearchEvent{
-        data class Remove(val word: String) : RecentSearchEvent()
+        data class Remove(val word: String): RecentSearchEvent()
+        data class Clicked(val word: String): RecentSearchEvent()
     }
 }
