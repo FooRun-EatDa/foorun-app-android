@@ -1,4 +1,4 @@
-package kr.foorun.uni_eat.base.view.base.shop_detail.indicator
+package kr.foorun.uni_eat.base.view.base.recycler.indicator
 
 import android.annotation.SuppressLint
 import android.content.Context

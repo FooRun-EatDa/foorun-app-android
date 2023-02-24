@@ -44,7 +44,7 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"/>
 
-                    <kr.foorun.uni_eat.base.view.base.shop_detail.indicator.CircleIndicator
+                    <kr.foorun.uni_eat.base.view.base.recycler.indicator.CircleIndicator
                         android:id="@+id/viewpager_indicator"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -146,7 +146,7 @@
                         app:layout_constraintStart_toStartOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <kr.foorun.uni_eat.base.view.base.shop_detail.BaseInformation
+                <kr.foorun.uni_eat.base.view.base.BaseInformation
                     android:layout_marginTop="29dp"
                     android:layout_marginStart="21dp"
                     android:layout_marginEnd="21dp"
@@ -155,7 +155,7 @@
                     app:information="@string/phone_number"
                     app:value="010 1234 1234" />
 
-                <kr.foorun.uni_eat.base.view.base.shop_detail.BaseInformation
+                <kr.foorun.uni_eat.base.view.base.BaseInformation
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="21dp"
                     android:layout_marginEnd="21dp"
@@ -164,7 +164,7 @@
                     app:information="@string/location"
                     app:value="영일중" />
 
-                <kr.foorun.uni_eat.base.view.base.shop_detail.BaseInformation
+                <kr.foorun.uni_eat.base.view.base.BaseInformation
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="21dp"
                     android:layout_marginEnd="21dp"
@@ -173,7 +173,7 @@
                     app:information="@string/price"
                     app:value="20,000원 대" />
 
-                <kr.foorun.uni_eat.base.view.base.shop_detail.BaseInformation
+                <kr.foorun.uni_eat.base.view.base.BaseInformation
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="21dp"
                     android:layout_marginEnd="21dp"
@@ -182,7 +182,7 @@
                     app:information="@string/address"
                     app:value="경기 수원시 영통구" />
 
-                <kr.foorun.uni_eat.base.view.base.shop_detail.BaseInformation
+                <kr.foorun.uni_eat.base.view.base.BaseInformation
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="21dp"
                     android:layout_marginEnd="21dp"
@@ -191,7 +191,7 @@
                     android:onClick="@{() -> viewModel.onClickMenu()}"
                     app:information="@string/menu"
                     app:show_arrow="true" />
-
+                
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/menu_recycler"
                     app:visible="@{viewModel.isShowMenu()}"
@@ -238,12 +238,10 @@
                     android:id="@+id/article_recycler"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    app:spanCount="2"
+                    tools:listitem="@layout/item_article_thumbnail"
                     android:layout_marginTop="13dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"/>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 

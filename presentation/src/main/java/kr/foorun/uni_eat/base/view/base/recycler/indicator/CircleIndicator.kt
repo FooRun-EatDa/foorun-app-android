@@ -1,8 +1,7 @@
-package kr.foorun.uni_eat.base.view.base.shop_detail.indicator
+package kr.foorun.uni_eat.base.view.base.recycler.indicator
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.ScaleAnimation

@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="BaseInformation">
-        <attr name="android:text"/>
-        <attr name="android:hint"/>
-        <attr name="android:inputType"/>
         <attr name="android:textColor"/>
         <attr name="show_arrow" format="boolean"/>
         <attr name="information" format="string|reference"/>

@@ -1,4 +1,4 @@
-package kr.foorun.uni_eat.base.view.base.shop_detail
+package kr.foorun.uni_eat.base.view.base
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -22,9 +22,8 @@ class BaseInformation : ConstraintLayout {
         init(attrs)
     }
 
-    @SuppressLint("Recycle", "CustomViewStyleable")
+    @SuppressLint("Recycle")
     fun init(attrs: AttributeSet?) {
-
         val attributeArray = context.obtainStyledAttributes(attrs, R.styleable.BaseInformation)
 
         val c = attributeArray.getColor(
@@ -32,8 +31,8 @@ class BaseInformation : ConstraintLayout {
             ContextCompat.getColor(context, R.color.LargeTextColor)
         )
 
-        val info = attributeArray.getString(R.styleable.BaseInformation_information)
-        val value = attributeArray.getString(R.styleable.BaseInformation_value)
+        val info = attributeArray.getString(R.styleable.BaseInformation_information) ?: ""
+        val value = attributeArray.getString(R.styleable.BaseInformation_value) ?: ""
         val show = attributeArray.getBoolean(R.styleable.BaseInformation_show_arrow,false)
 
         binding.information.run {
@@ -54,9 +53,4 @@ class BaseInformation : ConstraintLayout {
         }
     }
 
-    @SuppressLint("UseCompatLoadingForDrawables")
-    fun setRedUnderLine(red: Boolean) {
-        backgroundTintList = if (red) ContextCompat.getColorStateList(context, R.color.black)
-        else ContextCompat.getColorStateList(context, R.color.black)
-    }
 }

@@ -1,5 +1,6 @@
 package kr.foorun.uni_eat.feature.map.bottom_sheet.fragment.search
 
+import android.annotation.SuppressLint
 import androidx.annotation.IdRes
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
@@ -8,10 +9,10 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDE
 import kr.foorun.presentation.R
 import kr.foorun.presentation.databinding.LayoutSearchBottomCollapseBinding
 import kr.foorun.presentation.databinding.LayoutSearchBottomExpandBinding
+import kr.foorun.uni_eat.base.view.base.recycler.GridSpaceItemDecoration
 import kr.foorun.uni_eat.base.view.base.bottom_sheet.BasePersistBottomSheetFragment
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
-import kr.foorun.uni_eat.feature.map.bottom_sheet.adapter.search.SearchBottomSheetAdapter
-import kr.foorun.uni_eat.feature.map.bottom_sheet.adapter.search.SearchBottomSheetItemViewModel
+import kr.foorun.uni_eat.feature.map.shop_detail.article.ShopDetailArticleAdapter
 
 class SearchBottomSheetFragment(
     private val searchWord: String,
@@ -25,11 +26,11 @@ class SearchBottomSheetFragment(
 
     private val collapseViewModel: SearchCollapseViewModel by viewModels()
     private val expandViewModel: SearchExpandViewModel by viewModels()
-    private val searchAdapterViewModel: SearchBottomSheetItemViewModel by viewModels()
-    private val searchAdapter: SearchBottomSheetAdapter by lazy { SearchBottomSheetAdapter(searchAdapterViewModel) }
+    private val articleAdapter: ShopDetailArticleAdapter by lazy { ShopDetailArticleAdapter() }
 
     override fun onStateChanged(state: Int) { stateListener(state) }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun observeAndInitViewModel() {
 
         collapseBinding.viewModel = collapseViewModel.apply {
@@ -37,7 +38,18 @@ class SearchBottomSheetFragment(
         }
 
         expandBinding.viewModel = expandViewModel.apply {
+
+            articles.observe(this@SearchBottomSheetFragment){
+                articleAdapter.submitList(it)
+                articleAdapter.notifyDataSetChanged()
+            }
+
             repeatOnStarted { expandViewModel.eventFlow.collect{ handleExpandEvent(it)} }
+        }
+
+        expandBinding.run {
+            articleRecycler.adapter = articleAdapter
+            articleRecycler.addItemDecoration(GridSpaceItemDecoration(2,7))
         }
     }
 

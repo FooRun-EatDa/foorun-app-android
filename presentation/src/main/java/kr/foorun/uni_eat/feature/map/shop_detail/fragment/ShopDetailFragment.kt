@@ -10,9 +10,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kr.foorun.presentation.databinding.FragmentShopDetailBinding
 import kr.foorun.uni_eat.base.view.base.BaseFragment
+import kr.foorun.uni_eat.base.view.base.recycler.GridSpaceItemDecoration
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 import kr.foorun.uni_eat.feature.map.SearchTagAdapter
 import kr.foorun.uni_eat.feature.map.shop_detail.article.ShopDetailArticleAdapter
@@ -74,7 +74,7 @@ class ShopDetailFragment : BaseFragment<FragmentShopDetailBinding, ShopDetailVie
                 }
             })
 
-            articleRecycler.layoutManager = GridLayoutManager(requireContext(),2)
+            articleRecycler.addItemDecoration(GridSpaceItemDecoration(2,7))
             articleRecycler.adapter = shopDetailArticleAdapter
 
             menuRecycler.adapter = menuAdapter
