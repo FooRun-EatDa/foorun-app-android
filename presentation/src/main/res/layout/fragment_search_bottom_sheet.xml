@@ -3,6 +3,9 @@
 
     <data>
         <variable
+            name="word"
+            type="String" />
+        <variable
             name="viewModel"
             type="kr.foorun.uni_eat.base.viewmodel.BaseViewModel" />
     </data>
@@ -12,7 +15,7 @@
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/search_CL"
+            android:id="@+id/search_constraint"
             android:layout_width="match_parent"
             android:layout_height="110dp"
             android:background="@color/white"
@@ -21,40 +24,47 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
-            <LinearLayout
+            <kr.foorun.uni_eat.base.view.base.BaseImageView
+                android:id="@+id/arrow_left"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="64dp"
+                android:layout_gravity="center"
                 android:layout_marginStart="21dp"
+                android:layout_marginTop="64dp"
+                android:layout_marginEnd="13.38dp"
                 android:layout_marginBottom="16dp"
-                app:layout_constraintStart_toStartOf="parent"
+                android:onClick="@{() -> viewModel.backClicked()}"
+                android:src="@drawable/arrow_left"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
-                <kr.foorun.uni_eat.base.view.base.BaseImageView
-                    android:onClick="@{() -> viewModel.backClicked()}"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="13.38dp"
-                    android:src="@drawable/arrow_left" />
+            <kr.foorun.uni_eat.base.view.base.BaseTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="64dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="13.38dp"
+                android:singleLine="true"
+                android:text="@{word}"
+                android:textSize="23sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/arrow_left"/>
 
-                <kr.foorun.uni_eat.base.view.base.BaseTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:textSize="23sp"
-                    android:layout_marginEnd="221dp"
-                    android:text="제육볶음"/>
-
-                <kr.foorun.uni_eat.base.view.base.BaseImageView
-                    android:onClick="@{() -> viewModel.backClicked()}"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:src="@drawable/close"/>
-            </LinearLayout>
+            <kr.foorun.uni_eat.base.view.base.BaseImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginTop="64dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="24dp"
+                android:onClick="@{() -> viewModel.backClicked()}"
+                android:src="@drawable/close"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -62,7 +72,7 @@
             android:id="@+id/root"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@+id/search_CL"
+            app:layout_constraintTop_toBottomOf="@+id/search_constraint"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
@@ -73,7 +83,7 @@
 
                 <androidx.coordinatorlayout.widget.CoordinatorLayout
                     android:id="@+id/view_content"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="0dp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -85,7 +95,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
                         <ImageView
-                            android:id="@+id/back_BTN"
+                            android:id="@+id/back_button"
                             android:onClick="@{() -> viewModel.backClicked()}"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
@@ -122,7 +132,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:animateLayoutChanges="true" />
-
                     </FrameLayout>
                 </androidx.coordinatorlayout.widget.CoordinatorLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>

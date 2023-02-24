@@ -1,33 +1,36 @@
 package kr.foorun.uni_eat.feature.map.bottom_sheet.fragment.search
 
+import android.annotation.SuppressLint
 import androidx.annotation.IdRes
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPSED
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
-import kr.foorun.uni_eat.R
+import kr.foorun.presentation.R
+import kr.foorun.presentation.databinding.LayoutSearchBottomCollapseBinding
+import kr.foorun.presentation.databinding.LayoutSearchBottomExpandBinding
+import kr.foorun.uni_eat.base.view.base.recycler.grid.GridSpaceItemDecoration
 import kr.foorun.uni_eat.base.view.base.bottom_sheet.BasePersistBottomSheetFragment
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
-import kr.foorun.uni_eat.databinding.LayoutSearchBottomCollapseBinding
-import kr.foorun.uni_eat.databinding.LayoutSearchBottomExpandBinding
-import kr.foorun.uni_eat.feature.map.bottom_sheet.adapter.search.SearchBottomSheetAdapter
-import kr.foorun.uni_eat.feature.map.bottom_sheet.adapter.search.SearchBottomSheetItemViewModel
+import kr.foorun.uni_eat.feature.map.shop_detail.article.ShopDetailArticleAdapter
 
 class SearchBottomSheetFragment(
+    private val searchWord: String,
     private val backAction: () -> Unit,
-    private val stateListener: (state: Int) -> Unit
+    private val stateListener: (state: Int) -> Unit,
 ) : BasePersistBottomSheetFragment<LayoutSearchBottomCollapseBinding, LayoutSearchBottomExpandBinding>(
         R.layout.layout_search_bottom_collapse,
-        R.layout.layout_search_bottom_expand
+        R.layout.layout_search_bottom_expand,
+        searchWord = searchWord
     ) {
 
     private val collapseViewModel: SearchCollapseViewModel by viewModels()
     private val expandViewModel: SearchExpandViewModel by viewModels()
-    private val searchAdapterViewModel: SearchBottomSheetItemViewModel by viewModels()
-    private val searchAdapter: SearchBottomSheetAdapter by lazy { SearchBottomSheetAdapter(searchAdapterViewModel) }
+    private val articleAdapter: ShopDetailArticleAdapter by lazy { ShopDetailArticleAdapter() }
 
     override fun onStateChanged(state: Int) { stateListener(state) }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun observeAndInitViewModel() {
 
         collapseBinding.viewModel = collapseViewModel.apply {
@@ -35,7 +38,18 @@ class SearchBottomSheetFragment(
         }
 
         expandBinding.viewModel = expandViewModel.apply {
+
+            articles.observe(this@SearchBottomSheetFragment){
+                articleAdapter.submitList(it)
+                articleAdapter.notifyDataSetChanged()
+            }
+
             repeatOnStarted { expandViewModel.eventFlow.collect{ handleExpandEvent(it)} }
+        }
+
+        expandBinding.run {
+            articleRecycler.adapter = articleAdapter
+            articleRecycler.addItemDecoration(GridSpaceItemDecoration(2,7))
         }
     }
 
@@ -52,7 +66,7 @@ class SearchBottomSheetFragment(
         @IdRes containerViewId: Int,
     ): SearchBottomSheetFragment =
         fragmentManager.findFragmentByTag(tag) as? SearchBottomSheetFragment
-            ?: SearchBottomSheetFragment(backAction, stateListener).apply {
+            ?: SearchBottomSheetFragment(searchWord, backAction, stateListener).apply {
                 fragmentManager.beginTransaction()
                     .replace(containerViewId, this, tag)
                     .commitAllowingStateLoss()

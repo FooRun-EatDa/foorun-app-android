@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
-import kr.foorun.data.tag.SearchTag
+import kr.foorun.model.tag.SearchTag
 import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
 import kr.foorun.uni_eat.base.viewmodel.MutableEventFlow
 import kr.foorun.uni_eat.base.viewmodel.asEventFlow
@@ -43,13 +43,11 @@ class MapViewModel @Inject constructor(): BaseViewModel() {
 
     sealed class MapEvent {
         data class ShowShop(val unit: Unit? = null) : MapEvent()
-        data class ShowSearch(val unit: Unit? = null) : MapEvent()
         data class NavigateToSearch(val unit: Unit? = null) : MapEvent()
         data class LocateMap(val unit: Unit? = null) : MapEvent()
     }
 
     fun showShopBottom() = event(MapEvent.ShowShop())
-    fun showSearchBottom() = event(MapEvent.ShowSearch())
     fun navigateToSearch() = event(MapEvent.NavigateToSearch())
     fun clickedLocateMap() = event(MapEvent.LocateMap())
 }

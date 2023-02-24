@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace 'kr.foorun.core'
+    namespace 'kr.foorun.domain'
     compileSdk 33
 
     defaultConfig {
@@ -34,6 +34,7 @@ android {
 
     buildFeatures {
         dataBinding = true
+        viewBinding = true
     }
 }
 

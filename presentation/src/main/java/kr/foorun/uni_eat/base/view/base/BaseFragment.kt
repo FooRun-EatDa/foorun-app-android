@@ -1,6 +1,5 @@
 package kr.foorun.uni_eat.base.view.base
 
-
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
@@ -12,13 +11,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
+import androidx.activity.OnBackPressedCallback
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.gun0912.tedpermission.rx3.TedPermission
-import kr.foorun.uni_eat.R
+import kr.foorun.presentation.R
 import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
 import java.util.*
 
@@ -106,6 +105,14 @@ abstract class BaseFragment <T : ViewDataBinding, V : BaseViewModel>(private val
                 else -> onDenied()
             }
         }
+    }
+
+    protected fun onBackPressedListener(action: () -> Unit) {
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true /* enabled by default */) {
+                override fun handleOnBackPressed() { action() }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
     }
 
     fun log(str: String) = Log.e("popo",str) //for test

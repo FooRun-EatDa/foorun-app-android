@@ -37,13 +37,13 @@
             app:layout_constraintTop_toBottomOf="@id/logo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/kakaoLogin"
+            app:layout_constraintBottom_toTopOf="@+id/kakao_login_button"
             android:layout_marginStart="19dp"
             android:layout_marginBottom="60dp"
             android:layout_marginEnd="49.23dp" />
 
         <kr.foorun.uni_eat.base.view.base.BaseImageView
-            android:id="@+id/kakaoLogin"
+            android:id="@+id/kakao_login_button"
             android:layout_width="300dp"
             android:layout_height="45dp"
             android:onClick="@{() -> viewModel.clickedKakaoLogin()}"
@@ -65,7 +65,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/kakaoLogin"
+            app:layout_constraintTop_toBottomOf="@id/kakao_login_button"
             android:layout_marginStart="37dp"
             android:layout_marginEnd="37dp"/>
 

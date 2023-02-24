@@ -1,0 +1,74 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('gradle.properties').newDataInputStream())
+
+android {
+    namespace 'kr.foorun.uni_eat'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "kr.foorun.uni_eat"
+        minSdk 23
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+//        buildConfigField "String", "RESET_URL", properties['api.url_reset']
+//        buildConfigField "String", "RESET_KEY", properties['api.key_reset']
+//        buildConfigField "String", "CLIENT_KEY", properties['api.key_client']
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+    }
+}
+
+dependencies {
+
+    implementation project(':domain')
+    implementation project(':data')
+    implementation project(':presentation')
+
+    //hilt
+    implementation "com.google.dagger:hilt-android:2.41"
+    kapt "com.google.dagger:hilt-android-compiler:2.41"
+
+    // Retrofit2 + OkHttp
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.9.0"
+    implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.9'
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.3"
+
+    //room
+    implementation 'androidx.room:room-runtime:2.4.3'
+    kapt 'androidx.room:room-compiler:2.4.3'
+    implementation "androidx.room:room-ktx:2.4.3"
+
+    //curl logger
+    implementation 'com.github.grapesnberries:curlloggerinterceptor:0.1'
+
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.3"
+}

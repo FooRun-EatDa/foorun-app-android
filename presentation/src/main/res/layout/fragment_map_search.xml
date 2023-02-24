@@ -6,16 +6,16 @@
     <data>
         <variable
             name="viewModel"
-            type="kr.foorun.uni_eat.feature.map.fragment.search.MapSearchViewModel" />
+            type="kr.foorun.uni_eat.feature.map.search.fragment.MapSearchViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".feature.map.fragment.search.MapSearchFragment">
+        tools:context=".feature.map.search.fragment.MapSearchFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/mainSearch_CL"
+            android:id="@+id/mainSearch_constraint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -23,7 +23,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <kr.foorun.uni_eat.base.view.base.BaseImageView
-                android:id="@+id/back_BTN"
+                android:id="@+id/back_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="21dp"
@@ -59,13 +59,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/mainSearch_CL">
+            app:layout_constraintTop_toBottomOf="@id/mainSearch_constraint">
             
             <kr.foorun.uni_eat.base.view.base.BaseTextView
-                android:id="@+id/recentWords_TV"
+                android:id="@+id/recent_words_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/recentWords"
+                android:text="@string/recent_words"
                 android:textStyle="bold"
                 android:textSize="19sp"
                 android:layout_marginTop="25dp"
@@ -74,7 +74,7 @@
                 app:layout_constraintTop_toTopOf="parent"/>
             
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recentWords_RC"
+                android:id="@+id/recent_words_recycler"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="17dp"
@@ -84,7 +84,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recentWords_TV"
+                app:layout_constraintTop_toBottomOf="@+id/recent_words_text"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:orientation="vertical"/>
 
@@ -96,12 +96,12 @@
             android:visibility="gone"
             app:visible="@{viewModel.isNonSearch()}"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/mainSearch_CL"
+            app:layout_constraintTop_toBottomOf="@id/mainSearch_constraint"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">
 
             <kr.foorun.uni_eat.base.view.base.BaseImageView
-                android:id="@+id/nonImage"
+                android:id="@+id/non_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="207dp"
@@ -117,7 +117,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15.7dp"
-                app:layout_constraintTop_toBottomOf="@+id/nonImage"
+                app:layout_constraintTop_toBottomOf="@+id/non_image"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:foregroundGravity="center"

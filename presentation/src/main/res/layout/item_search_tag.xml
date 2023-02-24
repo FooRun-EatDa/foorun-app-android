@@ -5,14 +5,14 @@
     <data>
         <variable
             name="searchTag"
-            type="kr.foorun.data.tag.SearchTag" />
+            type="kr.foorun.model.tag.SearchTag" />
         <variable
             name="viewModel"
             type="kr.foorun.uni_eat.feature.map.SearchTagViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/tagItem_CL"
+        android:id="@+id/tag_item_constraint"
         app:setTagDrawable="@{searchTag.picked}"
         android:onClick="@{() -> viewModel.tagClicked(searchTag)}"
         android:layout_marginEnd="11dp"

@@ -5,14 +5,14 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
-import kr.foorun.uni_eat.R
+import kr.foorun.presentation.R
+import kr.foorun.presentation.databinding.BaseConstraintBinding
 import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
-import kr.foorun.uni_eat.databinding.BaseConstraintBinding
 
 class BaseConstraintView : ConstraintLayout {
 
-    private val binding : BaseConstraintBinding =
-        BaseConstraintBinding.inflate(LayoutInflater.from(context), this, true)
+    private val binding : BaseConstraintBinding by lazy {
+        BaseConstraintBinding.inflate(LayoutInflater.from(context), this, true) }
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
@@ -26,7 +26,7 @@ class BaseConstraintView : ConstraintLayout {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.BaseConstraintView)
 
         val src = typedArray.getResourceId(R.styleable.BaseConstraintView_android_src,R.drawable.back)
-        binding.backBTN.setBackgroundResource(src)
+        binding.backButton.setBackgroundResource(src)
 
         val backgroundColor = typedArray.getResourceId(R.styleable.BaseConstraintView_android_background,R.color.white)
         binding.root.setBackgroundResource(backgroundColor)
@@ -39,7 +39,7 @@ class BaseConstraintView : ConstraintLayout {
         fun setViewModel(view: BaseConstraintView, baseViewModel: BaseViewModel) {
             view.binding.run {
                 viewModel = baseViewModel
-                backBTN.setOnClickListener{ baseViewModel.backClicked() }
+                backButton.setOnClickListener{ baseViewModel.backClicked() }
             }
         }
     }

@@ -11,15 +11,16 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.viewModels
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import kr.foorun.presentation.databinding.FragmentSearchBottomSheetBinding
 import kr.foorun.uni_eat.base.view.base.BaseFragment
 import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
-import kr.foorun.uni_eat.databinding.FragmentSearchBottomSheetBinding
 
 abstract class BasePersistBottomSheetFragment<CollapseBinding : ViewDataBinding, ExpandBinding : ViewDataBinding>(
     @LayoutRes private val collapseResId: Int,
     @LayoutRes private val expandResId: Int,
     private val heightType: HeightType = HeightType.MATCH,
+    private val searchWord: String
 ) : BaseFragment<FragmentSearchBottomSheetBinding, BaseViewModel>(FragmentSearchBottomSheetBinding::inflate) {
 
     @Suppress("MemberVisibilityCanBePrivate")
@@ -51,10 +52,13 @@ abstract class BasePersistBottomSheetFragment<CollapseBinding : ViewDataBinding,
         savedInstanceState: Bundle?
     ) {
         binding{
+            word = searchWord
+
             collapseBinding = DataBindingUtil.inflate(inflater,
                 collapseResId,
                 viewCollapseContainer,
                 true)
+
             expandBinding = DataBindingUtil.inflate(inflater,
                 expandResId,
                 viewExpandContainer,
@@ -145,6 +149,6 @@ abstract class BasePersistBottomSheetFragment<CollapseBinding : ViewDataBinding,
     }
 
     fun backButtonVisible(show : Boolean){
-        binding.backBTN.isVisible = show
+        binding.backButton.isVisible = show
     }
 }

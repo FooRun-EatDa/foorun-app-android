@@ -15,7 +15,7 @@
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/mainSearch_CL"
+            android:id="@+id/mainSearch_constraint"
             android:animateLayoutChanges="true"
             app:topAnimVisible="@{viewModel.visibleMainSearch}"
             android:layout_width="match_parent"
@@ -53,7 +53,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/searchTag_RC"
+                android:id="@+id/search_tag_recycler"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="38dp"
@@ -69,16 +69,16 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <RelativeLayout
-            android:id="@+id/map_FL"
+            android:id="@+id/map_frame"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintTop_toBottomOf="@id/mainSearch_CL"
+            app:layout_constraintTop_toBottomOf="@id/mainSearch_constraint"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/locate_BTN"
+                android:id="@+id/locate_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:elevation="0dp"

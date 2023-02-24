@@ -15,6 +15,7 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "UNI-EAT"
-include ':presentation'
 include ':domain'
 include ':data'
+include ':app'
+include ':presentation'

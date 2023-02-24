@@ -4,12 +4,11 @@ import android.annotation.SuppressLint
 import androidx.annotation.IdRes
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import kr.foorun.uni_eat.R
+import kr.foorun.presentation.R
+import kr.foorun.presentation.databinding.LayoutShopBottomCollapseBinding
 import kr.foorun.uni_eat.base.view.base.bottom_sheet.BaseBottomSheetFragment
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
-import kr.foorun.uni_eat.databinding.LayoutShopBottomCollapseBinding
 import kr.foorun.uni_eat.feature.map.bottom_sheet.adapter.shop.ShopBottomSheetAdapter
 import kr.foorun.uni_eat.feature.map.bottom_sheet.adapter.shop.ShopBottomSheetItemViewModel
 
@@ -25,7 +24,7 @@ class ShopBottomSheetFragment(
 
     @SuppressLint("NotifyDataSetChanged")
     override fun observeAndInitViewModel() {
-        collapseBinding.shopImagesRV.adapter = shopAdapter
+        collapseBinding.shopImagesRecycler.adapter = shopAdapter
 
         collapseBinding.viewModel = collapseViewModel.apply {
 

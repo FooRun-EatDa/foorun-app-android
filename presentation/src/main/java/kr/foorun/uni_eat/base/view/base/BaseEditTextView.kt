@@ -6,7 +6,7 @@ import android.util.AttributeSet
 import android.view.inputmethod.EditorInfo
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
-import kr.foorun.uni_eat.R
+import kr.foorun.presentation.R
 
 class BaseEditTextView : AppCompatEditText {
 

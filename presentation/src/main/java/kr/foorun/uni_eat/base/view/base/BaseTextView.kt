@@ -5,7 +5,7 @@ import android.content.Context
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
-import kr.foorun.uni_eat.R
+import kr.foorun.presentation.R
 import java.util.*
 
 class BaseTextView : AppCompatTextView {
@@ -19,7 +19,6 @@ class BaseTextView : AppCompatTextView {
 
     @SuppressLint("Recycle")
     fun init(attrs: AttributeSet?) {
-//        setTextColor(ContextCompat.getColor(context,R.color.LargeTextColor))
         val attributeArray = context.obtainStyledAttributes(attrs, R.styleable.BaseTextView)
         val t = attributeArray.getString(R.styleable.BaseTextView_android_text) ?: ""
         text = t

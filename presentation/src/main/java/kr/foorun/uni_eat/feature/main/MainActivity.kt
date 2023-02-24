@@ -2,8 +2,8 @@ package kr.foorun.uni_eat.feature.main
 
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
+import kr.foorun.presentation.databinding.ActivityMainBinding
 import kr.foorun.uni_eat.base.view.base.BaseActivity
-import kr.foorun.uni_eat.databinding.ActivityMainBinding
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>({ActivityMainBinding.inflate(it)}) {
