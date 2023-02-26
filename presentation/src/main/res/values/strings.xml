@@ -23,4 +23,5 @@
     <string name="menu">메뉴</string>
     <string name="article">아티클</string>
     <string name="notice_add">*추가할 내용이 있다면 <u>여기</u>를 눌러주세요.</string>
+    <string name="my_page">마이페이지</string>
 </resources>
