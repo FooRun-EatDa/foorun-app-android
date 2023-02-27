@@ -14,6 +14,7 @@
     <color name="black_60">#99000000</color>
     <color name="red">#FD5422</color>
     <color name="gray">#F3F3F3</color>
+    <color name="gray2">#BDBDBD</color>
     <color name="search_tag_non">#E5E4EC</color>
     <color name="search_tag_pick">#201F31</color>
     

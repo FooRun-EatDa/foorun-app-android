@@ -6,6 +6,7 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="hide_bottom">hideBottom</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
@@ -23,4 +24,11 @@
     <string name="menu">메뉴</string>
     <string name="article">아티클</string>
     <string name="notice_add">*추가할 내용이 있다면 <u>여기</u>를 눌러주세요.</string>
+    <string name="home">홈</string>
+    <string name="bookMark">북마크</string>
+    <string name="event">이벤트</string>
+    <string name="my">마이</string>
+    <string name="map">지도</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
