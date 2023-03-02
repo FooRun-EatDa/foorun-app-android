@@ -15,20 +15,18 @@ import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 class LoginFragment : BaseFragment<FragmentLoginBinding,LoginViewModel>(FragmentLoginBinding::inflate) {
     override val fragmentViewModel: LoginViewModel by viewModels()
 
-    override fun observeAndInitViewModel() {
-        binding { viewModel = fragmentViewModel.apply {
-            repeatOnStarted { eventFlow.collect{ handleEvent(it) } }
-        } }
-    }
-
-    override fun afterBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) {
-        binding {
-
+    override fun observeAndInitViewModel() = binding {
+        viewModel = fragmentViewModel.apply {
+            repeatOnStarted { eventFlow.collect { handleEvent(it) } }
         }
     }
 
+    override fun afterBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = binding {
+
+    }
+
     private fun handleEvent(event: LoginViewModel.LoginEvent) = when(event){
-        is LoginViewModel.LoginEvent.KakaoLogin -> findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToMapFragment())
+        is LoginViewModel.LoginEvent.KakaoLogin -> navigateToFrag(LoginFragmentDirections.actionLoginFragmentToMapFragment())
     }
 
 }
