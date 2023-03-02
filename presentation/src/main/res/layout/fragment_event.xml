@@ -1,21 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="kr.foorun.uni_eat.feature.event.EventViewModel" />
     </data>
 
-    <FrameLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/event_SRL"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="kr.foorun.uni_eat.feature.event.EventFragment">
+        android:layout_height="match_parent">
 
-        <TextView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            tools:context=".feature.event.EventFragment">
 
-    </FrameLayout>
+            <kr.foorun.uni_eat.base.view.base.BaseTextView
+                android:id="@+id/typo_TV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="33dp"
+                android:layout_marginTop="75dp"
+                android:layout_marginEnd="192dp"
+                android:layout_marginBottom="632dp"
+                android:letterSpacing="-0.05"
+                android:text="@string/event_typo"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/event_filter_LL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="125dp"
+                android:layout_marginEnd="21.22dp"
+                android:onClick="@{()->viewModel.showSortMethod()}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/typo_TV"
+                app:layout_constraintTop_toBottomOf="@id/typo_TV">
+
+                <kr.foorun.uni_eat.base.view.base.BaseTextView
+                    android:id="@+id/event_filter_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/event_sort_newest"
+                    android:textColor="@color/smallTextColor"
+                    android:textSize="13sp" />
+
+                <kr.foorun.uni_eat.base.view.base.BaseImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="3.72dp"
+                    android:src="@drawable/arrow_down" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/event_RV"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="21dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="13dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/event_filter_LL" />
+
+            <FrameLayout
+                android:id="@+id/event_sort_FL"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

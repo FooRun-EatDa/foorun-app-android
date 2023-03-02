@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="event"
+            type="kr.foorun.data.event.Event" />
+
+        <variable
+            name="viewModel"
+            type="kr.foorun.uni_eat.feature.event.EventViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="167dp"
+        android:layout_height="238dp">
+
+        <kr.foorun.uni_eat.base.view.base.BaseImageView
+            android:id="@+id/event_item_IV"
+            android:scaleType="fitXY"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:glide="@{event.image}" />
+
+        <kr.foorun.uni_eat.base.view.base.BaseTextView
+            android:id="@+id/event_title_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="12dp"
+            android:text="@{event.name}"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@id/event_line"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <View
+            android:id="@+id/event_line"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="193dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginBottom="45dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <kr.foorun.uni_eat.base.view.base.BaseTextView
+            android:id="@+id/event_duration_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginBottom="19dp"
+            android:text="@{`이벤트 기간 `+event.startDate+` - `+event.endDate}"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/event_line" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

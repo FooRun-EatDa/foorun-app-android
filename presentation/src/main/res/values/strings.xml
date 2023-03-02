@@ -29,6 +29,12 @@
     <string name="event">이벤트</string>
     <string name="my">마이</string>
     <string name="map">지도</string>
+
+    <string name="event_typo">오늘은\n어떤 이벤트들이\n있을까?</string>
+    <string name="event_sort_deadline">마감순</string>
+    <string name="event_sort_newest">최신순</string>
+    <string name="event_sort_button">확인</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

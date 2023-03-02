@@ -1,17 +1,53 @@
 package kr.foorun.uni_eat.feature.event
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import kr.foorun.presentation.databinding.FragmentEventBinding
 import kr.foorun.uni_eat.base.view.base.BaseFragment
-import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
+import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
+import kr.foorun.uni_eat.feature.event.bottom_sheet.EventSortBottomSheetFragment
+import kr.foorun.presentation.R
 
-class EventFragment : BaseFragment<FragmentEventBinding,BaseViewModel>(FragmentEventBinding::inflate) {
-    override val fragmentViewModel: BaseViewModel by viewModels()
+class EventFragment :
+    BaseFragment<FragmentEventBinding, EventViewModel>(FragmentEventBinding::inflate) {
+    override val fragmentViewModel: EventViewModel by viewModels({ requireActivity() })
+    private var eventSortBottomSheetFragment: EventSortBottomSheetFragment? = null
+    private val eventAdapter: EventAdapter by lazy { EventAdapter(fragmentViewModel) }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun observeAndInitViewModel() {
+        binding {
+            eventRV.adapter = eventAdapter
+
+            //Todo 리사이클러뷰 아이템 데코레이션 추가
+
+            viewModel = fragmentViewModel.apply {
+
+                loadEvents()
+
+                events.observe(this@EventFragment) {
+                    eventAdapter.eventList = it!!
+                    eventAdapter.notifyDataSetChanged()
+                }
+
+                repeatOnStarted {
+                    eventFlow.collect { handleEvent(it) }
+                }
+            }
+
+            eventSRL.setOnRefreshListener {
+                //ToDo Like recyclerView update etc..
+                binding.eventSRL.setRefreshing(false)
+            }
+
+            eventRV.apply {
+                layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+            }
+        }
     }
 
     override fun afterBinding(
@@ -19,5 +55,32 @@ class EventFragment : BaseFragment<FragmentEventBinding,BaseViewModel>(FragmentE
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ) {
+        binding {
+        }
     }
+
+    private fun handleEvent(event: EventViewModel.EventEvent) = when (event) {
+        is EventViewModel.EventEvent.ShowSortMethod -> showBottomSheet()
+        is EventViewModel.EventEvent.SortByNewest -> {
+            //ToDo
+        }
+        is EventViewModel.EventEvent.SortByDeadline -> {
+            //ToDo
+        }
+    }
+
+    private fun showBottomSheet() {
+        eventSortBottomSheetFragment = EventSortBottomSheetFragment({ onBackPressed() })
+        eventSortBottomSheetFragment?.show(
+            requireActivity().supportFragmentManager,
+            R.id.event_sort_FL
+        )
+    }
+
+    fun onBackPressed() {
+        if (eventSortBottomSheetFragment != null && eventSortBottomSheetFragment!!.handleBackKeyEvent())
+            eventSortBottomSheetFragment?.hide()
+    }
+
+
 }
