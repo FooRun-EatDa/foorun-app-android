@@ -11,7 +11,7 @@ import kr.foorun.presentation.databinding.ItemShopImageBinding
 class ItemShopViewHolder(val binding: ItemShopImageBinding) : RecyclerView.ViewHolder(binding.root)
 
 class ShopBottomSheetAdapter(
-    private val adapterViewModel: ShopBottomSheetItemViewModel
+    private val adapterViewModel: ArticleAdapterViewModel
 ) : ListAdapter<Article, ItemShopViewHolder>(object : DiffUtil.ItemCallback<Article>(){
     override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
         return oldItem == newItem

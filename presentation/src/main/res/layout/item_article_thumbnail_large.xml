@@ -37,13 +37,25 @@
                 android:layout_marginBottom="12dp">
 
                 <kr.foorun.uni_eat.base.view.base.BaseTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{article.area}"
+                    android:textSize="@dimen/article_text_large_32"
+                    android:textColor="@color/white"
+                    android:singleLine="true"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/name"/>
+
+                <kr.foorun.uni_eat.base.view.base.BaseTextView
                     android:id="@+id/name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{article.shopName}"
                     android:textStyle="bold"
-                    android:textSize="19sp"
+                    android:textSize="@dimen/article_text_large_32"
                     android:textColor="@color/white"
+                    android:singleLine="true"
                     android:layout_marginBottom="10dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintBottom_toTopOf="@id/line" />
@@ -64,7 +76,7 @@
                     android:layout_height="wrap_content"
                     android:text="@{article.tags}"
                     android:layout_marginTop="10dp"
-                    android:textSize="13sp"
+                    android:textSize="@dimen/article_tag_large_15"
                     android:singleLine="true"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"

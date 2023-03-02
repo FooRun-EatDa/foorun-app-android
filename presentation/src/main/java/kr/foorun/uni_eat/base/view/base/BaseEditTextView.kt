@@ -22,7 +22,7 @@ class BaseEditTextView : AppCompatEditText {
     fun init(attrs: AttributeSet?) {
         val attributeArray = context.obtainStyledAttributes(attrs, R.styleable.BaseEditTextView)
         val c = attributeArray.getColor(R.styleable.BaseTextView_android_textColor,
-            ContextCompat.getColor(context,R.color.LargeTextColor))
+            ContextCompat.getColor(context,R.color.large_text))
         setTextColor(c)
 
         val inputType = attributeArray.getInt(R.styleable.BaseEditTextLayout_android_inputType, EditorInfo.TYPE_NULL)

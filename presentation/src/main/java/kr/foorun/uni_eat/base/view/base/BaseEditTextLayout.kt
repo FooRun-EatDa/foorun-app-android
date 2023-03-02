@@ -41,7 +41,7 @@ class BaseEditTextLayout : ConstraintLayout {
         binding.edittext.hint = hint
 
         val c = attributeArray.getColor(R.styleable.BaseTextView_android_textColor,
-            ContextCompat.getColor(context,R.color.LargeTextColor))
+            ContextCompat.getColor(context,R.color.large_text))
 
         binding.edittext.setTextColor(c)
 

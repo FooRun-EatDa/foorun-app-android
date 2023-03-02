@@ -3,6 +3,8 @@ package kr.foorun.const
 class Constant {
 
     companion object{
+        const val ITEM_HEIGHT = 238
+        const val ITEM_HEIGHT_LARGE = 471
         const val SEARCH_WORD = "searchWord"
         const val LANGUAGE = "language"
         const val DELAY_TIME = 500.toLong()

@@ -89,7 +89,7 @@
                             android:layout_height="wrap_content"
                             android:text="정건"
                             android:textSize="15sp"
-                            android:textColor="@color/smallTextColor"
+                            android:textColor="@color/small_text"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@id/vertical_line_view"
@@ -113,7 +113,7 @@
                             android:layout_height="wrap_content"
                             android:textSize="15sp"
                             android:text="레스토랑"
-                            android:textColor="@color/smallTextColor"
+                            android:textColor="@color/small_text"
                             app:layout_constraintStart_toEndOf="@id/vertical_line_view"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
@@ -221,7 +221,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/notice_add"
                     android:textSize="15sp"
-                    android:textColor="@color/smallTextColor"/>
+                    android:textColor="@color/small_text"/>
 
                 <kr.foorun.uni_eat.base.view.base.BaseTextView
                     android:layout_marginTop="41dp"
@@ -231,7 +231,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/article"
                     android:textSize="21sp"
-                    android:textColor="@color/LargeTextColor"
+                    android:textColor="@color/large_text"
                     android:textStyle="bold"/>
 
                 <androidx.recyclerview.widget.RecyclerView

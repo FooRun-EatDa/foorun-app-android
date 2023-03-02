@@ -24,7 +24,7 @@ class BaseTextView : AppCompatTextView {
         text = t
 
         val c = attributeArray.getColor(R.styleable.BaseTextView_android_textColor,
-        ContextCompat.getColor(context,R.color.LargeTextColor))
+        ContextCompat.getColor(context,R.color.large_text))
         setTextColor(c)
 
         val g = attributeArray.getInt(R.styleable.BaseTextView_android_gravity,TEXT_ALIGNMENT_CENTER)

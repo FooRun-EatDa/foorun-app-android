@@ -5,6 +5,6 @@ import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class ShopBottomSheetItemViewModel @Inject constructor(): BaseViewModel() {
+class ArticleAdapterViewModel @Inject constructor(): BaseViewModel() {
 
 }

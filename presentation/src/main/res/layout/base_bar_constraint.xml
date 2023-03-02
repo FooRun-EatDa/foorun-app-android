@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="kr.foorun.uni_eat.base.viewmodel.BaseViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bar_constraint"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:paddingStart="8dp"
+            android:animateLayoutChanges="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <kr.foorun.uni_eat.base.view.base.BaseImageView
+                android:id="@+id/front_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrow_left"
+                android:layout_marginStart="@dimen/margin_13"
+                android:layout_marginTop="@dimen/top_margin_64"
+                android:visibility="gone"
+                app:layout_constraintEnd_toStartOf="@id/bar_title"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <kr.foorun.uni_eat.base.view.base.BaseImageView
+                android:id="@+id/bar_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/article"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/top_margin_64"
+                android:layout_marginStart="@dimen/margin_13"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/front_image"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <kr.foorun.uni_eat.base.view.base.BaseTextView
+                android:id="@+id/bar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="23sp"
+                android:textStyle="bold"
+                android:text="@string/article"
+                android:layout_marginTop="@dimen/top_margin_64"
+                android:layout_marginStart="@dimen/margin_13"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/front_image"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <kr.foorun.uni_eat.base.view.base.BaseImageView
+                android:id="@+id/rear_image"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:src="@drawable/search_icon"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/top_margin_64"
+                android:layout_marginEnd="@dimen/margin_13"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
