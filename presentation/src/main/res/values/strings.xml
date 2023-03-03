@@ -26,4 +26,6 @@
     <string name="my_page">마이페이지</string>
     <string name="my_profile">내 프로필</string>
     <string name="school_certification">학교 인증하기</string>
+    <string name="my_write_article">내가 쓴 아티클</string>
+    <string name="empty_article">우리 학교 맛집을\n 소개해주세요!</string>
 </resources>
