@@ -12,6 +12,8 @@ import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
 
 class BaseBarConstraintView : ConstraintLayout{
 
+//    private lateinit var binding : BaseBarConstraintBinding
+
     constructor(context: Context) : super(context) {
         initView()
     }
@@ -33,11 +35,6 @@ class BaseBarConstraintView : ConstraintLayout{
 
     private fun getAttrs(attrs: AttributeSet) {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.BaseBarConstraintView)
-        init(typedArray)
-    }
-
-    private fun getAttrs(attrs: AttributeSet, defStyle: Int) {
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.BaseBarConstraintView, defStyle, 0)
         init(typedArray)
     }
 

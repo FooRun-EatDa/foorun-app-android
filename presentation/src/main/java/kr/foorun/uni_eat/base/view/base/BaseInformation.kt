@@ -6,12 +6,12 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.databinding.BindingAdapter
 import kr.foorun.presentation.R
 
 class BaseInformation : ConstraintLayout {
 
-//    private val binding: BaseInformationBinding by lazy {
-//        BaseInformationBinding.inflate(LayoutInflater.from(context), this, true) }
+    lateinit var informationValue: BaseTextView
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
@@ -44,7 +44,7 @@ class BaseInformation : ConstraintLayout {
         val show = attributeArray.getBoolean(R.styleable.BaseInformation_show_arrow,false)
 
         val information = findViewById<BaseTextView>(R.id.information)
-        val informationValue = findViewById<BaseTextView>(R.id.information_value)
+        informationValue = findViewById<BaseTextView>(R.id.information_value)
         val informationImage = findViewById<BaseImageView>(R.id.information_image)
 
         information.run {
@@ -66,4 +66,15 @@ class BaseInformation : ConstraintLayout {
         }
     }
 
+    fun setInformationText(str: String){
+        informationValue.text = str
+    }
+
+    companion object{
+        @JvmStatic
+        @BindingAdapter("setInformationValue")
+        fun setValue(view: BaseInformation, str: String?){
+            str?.let { view.setInformationText(str) }
+        }
+    }
 }

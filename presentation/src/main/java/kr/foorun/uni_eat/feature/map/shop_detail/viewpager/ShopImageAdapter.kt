@@ -9,8 +9,7 @@ import kr.foorun.presentation.databinding.ItemDetailImageBinding
 
 class ItemDetailImageViewHolder(val binding: ItemDetailImageBinding) : RecyclerView.ViewHolder(binding.root)
 
-class ShopImageAdapter (
-) : ListAdapter<String, ItemDetailImageViewHolder>(object : DiffUtil.ItemCallback<String>(){
+class ShopImageAdapter : ListAdapter<String, ItemDetailImageViewHolder>(object : DiffUtil.ItemCallback<String>(){
     override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
         return oldItem == newItem
     }

@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
+            <kr.foorun.uni_eat.base.view.base.BaseImageView
                 android:id="@+id/arrow_up_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -34,96 +34,19 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/shop_name_text"/>
+                app:layout_constraintBottom_toTopOf="@id/shopInformation"/>
 
-            <kr.foorun.uni_eat.base.view.base.BaseTextView
-                android:id="@+id/shop_name_text"
+            <kr.foorun.uni_eat.base.view.base.BaseShopConstraintView
+                android:id="@+id/shopInformation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxLines="1"
-                android:text="카인드"
-                android:textStyle="bold"
-                android:textSize="25sp"
-                android:layout_marginTop="36dp"
-                android:layout_marginStart="19.5dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toTopOf="@id/shop_info_constraint"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/shop_info_constraint"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="9dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="21.5dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/shop_name_text">
-
-                <kr.foorun.uni_eat.base.view.base.BaseTextView
-                    android:id="@+id/shop_nick_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="정건"
-                    android:textSize="15sp"
-                    android:textColor="@color/small_text"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/vertical_line_view"
-                    app:layout_constraintStart_toStartOf="parent"/>
-
-                <View
-                    android:id="@+id/vertical_line_view"
-                    android:layout_width="1dp"
-                    android:layout_height="18dp"
-                    android:background="@drawable/vertical_line"
-                    android:layout_marginStart="7.5dp"
-                    android:layout_marginEnd="7.5dp"
-                    app:layout_constraintStart_toEndOf="@id/shop_nick_text"
-                    app:layout_constraintEnd_toStartOf="@id/shop_kind_text"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent" />
-
-                <kr.foorun.uni_eat.base.view.base.BaseTextView
-                    android:id="@+id/shop_kind_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:text="레스토랑"
-                    android:textColor="@color/small_text"
-                    app:layout_constraintStart_toEndOf="@id/vertical_line_view"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <View
-                android:id="@+id/horizon_line_view"
-                android:layout_width="match_parent"
-                android:layout_height="0.7dp"
-                android:background="@drawable/horizen_line"
-                android:layout_marginTop="9dp"
-                android:layout_marginStart="17dp"
-                android:layout_marginEnd="32dp"
+                app:shopName="카인드"
+                app:shopNick="정건"
+                app:shopKind="레스토랑"
+                app:shopContent="분위기 좋은 어쩌구저쩌구"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/shop_explain_text"
-                app:layout_constraintTop_toBottomOf="@id/shop_info_constraint"/>
-
-            <kr.foorun.uni_eat.base.view.base.BaseTextView
-                android:id="@+id/shop_explain_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:text="분위기 좋은 파스타 맛집"
-                android:layout_marginStart="20.5dp"
-                android:layout_marginTop="14dp"
-                android:layout_marginBottom="11dp"
-                app:layout_constraintBottom_toTopOf="@id/shop_images_recycler"
-                app:layout_constraintTop_toBottomOf="@id/horizon_line_view"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/arrow_up_image"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -131,45 +54,21 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
                 android:layout_marginStart="17dp"
                 android:layout_marginBottom="7dp"
-                app:layout_constraintBottom_toTopOf="@id/button_constraint"
-                app:layout_constraintTop_toBottomOf="@id/shop_explain_text"
+                app:layout_constraintBottom_toTopOf="@id/bottom_option"
+                app:layout_constraintTop_toBottomOf="@id/shopInformation"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/button_constraint"
+            <kr.foorun.uni_eat.base.view.base.BaseBottomOptionView
+                android:id="@+id/bottom_option"
                 android:layout_width="match_parent"
-                android:layout_height="84dp"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/shop_images_recycler"
-                app:layout_constraintBottom_toBottomOf="parent">
-
-                <kr.foorun.uni_eat.base.view.base.BaseImageView
-                    android:id="@+id/share_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/share"
-                    android:layout_marginTop="14dp"
-                    android:layout_marginBottom="46.05dp"
-                    android:layout_marginEnd="72dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
-
-                <kr.foorun.uni_eat.base.view.base.BaseImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/bookmark"
-                    android:layout_marginTop="16.12dp"
-                    android:layout_marginBottom="48.74dp"
-                    android:layout_marginEnd="27dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                app:layout_constraintEnd_toEndOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

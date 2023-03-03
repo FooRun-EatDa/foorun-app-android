@@ -5,6 +5,7 @@ import android.content.Context
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
+import androidx.databinding.BindingAdapter
 import kr.foorun.presentation.R
 import java.util.*
 
@@ -39,5 +40,13 @@ class BaseTextView : AppCompatTextView {
 //        } else {
 //            typeface = Typeface.createFromAsset(context.assets, "fonts/Roboto-$font.ttf")
 //        }
+    }
+
+    companion object{
+        @JvmStatic
+        @BindingAdapter("setText")
+        fun setText(view: BaseTextView, str: String?){
+            str?.let { view.text = str }
+        }
     }
 }

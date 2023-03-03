@@ -2,18 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
-        <variable
-            name="article"
-            type="kr.foorun.model.article.Article" />
-
-        <variable
-            name="viewModel"
-            type="kr.foorun.uni_eat.feature.article.adapter.ArticleAdapterViewModel" />
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:onClick="@{() -> viewModel.articleClick()}"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -28,8 +17,7 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
             <kr.foorun.uni_eat.base.view.base.BaseImageView
-                android:id="@+id/thumbnail_image"
-                app:glide="@{article.shopImages.get(0)}"
+                android:id="@+id/image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
@@ -37,56 +25,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginBottom="12dp">
+                android:layout_marginStart="@dimen/margin_21"
+                android:layout_marginEnd="@dimen/margin_21"
+                android:layout_marginBottom="66dp">
 
                 <kr.foorun.uni_eat.base.view.base.BaseTextView
+                    android:id="@+id/shop_area"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{article.area}"
                     android:textSize="@dimen/article_text_large_32"
                     android:textColor="@color/white"
                     android:singleLine="true"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/name"/>
+                    app:layout_constraintBottom_toTopOf="@id/shop_name"/>
 
                 <kr.foorun.uni_eat.base.view.base.BaseTextView
-                    android:id="@+id/name"
+                    android:id="@+id/shop_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{article.shopName}"
                     android:textStyle="bold"
                     android:textSize="@dimen/article_text_large_32"
                     android:textColor="@color/white"
                     android:singleLine="true"
                     android:layout_marginBottom="10dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/line" />
-
-                <kr.foorun.uni_eat.base.view.base.BaseImageView
-                    android:id="@+id/line"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/long_gray_line"
-                    android:scaleType="fitXY"
-                    android:layout_marginTop="10dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/name"/>
-
-                <kr.foorun.uni_eat.base.view.base.BaseTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{article.tags}"
-                    android:layout_marginTop="10dp"
-                    android:textSize="@dimen/article_tag_large_15"
-                    android:singleLine="true"
-                    android:textColor="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/line"/>
+                    app:layout_constraintBottom_toBottomOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>

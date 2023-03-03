@@ -12,21 +12,31 @@ import kr.foorun.model.article.Article
 import kr.foorun.presentation.databinding.ItemArticleThumbnailLargeBinding
 import kr.foorun.presentation.databinding.ItemMoreArticleBinding
 import kr.foorun.uni_eat.base.view.base.dp
+import kr.foorun.uni_eat.feature.article.ArticleViewModel
 import kr.foorun.uni_eat.feature.article.adapter.ArticleViewHolder.Companion.ARTICLE
 import kr.foorun.uni_eat.feature.article.adapter.ArticleViewHolder.Companion.MORE
 
 sealed class ArticleViewHolder(
-    binding: ViewDataBinding
+    binding: ViewDataBinding,
 ) : RecyclerView.ViewHolder(binding.root){
 
     abstract fun bind(item: Article)
 
-    class ItemArticleViewHolder(val binding: ItemArticleThumbnailLargeBinding): ArticleViewHolder(binding){
-        override fun bind(item: Article) { binding.article = item }
+    class ItemArticleViewHolder(
+        val binding: ItemArticleThumbnailLargeBinding,
+        val viewModel: ArticleAdapterViewModel
+    ): ArticleViewHolder(binding){
+        override fun bind(item: Article) {
+            binding.viewModel = viewModel
+            binding.article = item
+        }
     }
 
-    class ItemMoreArticleHolder(val binding: ItemMoreArticleBinding): ArticleViewHolder(binding) {
-        override fun bind(item: Article) {}
+    class ItemMoreArticleHolder(
+        val binding: ItemMoreArticleBinding,
+        val viewModel: ArticleAdapterViewModel
+    ): ArticleViewHolder(binding) {
+        override fun bind(item: Article) { binding.viewModel = viewModel }
     }
 
     companion object{
@@ -37,7 +47,8 @@ sealed class ArticleViewHolder(
 
 class ArticleAdapter (
     private val itemHeight: Int = ITEM_HEIGHT,
-    private val isPager: Boolean = false
+    private val isPager: Boolean = false,
+    val viewModel: ArticleAdapterViewModel
 ) : ListAdapter<Article, ArticleViewHolder>(object : DiffUtil.ItemCallback<Article>(){
     override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
         return oldItem == newItem
@@ -51,11 +62,11 @@ class ArticleAdapter (
         return when(viewType){
             MORE -> {
                 val binding = ItemMoreArticleBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-                ArticleViewHolder.ItemMoreArticleHolder(binding)
+                ArticleViewHolder.ItemMoreArticleHolder(binding,viewModel)
             }
             else -> {
                 val binding = ItemArticleThumbnailLargeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-                ArticleViewHolder.ItemArticleViewHolder(binding)
+                ArticleViewHolder.ItemArticleViewHolder(binding,viewModel)
             }
         }
     }
