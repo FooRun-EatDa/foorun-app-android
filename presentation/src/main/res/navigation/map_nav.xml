@@ -1,32 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/splashFragment"
+    android:id="@+id/map_nav">
+
     <fragment
         android:id="@+id/splashFragment"
         android:name="kr.foorun.uni_eat.feature.splash.SplashFragment"
         android:label="SplashFragment" >
         <action
-            app:popUpToInclusive="true"
-            app:popUpTo="@id/splashFragment"
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
-        <action
-            android:id="@+id/action_splashFragment_to_mapFragment"
-            app:destination="@id/mapFragment" />
+        <argument
+            android:name="@string/hide_bottom"
+            app:argType="boolean"
+            android:defaultValue="true" />
     </fragment>
+
     <fragment
         android:id="@+id/loginFragment"
         android:name="kr.foorun.uni_eat.feature.login.LoginFragment"
         android:label="LoginFragment" >
         <action
-            app:popUpTo="@id/loginFragment"
-            app:popUpToInclusive="true"
             android:id="@+id/action_loginFragment_to_mapFragment"
             app:destination="@id/mapFragment" />
+        <argument
+            android:name="@string/hide_bottom"
+            app:argType="boolean"
+            android:defaultValue="true" />
     </fragment>
+
     <fragment
         android:id="@+id/mapFragment"
         android:name="kr.foorun.uni_eat.feature.map.MapFragment"
@@ -35,10 +38,17 @@
             android:id="@+id/action_mapFragment_to_shopDetailFragment"
             app:destination="@id/shopDetailFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/shopDetailFragment"
         android:name="kr.foorun.uni_eat.feature.map.shop_detail.fragment.ShopDetailFragment"
         android:label="ShopDetailFragment" />
+
+    <include app:graph="@navigation/home_nav" />
+    <include app:graph="@navigation/article_nav" />
+    <include app:graph="@navigation/event_nav" />
+    <include app:graph="@navigation/my_nav" />
+
     <fragment
         android:id="@+id/myPageFragment"
         android:name="kr.foorun.uni_eat.feature.mypage.MyPageFragment"
