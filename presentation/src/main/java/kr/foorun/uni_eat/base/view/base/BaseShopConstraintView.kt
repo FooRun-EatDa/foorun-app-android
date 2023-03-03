@@ -17,6 +17,7 @@ class BaseShopConstraintView: ConstraintLayout {
     lateinit var content: BaseTextView
     lateinit var viewBar: View
 
+    constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         initView()
         getAttrs(attrs)
