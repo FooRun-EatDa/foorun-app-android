@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BaseBottomOptionView">
+        <attr name="bottomVisible" format="boolean"/>
+        <attr name="option1_image" format="string|reference"/>
+        <attr name="option2_image" format="string|reference"/>
+    </declare-styleable>
+</resources>

@@ -9,5 +9,14 @@
         android:id="@+id/articleFragment"
         android:name="kr.foorun.uni_eat.feature.article.ArticleFragment"
         android:label="ArticleFragment"
-        tools:layout="@layout/fragment_article" />
+        tools:layout="@layout/fragment_article" >
+        <action
+            android:id="@+id/action_articleFragment_to_articleDetailFragment"
+            app:destination="@id/articleDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/articleDetailFragment"
+        android:name="kr.foorun.uni_eat.feature.article.detail.ArticleDetailFragment"
+        android:label="ArticleDetailFragment" />
 </navigation>

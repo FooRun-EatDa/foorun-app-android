@@ -5,5 +5,4 @@ import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(): BaseViewModel() {
-}
+class MainViewModel @Inject constructor(): BaseViewModel()

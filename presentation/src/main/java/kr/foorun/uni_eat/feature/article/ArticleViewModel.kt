@@ -34,7 +34,6 @@ class ArticleViewModel: BaseViewModel() {
 
     private fun event(event: ArticleEvent) = viewModelScope.launch{ _eventFlow.emit(event) }
 
-    sealed class ArticleEvent{
-    }
+    sealed class ArticleEvent
 
 }

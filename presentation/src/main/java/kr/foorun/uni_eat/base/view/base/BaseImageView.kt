@@ -1,6 +1,7 @@
 package kr.foorun.uni_eat.base.view.base
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.BindingAdapter
@@ -31,5 +32,4 @@ class BaseImageView : AppCompatImageView {
                 .into(view)
         }
     }
-
 }

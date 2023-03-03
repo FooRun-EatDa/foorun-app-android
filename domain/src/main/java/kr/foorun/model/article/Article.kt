@@ -7,5 +7,6 @@ data class Article( //todo should be changed into interface, data class must be 
     val title : String,
     val tags : String,
     val shopImages : List<String>,
-    val area: String = "은평구 카페"
+    val area: String = "은평구 카페",
+    val user: String = "JIWON",
 ): Serializable
