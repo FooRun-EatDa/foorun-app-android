@@ -9,14 +9,21 @@ import kr.foorun.uni_eat.base.viewmodel.asEventFlow
 import javax.inject.Inject
 
 @HiltViewModel
-class MyPageViewModel @Inject constructor(): BaseViewModel() {
+class MyPageViewModel @Inject constructor() : BaseViewModel() {
 
     private val _eventFlow = MutableEventFlow<MyPageEvent>()
     val eventFlow = _eventFlow.asEventFlow()
 
     fun event(event: MyPageEvent) = viewModelScope.launch { _eventFlow.emit(event) }
 
-    sealed class MyPageEvent{
+    fun clickedSchoolCertification() = event(MyPageEvent.SchoolCertification())
+    fun clickedMyPageMore() = event(MyPageEvent.MyPageMore())
+    fun clickedWriteArticle() = event(MyPageEvent.WriteArticle())
+
+    sealed class MyPageEvent {
+        data class SchoolCertification(val unit: Unit? = null) : MyPageEvent()
+        data class MyPageMore(val unit: Unit? = null) : MyPageEvent()
+        data class WriteArticle(val unit: Unit? = null) : MyPageEvent()
 
     }
 

@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/myFragment">
+    app:startDestination="@id/my_page">
     <fragment
-        android:id="@+id/myFragment"
-        android:name="kr.foorun.uni_eat.feature.my.MyFragment"
+        android:id="@+id/my_page"
+        android:name="kr.foorun.uni_eat.feature.mypage.MyPageFragment"
         android:label="MyFragment"
-        tools:layout="@layout/fragment_my" />
+        tools:layout="@layout/fragment_my_page" />
 </navigation>
