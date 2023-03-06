@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import kr.foorun.presentation.databinding.FragmentEventBinding
 import kr.foorun.uni_eat.base.view.base.BaseFragment
@@ -21,8 +22,12 @@ class EventFragment :
     @SuppressLint("NotifyDataSetChanged")
     override fun observeAndInitViewModel() {
         binding {
-            eventRV.adapter = eventAdapter
-
+            //리사이클러 뷰
+            eventRV.apply{
+                adapter = eventAdapter
+                layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
+                addItemDecoration(EventDecoration(requireContext()))
+            }
             //Todo 리사이클러뷰 아이템 데코레이션 추가
 
             viewModel = fragmentViewModel.apply {
@@ -42,10 +47,6 @@ class EventFragment :
             eventSRL.setOnRefreshListener {
                 //ToDo Like recyclerView update etc..
                 binding.eventSRL.setRefreshing(false)
-            }
-
-            eventRV.apply {
-                layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             }
         }
     }
