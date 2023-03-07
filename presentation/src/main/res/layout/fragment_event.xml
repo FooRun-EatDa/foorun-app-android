@@ -84,7 +84,7 @@
                     app:layout_constraintTop_toBottomOf="@id/event_filter_LL" />
 
                 <FrameLayout
-                    android:id="@+id/event_sort_FL"
+                    android:id="@+id/event_FL"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     app:layout_constraintBottom_toBottomOf="parent"

@@ -18,7 +18,7 @@ class EventAdapter(
     lateinit var eventList: List<Event>
 
     override fun getItemViewType(position: Int): Int {
-        return eventList[position].viewType
+        return eventList[position].index
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -41,19 +41,25 @@ class EventAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when (eventList[position].viewType) {
+        when (eventList[position].index) {
             1 -> {
                 holder as EventViewHolder2
                 holder.run {
-                    binding.event = eventList.get(position) ?: null
-                    binding.viewModel = eventViewModel
+                    binding.apply {
+                        event = eventList.get(position) ?: null
+                        viewModel = eventViewModel
+                        eventLine.bringToFront()
+                    }
                 }
             }
             else -> {
                 holder as EventViewHolder
                 holder.run {
-                    binding.event = eventList.get(position) ?: null
-                    binding.viewModel = eventViewModel
+                    binding.apply {
+                        event = eventList.get(position) ?: null
+                        viewModel = eventViewModel
+                        eventLine.bringToFront()
+                    }
                 }
             }
         }

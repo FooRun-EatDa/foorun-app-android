@@ -7,5 +7,14 @@
     <fragment
         android:id="@+id/eventFragment"
         android:name="kr.foorun.uni_eat.feature.event.EventFragment"
-        android:label="EventFragment" />
+        android:label="EventFragment">
+        <action
+            android:id="@+id/action_eventFragment_to_eventDetailFragment"
+            app:destination="@id/eventDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/eventDetailFragment"
+        android:name="kr.foorun.uni_eat.feature.event.event_detail.EventDetailFragment"
+        android:label="EventDetailFragment" />
 </navigation>

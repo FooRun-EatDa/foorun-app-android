@@ -12,17 +12,19 @@ import kr.foorun.uni_eat.base.view.base.BaseFragment
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 import kr.foorun.uni_eat.feature.event.bottom_sheet.EventSortBottomSheetFragment
 import kr.foorun.presentation.R
+import kr.foorun.uni_eat.feature.event.event_detail.EventDetailFragment
+import kr.foorun.uni_eat.feature.map.MapFragmentDirections
 
 class EventFragment :
     BaseFragment<FragmentEventBinding, EventViewModel>(FragmentEventBinding::inflate) {
     override val fragmentViewModel: EventViewModel by viewModels({ requireActivity() })
     private var eventSortBottomSheetFragment: EventSortBottomSheetFragment? = null
+    private var eventDetailFragment : EventDetailFragment? = null
     private val eventAdapter: EventAdapter by lazy { EventAdapter(fragmentViewModel) }
 
     @SuppressLint("NotifyDataSetChanged")
     override fun observeAndInitViewModel() {
         binding {
-            //리사이클러 뷰
             eventRV.apply{
                 adapter = eventAdapter
                 layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
@@ -44,7 +46,7 @@ class EventFragment :
             }
 
             eventSRL.setOnRefreshListener {
-                //ToDo Like recyclerView update etc..
+                eventAdapter.notifyDataSetChanged()
                 binding.eventSRL.setRefreshing(false)
             }
         }
@@ -69,13 +71,20 @@ class EventFragment :
             binding.eventFilterText.text = getString(R.string.event_sort_deadline)
             //ToDo
         }
+        is EventViewModel.EventEvent.ShowEventDetail -> {
+            eventDetailFragment = EventDetailFragment()
+            log(eventDetailFragment.toString())
+            navigateToFrag(EventFragmentDirections.actionEventFragmentToEventDetailFragment())
+        }
     }
 
     private fun showBottomSheet() {
         eventSortBottomSheetFragment = EventSortBottomSheetFragment({ onBackPressed() })
         eventSortBottomSheetFragment?.show(
             requireActivity().supportFragmentManager,
-            R.id.event_sort_FL
+            R.id.event_FL
+            //현재는 바텀네비뷰 상단에 바텀시트 뜸
+            //아직까지 명확한 요구사항이 따로 없기 때문에 수정가능성 있음
         )
     }
 

@@ -30,19 +30,13 @@ class EventViewModel : BaseViewModel() {
 
     fun event(event: EventEvent) = viewModelScope.launch { _eventFlow.emit(event) }
 
-    fun showSortMethod() {
-        event(EventEvent.ShowSortMethod())
-    }
-
-    fun sortByNewst() {
-        event(EventEvent.SortByNewest())
-    }
-
-    fun sortByDeadline() {
-        event(EventEvent.SortByDeadline())
-    }
+    fun onItemClick(index : Int){ event(EventEvent.ShowEventDetail(index))}
+    fun showSortMethod() { event(EventEvent.ShowSortMethod()) }
+    fun sortByNewst() { event(EventEvent.SortByNewest()) }
+    fun sortByDeadline() { event(EventEvent.SortByDeadline()) }
 
     sealed class EventEvent {
+        data class ShowEventDetail(val index: Int) : EventEvent()
         data class ShowSortMethod(val unit: Unit? = null) : EventEvent()
         data class SortByNewest(val unit: Unit? = null) : EventEvent()
         data class SortByDeadline(val unit: Unit? = null) : EventEvent()

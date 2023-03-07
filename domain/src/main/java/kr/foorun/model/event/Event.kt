@@ -5,5 +5,5 @@ data class Event(
     val image : String,
     val startDate : String,
     val endDate : String,
-    val viewType : Int
+    val index : Int
 )
