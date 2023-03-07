@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="kr.foorun.uni_eat.feature.event.EventViewModel" />
@@ -14,76 +15,83 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".feature.event.EventFragment">
+            android:scrollbars="none"
+            android:fillViewport="true">
 
-            <kr.foorun.uni_eat.base.view.base.BaseTextView
-                android:id="@+id/typo_TV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="33dp"
-                android:layout_marginTop="75dp"
-                android:layout_marginEnd="192dp"
-                android:layout_marginBottom="632dp"
-                android:letterSpacing="-0.05"
-                android:text="@string/event_typo"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <LinearLayout
-                android:id="@+id/event_filter_LL"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="125dp"
-                android:layout_marginEnd="21.22dp"
-                android:onClick="@{()->viewModel.showSortMethod()}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/typo_TV"
-                app:layout_constraintTop_toBottomOf="@id/typo_TV">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".feature.event.EventFragment">
 
                 <kr.foorun.uni_eat.base.view.base.BaseTextView
-                    android:id="@+id/event_filter_text"
+                    android:id="@+id/typo_TV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/event_sort_newest"
-                    android:textColor="@color/smallTextColor"
-                    android:textSize="13sp" />
+                    android:layout_marginStart="33dp"
+                    android:layout_marginTop="75dp"
+                    android:layout_marginEnd="192dp"
+                    android:layout_marginBottom="632dp"
+                    android:letterSpacing="-0.05"
+                    android:text="@string/event_typo"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                <kr.foorun.uni_eat.base.view.base.BaseImageView
+                <LinearLayout
+                    android:id="@+id/event_filter_LL"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="3.72dp"
-                    android:src="@drawable/arrow_down" />
+                    android:layout_marginStart="308dp"
+                    android:layout_marginTop="172dp"
+                    android:layout_marginEnd="33dp"
+                    android:layout_marginBottom="624dp"
+                    android:onClick="@{()->viewModel.showSortMethod()}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-            </LinearLayout>
+                    <kr.foorun.uni_eat.base.view.base.BaseTextView
+                        android:id="@+id/event_filter_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/event_sort_newest"
+                        android:textColor="@color/smallTextColor"
+                        android:textSize="13sp" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/event_RV"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginStart="14dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="13dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/event_filter_LL" />
+                    <kr.foorun.uni_eat.base.view.base.BaseImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="3.72dp"
+                        android:src="@drawable/arrow_down" />
 
-            <FrameLayout
-                android:id="@+id/event_sort_FL"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/event_RV"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="13dp"
+                    android:background="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/event_filter_LL" />
+
+                <FrameLayout
+                    android:id="@+id/event_sort_FL"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

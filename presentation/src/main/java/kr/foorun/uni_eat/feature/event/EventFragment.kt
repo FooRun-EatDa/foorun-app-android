@@ -28,7 +28,6 @@ class EventFragment :
                 layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
                 addItemDecoration(EventDecoration(requireContext()))
             }
-            //Todo 리사이클러뷰 아이템 데코레이션 추가
 
             viewModel = fragmentViewModel.apply {
 
@@ -63,9 +62,11 @@ class EventFragment :
     private fun handleEvent(event: EventViewModel.EventEvent) = when (event) {
         is EventViewModel.EventEvent.ShowSortMethod -> showBottomSheet()
         is EventViewModel.EventEvent.SortByNewest -> {
+            binding.eventFilterText.text = getString(R.string.event_sort_newest)
             //ToDo
         }
         is EventViewModel.EventEvent.SortByDeadline -> {
+            binding.eventFilterText.text = getString(R.string.event_sort_deadline)
             //ToDo
         }
     }

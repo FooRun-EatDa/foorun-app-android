@@ -17,12 +17,13 @@ class EventViewModel : BaseViewModel() {
     val events = _events.asLiveData()
 
     fun loadEvents() = viewModelScope.launch {
-        _events.emit(List(10) {
+        _events.emit(List(10) {index ->
             Event(
                 "이벤트명",
                 "https://picsum.photos/201",
                 "12.12.12",
                 "12.12.12",
+                index
             )
         })
     }
