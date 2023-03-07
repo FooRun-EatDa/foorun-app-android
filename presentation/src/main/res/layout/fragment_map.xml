@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
@@ -89,9 +90,10 @@
                 app:fabCustomSize="60dp"
                 android:onClick="@{() -> viewModel.clickedLocateMap()}"
                 android:layout_marginEnd="32dp"
-                android:layout_marginBottom="60dp"
+                android:layout_marginBottom="@dimen/floating_button_bottom_margin"
                 android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"/>
+                android:layout_alignParentEnd="true"
+                tools:ignore="ContentDescription" />
         </RelativeLayout>
 
         <FrameLayout

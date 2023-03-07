@@ -28,5 +28,8 @@
 
     <dimen name="text_size_large_23">23sp</dimen>
     <dimen name="bottom_option_height_84">84dp</dimen>
+    <dimen name="tab_text_15">15sp</dimen>
+
+    <dimen name="floating_button_bottom_margin">20dp</dimen>
 
 </resources>

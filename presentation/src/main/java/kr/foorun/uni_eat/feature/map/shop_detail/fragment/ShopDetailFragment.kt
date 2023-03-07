@@ -55,7 +55,7 @@ class ShopDetailFragment : BaseFragment<FragmentShopDetailBinding, ShopDetailVie
             }
 
             repeatOnStarted {
-                viewEvent.collect{ findNavController().popBackStack() }
+                viewEvent.collect{ popUpBackStack() }
             }
         }
     }

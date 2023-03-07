@@ -6,9 +6,13 @@
         <variable
             name="article"
             type="kr.foorun.model.article.Article" />
+        <variable
+            name="viewModel"
+            type="kr.foorun.uni_eat.feature.map.shop_detail.article.ShopDetailArticleViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:onClick="@{() -> viewModel.articleClick()}"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

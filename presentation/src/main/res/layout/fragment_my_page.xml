@@ -10,7 +10,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="kr.foorun.uni_eat.feature.my.MyFragment">
+        tools:context="kr.foorun.uni_eat.feature.mypage.MyPageFragment">
 
         <!-- TODO: Update blank fragment layout -->
         <TextView

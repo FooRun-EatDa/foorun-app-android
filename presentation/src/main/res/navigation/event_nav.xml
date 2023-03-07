@@ -2,10 +2,10 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/event_nav"
-    app:startDestination="@id/eventFragment">
+    app:startDestination="@id/event_fragment">
 
     <fragment
-        android:id="@+id/eventFragment"
+        android:id="@+id/event_fragment"
         android:name="kr.foorun.uni_eat.feature.event.EventFragment"
         android:label="EventFragment" />
 </navigation>

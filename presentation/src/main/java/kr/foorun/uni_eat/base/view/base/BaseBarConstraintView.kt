@@ -9,10 +9,15 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
 import kr.foorun.presentation.R
 import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
+import kr.foorun.uni_eat.feature.article.entire.ArticleEntireViewModel
 
 class BaseBarConstraintView : ConstraintLayout{
 
-//    private lateinit var binding : BaseBarConstraintBinding
+    lateinit var frontImage : BaseImageView
+    lateinit var rearImage : BaseImageView
+    lateinit var barImage : BaseImageView
+    lateinit var barTitle : BaseTextView
+    lateinit var barConstraint : ConstraintLayout
 
     constructor(context: Context) : super(context) {
         initView()
@@ -54,11 +59,11 @@ class BaseBarConstraintView : ConstraintLayout{
 
         val barColor = typedArray.getResourceId(R.styleable.BaseBarConstraintView_barColor,R.color.white)
 
-        val frontImage = findViewById<BaseImageView>(R.id.front_image)
-        val rearImage = findViewById<BaseImageView>(R.id.rear_image)
-        val barImage = findViewById<BaseImageView>(R.id.bar_image)
-        val barTitle = findViewById<BaseTextView>(R.id.bar_title)
-        val barConstraint = findViewById<ConstraintLayout>(R.id.bar_constraint)
+        frontImage = findViewById<BaseImageView>(R.id.front_image)
+        rearImage = findViewById<BaseImageView>(R.id.rear_image)
+        barImage = findViewById<BaseImageView>(R.id.bar_image)
+        barTitle = findViewById<BaseTextView>(R.id.bar_title)
+        barConstraint = findViewById<ConstraintLayout>(R.id.bar_constraint)
 
         if(frontVisible){
             frontImage.setBackgroundResource(frontSrc)
@@ -85,14 +90,20 @@ class BaseBarConstraintView : ConstraintLayout{
         typedArray.recycle()
     }
 
+    private fun setRearOnClick(action: () -> Unit) = rearImage.setOnClickListener { action() }
+    private fun setFrontOnClick(action: () -> Unit) = frontImage.setOnClickListener { action() }
+    private fun setTitleImageOnClick(action: () -> Unit) = barImage.setOnClickListener { action() }
+
     companion object {
+
         @JvmStatic
         @BindingAdapter("setViewModel")
-        fun setViewModel(view: BaseBarConstraintView, baseViewModel: BaseViewModel) {
-//            view.binding.run {
-//                viewModel = baseViewModel
-//                frontImage.setOnClickListener{ baseViewModel.backClicked() }
-//            }
+        fun setRearOnClick(view: BaseBarConstraintView, vm: ArticleEntireViewModel) {
+            view.run {
+                setRearOnClick { vm.searchClick() }
+                setFrontOnClick { vm.backClicked() }
+                setTitleImageOnClick {  }
+            }
         }
     }
 }

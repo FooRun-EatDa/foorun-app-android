@@ -15,7 +15,8 @@ class ItemArticleThumbnailViewHolder(val binding: ItemArticleThumbnailBinding) :
 
 class ShopDetailArticleAdapter (
     private val itemHeight: Int = ITEM_HEIGHT,
-    private val isPager: Boolean = false
+    private val isPager: Boolean = false,
+    private val adapterViewModel: ShopDetailArticleViewModel? = null
 ) : ListAdapter<Article, ItemArticleThumbnailViewHolder>(object : DiffUtil.ItemCallback<Article>(){
     override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
         return oldItem == newItem
@@ -41,6 +42,7 @@ class ShopDetailArticleAdapter (
 
         holder.run {
             binding.article = getItem(position)
+            adapterViewModel?.let { binding.viewModel = adapterViewModel }
         }
     }
 }

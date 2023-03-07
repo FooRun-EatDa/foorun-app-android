@@ -55,6 +55,6 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding,ArticleViewModel>(Fr
 
     private fun handleAdapterEvent(event: ArticleAdapterViewModel.ArticleEvent) = when(event) {
         is ArticleAdapterViewModel.ArticleEvent.ArticleClick -> navigateToFrag(ArticleFragmentDirections.actionArticleFragmentToArticleDetailFragment())
-        is ArticleAdapterViewModel.ArticleEvent.MoreClick -> {}
+        is ArticleAdapterViewModel.ArticleEvent.MoreClick -> navigateToFrag(ArticleFragmentDirections.actionArticleFragmentToArticleEntireFragment())
     }
 }

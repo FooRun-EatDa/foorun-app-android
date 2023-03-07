@@ -3,6 +3,7 @@ package kr.foorun.const
 class Constant {
 
     companion object{
+        const val POSITION = "position"
         const val ITEM_HEIGHT = 238
         const val ITEM_HEIGHT_LARGE = 471
         const val ARTICLE_PREVIEW_MARGIN = 14

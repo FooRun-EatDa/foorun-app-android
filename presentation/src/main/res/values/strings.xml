@@ -30,6 +30,9 @@
     <string name="my">마이</string>
     <string name="map">지도</string>
 
+    <string name="latest">최신</string>
+    <string name="recommend">추천</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="articleExplain">대학생 에디터들이 작성한\n찐 맛집 아티클을 확인해보세요!</string>
     <string name="test_content">Lorem ipsum dolor sit amet consectetur. Phasellus vel ultricies sed leo. Gravida vestibulum volutpat enim fringilla id enim vitae. Fermentum adipiscing quis facilisis morbi tristique. Neque viverra in non pretium diam netus. Lorem ipsum dolor sit amet consectetur. Phasellus vel ultricies sed leo. Gravida vestibulum volutpat enim fringilla id enim vitae. Fermentum adipiscing quis facilisis morbi tristique. Neque viverra in non pretium diam netus.</string>
