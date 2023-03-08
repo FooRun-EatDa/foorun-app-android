@@ -1,15 +1,12 @@
 package kr.foorun.uni_eat.feature.event
 
 import android.content.Context
-import android.graphics.BitmapFactory
-import android.graphics.Canvas
 import android.graphics.Rect
 import android.util.TypedValue
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
 class EventDecoration(val context: Context) : RecyclerView.ItemDecoration() {
-    
 
     override fun getItemOffsets(
         outRect: Rect,

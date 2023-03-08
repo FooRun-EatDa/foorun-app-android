@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import kr.foorun.presentation.databinding.FragmentEventBinding
 import kr.foorun.uni_eat.base.view.base.BaseFragment
@@ -13,7 +12,6 @@ import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 import kr.foorun.uni_eat.feature.event.bottom_sheet.EventSortBottomSheetFragment
 import kr.foorun.presentation.R
 import kr.foorun.uni_eat.feature.event.event_detail.EventDetailFragment
-import kr.foorun.uni_eat.feature.map.MapFragmentDirections
 
 class EventFragment :
     BaseFragment<FragmentEventBinding, EventViewModel>(FragmentEventBinding::inflate) {
@@ -73,7 +71,6 @@ class EventFragment :
         }
         is EventViewModel.EventEvent.ShowEventDetail -> {
             eventDetailFragment = EventDetailFragment()
-            log(eventDetailFragment.toString())
             navigateToFrag(EventFragmentDirections.actionEventFragmentToEventDetailFragment())
         }
     }
@@ -92,6 +89,4 @@ class EventFragment :
         if (eventSortBottomSheetFragment != null && eventSortBottomSheetFragment!!.handleBackKeyEvent())
             eventSortBottomSheetFragment?.hide()
     }
-
-
 }

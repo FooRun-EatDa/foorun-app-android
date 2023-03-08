@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="event"
             type="kr.foorun.data.event.Event" />
@@ -28,33 +29,35 @@
             android:id="@+id/event_title_TV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="57dp"
             android:text="@{event.name}"
             android:textColor="@color/white"
-            android:textSize="15sp"
-            android:layout_gravity="bottom"/>
+            android:textSize="15sp" />
 
         <kr.foorun.uni_eat.base.view.base.BaseTextView
             android:id="@+id/event_duration_TV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="19dp"
+            android:letterSpacing="-0.05"
             android:text="@{`이벤트 기간 `+event.startDate+` - `+event.endDate}"
             android:textColor="@color/white"
-            android:textSize="11sp"
-            android:layout_gravity="bottom"/>
+            android:textSize="11sp" />
 
         <kr.foorun.uni_eat.base.view.base.BaseImageView
             android:id="@+id/event_line"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0.5dp"
             android:layout_marginStart="14dp"
             android:layout_marginTop="193dp"
             android:layout_marginEnd="18dp"
             android:layout_marginBottom="45dp"
-            android:src="@drawable/white_line"/>
+            android:scaleType="fitXY"
+            android:src="@drawable/white_line" />
 
     </FrameLayout>
 </layout>

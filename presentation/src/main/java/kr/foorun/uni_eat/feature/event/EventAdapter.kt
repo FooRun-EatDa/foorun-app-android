@@ -3,7 +3,6 @@ package kr.foorun.uni_eat.feature.event
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.coroutines.NonDisposableHandle.parent
 import kr.foorun.data.event.Event
 import kr.foorun.presentation.databinding.ItemEvent2Binding
 import kr.foorun.presentation.databinding.ItemEventBinding
