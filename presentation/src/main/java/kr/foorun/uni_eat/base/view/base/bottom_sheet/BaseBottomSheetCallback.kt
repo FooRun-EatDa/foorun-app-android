@@ -44,16 +44,22 @@ class BaseBottomSheetCallback(
 
     override fun onSlide(bottomSheet: View, slideOffset: Float) {
         //슬라이드 될때 slideOffset => hide -1.0 ~ collapsed 0.0 ~ expended 1.0
-        setRootBackgroundColor(slideOffset)
+//        setRootBackgroundColor(slideOffset) //to make dark background of root-view
         setCollapseVisible(slideOffset)
     }
 
+    /**
+     *  make dark or bright background of root-view base on bottomSheet's state
+     */
     private fun setRootBackgroundColor(slideOffset: Float) {
         val isCollapsed = slideOffset == (-1.0).toFloat()
         if (isCollapsed) setBlur(false)
         else setBlur(true)
     }
 
+    /**
+     *  to make dark background of root-view
+     */
     private fun setBlur(toBlur: Boolean){
         if(toBlur && expandView == null){
             val blur = (COLOR_ALPHA_RATIO * 0.48).toInt()
