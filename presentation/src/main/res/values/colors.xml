@@ -21,5 +21,6 @@
     <color name="gray4">#595959</color>
     <color name="search_tag_non">#E5E4EC</color>
     <color name="search_tag_pick">#201F31</color>
+    <color name="navy">#2D2C3C</color>
 
 </resources>

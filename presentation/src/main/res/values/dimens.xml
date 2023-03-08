@@ -39,5 +39,6 @@
 
     <dimen name="tag_item_margin_right_11">11dp</dimen>
     <dimen name="tag_item_margin_bottom_16">16dp</dimen>
+    <dimen name="home_margin_start_25">25dp</dimen>
 
 </resources>
