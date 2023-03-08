@@ -1,22 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="kr.foorun.uni_eat.feature.mypage.MyPageViewModel" />
     </data>
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="kr.foorun.uni_eat.feature.mypage.MyPageFragment">
+        android:background="@color/invisible">
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+        <kr.foorun.uni_eat.base.view.base.BaseTextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="35dp"
+            android:gravity="start"
+            android:text="@string/my_page"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </FrameLayout>
+
+        <kr.foorun.uni_eat.base.view.base.BaseImageView
+            android:id="@+id/my_page_more_button"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="18dp"
+            android:onClick="@{() -> viewModel.clickedMyPageMore()}"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/my_page_dot"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/toolbar_title" />
+
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="93dp"
+            android:layout_height="93dp"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="23dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_title">
+
+            <kr.foorun.uni_eat.base.view.base.BaseImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/my_page_base_profile" />
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:visibility="gone" />
+
+            <kr.foorun.uni_eat.base.view.base.BaseImageView
+                android:id="@+id/empty_profile_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/my_page_base_empty_profile"
+                android:visibility="visible" />
+        </FrameLayout>
+
+        <kr.foorun.uni_eat.base.view.base.BaseTextView
+            android:id="@+id/name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:text="@string/my_profile"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/frameLayout"
+            app:layout_constraintTop_toTopOf="@+id/frameLayout" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/school_certification_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:onClick="@{() -> viewModel.clickedSchoolCertification()}"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toEndOf="@+id/frameLayout"
+            app:layout_constraintTop_toBottomOf="@+id/name_text">
+
+            <kr.foorun.uni_eat.base.view.base.BaseTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="13dp"
+                android:text="@string/school_certification"
+                android:textSize="15sp" />
+
+            <kr.foorun.uni_eat.base.view.base.BaseImageView
+                android:id="@+id/right_arrow"
+                android:layout_width="5dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/right_arrow" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <kr.foorun.uni_eat.base.view.base.BaseTextView
+            android:id="@+id/my_write_article"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="43dp"
+            android:text="@string/my_write_article"
+            android:textSize="19sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+
+        <kr.foorun.uni_eat.base.view.base.BaseImageView
+            android:id="@+id/empty_article"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/empty_article"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <kr.foorun.uni_eat.base.view.base.BaseTextView
+            android:id="@+id/empty_article_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            android:text="@string/empty_article"
+            android:textAlignment="center"
+            android:textColor="#595959"
+            android:textSize="19sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/empty_article" />
+
+        <kr.foorun.uni_eat.base.view.base.BaseImageView
+            android:id="@+id/write_article_button"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:scaleType="center"
+            android:paddingTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:onClick="@{() -> viewModel.clickedWriteArticle()}"
+            android:layout_marginBottom="113dp"
+            android:src="@drawable/write_article"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

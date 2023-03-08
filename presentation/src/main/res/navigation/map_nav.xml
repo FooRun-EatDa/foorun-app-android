@@ -26,4 +26,8 @@
     <include app:graph="@navigation/event_nav" />
     <include app:graph="@navigation/my_nav" />
 
+    <fragment
+        android:id="@+id/myPageFragment"
+        android:name="kr.foorun.uni_eat.feature.mypage.MyPageFragment"
+        android:label="MyPageFragment"/>
 </navigation>
