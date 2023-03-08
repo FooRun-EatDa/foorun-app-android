@@ -10,6 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kr.foorun.presentation.R
 import kr.foorun.presentation.databinding.FragmentArticleSearchBinding
 import kr.foorun.uni_eat.base.view.base.BaseFragment
+import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 
 @AndroidEntryPoint
 class ArticleSearchFragment: BaseFragment<FragmentArticleSearchBinding, ArticleSearchViewModel>(FragmentArticleSearchBinding::inflate){
@@ -17,9 +18,8 @@ class ArticleSearchFragment: BaseFragment<FragmentArticleSearchBinding, ArticleS
 
     override fun observeAndInitViewModel() = binding {
         viewModel = fragmentViewModel.apply {
-            searchWord.observe(this@ArticleSearchFragment){
-
-            }
+            searchWord.observe(this@ArticleSearchFragment){}
+            repeatOnStarted { viewEvent.collect{ popUpBackStack() } }
         }
     }
 

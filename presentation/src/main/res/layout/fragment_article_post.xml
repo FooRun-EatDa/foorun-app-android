@@ -1,13 +1,194 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="kr.foorun.uni_eat.feature.article.post.ArticlePostFragment">
+<?xml version="1.0" encoding="utf-8"?>
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="kr.foorun.uni_eat.feature.article.post.ArticlePostViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <kr.foorun.uni_eat.base.view.base.BaseBarConstraintView
+            android:id="@+id/bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:frontVisible="true"
+            app:setViewModel="@{viewModel}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:titleText="@string/article_post"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="36dp"
+            app:layout_constraintBottom_toTopOf="@id/bottom_constraint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bar"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/radius_white_6"
+                android:layout_marginStart="@dimen/margin_21"
+                android:layout_marginEnd="@dimen/margin_21">
+
+                <kr.foorun.uni_eat.base.view.base.BaseImageView
+                    android:id="@+id/add_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/add_image"
+                    android:layout_marginTop="116dp"
+                    android:layout_marginStart="125dp"
+                    android:layout_marginEnd="125dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <kr.foorun.uni_eat.base.view.base.BaseTextView
+                    android:id="@+id/add_image_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_image_text"
+                    android:textColor="@color/gray4"
+                    android:textSize="@dimen/text_size_small_12"
+                    android:layout_marginTop="@dimen/margin_30"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/add_image"/>
+
+                <kr.foorun.uni_eat.base.view.base.BaseEditTextView
+                    android:id="@+id/title_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_large_25"
+                    android:hint="@string/title"
+                    android:textStyle="bold"
+                    android:textColor="@color/gray3"
+                    android:background="@color/invisible"
+                    android:layout_marginTop="85.77dp"
+                    android:layout_marginStart="@dimen/margin_21"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/add_image_text"/>
+
+                <kr.foorun.uni_eat.base.view.base.BaseImageView
+                    android:id="@+id/add_address_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/add_address"
+                    android:layout_marginStart="@dimen/margin_21"
+                    android:layout_marginTop="33dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/title_edit"/>
+
+                <kr.foorun.uni_eat.base.view.base.BaseTextView
+                    android:id="@+id/add_address_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_address_text"
+                    android:textSize="@dimen/text_size_small_12"
+                    android:layout_marginStart="6.38dp"
+                    android:layout_marginTop="34dp"
+                    app:layout_constraintStart_toEndOf="@id/add_address_image"
+                    app:layout_constraintTop_toBottomOf="@id/title_edit"/>
+
+                <kr.foorun.uni_eat.base.view.base.BaseImageView
+                    android:id="@+id/horizon_line_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/horizen_line"
+                    android:layout_marginTop="@dimen/margin_11"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/add_address_text"/>
+
+                <kr.foorun.uni_eat.base.view.base.BaseTextView
+                    android:id="@+id/add_address_explain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/article_tag_small_13"
+                    android:text="@string/add_address_explain"
+                    android:layout_marginStart="@dimen/margin_21"
+                    android:layout_marginTop="7dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/horizon_line_view"/>
+
+                <kr.foorun.uni_eat.base.view.base.BaseEditTextLayout
+                    android:id="@+id/content_edit"
+                    android:background="@color/invisible"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/add_content_hint"
+                    android:textColor="@color/gray3"
+                    android:textSize="@dimen/text_size_large_15"
+                    android:layout_marginStart="@dimen/margin_21"
+                    android:layout_marginEnd="@dimen/margin_21"
+                    android:layout_marginTop="17dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/add_address_explain"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <kr.foorun.uni_eat.base.view.base.BaseTextView
+                    android:id="@+id/hash_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hashTag"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_large_21"
+                    android:layout_marginStart="@dimen/margin_21"
+                    android:layout_marginTop="200dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/content_edit"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/tag_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_21"
+                    android:layout_marginEnd="@dimen/margin_21"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="@dimen/margin_21"
+                    android:overScrollMode="never"
+                    app:spanCount="4"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/hash_text"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+          </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bottom_constraint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="47dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <kr.foorun.uni_eat.base.view.base.BaseImageView
+                android:id="@+id/done_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/button_done"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </layout>

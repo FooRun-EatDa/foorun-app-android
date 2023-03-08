@@ -74,6 +74,7 @@
                 app:borderWidth="0dp"
                 app:maxImageSize="36dp"
                 app:fabCustomSize="60dp"
+                android:onClick="@{() -> viewModel.postClick()}"
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="@dimen/floating_button_bottom_margin"
                 app:layout_constraintBottom_toBottomOf="parent"

@@ -121,8 +121,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent" />
-
-
                 </kr.foorun.uni_eat.base.view.base.BaseArticleContentConstraintView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>

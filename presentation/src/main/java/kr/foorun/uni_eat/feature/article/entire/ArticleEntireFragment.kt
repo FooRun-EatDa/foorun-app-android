@@ -42,6 +42,7 @@ class ArticleEntireFragment : BaseFragment<FragmentArticleEntireBinding, Article
 
     private fun handleEvent(event: ArticleEntireViewModel.EntireEvent) = when(event){
         is ArticleEntireViewModel.EntireEvent.SearchClick -> navigateToFrag(ArticleEntireFragmentDirections.actionArticleEntireFragmentToArticleSearchFragment())
+        is ArticleEntireViewModel.EntireEvent.PostClick -> navigateToFrag(ArticleEntireFragmentDirections.actionArticleEntireFragmentToArticlePostFragment())
     }
 
     private fun getTitle(position: Int) = when(position){

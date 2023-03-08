@@ -15,6 +15,7 @@ import kr.foorun.model.tag.SearchTag
 import kr.foorun.presentation.R
 import kr.foorun.presentation.databinding.FragmentMapBinding
 import kr.foorun.uni_eat.base.view.base.BaseFragment
+import kr.foorun.uni_eat.base.view.base.recycler.decorator.TagDecorator
 import kr.foorun.uni_eat.base.viewmodel.nonEmptyObserver
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 import kr.foorun.uni_eat.feature.map.bottom_sheet.fragment.search.SearchBottomSheetFragment
@@ -43,6 +44,7 @@ class MapFragment
         binding {
             mainSearchConstraint.bringToFront() // to put the view above mapView
             searchTagRecycler.adapter = searchTagAdapter
+            searchTagRecycler.addItemDecoration(TagDecorator())
         }
     }
 

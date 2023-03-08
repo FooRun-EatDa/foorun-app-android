@@ -10,6 +10,7 @@ import androidx.databinding.BindingAdapter
 import kr.foorun.presentation.R
 import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
 import kr.foorun.uni_eat.feature.article.entire.ArticleEntireViewModel
+import kr.foorun.uni_eat.feature.article.post.ArticlePostViewModel
 
 class BaseBarConstraintView : ConstraintLayout{
 
@@ -98,9 +99,12 @@ class BaseBarConstraintView : ConstraintLayout{
 
         @JvmStatic
         @BindingAdapter("setViewModel")
-        fun setRearOnClick(view: BaseBarConstraintView, vm: ArticleEntireViewModel) {
+        fun setOnClicks(view: BaseBarConstraintView, vm: BaseViewModel) {
             view.run {
-                setRearOnClick { vm.searchClick() }
+                when(vm){
+                    is ArticleEntireViewModel -> setRearOnClick { vm.searchClick() }
+                    is ArticlePostViewModel -> {}
+                }
                 setFrontOnClick { vm.backClicked() }
                 setTitleImageOnClick {  }
             }

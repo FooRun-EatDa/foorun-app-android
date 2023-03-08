@@ -24,8 +24,7 @@ class ShopBottomSheetFragment(
 
     @SuppressLint("NotifyDataSetChanged")
     override fun observeAndInitViewModel() {
-        collapseBinding.shopImagesRecycler.adapter = shopAdapter
-
+        setRecycler()
         collapseBinding.viewModel = collapseViewModel.apply {
 
             loadArticles()
@@ -37,6 +36,10 @@ class ShopBottomSheetFragment(
 
             repeatOnStarted { eventFlow.collect{ handleEvent(it)} }
         }
+    }
+
+    private fun setRecycler() = binding {
+        collapseBinding.shopImagesRecycler.adapter = shopAdapter
     }
 
     private fun handleEvent(event: ShopCollapseViewModel.ShopCollapsedEvent) = when (event) {

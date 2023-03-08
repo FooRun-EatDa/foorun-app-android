@@ -1,4 +1,4 @@
-package kr.foorun.uni_eat.base.view.base.recycler.grid
+package kr.foorun.uni_eat.base.view.base.recycler.decorator.grid
 
 import android.graphics.Rect
 import android.view.View

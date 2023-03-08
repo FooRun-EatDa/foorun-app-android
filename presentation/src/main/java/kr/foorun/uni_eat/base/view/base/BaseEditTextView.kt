@@ -21,17 +21,18 @@ class BaseEditTextView : AppCompatEditText {
     @SuppressLint("Recycle")
     fun init(attrs: AttributeSet?) {
         val attributeArray = context.obtainStyledAttributes(attrs, R.styleable.BaseEditTextView)
+
         val c = attributeArray.getColor(R.styleable.BaseTextView_android_textColor,
             ContextCompat.getColor(context,R.color.large_text))
         setTextColor(c)
 
-        val inputType = attributeArray.getInt(R.styleable.BaseEditTextLayout_android_inputType, EditorInfo.TYPE_NULL)
+        val inputType = attributeArray.getInt(R.styleable.BaseEditTextView_android_inputType, EditorInfo.TYPE_NULL)
 
         if(inputType != EditorInfo.TYPE_NULL) {
             setInputType(inputType)
         }
 
-        val hint = attributeArray.getString(R.styleable.BaseEditTextLayout_android_hint) ?: ""
+        val hint = attributeArray.getString(R.styleable.BaseEditTextView_android_hint) ?: ""
         setHint(hint)
 //        val font = FontEnum.values()[(attributeArray.getString(R.styleable.BaseTextView_textFont) ?: "0").toInt()].name
 //
