@@ -1,11 +1,6 @@
 package kr.foorun.uni_eat.feature.event.bottom_sheet
 
 import android.graphics.Typeface
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.annotation.IdRes
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentManager
@@ -13,7 +8,6 @@ import androidx.fragment.app.viewModels
 import kr.foorun.presentation.R
 import kr.foorun.presentation.databinding.FragmentEventSortBottomSheetBinding
 import kr.foorun.uni_eat.base.view.base.bottom_sheet.BaseBottomSheetFragment
-import kr.foorun.uni_eat.base.view.binding.BindingAdapter.setTextColor
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 import kr.foorun.uni_eat.feature.event.EventViewModel
 

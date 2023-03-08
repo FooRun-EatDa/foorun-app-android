@@ -19,7 +19,7 @@ class EventDetailFragment : BaseFragment<FragmentEventDetailBinding, EventDetail
 
     override fun observeAndInitViewModel() {
         binding.apply{
-            eventDetailTV.text = eventViewModel.clickedIndex.toString() + "번째 이벤트 입니다."
+            eventDetailTV.text = eventViewModel.clickedIndex.value.toString()
 
             viewModel = fragmentViewModel.apply{
                 repeatOnStarted {
