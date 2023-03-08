@@ -10,8 +10,7 @@ import kr.foorun.uni_eat.base.view.base.BaseFragment
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 
 @AndroidEntryPoint
-class MyPageFragment :
-    BaseFragment<FragmentMyPageBinding, MyPageViewModel>(FragmentMyPageBinding::inflate) {
+class MyPageFragment: BaseFragment<FragmentMyPageBinding, MyPageViewModel>(FragmentMyPageBinding::inflate) {
     override val fragmentViewModel: MyPageViewModel by viewModels()
 
     override fun observeAndInitViewModel() = binding {
@@ -20,26 +19,13 @@ class MyPageFragment :
         }
     }
 
-    override fun afterBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ) {
-        binding {
-
-        }
+    override fun afterBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = binding{
     }
 
-    private fun handleEvent(event: MyPageViewModel.MyPageEvent) = when (event) {
-        is MyPageViewModel.MyPageEvent.SchoolCertification -> {
-            //todo SchoolCertification
-        }
-        is MyPageViewModel.MyPageEvent.MyPageMore -> {
-            //todo MyPageMore
-        }
-        is MyPageViewModel.MyPageEvent.WriteArticle -> {
-            //todo WriteArticle
-        }
+    private fun handleEvent(event: MyPageViewModel.MyPageEvent) = when(event) {
+        is MyPageViewModel.MyPageEvent.SchoolCertification -> {log("1")}
+        is MyPageViewModel.MyPageEvent.MyPageMore -> log("2")
+        is MyPageViewModel.MyPageEvent.WriteArticle -> {log("3")}
     }
 
 }

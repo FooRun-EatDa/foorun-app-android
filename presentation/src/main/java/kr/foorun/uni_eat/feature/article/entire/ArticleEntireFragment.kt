@@ -40,7 +40,7 @@ class ArticleEntireFragment : BaseFragment<FragmentArticleEntireBinding, Article
         }.attach()
     }
 
-    private fun handleEvent(event: ArticleEntireViewModel.EntireEvent) = when(event){
+    private fun handleEvent(event: ArticleEntireViewModel.EntireEvent) = when(event) {
         is ArticleEntireViewModel.EntireEvent.SearchClick -> navigateToFrag(ArticleEntireFragmentDirections.actionArticleEntireFragmentToArticleSearchFragment())
         is ArticleEntireViewModel.EntireEvent.PostClick -> navigateToFrag(ArticleEntireFragmentDirections.actionArticleEntireFragmentToArticlePostFragment())
     }

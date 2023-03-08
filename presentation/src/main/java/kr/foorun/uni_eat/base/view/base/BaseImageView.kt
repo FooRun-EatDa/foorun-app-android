@@ -39,6 +39,15 @@ class BaseImageView : AppCompatImageView {
             .into(this)
     }
 
+    fun glide(image: Int) {
+        Glide.with(context)
+            .load(image)
+            .fitCenter()
+//                .placeholder() //todo add preImage before loaded image
+            .error(R.drawable.non_search_image) //todo add an image in case of an error
+            .into(this)
+    }
+
     companion object {
         @JvmStatic
         @BindingAdapter("glide")

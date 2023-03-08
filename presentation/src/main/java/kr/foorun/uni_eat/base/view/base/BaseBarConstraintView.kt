@@ -3,14 +3,18 @@ package kr.foorun.uni_eat.base.view.base
 import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.FrameLayout
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
 import kr.foorun.presentation.R
 import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
 import kr.foorun.uni_eat.feature.article.entire.ArticleEntireViewModel
 import kr.foorun.uni_eat.feature.article.post.ArticlePostViewModel
+import kr.foorun.uni_eat.feature.mypage.MyPageViewModel
+
 
 class BaseBarConstraintView : ConstraintLayout{
 
@@ -19,6 +23,9 @@ class BaseBarConstraintView : ConstraintLayout{
     lateinit var barImage : BaseImageView
     lateinit var barTitle : BaseTextView
     lateinit var barConstraint : ConstraintLayout
+    lateinit var frontFrame: FrameLayout
+    lateinit var rearFrame: FrameLayout
+    lateinit var barFrame: FrameLayout
 
     constructor(context: Context) : super(context) {
         initView()
@@ -60,6 +67,12 @@ class BaseBarConstraintView : ConstraintLayout{
 
         val barColor = typedArray.getResourceId(R.styleable.BaseBarConstraintView_barColor,R.color.white)
 
+        val outValue = TypedValue()
+        context.theme.resolveAttribute(android.R.attr.selectableItemBackground, outValue, true)
+
+        frontFrame = findViewById(R.id.front_image_frame)
+        rearFrame = findViewById(R.id.rear_image_frame)
+        barFrame = findViewById(R.id.bar_image_frame)
         frontImage = findViewById<BaseImageView>(R.id.front_image)
         rearImage = findViewById<BaseImageView>(R.id.rear_image)
         barImage = findViewById<BaseImageView>(R.id.bar_image)
@@ -68,18 +81,18 @@ class BaseBarConstraintView : ConstraintLayout{
 
         if(frontVisible){
             frontImage.setBackgroundResource(frontSrc)
-            frontImage.visibility = View.VISIBLE
-        } else frontImage.visibility = View.GONE
+            frontFrame.visibility = View.VISIBLE
+        } else frontFrame.visibility = View.GONE
 
         if(rearVisible) {
             rearImage.setBackgroundResource(rearSrc)
-            rearImage.visibility = View.VISIBLE
-        } else rearImage.visibility = View.GONE
+            rearFrame.visibility = View.VISIBLE
+        } else rearFrame.visibility = View.GONE
 
         if(titleImageVisible){
             barImage.setBackgroundResource(titleSrc)
-            barImage.visibility = View.VISIBLE
-        } else barImage.visibility = View.GONE
+            barFrame.visibility = View.VISIBLE
+        } else barFrame.visibility = View.GONE
 
         if(titleTextVisible){
             barTitle.text = titleText
@@ -91,8 +104,8 @@ class BaseBarConstraintView : ConstraintLayout{
         typedArray.recycle()
     }
 
-    private fun setRearOnClick(action: () -> Unit) = rearImage.setOnClickListener { action() }
-    private fun setFrontOnClick(action: () -> Unit) = frontImage.setOnClickListener { action() }
+    private fun setRearOnClick(action: () -> Unit) = rearFrame.setOnClickListener { action() }
+    private fun setFrontOnClick(action: () -> Unit) = frontFrame.setOnClickListener { action() }
     private fun setTitleImageOnClick(action: () -> Unit) = barImage.setOnClickListener { action() }
 
     companion object {
@@ -104,6 +117,7 @@ class BaseBarConstraintView : ConstraintLayout{
                 when(vm){
                     is ArticleEntireViewModel -> setRearOnClick { vm.searchClick() }
                     is ArticlePostViewModel -> {}
+                    is MyPageViewModel -> setRearOnClick{ vm.clickedMyPageMore() }
                 }
                 setFrontOnClick { vm.backClicked() }
                 setTitleImageOnClick {  }

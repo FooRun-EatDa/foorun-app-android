@@ -11,6 +11,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ArticleEntireViewModel @Inject constructor(
 ): BaseViewModel() {
+
     private val _eventFlow = MutableEventFlow<EntireEvent>()
     val eventFlow = _eventFlow.asEventFlow()
 
