@@ -8,17 +8,17 @@ import kr.foorun.presentation.databinding.FragmentHomeBinding
 import kr.foorun.uni_eat.base.view.base.BaseFragment
 import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
 
-class HomeFragment : BaseFragment<FragmentHomeBinding,BaseViewModel>(FragmentHomeBinding::inflate) {
-    override val fragmentViewModel: BaseViewModel by viewModels()
+class HomeFragment : BaseFragment<FragmentHomeBinding,HomeViewModel>(FragmentHomeBinding::inflate) {
+    override val fragmentViewModel: HomeViewModel by viewModels()
 
-    override fun observeAndInitViewModel() {
+    override fun observeAndInitViewModel() = binding {
+        viewModel = fragmentViewModel.apply {
+
+        }
     }
 
-    override fun afterBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ) = binding {
+    override fun afterBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = binding {
+
     }
 
 }
