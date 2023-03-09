@@ -10,7 +10,7 @@ import kr.foorun.presentation.databinding.LayoutShopBottomCollapseBinding
 import kr.foorun.uni_eat.base.view.base.bottom_sheet.BaseBottomSheetFragment
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 import kr.foorun.uni_eat.feature.map.bottom_sheet.adapter.shop.ShopBottomSheetAdapter
-import kr.foorun.uni_eat.feature.map.bottom_sheet.adapter.shop.ShopBottomSheetItemViewModel
+import kr.foorun.uni_eat.feature.map.bottom_sheet.adapter.shop.ArticleAdapterViewModel
 
 class ShopBottomSheetFragment(
     private val backAction : () -> Unit,
@@ -20,12 +20,11 @@ class ShopBottomSheetFragment(
 
     private val shopAdapter: ShopBottomSheetAdapter by lazy { ShopBottomSheetAdapter(shopAdapterViewModel) }
     private val collapseViewModel: ShopCollapseViewModel by viewModels()
-    private val shopAdapterViewModel: ShopBottomSheetItemViewModel by viewModels()
+    private val shopAdapterViewModel: ArticleAdapterViewModel by viewModels()
 
     @SuppressLint("NotifyDataSetChanged")
     override fun observeAndInitViewModel() {
-        collapseBinding.shopImagesRecycler.adapter = shopAdapter
-
+        setRecycler()
         collapseBinding.viewModel = collapseViewModel.apply {
 
             loadArticles()
@@ -37,6 +36,10 @@ class ShopBottomSheetFragment(
 
             repeatOnStarted { eventFlow.collect{ handleEvent(it)} }
         }
+    }
+
+    private fun setRecycler() = binding {
+        collapseBinding.shopImagesRecycler.adapter = shopAdapter
     }
 
     private fun handleEvent(event: ShopCollapseViewModel.ShopCollapsedEvent) = when (event) {

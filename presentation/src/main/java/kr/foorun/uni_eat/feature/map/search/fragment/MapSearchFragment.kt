@@ -68,6 +68,7 @@ class MapSearchFragment(val searchDone : (word : String) -> Unit): DialogFragmen
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return object : Dialog(requireActivity(), theme) {
+            @Deprecated("Deprecated in Java", ReplaceWith("dismiss()"))
             override fun onBackPressed() { dismiss() }
         }
     }

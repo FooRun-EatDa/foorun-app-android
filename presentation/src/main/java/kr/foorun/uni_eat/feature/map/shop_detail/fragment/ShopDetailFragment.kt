@@ -11,7 +11,8 @@ import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import dagger.hilt.android.AndroidEntryPoint
 import kr.foorun.presentation.databinding.FragmentShopDetailBinding
 import kr.foorun.uni_eat.base.view.base.BaseFragment
-import kr.foorun.uni_eat.base.view.base.recycler.grid.GridSpaceItemDecoration
+import kr.foorun.uni_eat.base.view.base.recycler.decorator.TagDecorator
+import kr.foorun.uni_eat.base.view.base.recycler.decorator.grid.GridSpaceItemDecoration
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 import kr.foorun.uni_eat.feature.map.SearchTagAdapter
 import kr.foorun.uni_eat.feature.map.shop_detail.article.ShopDetailArticleAdapter
@@ -55,7 +56,7 @@ class ShopDetailFragment : BaseFragment<FragmentShopDetailBinding, ShopDetailVie
             }
 
             repeatOnStarted {
-                viewEvent.collect{ findNavController().popBackStack() }
+                viewEvent.collect{ popUpBackStack() }
             }
         }
     }
@@ -79,6 +80,7 @@ class ShopDetailFragment : BaseFragment<FragmentShopDetailBinding, ShopDetailVie
             menuRecycler.adapter = menuAdapter
 
             searchTagRecycler.adapter = searchTagAdapter
+            searchTagRecycler.addItemDecoration(TagDecorator())
         }
     }
 

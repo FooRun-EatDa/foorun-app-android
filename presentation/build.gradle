@@ -27,12 +27,12 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_11
     }
 
     buildFeatures {
@@ -46,8 +46,8 @@ dependencies {
     implementation project(':domain')
 
     implementation 'androidx.test:core-ktx:1.5.0'
-    implementation 'androidx.appcompat:appcompat:1.4.9'
-    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
     implementation 'com.android.support.constraint:constraint-layout:2.0.4'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.13.2'
@@ -101,10 +101,10 @@ dependencies {
 
     // Unit Test
     testImplementation 'junit:junit:4.13.2'
-    testImplementation "androidx.arch.core:core-testing:2.1.0"
+    testImplementation "androidx.arch.core:core-testing:2.2.0"
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.3"
     testImplementation "com.google.truth:truth:1.0.1"
-    testImplementation 'androidx.test.ext:junit:1.1.4'
+    testImplementation 'androidx.test.ext:junit:1.1.5'
     testImplementation "org.robolectric:robolectric:4.4"
 
 }
