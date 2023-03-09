@@ -15,30 +15,22 @@ class EventDetailFragment : BaseFragment<FragmentEventDetailBinding, EventDetail
 ) {
 
     override val fragmentViewModel: EventDetailViewModel by viewModels()
-    val eventViewModel : EventViewModel by viewModels({requireActivity()})
 
     override fun observeAndInitViewModel() {
-        binding.apply{
-            eventDetailTV.text = eventViewModel.clickedIndex.value.toString()
-
-            viewModel = fragmentViewModel.apply{
+        binding.apply {
+            viewModel = fragmentViewModel.apply {
                 repeatOnStarted {
-                    viewEvent.collect{ findNavController().popBackStack() }
+                    viewEvent.collect { findNavController().popBackStack() }
                 }
             }
         }
-
-
     }
 
     override fun afterBinding(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ) {
-        binding.apply{
+    ) = binding {
 
-        }
     }
-
 }

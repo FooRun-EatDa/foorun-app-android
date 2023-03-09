@@ -9,15 +9,17 @@
     <color name="white">#FFFFFFFF</color>
     <color name="invisible">#00000000</color>
 
-    <color name="LargeTextColor">#191919</color>
-    <color name="smallTextColor">#595959</color>
+    <color name="large_text">#191919</color>
+    <color name="small_text">#595959</color>
+    <color name="explain_text">#FFC8B8</color>
+
     <color name="black_60">#99000000</color>
     <color name="red">#FD5422</color>
     <color name="gray">#F3F3F3</color>
     <color name="gray2">#BDBDBD</color>
+    <color name="gray3">#E2E2E2</color>
+    <color name="gray4">#595959</color>
     <color name="search_tag_non">#E5E4EC</color>
     <color name="search_tag_pick">#201F31</color>
-    
-    <color name="ExplainTextColor">#FFC8B8</color>
 
 </resources>

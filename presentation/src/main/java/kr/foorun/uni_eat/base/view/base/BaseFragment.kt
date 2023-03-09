@@ -94,6 +94,7 @@ abstract class BaseFragment <T : ViewDataBinding, V : BaseViewModel>(private val
         else toast(getString(R.string.turnOn_GPS))
     }
 
+    @SuppressLint("CheckResult")
     fun askPermission(vararg permissions : String, deniedMessage: String, onGranted: () -> Unit, onDenied: () -> Unit) {
         val t = TedPermission.create()
             .setDeniedMessage(deniedMessage)
@@ -114,6 +115,12 @@ abstract class BaseFragment <T : ViewDataBinding, V : BaseViewModel>(private val
             }
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
     }
+
+    protected fun handleBaseViewEvent(event: BaseViewModel.BaseEvent) = when(event){
+        is BaseViewModel.BaseEvent.Back -> popUpBackStack()
+    }
+
+    protected fun popUpBackStack() = findNavController().popBackStack()
 
     fun log(str: String) = Log.e("popo",str) //for test
 }

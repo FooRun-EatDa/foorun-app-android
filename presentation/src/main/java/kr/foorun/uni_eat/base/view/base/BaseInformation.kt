@@ -6,20 +6,28 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.databinding.BindingAdapter
 import kr.foorun.presentation.R
-import kr.foorun.presentation.databinding.BaseInformationBinding
 
 class BaseInformation : ConstraintLayout {
 
-    private val binding: BaseInformationBinding by lazy {
-        BaseInformationBinding.inflate(LayoutInflater.from(context), this, true) }
+    lateinit var informationValue: BaseTextView
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
+        initView()
         init(attrs)
     }
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+        initView()
         init(attrs)
+    }
+
+    private fun initView() {
+        val infService = Context.LAYOUT_INFLATER_SERVICE
+        val li = context.getSystemService(infService) as LayoutInflater
+        val v = li.inflate(R.layout.base_information, this, false)
+        addView(v)
     }
 
     @SuppressLint("Recycle")
@@ -28,29 +36,45 @@ class BaseInformation : ConstraintLayout {
 
         val c = attributeArray.getColor(
             R.styleable.BaseInformation_android_textColor,
-            ContextCompat.getColor(context, R.color.LargeTextColor)
+            ContextCompat.getColor(context, R.color.large_text)
         )
 
         val info = attributeArray.getString(R.styleable.BaseInformation_information) ?: ""
         val value = attributeArray.getString(R.styleable.BaseInformation_value) ?: ""
         val show = attributeArray.getBoolean(R.styleable.BaseInformation_show_arrow,false)
 
-        binding.information.run {
+        val information = findViewById<BaseTextView>(R.id.information)
+        informationValue = findViewById<BaseTextView>(R.id.information_value)
+        val informationImage = findViewById<BaseImageView>(R.id.information_image)
+
+        information.run {
             setTextColor(c)
             text = info
         }
-        binding.informationValue.run {
+
+        informationValue.run {
             setTextColor(c)
             text = value
         }
 
         if(show){
-            binding.informationValue.visibility = GONE
-            binding.informationImage.visibility = VISIBLE
+            informationValue.visibility = GONE
+            informationImage.visibility = VISIBLE
         } else {
-            binding.informationValue.visibility = VISIBLE
-            binding.informationImage.visibility = GONE
+            informationValue.visibility = VISIBLE
+            informationImage.visibility = GONE
         }
     }
 
+    fun setInformationText(str: String){
+        informationValue.text = str
+    }
+
+    companion object{
+        @JvmStatic
+        @BindingAdapter("setInformationValue")
+        fun setValue(view: BaseInformation, str: String?){
+            str?.let { view.setInformationText(str) }
+        }
+    }
 }

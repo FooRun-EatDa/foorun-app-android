@@ -16,8 +16,8 @@ class BaseIndicatorLayout : ConstraintLayout {
         BaseIndicatorBinding.inflate(LayoutInflater.from(context), this, true)
 
     constructor(context: Context) : super(context)
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {}
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {}
+    constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
+    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
     @SuppressLint("SetTextI18n")
     fun init(number: Int, isSelected: Boolean) {

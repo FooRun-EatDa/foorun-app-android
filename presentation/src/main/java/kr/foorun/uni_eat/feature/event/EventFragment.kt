@@ -11,27 +11,26 @@ import kr.foorun.uni_eat.base.view.base.BaseFragment
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 import kr.foorun.uni_eat.feature.event.bottom_sheet.EventSortBottomSheetFragment
 import kr.foorun.presentation.R
+import kr.foorun.uni_eat.base.view.base.recycler.decorator.EventDecorator
 import kr.foorun.uni_eat.feature.event.event_detail.EventDetailFragment
 
 class EventFragment :
     BaseFragment<FragmentEventBinding, EventViewModel>(FragmentEventBinding::inflate) {
     override val fragmentViewModel: EventViewModel by viewModels({ requireActivity() })
     private var eventSortBottomSheetFragment: EventSortBottomSheetFragment? = null
-    private var eventDetailFragment : EventDetailFragment? = null
+    private var eventDetailFragment: EventDetailFragment? = null
     private val eventAdapter: EventAdapter by lazy { EventAdapter(fragmentViewModel) }
 
     @SuppressLint("NotifyDataSetChanged")
     override fun observeAndInitViewModel() {
         binding {
-            eventRV.apply{
+            eventRV.apply {
                 adapter = eventAdapter
-                layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
-                addItemDecoration(EventDecoration(requireContext()))
+                layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+                addItemDecoration(EventDecorator(requireContext()))
             }
 
             viewModel = fragmentViewModel.apply {
-
-                loadEvents()
 
                 events.observe(this@EventFragment) {
                     eventAdapter.eventList = it!!
@@ -45,7 +44,7 @@ class EventFragment :
 
             eventSRL.setOnRefreshListener {
                 eventAdapter.notifyDataSetChanged()
-                binding.eventSRL.setRefreshing(false)
+                eventSRL.setRefreshing(false)
             }
         }
     }
@@ -54,14 +53,12 @@ class EventFragment :
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ) {
-        binding {
-        }
+    ) = binding {
     }
 
     private fun handleEvent(event: EventViewModel.EventEvent) = when (event) {
         is EventViewModel.EventEvent.ShowSortMethod -> showBottomSheet()
-        is EventViewModel.EventEvent.SortByNewest -> {
+        is EventViewModel.EventEvent.SortByLatest -> {
             binding.eventFilterText.text = getString(R.string.event_sort_newest)
             //ToDo
         }
@@ -85,7 +82,7 @@ class EventFragment :
         )
     }
 
-    fun onBackPressed() {
+    private fun onBackPressed() {
         if (eventSortBottomSheetFragment != null && eventSortBottomSheetFragment!!.handleBackKeyEvent())
             eventSortBottomSheetFragment?.hide()
     }

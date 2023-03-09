@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable name="index" type="int"/>
 
         <variable
             name="event"
@@ -16,7 +17,7 @@
     <FrameLayout
         android:layout_width="167dp"
         android:layout_height="238dp"
-        android:onClick="@{()->viewModel.onItemClick(event.index)}">
+        android:onClick="@{()->viewModel.onItemClick(index)}">
 
         <kr.foorun.uni_eat.base.view.base.BaseImageView
             android:id="@+id/event_item_IV"

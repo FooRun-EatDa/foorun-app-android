@@ -16,7 +16,7 @@
         tools:context=".feature.event.bottom_sheet.fragment.EventSortBottomSheetFragment">
 
         <kr.foorun.uni_eat.base.view.base.BaseTextView
-            android:id="@+id/sort_newest_TV"
+            android:id="@+id/sort_latest_TV"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="40dp"
@@ -24,7 +24,7 @@
             android:gravity="center"
             android:onClick="@{() -> viewModel.clickSortMethod(0)}"
             android:text="@string/event_sort_newest"
-            android:textColor="@color/smallTextColor"
+            android:textColor="@color/small_text"
             android:textSize="15sp" />
 
         <kr.foorun.uni_eat.base.view.base.BaseTextView
@@ -35,7 +35,7 @@
             android:gravity="center"
             android:onClick="@{() -> viewModel.clickSortMethod(1)}"
             android:text="@string/event_sort_deadline"
-            android:textColor="@color/smallTextColor"
+            android:textColor="@color/small_text"
             android:textSize="15sp" />
 
         <Button

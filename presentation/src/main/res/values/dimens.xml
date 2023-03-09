@@ -1,3 +1,43 @@
 <resources>
-    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="fab_margin_16">16dp</dimen>
+    <dimen name="margin_image_29">29dp</dimen>
+    <dimen name="margin_20">20dp</dimen>
+    <dimen name="margin_21">21dp</dimen>
+    <dimen name="margin_13">13.38dp</dimen>
+    <dimen name="margin_88">88dp</dimen>
+    <dimen name="margin_30">30dp</dimen>
+    <dimen name="margin_199">199dp</dimen>
+    <dimen name="margin_49">49dp</dimen>
+    <dimen name="margin_11">11dp</dimen>
+    <dimen name="top_margin_64">64dp</dimen>
+
+    <dimen name="back_button_margin_top_73">73dp</dimen>
+    <dimen name="back_button_margin_start_21">21dp</dimen>
+
+    <dimen name="article_large_height471">471dp</dimen>
+    <dimen name="article_large_width322">322dp</dimen>
+    <dimen name="article_text_large_32">32sp</dimen>
+    <dimen name="article_text_small_19">19sp</dimen>
+    <dimen name="article_tag_small_13">13sp</dimen>
+    <dimen name="article_tag_large_15">15sp</dimen>
+    <dimen name="article_padding_26">26dp</dimen>
+    <dimen name="article_detail_icon_start_21">21dp</dimen>
+    <dimen name="article_detail_icon_top_25">25dp</dimen>
+
+    <dimen name="icon_size_mini_52">52dp</dimen>
+
+    <dimen name="text_size_large_23">23sp</dimen>
+    <dimen name="text_size_small_12">12sp</dimen>
+    <dimen name="text_size_large_25">25sp</dimen>
+    <dimen name="text_size_large_15">15sp</dimen>
+    <dimen name="text_size_large_21">21sp</dimen>
+
+    <dimen name="bottom_option_height_84">84dp</dimen>
+    <dimen name="tab_text_15">15sp</dimen>
+
+    <dimen name="floating_button_bottom_margin">20dp</dimen>
+
+    <dimen name="tag_item_margin_right_11">11dp</dimen>
+    <dimen name="tag_item_margin_bottom_16">16dp</dimen>
+
 </resources>

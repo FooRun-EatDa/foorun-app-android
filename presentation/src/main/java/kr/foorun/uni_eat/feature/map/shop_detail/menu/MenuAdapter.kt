@@ -9,8 +9,7 @@ import kr.foorun.presentation.databinding.ItemMenuBinding
 
 class ItemMenuViewHolder(val binding: ItemMenuBinding) : RecyclerView.ViewHolder(binding.root)
 
-class MenuAdapter (
-) : ListAdapter<Pair<String,String>, ItemMenuViewHolder>(object : DiffUtil.ItemCallback<Pair<String,String>>(){
+class MenuAdapter : ListAdapter<Pair<String,String>, ItemMenuViewHolder>(object : DiffUtil.ItemCallback<Pair<String,String>>(){
     override fun areItemsTheSame(oldItem: Pair<String,String>, newItem: Pair<String,String>): Boolean {
         return oldItem == newItem
     }

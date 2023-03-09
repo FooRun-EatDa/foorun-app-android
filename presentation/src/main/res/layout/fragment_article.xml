@@ -5,23 +5,51 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="kr.foorun.uni_eat.feature.article.ArticleViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <kr.foorun.uni_eat.base.view.base.BaseBarConstraintView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:titleText="@string/article"
         tools:context="kr.foorun.uni_eat.feature.article.ArticleFragment">
 
-        <TextView
+        <kr.foorun.uni_eat.base.view.base.BaseTextView
+            android:id="@+id/explain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/articleExplain"
+            android:textColor="@color/small_text"
+            android:textSize="17sp"
+            android:layout_marginTop="120dp"
+            android:layout_marginStart="@dimen/margin_21"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <kr.foorun.uni_eat.base.view.base.BaseImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/hand"
+            android:layout_marginEnd="@dimen/margin_30"
+            android:layout_marginTop="@dimen/margin_88"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/article_recycler"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
+            android:layout_height="@dimen/article_large_height471"
+            android:layout_marginTop="@dimen/margin_30"
+            android:layout_marginBottom="49dp"
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            android:paddingStart="@dimen/article_padding_26"
+            android:paddingEnd="@dimen/article_padding_26"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="@string/hello_blank_fragment" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintTop_toBottomOf="@id/explain" />
+    </kr.foorun.uni_eat.base.view.base.BaseBarConstraintView>
 </layout>

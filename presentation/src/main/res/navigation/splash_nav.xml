@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/splash_nav"
+    app:startDestination="@id/splash_fragment">
+
+    <fragment
+        android:id="@+id/splash_fragment"
+        android:name="kr.foorun.uni_eat.feature.splash.SplashFragment"
+        android:label="SplashFragment" >
+        <action
+            app:enterAnim="@anim/from_right"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/splash_fragment"
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/login_nav" />
+        <argument
+            android:name="@string/hide_bottom"
+            app:argType="boolean"
+            android:defaultValue="true" />
+    </fragment>
+    <include app:graph="@navigation/login_nav" />
+</navigation>

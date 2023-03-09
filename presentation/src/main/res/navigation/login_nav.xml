@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/login_nav"
+    app:startDestination="@id/login_fragment">
+
+    <fragment
+        android:id="@+id/login_fragment"
+        android:name="kr.foorun.uni_eat.feature.login.LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            app:enterAnim="@anim/from_right"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/login_fragment"
+            android:id="@+id/action_loginFragment_to_map_nav"
+            app:destination="@id/map_nav" />
+        <argument
+            android:name="@string/hide_bottom"
+            app:argType="boolean"
+            android:defaultValue="true" />
+    </fragment>
+    <include app:graph="@navigation/map_nav" />
+</navigation>

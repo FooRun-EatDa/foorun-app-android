@@ -14,17 +14,6 @@
         android:background="@color/white"
         tools:context="kr.foorun.uni_eat.feature.event.event_detail.EventDetailFragment">
 
-        <kr.foorun.uni_eat.base.view.base.BaseImageView
-            android:id="@+id/white_back_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{() -> viewModel.backClicked()}"
-            android:src="@drawable/arrow_left"
-            android:layout_marginTop="24dp"
-            android:layout_marginStart="21dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
         <kr.foorun.uni_eat.base.view.base.BaseTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

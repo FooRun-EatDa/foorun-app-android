@@ -5,6 +5,7 @@ import android.content.Context
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
+import androidx.databinding.BindingAdapter
 import kr.foorun.presentation.R
 import java.util.*
 
@@ -24,7 +25,7 @@ class BaseTextView : AppCompatTextView {
         text = t
 
         val c = attributeArray.getColor(R.styleable.BaseTextView_android_textColor,
-        ContextCompat.getColor(context,R.color.LargeTextColor))
+        ContextCompat.getColor(context,R.color.large_text))
         setTextColor(c)
 
         val g = attributeArray.getInt(R.styleable.BaseTextView_android_gravity,TEXT_ALIGNMENT_CENTER)
@@ -39,5 +40,13 @@ class BaseTextView : AppCompatTextView {
 //        } else {
 //            typeface = Typeface.createFromAsset(context.assets, "fonts/Roboto-$font.ttf")
 //        }
+    }
+
+    companion object{
+        @JvmStatic
+        @BindingAdapter("setText")
+        fun setText(view: BaseTextView, str: String?){
+            str?.let { view.text = str }
+        }
     }
 }

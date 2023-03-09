@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import kr.foorun.const.Constant.Companion.EVENT_SORT_DEADLINE
+import kr.foorun.const.Constant.Companion.EVENT_SORT_LATEST
 import kr.foorun.uni_eat.base.viewmodel.MutableEventFlow
 import kr.foorun.uni_eat.base.viewmodel.asEventFlow
 
@@ -24,13 +26,13 @@ class EventSortViewModel : ViewModel() {
 
     fun confirmSortMehtod(){
         when(sortMethod.value){
-            0 -> event(SortEvent.SortNewst())
-            1 -> event(SortEvent.SortDeadline())
+            EVENT_SORT_LATEST -> event(SortEvent.SortLatest())
+            EVENT_SORT_DEADLINE -> event(SortEvent.SortDeadline())
         }
     }
 
     sealed class SortEvent {
-        data class SortNewst(val unit: Unit? = null) : SortEvent()
+        data class SortLatest(val unit: Unit? = null) : SortEvent()
         data class SortDeadline(val unit: Unit? = null) : SortEvent()
     }
 }
