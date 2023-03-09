@@ -4,5 +4,7 @@
         <attr name="android:text"/>
         <attr name="android:textColor"/>
         <attr name="android:hint"/>
+        <attr name="android:textStyle"/>
+        <attr name="android:inputType"/>
     </declare-styleable>
 </resources>

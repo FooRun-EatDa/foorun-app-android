@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:text="@string/login_text"
             android:textSize="12sp"
-            android:textColor="@color/ExplainTextColor"
+            android:textColor="@color/explain_text"
             android:layout_marginBottom="90dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

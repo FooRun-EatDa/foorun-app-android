@@ -20,6 +20,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>({ActivityM
         setUpBottomNavigationView()
     }
 
+    override fun observeAndInitViewModel() = binding {
+        viewModel = activityViewModel.apply {
+        }
+    }
+
     private fun setUpBottomNavigationView() = binding {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHostFragment.navController
@@ -29,14 +34,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>({ActivityM
 
     private fun setDestinationListener() = navController.addOnDestinationChangedListener { controller, destination, arg ->
         if(arg != null){
-            if (arg.isEmpty) binding.bottomNav.visibility = View.VISIBLE
-            else if(arg.getBoolean(getString(R.string.hide_bottom))) binding.bottomNav.visibility = View.GONE
+            if (arg.isEmpty) bottomVisible(true)
+            else if(arg.getBoolean(getString(R.string.hide_bottom))) bottomVisible(false)
         } else binding.bottomNav.visibility = View.VISIBLE
     }
 
-    override fun observeAndInitViewModel() = binding {
-        viewModel = activityViewModel.apply {
-        }
-    }
-
+    fun bottomVisible(isVisible: Boolean) = activityViewModel.setBottomVisible(isVisible)
 }

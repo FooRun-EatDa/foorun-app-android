@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BaseBarConstraintView">
+        <attr name="frontImage" format="color|reference"/>
+        <attr name="frontVisible" format="boolean"/>
+
+        <attr name="rearImage" format="color|reference"/>
+        <attr name="rearVisible" format="boolean"/>
+
+        <attr name="titleImage" format="color|reference"/>
+        <attr name="tittleImageVisible" format="boolean"/>
+
+        <attr name="titleText" format="string|reference"/>
+        <attr name="titleTextVisible" format="boolean"/>
+        <attr name="titleColor" format="color|reference"/>
+
+        <attr name="barColor" format="color|reference"/>
+    </declare-styleable>
+</resources>

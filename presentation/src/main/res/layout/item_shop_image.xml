@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="kr.foorun.uni_eat.feature.map.bottom_sheet.adapter.shop.ShopBottomSheetItemViewModel" />
+            type="kr.foorun.uni_eat.feature.map.bottom_sheet.adapter.shop.ArticleAdapterViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView

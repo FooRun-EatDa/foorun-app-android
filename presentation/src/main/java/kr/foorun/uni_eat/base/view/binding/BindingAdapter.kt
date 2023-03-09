@@ -10,10 +10,8 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.widget.SearchView
-import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
-import com.bumptech.glide.Glide
 import kr.foorun.presentation.R
 import kr.foorun.uni_eat.base.view.base.BaseEditTextLayout
 
@@ -27,8 +25,19 @@ object BindingAdapter {
 
     @JvmStatic
     @BindingAdapter("topAnimVisible")
-    fun setAnimVisible(view: View, visibility: Boolean){
+    fun setTopAnimVisible(view: View, visibility: Boolean){
         val transition: Transition = Slide(Gravity.TOP)
+        transition.duration = 600
+        transition.addTarget(view)
+        TransitionManager.beginDelayedTransition(view as ViewGroup, transition)
+        view.visibility = if (visibility) View.VISIBLE else View.GONE
+    }
+
+
+    @JvmStatic
+    @BindingAdapter("bottomAnimVisible")
+    fun setBottomAnimVisible(view: View, visibility: Boolean){
+        val transition: Transition = Slide(Gravity.BOTTOM)
         transition.duration = 600
         transition.addTarget(view)
         TransitionManager.beginDelayedTransition(view as ViewGroup, transition)

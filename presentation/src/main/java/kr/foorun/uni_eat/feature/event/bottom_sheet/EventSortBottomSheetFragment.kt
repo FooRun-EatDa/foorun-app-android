@@ -29,13 +29,13 @@ class EventSortBottomSheetFragment(
                             setTypeface(null, Typeface.BOLD)
                         }
                         collapseBinding.sortDeadlineTV.apply{
-                            setTextColor(ContextCompat.getColor(requireContext(), R.color.smallTextColor))
+                            setTextColor(ContextCompat.getColor(requireContext(), R.color.small_text))
                             setTypeface(null, Typeface.NORMAL)
                         }
                     }
                     1->{
                         collapseBinding.sortNewestTV.apply{
-                            setTextColor(ContextCompat.getColor(requireContext(), R.color.smallTextColor))
+                            setTextColor(ContextCompat.getColor(requireContext(), R.color.small_text))
                             setTypeface(null, Typeface.NORMAL)
                         }
                         collapseBinding.sortDeadlineTV.apply{

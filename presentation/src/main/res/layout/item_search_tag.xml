@@ -15,7 +15,6 @@
         android:id="@+id/tag_item_constraint"
         app:setTagDrawable="@{searchTag.picked}"
         android:onClick="@{() -> viewModel.tagClicked(searchTag)}"
-        android:layout_marginEnd="11dp"
         android:layout_width="wrap_content"
         android:layout_height="38dp">
 

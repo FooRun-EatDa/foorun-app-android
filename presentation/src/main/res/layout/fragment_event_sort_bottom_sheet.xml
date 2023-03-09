@@ -24,7 +24,7 @@
             android:gravity="center"
             android:onClick="@{() -> viewModel.clickSortMethod(0)}"
             android:text="@string/event_sort_newest"
-            android:textColor="@color/smallTextColor"
+            android:textColor="@color/small_text"
             android:textSize="15sp" />
 
         <kr.foorun.uni_eat.base.view.base.BaseTextView
@@ -35,7 +35,7 @@
             android:gravity="center"
             android:onClick="@{() -> viewModel.clickSortMethod(1)}"
             android:text="@string/event_sort_deadline"
-            android:textColor="@color/smallTextColor"
+            android:textColor="@color/small_text"
             android:textSize="15sp" />
 
         <Button

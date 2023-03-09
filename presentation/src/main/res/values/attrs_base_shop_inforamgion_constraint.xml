@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BaseShopConstraintView">
+        <attr name="shopName" format="string|reference"/>
+        <attr name="shopNick" format="string|reference"/>
+        <attr name="shopKind" format="string|reference"/>
+        <attr name="shopContent" format="string|reference"/>
+    </declare-styleable>
+</resources>

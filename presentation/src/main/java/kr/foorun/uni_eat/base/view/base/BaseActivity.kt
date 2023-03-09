@@ -76,7 +76,7 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel>(
         return locale.language
     }
 
-    @SuppressLint("ResourceType")
+    @SuppressLint("ResourceType", "CommitTransaction")
     fun fetchFrag(layoutResId: Int, fragment: Fragment){
         supportFragmentManager.run{
             if(findFragmentById(layoutResId) == null)
@@ -106,6 +106,7 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel>(
         else toast(getString(R.string.turnOn_GPS))
     }
 
+    @SuppressLint("CheckResult")
     fun askPermission(vararg permissions : String, deniedMessage: String, onGranted: () -> Unit, onDenied: () -> Unit) {
         val t = TedPermission.create()
             .setDeniedMessage(deniedMessage)
