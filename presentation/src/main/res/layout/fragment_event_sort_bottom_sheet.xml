@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="kr.foorun.uni_eat.feature.event.bottom_sheet.EventSortViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".feature.event.bottom_sheet.fragment.EventSortBottomSheetFragment">
+
+        <kr.foorun.uni_eat.base.view.base.BaseTextView
+            android:id="@+id/sort_latest_TV"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:onClick="@{() -> viewModel.clickSortMethod(0)}"
+            android:text="@string/event_sort_newest"
+            android:textColor="@color/small_text"
+            android:textSize="15sp" />
+
+        <kr.foorun.uni_eat.base.view.base.BaseTextView
+            android:id="@+id/sort_deadline_TV"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:onClick="@{() -> viewModel.clickSortMethod(1)}"
+            android:text="@string/event_sort_deadline"
+            android:textColor="@color/small_text"
+            android:textSize="15sp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="17dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="47dp"
+            android:background="@drawable/radius_black_24"
+            android:text="@string/event_sort_button"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:onClick="@{()->viewModel.confirmSortMehtod()}"/>
+
+    </LinearLayout>
+</layout>
