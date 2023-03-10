@@ -26,7 +26,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding,LoginViewModel>(Fragment
     }
 
     private fun handleEvent(event: LoginViewModel.LoginEvent) = when(event){
-        is LoginViewModel.LoginEvent.KakaoLogin -> navigateToFrag(LoginFragmentDirections.actionLoginFragmentToMapNav())
+        is LoginViewModel.LoginEvent.KakaoLogin -> navigateToFrag(LoginFragmentDirections.actionLoginFragmentToHomeNav())
     }
 
 }
