@@ -3,12 +3,13 @@ package kr.foorun.uni_eat.feature.event
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import kr.foorun.const.Constant.Companion.EVENT_ITEM_MARGIN_TOP_INDEX
 import kr.foorun.model.event.Event
-import kr.foorun.presentation.databinding.ItemEvent2Binding
-import kr.foorun.presentation.databinding.ItemEventBinding
+import kr.foorun.presentation.databinding.ItemEventRightBinding
+import kr.foorun.presentation.databinding.ItemEventLeftBinding
 
-class EventViewHolder(val binding: ItemEventBinding) : RecyclerView.ViewHolder(binding.root)
-class EventViewHolder2(val binding: ItemEvent2Binding) : RecyclerView.ViewHolder(binding.root)
+class EventLeftViewHolder(val binding: ItemEventLeftBinding) : RecyclerView.ViewHolder(binding.root)
+class EventRightViewHolder(val binding: ItemEventRightBinding) : RecyclerView.ViewHolder(binding.root)
 
 class EventAdapter(
     private val eventViewModel: EventViewModel
@@ -22,15 +23,15 @@ class EventAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         when (viewType) {
-            1 -> {
+            EVENT_ITEM_MARGIN_TOP_INDEX -> {
                 val binding =
-                    ItemEvent2Binding.inflate(LayoutInflater.from(parent.context), parent, false)
-                return EventViewHolder2(binding)
+                    ItemEventRightBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                return EventRightViewHolder(binding)
             }
             else -> {
                 val binding =
-                    ItemEventBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-                return EventViewHolder(binding)
+                    ItemEventLeftBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                return EventLeftViewHolder(binding)
             }
         }
     }
@@ -41,21 +42,21 @@ class EventAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (position) {
-            1 -> {
-                holder as EventViewHolder2
+            EVENT_ITEM_MARGIN_TOP_INDEX -> {
+                holder as EventRightViewHolder
                 holder.run {
                     binding.apply {
-                        event = eventList.get(position) ?: null
+                        event = eventList.get(position)
                         viewModel = eventViewModel
                         index = position
                     }
                 }
             }
             else -> {
-                holder as EventViewHolder
+                holder as EventLeftViewHolder
                 holder.run {
                     binding.apply {
-                        event = eventList.get(position) ?: null
+                        event = eventList.get(position)
                         viewModel = eventViewModel
                         index = position
                     }

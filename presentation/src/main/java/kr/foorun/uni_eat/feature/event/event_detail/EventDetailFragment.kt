@@ -20,7 +20,7 @@ class EventDetailFragment : BaseFragment<FragmentEventDetailBinding, EventDetail
         binding.apply {
             viewModel = fragmentViewModel.apply {
                 repeatOnStarted {
-                    viewEvent.collect { findNavController().popBackStack() }
+                    viewEvent.collect {handleBaseViewEvent(it) }
                 }
             }
         }
