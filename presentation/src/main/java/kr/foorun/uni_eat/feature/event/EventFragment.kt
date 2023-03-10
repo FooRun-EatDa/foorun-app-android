@@ -16,7 +16,7 @@ import kr.foorun.uni_eat.feature.event.event_detail.EventDetailFragment
 
 class EventFragment :
     BaseFragment<FragmentEventBinding, EventViewModel>(FragmentEventBinding::inflate) {
-    override val fragmentViewModel: EventViewModel by viewModels({ requireActivity() })
+    override val fragmentViewModel: EventViewModel by viewModels()
     private var eventSortBottomSheetFragment: EventSortBottomSheetFragment? = null
     private var eventDetailFragment: EventDetailFragment? = null
     private val eventAdapter: EventAdapter by lazy { EventAdapter(fragmentViewModel) }
@@ -44,7 +44,7 @@ class EventFragment :
 
             eventSRL.setOnRefreshListener {
                 eventAdapter.notifyDataSetChanged()
-                eventSRL.setRefreshing(false)
+                eventSRL.isRefreshing = false
             }
         }
     }
@@ -73,7 +73,7 @@ class EventFragment :
     }
 
     private fun showBottomSheet() {
-        eventSortBottomSheetFragment = EventSortBottomSheetFragment({ onBackPressed() })
+        eventSortBottomSheetFragment = EventSortBottomSheetFragment{ onBackPressed() }
         eventSortBottomSheetFragment?.show(
             requireActivity().supportFragmentManager,
             R.id.event_FL

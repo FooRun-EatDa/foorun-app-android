@@ -7,7 +7,7 @@
 
         <variable
             name="event"
-            type="kr.foorun.data.event.Event" />
+            type="kr.foorun.model.event.Event" />
 
         <variable
             name="viewModel"

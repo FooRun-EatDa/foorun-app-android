@@ -10,19 +10,17 @@ import kr.foorun.const.Constant.Companion.EVENT_SORT_LATEST
 import kr.foorun.presentation.R
 import kr.foorun.presentation.databinding.FragmentEventSortBottomSheetBinding
 import kr.foorun.uni_eat.base.view.base.bottom_sheet.BaseBottomSheetFragment
-import kr.foorun.uni_eat.base.view.binding.BindingAdapter.setTextColor
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
-import kr.foorun.uni_eat.feature.event.EventViewModel
 
 class EventSortBottomSheetFragment(
     private val backAction : () -> Unit,
 ) : BaseBottomSheetFragment<FragmentEventSortBottomSheetBinding>
     (R.layout.fragment_event_sort_bottom_sheet) {
 
-    private val eventSortViewmodel: EventSortViewModel by viewModels()
+    private val eventSortViewModel: EventSortViewModel by viewModels()
 
     override fun observeAndInitViewModel() {
-        collapseBinding.viewModel=eventSortViewmodel.apply{
+        collapseBinding.viewModel=eventSortViewModel.apply{
             sortMethod.observe(this@EventSortBottomSheetFragment){ pick->
                 when(pick){
                     EVENT_SORT_LATEST->{

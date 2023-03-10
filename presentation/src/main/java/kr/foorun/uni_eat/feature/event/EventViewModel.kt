@@ -1,13 +1,11 @@
 package kr.foorun.uni_eat.feature.event
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.bumptech.glide.Glide.init
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
-import kr.foorun.data.event.Event
+import kr.foorun.model.event.Event
 import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
 import kr.foorun.uni_eat.base.viewmodel.MutableEventFlow
 import kr.foorun.uni_eat.base.viewmodel.asEventFlow
