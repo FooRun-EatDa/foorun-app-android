@@ -51,13 +51,8 @@ class ShopDetailFragment : BaseFragment<FragmentShopDetailBinding, ShopDetailVie
                 searchTagAdapter.notifyDataSetChanged()
             }
 
-            repeatOnStarted {
-                eventFlow.collect{ handleEvent(it) }
-            }
-
-            repeatOnStarted {
-                viewEvent.collect{ popUpBackStack() }
-            }
+            repeatOnStarted { eventFlow.collect{ handleEvent(it) } }
+            repeatOnStarted { viewEvent.collect{ handleBaseViewEvent(it) } }
         }
     }
 
