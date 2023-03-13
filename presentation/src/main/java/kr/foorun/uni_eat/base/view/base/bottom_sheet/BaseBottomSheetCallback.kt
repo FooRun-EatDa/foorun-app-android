@@ -26,7 +26,7 @@ class BaseBottomSheetCallback(
             alpha = 0f
             isInvisible = true
         }
-        setBlur(true)
+//        setBlur(true)
         setupListener()
         rootView.isClickable = false
     }
