@@ -15,8 +15,8 @@
     </data>
 
     <LinearLayout
-        android:layout_width="167dp"
-        android:layout_height="288dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <View
@@ -24,7 +24,7 @@
             android:layout_height="50dp" />
 
         <FrameLayout
-            android:layout_width="167dp"
+            android:layout_width="match_parent"
             android:layout_height="238dp"
             android:onClick="@{()->viewModel.onItemClick(index)}">
 

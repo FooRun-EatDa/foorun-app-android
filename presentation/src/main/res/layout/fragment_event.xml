@@ -24,6 +24,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/white"
                 tools:context=".feature.event.EventFragment">
 
                 <kr.foorun.uni_eat.base.view.base.BaseTextView
@@ -74,10 +75,7 @@
                     android:id="@+id/event_RV"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_marginStart="14dp"
                     android:layout_marginTop="40dp"
-                    android:layout_marginEnd="13dp"
-                    android:background="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

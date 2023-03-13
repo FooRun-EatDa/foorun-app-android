@@ -1,5 +1,7 @@
 package kr.foorun.uni_eat.base.view.binding
 
+import android.animation.ArgbEvaluator
+import android.animation.ValueAnimator
 import android.text.TextWatcher
 import android.transition.Slide
 import android.transition.Transition
@@ -33,7 +35,6 @@ object BindingAdapter {
         view.visibility = if (visibility) View.VISIBLE else View.GONE
     }
 
-
     @JvmStatic
     @BindingAdapter("bottomAnimVisible")
     fun setBottomAnimVisible(view: View, visibility: Boolean){
@@ -42,6 +43,18 @@ object BindingAdapter {
         transition.addTarget(view)
         TransitionManager.beginDelayedTransition(view as ViewGroup, transition)
         view.visibility = if (visibility) View.VISIBLE else View.GONE
+    }
+
+    @JvmStatic
+    @BindingAdapter("setColorAnim")
+    fun setThemeAnimation(view: View, fromColor: Int, toColor: Int) {
+        val valueAnimator: ValueAnimator =
+            ValueAnimator.ofObject(ArgbEvaluator(), fromColor, toColor)
+        valueAnimator.duration = 500
+        valueAnimator.addUpdateListener { animator ->
+            view.setBackgroundColor(animator.animatedValue as Int)
+        }
+        valueAnimator.start()
     }
 
     @JvmStatic

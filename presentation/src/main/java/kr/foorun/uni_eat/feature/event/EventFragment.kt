@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import kr.foorun.const.Constant.Companion.EVENT_ITEM_MARGIN_GAP
+import kr.foorun.const.Constant.Companion.SPAN_COUNT
 import kr.foorun.presentation.databinding.FragmentEventBinding
 import kr.foorun.uni_eat.base.view.base.BaseFragment
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
@@ -26,8 +28,8 @@ class EventFragment :
         binding {
             eventRV.apply {
                 adapter = eventAdapter
-                layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-                addItemDecoration(EventDecorator(requireContext()))
+                layoutManager = StaggeredGridLayoutManager(SPAN_COUNT, StaggeredGridLayoutManager.VERTICAL)
+                addItemDecoration(EventDecorator())
             }
 
             viewModel = fragmentViewModel.apply {

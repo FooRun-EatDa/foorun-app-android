@@ -3,17 +3,21 @@ package kr.foorun.uni_eat.base.view.base.recycler.decorator
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import kr.foorun.const.Constant.Companion.SPAN_COUNT
 import kr.foorun.const.Constant.Companion.TAG_ITEM_MARGIN_BOTTOM
-import kr.foorun.const.Constant.Companion.TAG_ITEM_MARGIN_RIGHT
+import kr.foorun.const.Constant.Companion.TAG_ITEM_MARGIN_GAP
 import kr.foorun.uni_eat.base.view.base.dp
 
-class TagDecorator (private val rightSpace: Int = TAG_ITEM_MARGIN_RIGHT, private val bottomSpace: Int = TAG_ITEM_MARGIN_BOTTOM, private val spanCount: Int? = null, private val oriental: Int = HORIZONTAL) : RecyclerView.ItemDecoration() {
+class TagDecorator (gapSpace: Int = TAG_ITEM_MARGIN_GAP, bottomSpace: Int = TAG_ITEM_MARGIN_BOTTOM, private val spanCount: Int = SPAN_COUNT, private val oriental: Int = HORIZONTAL) : RecyclerView.ItemDecoration() {
 
     companion object{
         const val VERTICAL = 0
         const val HORIZONTAL = 1
         const val GRID = 2
     }
+
+    private val gapDP = gapSpace.dp
+    private val bottomDP = bottomSpace.dp
 
     override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
 
@@ -23,30 +27,28 @@ class TagDecorator (private val rightSpace: Int = TAG_ITEM_MARGIN_RIGHT, private
 
 
         when(oriental){
-            VERTICAL -> setVertical(position, outRect, rightSpace, totalItemCount)
-            HORIZONTAL -> setHorizontal(position, outRect, rightSpace, bottomSpace, totalItemCount)
-            GRID -> setGrid(position, outRect, spanCount, rightSpace, bottomSpace)
+            VERTICAL -> setVertical(position, outRect, totalItemCount)
+            HORIZONTAL -> setHorizontal(position, outRect, totalItemCount)
+            GRID -> setGrid(position, outRect)
         }
     }
 
-    private fun setGrid(position: Int, outRect: Rect, spanCount: Int?, rightSpace: Int, bottomSpace: Int) {
-        spanCount?.let {
-            val column = position % spanCount + 1      // 1부터 시작
-            val row = ((position - 1) / spanCount) + 1
+    private fun setGrid(position: Int, outRect: Rect) {
+        val column = position % spanCount + 1      // 1부터 시작
+        val row = ((position - 1) / spanCount) + 1
 
-            outRect.run {
-                if (row != spanCount) {
-                    bottom = bottomSpace.dp
-                    if (column != spanCount) right = rightSpace.dp
-                }
+        outRect.run {
+            if (row != spanCount) {
+                bottom = bottomDP
+                if (column != spanCount) right = gapDP
             }
         }
     }
 
-    private fun setVertical(position: Int, outRect: Rect, rightSpace: Int, totalItemCount: Int) {}
+    private fun setVertical(position: Int, outRect: Rect, totalItemCount: Int) {}
 
-    private fun setHorizontal(position: Int, outRect: Rect, rightSpace: Int, bottomSpace: Int, totalItemCount: Int) {
-        if (position != 0) outRect.right = rightSpace.dp
-        if (position != totalItemCount-1) outRect.right = rightSpace.dp
+    private fun setHorizontal(position: Int, outRect: Rect, totalItemCount: Int) {
+        if (position != 0) outRect.right = gapDP
+        if (position != totalItemCount-1) outRect.right = gapDP
     }
 }

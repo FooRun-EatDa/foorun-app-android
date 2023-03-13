@@ -2,7 +2,6 @@ package kr.foorun.uni_eat.base.view.base.recycler.decorator.grid
 
 import android.graphics.Rect
 import android.view.View
-import androidx.core.view.marginRight
 import androidx.recyclerview.widget.RecyclerView
 import kr.foorun.uni_eat.base.view.base.dp
 
@@ -16,9 +15,9 @@ import kr.foorun.uni_eat.base.view.base.dp
  * but anything can be created with parameter value and it's gonna be turned into dp value automatically in this code.
  */
 
-class GridSpaceItemDecoration(private val spanCount: Int = ARTICLE_SPAN_COUNT, private val space: Int = ARTICLE_GAP, private val sideSpace: Int = ARTICLE_SIDE_SPACE): RecyclerView.ItemDecoration() {
+class GridSpaceItemDecoration(gapSpace: Int = ARTICLE_GAP, sideSpace: Int = ARTICLE_SIDE_SPACE, private val spanCount: Int = ARTICLE_SPAN_COUNT): RecyclerView.ItemDecoration() {
 
-    private val dp = space.dp
+    private val dp = gapSpace.dp
     private val sideDp = sideSpace.dp
 
     override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
