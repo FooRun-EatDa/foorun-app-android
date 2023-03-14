@@ -86,20 +86,28 @@ class MapFragment
     }
 
     private fun showShopBottomSheet() {
+        isVisibleBottomNav(false)
+
         shopBottomSheetFragment = ShopBottomSheetFragment ( { hideBottomSheet() },{
             if(it == BottomSheetBehavior.STATE_EXPANDED) {
                 navigateToFrag(MapFragmentDirections.actionMapFragmentToShopDetailFragment())
                 shopBottomSheetFragment?.collapse()
             }
-            if(it == BottomSheetBehavior.STATE_HIDDEN) dismissShopBottomSheet()
+            if(it == BottomSheetBehavior.STATE_HIDDEN) {
+                dismissShopBottomSheet()
+                isVisibleBottomNav(true)
+            }
         }).show(requireActivity().supportFragmentManager, R.id.view_bottom_sheet)
     }
 
     private fun showSearchBottomSheet(searchWord: String) {
+        isVisibleBottomNav(false)
+
         searchBottomSheetFragment = SearchBottomSheetFragment( searchWord, { hideBottomSheet() } , {
             if(it == BottomSheetBehavior.STATE_HIDDEN) {
                 dismissSearchBottomSheet()
                 fragmentViewModel.setVisibleMainSearch(true)
+                isVisibleBottomNav(true)
             }
         }).show(requireActivity().supportFragmentManager, R.id.view_bottom_sheet)
     }

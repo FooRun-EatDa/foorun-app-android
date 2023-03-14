@@ -9,6 +9,7 @@ import android.transition.TransitionManager
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.widget.SearchView
@@ -46,15 +47,12 @@ object BindingAdapter {
     }
 
     @JvmStatic
-    @BindingAdapter("setColorAnim")
-    fun setThemeAnimation(view: View, fromColor: Int, toColor: Int) {
-        val valueAnimator: ValueAnimator =
-            ValueAnimator.ofObject(ArgbEvaluator(), fromColor, toColor)
-        valueAnimator.duration = 500
-        valueAnimator.addUpdateListener { animator ->
-            view.setBackgroundColor(animator.animatedValue as Int)
+    @BindingAdapter("fromLeft")
+    fun setFromLeft(view: View, boolean: Boolean){
+        if (boolean){
+            val animSlide = AnimationUtils.loadAnimation(view.context, R.anim.from_left)
+            view.startAnimation(animSlide)
         }
-        valueAnimator.start()
     }
 
     @JvmStatic

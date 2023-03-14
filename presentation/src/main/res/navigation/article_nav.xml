@@ -22,7 +22,12 @@
         tools:layout="@layout/fragment_article_detail"
         android:id="@+id/article_detail_fragment"
         android:name="kr.foorun.uni_eat.feature.article.detail.ArticleDetailFragment"
-        android:label="ArticleDetailFragment" />
+        android:label="ArticleDetailFragment" >
+        <argument
+            android:name="@string/hide_bottom"
+            app:argType="boolean"
+            android:defaultValue="true" />
+    </fragment>
 
     <fragment
         tools:layout="@layout/fragment_article_entire"
@@ -38,13 +43,22 @@
         <action
             android:id="@+id/action_article_entire_fragment_to_articlePostFragment"
             app:destination="@id/articlePostFragment" />
+        <argument
+            android:name="@string/hide_bottom"
+            app:argType="boolean"
+            android:defaultValue="true" />
     </fragment>
 
     <fragment
         tools:layout="@layout/fragment_article_search"
         android:id="@+id/articleSearchFragment"
         android:name="kr.foorun.uni_eat.feature.article.search.ArticleSearchFragment"
-        android:label="ArticleSearchFragment" />
+        android:label="ArticleSearchFragment" >
+        <argument
+            android:name="@string/hide_bottom"
+            app:argType="boolean"
+            android:defaultValue="true" />
+    </fragment>
 
     <fragment
         tools:layout="@layout/fragment_article_post"

@@ -1,13 +1,19 @@
 package kr.foorun.uni_eat.base.view.base
 
+import android.animation.ArgbEvaluator
+import android.animation.ValueAnimator
 import android.content.Context
 import android.content.res.TypedArray
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.util.AttributeSet
+import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import kr.foorun.presentation.R
 import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
@@ -107,6 +113,25 @@ class BaseBarConstraintView : ConstraintLayout{
     private fun setRearOnClick(action: () -> Unit) = rearFrame.setOnClickListener { action() }
     private fun setFrontOnClick(action: () -> Unit) = frontFrame.setOnClickListener { action() }
     private fun setTitleImageOnClick(action: () -> Unit) = barImage.setOnClickListener { action() }
+    private fun changeBarColor(toWhite: Boolean) {
+        val original = (barConstraint.background as ColorDrawable).color
+
+        if(toWhite && (original != Color.parseColor("#FFFFFFFF")))
+            changeColorAnim(barConstraint, ContextCompat.getColor(context,R.color.navy), ContextCompat.getColor(context,R.color.white))
+
+        else if(!toWhite && (original != Color.parseColor("#2D2C3C"))) // using resource is not gonna work, use hex form
+            changeColorAnim(barConstraint, ContextCompat.getColor(context,R.color.white), ContextCompat.getColor(context,R.color.navy))
+    }
+
+    private fun changeColorAnim(view: View, fromColor: Int, toColor: Int){
+        val valueAnimator: ValueAnimator =
+            ValueAnimator.ofObject(ArgbEvaluator(), fromColor, toColor)
+        valueAnimator.duration = 500
+        valueAnimator.addUpdateListener { animator ->
+            view.setBackgroundColor(animator.animatedValue as Int)
+        }
+        valueAnimator.start()
+    }
 
     companion object {
 
@@ -122,6 +147,12 @@ class BaseBarConstraintView : ConstraintLayout{
                 setFrontOnClick { vm.backClicked() }
                 setTitleImageOnClick {  }
             }
+        }
+
+        @JvmStatic
+        @BindingAdapter("changColor")
+        fun changeColor(view: BaseBarConstraintView, toWhite: Boolean?){
+            toWhite?.let { view.changeBarColor(it) }
         }
     }
 }
