@@ -61,7 +61,7 @@ class EventDecorator(sideSpace: Int = EVENT_ITEM_MARGIN_SIDE, gapSpace: Int = EV
     }
 
     private fun setVertical(position: Int, outRect: Rect, totalItemCount: Int) = outRect.run {
-        set(gapDP, 0, gapDP, gapDP)
+        set(sideDP, 0, sideDP, bottomDP)
     }
 
     private fun setGrid(position: Int, outRect: Rect) {}

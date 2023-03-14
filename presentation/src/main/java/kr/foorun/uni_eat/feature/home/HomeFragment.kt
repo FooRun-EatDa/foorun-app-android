@@ -44,6 +44,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding,HomeViewModel>(FragmentHom
         articleRecycler.addItemDecoration(GridSpaceItemDecoration(sideSpace = 21))
 
         eventRecycler.adapter = eventAdapter
-        eventRecycler.addItemDecoration(EventDecorator(oriental = VERTICAL))
+        eventRecycler.addItemDecoration(EventDecorator(sideSpace = 21, bottomSpace = 29, oriental = VERTICAL))
     }
 }

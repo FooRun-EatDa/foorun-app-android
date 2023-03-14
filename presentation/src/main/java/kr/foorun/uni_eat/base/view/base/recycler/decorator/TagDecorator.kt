@@ -8,6 +8,18 @@ import kr.foorun.const.Constant.Companion.TAG_ITEM_MARGIN_BOTTOM
 import kr.foorun.const.Constant.Companion.TAG_ITEM_MARGIN_GAP
 import kr.foorun.uni_eat.base.view.base.dp
 
+/**
+ * please add values for int. it's gonna convert int-value you input into dp
+ *
+ * default value for articles :
+ *
+ * sideSpace == 11dp
+ * bottomSpace == 16dp
+ * spanCount = 2
+ * oriental = STAGGERED
+ *
+ * but anything can be created with parameter value and it's gonna be turned into dp value automatically in this code.
+ */
 class TagDecorator (gapSpace: Int = TAG_ITEM_MARGIN_GAP, bottomSpace: Int = TAG_ITEM_MARGIN_BOTTOM, private val spanCount: Int = SPAN_COUNT, private val oriental: Int = HORIZONTAL) : RecyclerView.ItemDecoration() {
 
     companion object{

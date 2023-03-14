@@ -6,11 +6,14 @@ import androidx.recyclerview.widget.RecyclerView
 import kr.foorun.uni_eat.base.view.base.dp
 
 /**
+ * please add values for int. it's gonna convert int-value you input into dp
+ *
  * default value for articles :
  *
- * ARTICLE_SPAN_COUNT = 2,
- * ARTICLE_SIDE_SPACE = 17,
- * ARTICLE_GAP = 7
+ * sideSpace == 17dp
+ * gapSpace == 7dp
+ * spanCount = 2
+ * oriental = STAGGERED
  *
  * but anything can be created with parameter value and it's gonna be turned into dp value automatically in this code.
  */
