@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import kr.foorun.presentation.databinding.FragmentHomeBinding
 import kr.foorun.uni_eat.base.view.base.BaseFragment
+import kr.foorun.uni_eat.base.view.base.measuredHeight
 import kr.foorun.uni_eat.base.view.base.recycler.decorator.EventDecorator
 import kr.foorun.uni_eat.base.view.base.recycler.decorator.EventDecorator.Companion.VERTICAL
 import kr.foorun.uni_eat.base.view.base.recycler.decorator.grid.GridSpaceItemDecoration
@@ -14,6 +15,7 @@ import kr.foorun.uni_eat.feature.home.adapter.HomeEventAdapter
 import kr.foorun.uni_eat.feature.home.adapter.HomeEventAdapterViewModel
 import kr.foorun.uni_eat.feature.map.shop_detail.article.ShopDetailArticleAdapter
 import kr.foorun.uni_eat.feature.map.shop_detail.article.ShopDetailArticleViewModel
+
 
 class HomeFragment : BaseFragment<FragmentHomeBinding,HomeViewModel>(FragmentHomeBinding::inflate) {
     override val fragmentViewModel: HomeViewModel by viewModels()
@@ -45,5 +47,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding,HomeViewModel>(FragmentHom
 
         eventRecycler.adapter = eventAdapter
         eventRecycler.addItemDecoration(EventDecorator(sideSpace = 21, bottomSpace = 29, oriental = VERTICAL))
+
+        scroll.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            if(scrollY >= getTopHeight()) fragmentViewModel.setBarColor(true)
+            else fragmentViewModel.setBarColor(false)
+        }
+    }
+
+    private fun getTopHeight(): Int = binding.run {
+        return topBanner.measuredHeight() + bar.measuredHeight()
     }
 }

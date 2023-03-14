@@ -20,6 +20,9 @@ class HomeViewModel @Inject constructor(
     private val _events = MutableStateFlow<List<Event>?>(null)
     val events = _events.asLiveData()
 
+    private val _barColor = MutableStateFlow<Boolean?>(null)
+    val barColor = _barColor.asLiveData()
+
     init {
         loadArticles()
         loadEvents()
@@ -44,6 +47,10 @@ class HomeViewModel @Inject constructor(
                     "조용한 골목 분위기 맛집"))
         }
         _events.emit(eventList)
+    }
+
+    fun setBarColor(toWhite: Boolean) = viewModelScope.launch {
+        if(_barColor.value != toWhite) _barColor.emit(toWhite)
     }
 
     companion object{
