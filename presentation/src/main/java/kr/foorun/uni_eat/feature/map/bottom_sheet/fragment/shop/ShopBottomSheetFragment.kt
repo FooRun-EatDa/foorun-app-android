@@ -5,10 +5,13 @@ import androidx.annotation.IdRes
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import kotlinx.coroutines.flow.collect
 import kr.foorun.presentation.R
 import kr.foorun.presentation.databinding.LayoutShopBottomCollapseBinding
 import kr.foorun.uni_eat.base.view.base.bottom_sheet.BaseBottomSheetFragment
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
+import kr.foorun.uni_eat.feature.article.ArticleFragmentDirections
+import kr.foorun.uni_eat.feature.map.MapFragmentDirections
 import kr.foorun.uni_eat.feature.map.bottom_sheet.adapter.shop.ShopBottomSheetAdapter
 import kr.foorun.uni_eat.feature.map.bottom_sheet.adapter.shop.ArticleAdapterViewModel
 
@@ -18,7 +21,14 @@ class ShopBottomSheetFragment(
 ) : BaseBottomSheetFragment<LayoutShopBottomCollapseBinding>
         (R.layout.layout_shop_bottom_collapse) {
 
-    private val shopAdapter: ShopBottomSheetAdapter by lazy { ShopBottomSheetAdapter(shopAdapterViewModel) }
+    private val shopAdapter: ShopBottomSheetAdapter by lazy { ShopBottomSheetAdapter(shopAdapterViewModel.apply {
+        repeatOnStarted { eventFlow.collect{ handleAdapterEvent(it) } }
+    }) }
+
+    private fun handleAdapterEvent(event: ArticleAdapterViewModel.ArticleImageEvent) = when(event) {
+        is ArticleAdapterViewModel.ArticleImageEvent.ArticleImageClicked -> navigateToFrag(MapFragmentDirections.actionMapFragmentToShopDetailFragment())
+    }
+
     private val collapseViewModel: ShopCollapseViewModel by viewModels()
     private val shopAdapterViewModel: ArticleAdapterViewModel by viewModels()
 
