@@ -17,7 +17,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/search_constraint"
             android:layout_width="match_parent"
-            android:layout_height="110dp"
+            android:layout_height="@dimen/app_bar_height_80"
+            android:paddingTop="@dimen/app_bar_top_padding_43"
             android:background="@color/white"
             android:animateLayoutChanges="true"
             app:layout_constraintTop_toTopOf="parent"
@@ -30,7 +31,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="21dp"
-                android:layout_marginTop="@dimen/top_margin_64"
                 android:layout_marginEnd="13.38dp"
                 android:layout_marginBottom="16dp"
                 android:onClick="@{() -> viewModel.backClicked()}"
@@ -42,7 +42,6 @@
             <kr.foorun.uni_eat.base.view.base.BaseTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/top_margin_64"
                 android:layout_marginBottom="16dp"
                 android:layout_marginStart="13.38dp"
                 android:singleLine="true"
@@ -57,7 +56,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_marginTop="@dimen/top_margin_64"
                 android:layout_marginBottom="16dp"
                 android:layout_marginEnd="24dp"
                 android:onClick="@{() -> viewModel.backClicked()}"

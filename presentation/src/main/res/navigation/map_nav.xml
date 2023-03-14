@@ -19,15 +19,11 @@
         tools:layout="@layout/fragment_shop_detail"
         android:id="@+id/shop_detail_fragment"
         android:name="kr.foorun.uni_eat.feature.map.shop_detail.fragment.ShopDetailFragment"
-        android:label="ShopDetailFragment" />
+        android:label="ShopDetailFragment" >
+        <argument
+            android:name="@string/hide_bottom"
+            app:argType="boolean"
+            android:defaultValue="true" />
+    </fragment>
 
-    <include app:graph="@navigation/home_nav" />
-    <include app:graph="@navigation/article_nav" />
-    <include app:graph="@navigation/event_nav" />
-    <include app:graph="@navigation/my_nav" />
-
-    <fragment
-        android:id="@+id/myPageFragment"
-        android:name="kr.foorun.uni_eat.feature.mypage.MyPageFragment"
-        android:label="MyPageFragment"/>
 </navigation>

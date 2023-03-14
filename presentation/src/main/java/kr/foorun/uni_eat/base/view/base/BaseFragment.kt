@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.core.content.ContextCompat
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
@@ -19,6 +20,7 @@ import androidx.navigation.fragment.findNavController
 import com.gun0912.tedpermission.rx3.TedPermission
 import kr.foorun.presentation.R
 import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
+import kr.foorun.uni_eat.feature.main.MainActivity
 import java.util.*
 
 typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
@@ -121,6 +123,12 @@ abstract class BaseFragment <T : ViewDataBinding, V : BaseViewModel>(private val
     }
 
     protected fun popUpBackStack() = findNavController().popBackStack()
+
+    protected fun isVisibleBottomNav(visible: Boolean) = requireActivity().run {
+        if(this is MainActivity) this.bottomVisible(visible)
+    }
+
+    protected fun getColor(color: Int) = ContextCompat.getColor(requireActivity(),color)
 
     fun log(str: String) = Log.e("popo",str) //for test
 }

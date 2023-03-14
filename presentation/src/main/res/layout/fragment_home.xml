@@ -1,22 +1,232 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="kr.foorun.uni_eat.feature.home.HomeViewModel" />
     </data>
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".HomeFragment">
+        android:background="@color/navy">
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
-            android:id="@+id/test"
+        <kr.foorun.uni_eat.base.view.base.BaseBarConstraintView
+            android:id="@+id/bar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:layout_height="wrap_content"
+            app:barColor="@color/navy"
+            app:changColor="@{viewModel.barColor}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:titleImage="@drawable/bar_image"
+            app:tittleImageVisible="true" />
 
-    </FrameLayout>
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/top_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <kr.foorun.uni_eat.base.view.base.BaseTextView
+                        android:id="@+id/home_top_explain_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_21"
+                        android:layout_marginTop="40dp"
+                        android:text="@string/home_explain"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_large_25"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <kr.foorun.uni_eat.base.view.base.BaseImageView
+                        android:id="@+id/home_map_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="26dp"
+                        android:layout_marginTop="16dp"
+                        android:src="@drawable/home_map_button"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/home_top_explain_text" />
+
+                    <kr.foorun.uni_eat.base.view.base.BaseImageView
+                        android:id="@+id/home_icon_right"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="147dp"
+                        android:layout_marginEnd="19dp"
+                        android:src="@drawable/bar_image"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <kr.foorun.uni_eat.base.view.base.BaseArticleContentConstraintView
+                    android:id="@+id/home_content_constraint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="33dp"
+                    android:background="@color/white"
+                    app:child="@drawable/article_content_page"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/top_banner"
+                    app:root="@color/navy">
+
+                    <kr.foorun.uni_eat.base.view.base.BaseTextView
+                        android:id="@+id/home_what_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/home_margin_start_25"
+                        android:layout_marginTop="45dp"
+                        android:text="@string/home_what_kindof_qes"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_large_21"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <kr.foorun.uni_eat.base.view.base.BaseImageView
+                        android:id="@+id/home_goto_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:src="@drawable/home_sign"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/home_what_text" />
+
+                    <kr.foorun.uni_eat.base.view.base.BaseImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="31.29dp"
+                        android:layout_marginEnd="20.88dp"
+                        android:src="@drawable/more_image"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/home_goto_button" />
+
+                    <kr.foorun.uni_eat.base.view.base.BaseTextView
+                        android:id="@+id/home_head_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/home_margin_start_25"
+                        android:layout_marginTop="43dp"
+                        android:text="@string/home_head_text"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_large_21"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/home_goto_button" />
+
+                    <kr.foorun.uni_eat.base.view.base.BaseImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4.53dp"
+                        android:layout_marginTop="32.44dp"
+                        android:src="@drawable/winner_trophy"
+                        app:layout_constraintStart_toEndOf="@id/home_head_text"
+                        app:layout_constraintTop_toBottomOf="@id/home_goto_button" />
+
+                    <kr.foorun.uni_eat.base.view.base.BaseTextView
+                        android:id="@+id/home_sub_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/home_margin_start_25"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/home_text"
+                        android:textColor="@color/small_text"
+                        android:textSize="@dimen/text_size_large_15"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/home_head_text" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/article_recycler"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/home_sub_text"
+                        app:spanCount="2" />
+
+                    <kr.foorun.uni_eat.base.view.base.BaseTextView
+                        android:id="@+id/home_head_text2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/home_margin_start_25"
+                        android:layout_marginTop="49dp"
+                        android:text="@string/home_head_text2"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_large_21"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/article_recycler" />
+
+                    <kr.foorun.uni_eat.base.view.base.BaseImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4.53dp"
+                        android:layout_marginTop="33.56dp"
+                        android:src="@drawable/star"
+                        app:layout_constraintStart_toEndOf="@+id/home_head_text2"
+                        app:layout_constraintTop_toBottomOf="@id/article_recycler" />
+
+                    <kr.foorun.uni_eat.base.view.base.BaseTextView
+                        android:id="@+id/home_sub_text2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/home_margin_start_25"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/home_text"
+                        android:textColor="@color/small_text"
+                        android:textSize="@dimen/text_size_large_15"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/home_head_text2" />
+
+                    <kr.foorun.uni_eat.base.view.base.BaseImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="63dp"
+                        android:layout_marginEnd="20.88dp"
+                        android:src="@drawable/more_image"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/article_recycler" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/event_recycler"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:orientation="vertical"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/home_sub_text2" />
+
+                </kr.foorun.uni_eat.base.view.base.BaseArticleContentConstraintView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

@@ -15,14 +15,14 @@
     </data>
 
     <FrameLayout
-        android:layout_width="167dp"
-        android:layout_height="238dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:onClick="@{()->viewModel.onItemClick(index)}">
 
         <kr.foorun.uni_eat.base.view.base.BaseImageView
             android:id="@+id/event_item_IV"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="238dp"
             android:scaleType="fitXY"
             app:glide="@{event.image}" />
 

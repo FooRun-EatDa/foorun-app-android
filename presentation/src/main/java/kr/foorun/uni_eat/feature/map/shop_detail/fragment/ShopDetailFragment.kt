@@ -51,13 +51,8 @@ class ShopDetailFragment : BaseFragment<FragmentShopDetailBinding, ShopDetailVie
                 searchTagAdapter.notifyDataSetChanged()
             }
 
-            repeatOnStarted {
-                eventFlow.collect{ handleEvent(it) }
-            }
-
-            repeatOnStarted {
-                viewEvent.collect{ popUpBackStack() }
-            }
+            repeatOnStarted { eventFlow.collect{ handleEvent(it) } }
+            repeatOnStarted { viewEvent.collect{ handleBaseViewEvent(it) } }
         }
     }
 
@@ -74,7 +69,7 @@ class ShopDetailFragment : BaseFragment<FragmentShopDetailBinding, ShopDetailVie
                 }
             })
 
-            articleRecycler.addItemDecoration(GridSpaceItemDecoration(2,7))
+            articleRecycler.addItemDecoration(GridSpaceItemDecoration(spanCount = 2, gapSpace = 7))
             articleRecycler.adapter = shopDetailArticleAdapter
 
             menuRecycler.adapter = menuAdapter

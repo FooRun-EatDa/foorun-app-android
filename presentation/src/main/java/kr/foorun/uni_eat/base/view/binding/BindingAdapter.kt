@@ -1,5 +1,7 @@
 package kr.foorun.uni_eat.base.view.binding
 
+import android.animation.ArgbEvaluator
+import android.animation.ValueAnimator
 import android.text.TextWatcher
 import android.transition.Slide
 import android.transition.Transition
@@ -7,6 +9,7 @@ import android.transition.TransitionManager
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.widget.SearchView
@@ -33,7 +36,6 @@ object BindingAdapter {
         view.visibility = if (visibility) View.VISIBLE else View.GONE
     }
 
-
     @JvmStatic
     @BindingAdapter("bottomAnimVisible")
     fun setBottomAnimVisible(view: View, visibility: Boolean){
@@ -42,6 +44,15 @@ object BindingAdapter {
         transition.addTarget(view)
         TransitionManager.beginDelayedTransition(view as ViewGroup, transition)
         view.visibility = if (visibility) View.VISIBLE else View.GONE
+    }
+
+    @JvmStatic
+    @BindingAdapter("fromLeft")
+    fun setFromLeft(view: View, boolean: Boolean){
+        if (boolean){
+            val animSlide = AnimationUtils.loadAnimation(view.context, R.anim.from_left)
+            view.startAnimation(animSlide)
+        }
     }
 
     @JvmStatic

@@ -3,9 +3,14 @@ package kr.foorun.const
 class Constant {
 
     companion object{
-        const val TAG_ITEM_MARGIN_RIGHT = 11
+        const val SPAN_COUNT = 2
+
+        const val TAG_ITEM_MARGIN_GAP = 11
         const val TAG_ITEM_MARGIN_BOTTOM = 16
 
+        const val EVENT_ITEM_MARGIN_SIDE = 21
+        const val EVENT_ITEM_MARGIN_GAP = 7
+        const val EVENT_ITEM_MARGIN_BOTTOM = 29
 
         const val EVENT_ITEM_MARGIN_TOP_INDEX = 1
         const val EVENT_SORT_LATEST = 2

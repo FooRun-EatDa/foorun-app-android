@@ -49,7 +49,7 @@ class SearchBottomSheetFragment(
 
         expandBinding.run {
             articleRecycler.adapter = articleAdapter
-            articleRecycler.addItemDecoration(GridSpaceItemDecoration(2,7))
+            articleRecycler.addItemDecoration(GridSpaceItemDecoration(spanCount = 2, gapSpace = 7))
         }
     }
 

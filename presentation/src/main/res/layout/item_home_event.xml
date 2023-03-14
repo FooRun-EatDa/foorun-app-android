@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="event"
+            type="kr.foorun.model.event.Event" />
+
+        <variable
+            name="viewModel"
+            type="kr.foorun.uni_eat.feature.home.adapter.HomeEventAdapterViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <kr.foorun.uni_eat.base.view.base.BaseImageView
+            android:id="@+id/home_item_event_image"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/home_item_event_height"
+            app:glide="@{event.image}"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <kr.foorun.uni_eat.base.view.base.BaseTextView
+            android:id="@+id/home_item_event_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_large_25"
+            android:text="@{event.name}"
+            android:textColor="@color/large_text"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/home_item_event_image"/>
+
+        <kr.foorun.uni_eat.base.view.base.BaseImageView
+            android:id="@+id/line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/horizon_line"
+            android:layout_marginTop="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/home_item_event_title"/>
+
+        <kr.foorun.uni_eat.base.view.base.BaseTextView
+            android:id="@+id/home_item_event_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_large_15"
+            android:text="@{event.content}"
+            android:layout_marginTop="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line"/>
+
+        <kr.foorun.uni_eat.base.view.base.BaseTextView
+            android:id="@+id/home_item_event_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_large_15"
+            android:layout_marginTop="16dp"
+            android:text="@{`이벤트 기간: `+event.startDate+` ~ `+event.endDate}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/home_item_event_content"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

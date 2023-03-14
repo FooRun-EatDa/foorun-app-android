@@ -36,7 +36,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>({ActivityM
         if(arg != null){
             if (arg.isEmpty) bottomVisible(true)
             else if(arg.getBoolean(getString(R.string.hide_bottom))) bottomVisible(false)
-        } else binding.bottomNav.visibility = View.VISIBLE
+        } else bottomVisible(true)
     }
 
     fun bottomVisible(isVisible: Boolean) = activityViewModel.setBottomVisible(isVisible)

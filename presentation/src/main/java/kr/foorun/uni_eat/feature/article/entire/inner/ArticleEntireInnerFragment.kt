@@ -65,7 +65,7 @@ class ArticleEntireInnerFragment: BaseFragment<LayoutArticleEntireInnerBinding, 
     }
 
     override fun afterBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = binding {
-        articleRecycler.addItemDecoration(GridSpaceItemDecoration(2,7))
+        articleRecycler.addItemDecoration(GridSpaceItemDecoration())
         articleRecycler.adapter = shopDetailArticleAdapter
     }
 }
