@@ -19,7 +19,9 @@ class EventFragment :
     BaseFragment<FragmentEventBinding, EventViewModel>(FragmentEventBinding::inflate) {
     override val fragmentViewModel: EventViewModel by viewModels()
     private var eventSortBottomSheetFragment: EventSortBottomSheetFragment? = null
-    private val eventAdapter: EventAdapter by lazy { EventAdapter(fragmentViewModel) }
+    private val eventAdapter: EventAdapter by lazy { EventAdapter(eventAdapterViewModel = EventAdapterViewModel().apply{
+        repeatOnStarted { eventFlow.collect {handleAdapterEvent(it)}}
+    }) }
 
     @SuppressLint("NotifyDataSetChanged")
     override fun observeAndInitViewModel() {
@@ -58,8 +60,11 @@ class EventFragment :
 
     private fun handleEvent(event: EventViewModel.EventEvent) = when (event) {
         is EventViewModel.EventEvent.ShowSortMethod -> showBottomSheet()
-        is EventViewModel.EventEvent.ShowEventDetail -> {
-            navigateToFrag(EventFragmentDirections.actionEventFragmentToEventDetailFragment())
+    }
+
+    private fun handleAdapterEvent(event: EventAdapterViewModel.EventAdapterEvent) = when (event) {
+        is EventAdapterViewModel.EventAdapterEvent.ShowEventDetail -> {
+            navigateToFrag(EventFragmentDirections.actionEventFragmentToEventDetailFragment(event.index))
         }
     }
 

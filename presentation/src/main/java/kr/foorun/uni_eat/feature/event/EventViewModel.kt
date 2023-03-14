@@ -33,16 +33,11 @@ class EventViewModel : BaseViewModel() {
 
     fun event(event: EventEvent) = viewModelScope.launch { _eventFlow.emit(event) }
 
-    fun onItemClick(index : Int) {
-        event(EventEvent.ShowEventDetail(index))
-    }
-
     fun showSortMethod() {
         event(EventEvent.ShowSortMethod())
     }
 
     sealed class EventEvent {
-        data class ShowEventDetail(val index : Int) : EventEvent()
         data class ShowSortMethod(val unit: Unit? = null) : EventEvent()
     }
 }

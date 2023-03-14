@@ -16,6 +16,11 @@
     <fragment
         android:id="@+id/eventDetailFragment"
         android:name="kr.foorun.uni_eat.feature.event.event_detail.EventDetailFragment"
-        android:label="EventDetailFragment" />
+        android:label="EventDetailFragment" >
+        <argument
+            android:name="eventIndex"
+            app:argType="integer"
+            android:defaultValue="0"/>
+    </fragment>
 
 </navigation>

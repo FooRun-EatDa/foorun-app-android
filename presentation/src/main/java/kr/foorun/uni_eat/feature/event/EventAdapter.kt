@@ -1,5 +1,6 @@
 package kr.foorun.uni_eat.feature.event
 
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -12,7 +13,7 @@ class EventLeftViewHolder(val binding: ItemEventLeftBinding) : RecyclerView.View
 class EventRightViewHolder(val binding: ItemEventRightBinding) : RecyclerView.ViewHolder(binding.root)
 
 class EventAdapter(
-    private val eventViewModel: EventViewModel
+    private val eventAdapterViewModel: EventAdapterViewModel? = null
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     lateinit var eventList: List<Event>
@@ -47,7 +48,7 @@ class EventAdapter(
                 holder.run {
                     binding.apply {
                         event = eventList.get(position)
-                        viewModel = eventViewModel
+                        viewModel = eventAdapterViewModel
                         index = position
                     }
                 }
@@ -57,7 +58,7 @@ class EventAdapter(
                 holder.run {
                     binding.apply {
                         event = eventList.get(position)
-                        viewModel = eventViewModel
+                        viewModel = eventAdapterViewModel
                         index = position
                     }
                 }

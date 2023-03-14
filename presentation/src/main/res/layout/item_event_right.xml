@@ -11,7 +11,7 @@
 
         <variable
             name="viewModel"
-            type="kr.foorun.uni_eat.feature.event.EventViewModel" />
+            type="kr.foorun.uni_eat.feature.event.EventAdapterViewModel" />
     </data>
 
     <LinearLayout

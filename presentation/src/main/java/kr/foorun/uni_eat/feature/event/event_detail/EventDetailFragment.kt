@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import kr.foorun.presentation.databinding.FragmentEventDetailBinding
 import kr.foorun.uni_eat.base.view.base.BaseFragment
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
@@ -15,13 +16,16 @@ class EventDetailFragment : BaseFragment<FragmentEventDetailBinding, EventDetail
 ) {
 
     override val fragmentViewModel: EventDetailViewModel by viewModels()
+    val args: EventDetailFragmentArgs by navArgs()
 
     override fun observeAndInitViewModel() {
+
         binding.apply {
             viewModel = fragmentViewModel.apply {
                 repeatOnStarted {
                     viewEvent.collect {handleBaseViewEvent(it) }
                 }
+                eventDetailTV.text = args.eventIndex.toString()
             }
         }
     }
