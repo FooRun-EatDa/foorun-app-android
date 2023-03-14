@@ -47,7 +47,7 @@ class EventAdapter(
                 holder as EventRightViewHolder
                 holder.run {
                     binding.apply {
-                        event = eventList.get(position)
+                        event = eventList[position]
                         viewModel = eventAdapterViewModel
                         index = position
                     }
@@ -57,7 +57,7 @@ class EventAdapter(
                 holder as EventLeftViewHolder
                 holder.run {
                     binding.apply {
-                        event = eventList.get(position)
+                        event = eventList[position]
                         viewModel = eventAdapterViewModel
                         index = position
                     }
