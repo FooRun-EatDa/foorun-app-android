@@ -44,7 +44,5 @@ class EventViewModel : BaseViewModel() {
     sealed class EventEvent {
         data class ShowEventDetail(val index : Int) : EventEvent()
         data class ShowSortMethod(val unit: Unit? = null) : EventEvent()
-        data class SortByLatest(val unit: Unit? = null) : EventEvent()
-        data class SortByDeadline(val unit: Unit? = null) : EventEvent()
     }
 }

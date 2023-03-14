@@ -14,6 +14,7 @@ import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 
 class EventSortBottomSheetFragment(
     private val backAction : () -> Unit,
+    private val eventSortMethodListner: (sortMethod : Int) -> Unit
 ) : BaseBottomSheetFragment<FragmentEventSortBottomSheetBinding>
     (R.layout.fragment_event_sort_bottom_sheet) {
 
@@ -51,10 +52,12 @@ class EventSortBottomSheetFragment(
     private fun handleEvent(event : EventSortViewModel.SortEvent){
         when(event){
             is EventSortViewModel.SortEvent.SortLatest -> {
+                eventSortMethodListner(EVENT_SORT_LATEST)
                 dismiss(requireActivity().supportFragmentManager)
 
             }
             is EventSortViewModel.SortEvent.SortDeadline -> {
+                eventSortMethodListner(EVENT_SORT_DEADLINE)
                 dismiss(requireActivity().supportFragmentManager)
             }
         }
@@ -73,7 +76,7 @@ class EventSortBottomSheetFragment(
         @IdRes containerViewId: Int,
     ): EventSortBottomSheetFragment =
         fragmentManager.findFragmentByTag(tag) as? EventSortBottomSheetFragment
-            ?: EventSortBottomSheetFragment(backAction).apply {
+            ?: EventSortBottomSheetFragment(backAction,eventSortMethodListner).apply {
                 fragmentManager.beginTransaction()
                     .replace(containerViewId, this, tag)
                     .commitAllowingStateLoss()
