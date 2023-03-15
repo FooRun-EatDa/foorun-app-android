@@ -30,6 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_13"
                 android:visibility="gone"
+                android:foregroundGravity="center"
                 android:background="?android:selectableItemBackground"
                 app:layout_constraintEnd_toStartOf="@id/bar_title"
                 app:layout_constraintBottom_toBottomOf="parent"

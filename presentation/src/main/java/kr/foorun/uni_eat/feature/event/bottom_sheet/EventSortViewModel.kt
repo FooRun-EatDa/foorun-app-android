@@ -24,7 +24,7 @@ class EventSortViewModel : ViewModel() {
 
     fun clickSortMethod(i : Int){ _sortMethod.value = i }
 
-    fun confirmSortMehtod(){
+    fun confirmSortMethod(){
         when(sortMethod.value){
             EVENT_SORT_LATEST -> event(SortEvent.SortLatest())
             EVENT_SORT_DEADLINE -> event(SortEvent.SortDeadline())

@@ -12,7 +12,6 @@ class Constant {
         const val EVENT_ITEM_MARGIN_GAP = 7
         const val EVENT_ITEM_MARGIN_BOTTOM = 29
 
-        const val EVENT_ITEM_MARGIN_TOP_INDEX = 1
         const val EVENT_SORT_LATEST = 2
         const val EVENT_SORT_DEADLINE = 3
 

@@ -48,14 +48,22 @@ abstract class BaseFragment <T : ViewDataBinding, V : BaseViewModel>(private val
         _binding = null
     }
 
-    //    abstract fun onViewEvent(event : Any)
+    /**
+     * please, type here about initiating viewModel or observer that is related to viewModel only
+     */
     abstract fun observeAndInitViewModel()
     //    abstract fun updateLocale()
+
+    /**
+     * please, type here about initiating view only
+     */
     abstract fun afterBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?)
 
     protected fun binding(action: T.() -> Unit) { binding.run(action) }
 
-    // navigateToAct(act::class) { putExtra(..) }
+    /**
+     * ex) navigateToAct(act::class) { putExtra(..) }
+     */
     protected inline fun navigateToAct(
         act: Class<*>,
         crossinline body: Intent.() -> Unit
@@ -64,6 +72,10 @@ abstract class BaseFragment <T : ViewDataBinding, V : BaseViewModel>(private val
         startActivity(it)
     }
     protected fun navigateToAct(act : Class<*>) = startActivity(Intent(requireContext(),act))
+
+    /**
+     * to execute action of navigation component
+     */
     protected fun navigateToFrag(act : NavDirections) = findNavController().navigate(act)
 
     @SuppressLint("ResourceType")

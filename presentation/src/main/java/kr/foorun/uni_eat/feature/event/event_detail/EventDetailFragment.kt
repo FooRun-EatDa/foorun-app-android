@@ -16,25 +16,17 @@ class EventDetailFragment : BaseFragment<FragmentEventDetailBinding, EventDetail
 ) {
 
     override val fragmentViewModel: EventDetailViewModel by viewModels()
-    val args: EventDetailFragmentArgs by navArgs()
+    private val args: EventDetailFragmentArgs by navArgs()
 
     override fun observeAndInitViewModel() {
 
         binding.apply {
             viewModel = fragmentViewModel.apply {
-                repeatOnStarted {
-                    viewEvent.collect {handleBaseViewEvent(it) }
-                }
+                repeatOnStarted { viewEvent.collect {handleBaseViewEvent(it) } }
                 eventDetailTV.text = args.eventIndex.toString()
             }
         }
     }
 
-    override fun afterBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ) = binding {
-
-    }
+    override fun afterBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = binding {}
 }

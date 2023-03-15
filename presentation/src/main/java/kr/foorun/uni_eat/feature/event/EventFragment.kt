@@ -21,43 +21,35 @@ class EventFragment :
     BaseFragment<FragmentEventBinding, EventViewModel>(FragmentEventBinding::inflate) {
     override val fragmentViewModel: EventViewModel by viewModels()
     private var eventSortBottomSheetFragment: EventSortBottomSheetFragment? = null
-    private val eventAdapter: EventAdapter by lazy { EventAdapter(eventAdapterViewModel = EventAdapterViewModel().apply{
+    private val eventAdapter: EventAdapter by lazy { EventAdapter( EventAdapterViewModel().apply{
         repeatOnStarted { eventFlow.collect {handleAdapterEvent(it)}}
     }) }
 
     @SuppressLint("NotifyDataSetChanged")
-    override fun observeAndInitViewModel() {
-        binding {
-            eventRV.apply {
-                adapter = eventAdapter
-                layoutManager = StaggeredGridLayoutManager(SPAN_COUNT, StaggeredGridLayoutManager.VERTICAL)
-                addItemDecoration(EventDecorator())
-            }
+    override fun observeAndInitViewModel() = binding {
+        viewModel = fragmentViewModel.apply {
 
-            viewModel = fragmentViewModel.apply {
-
-                events.observe(this@EventFragment) {
-                    eventAdapter.eventList = it!!
-                    eventAdapter.notifyDataSetChanged()
-                }
-
-                repeatOnStarted {
-                    eventFlow.collect { handleEvent(it) }
-                }
-            }
-
-            eventSRL.setOnRefreshListener {
+            events.observe(this@EventFragment) {
+                eventAdapter.submitList(it)
                 eventAdapter.notifyDataSetChanged()
-                eventSRL.isRefreshing = false
             }
+
+            repeatOnStarted { eventFlow.collect { handleEvent(it) } }
         }
     }
 
-    override fun afterBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ) = binding {
+    @SuppressLint("NotifyDataSetChanged")
+    override fun afterBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = binding {
+        eventRV.apply {
+            adapter = eventAdapter
+            layoutManager = StaggeredGridLayoutManager(SPAN_COUNT, StaggeredGridLayoutManager.VERTICAL)
+            addItemDecoration(EventDecorator())
+        }
+
+        eventSRL.setOnRefreshListener {
+            eventAdapter.notifyDataSetChanged()
+            eventSRL.isRefreshing = false
+        }
     }
 
     private fun handleEvent(event: EventViewModel.EventEvent) = when (event) {
@@ -82,8 +74,7 @@ class EventFragment :
                     //ToDo
                 }
             }
-        }
-            .show(
+        }.show(
             requireActivity().supportFragmentManager,
             R.id.event_FL
             //현재는 바텀네비뷰 상단에 바텀시트 뜸

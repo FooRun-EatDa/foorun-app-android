@@ -1,68 +1,68 @@
 package kr.foorun.uni_eat.feature.event
 
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.databinding.ViewDataBinding
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import kr.foorun.const.Constant.Companion.EVENT_ITEM_MARGIN_TOP_INDEX
 import kr.foorun.model.event.Event
 import kr.foorun.presentation.databinding.ItemEventRightBinding
 import kr.foorun.presentation.databinding.ItemEventLeftBinding
+import kr.foorun.uni_eat.feature.event.EventViewHolder.Companion.LEFT
 
-class EventLeftViewHolder(val binding: ItemEventLeftBinding) : RecyclerView.ViewHolder(binding.root)
-class EventRightViewHolder(val binding: ItemEventRightBinding) : RecyclerView.ViewHolder(binding.root)
+sealed class EventViewHolder(
+    binding: ViewDataBinding,
+) : RecyclerView.ViewHolder(binding.root){
+
+    abstract fun bind(item: Event, idx: Int)
+
+    class EventLeftViewHolder(
+        private val binding: ItemEventLeftBinding,
+        private val adapterViewModel: EventAdapterViewModel
+    ): EventViewHolder(binding){
+        override fun bind(item: Event, idx: Int) = binding.run {
+            viewModel = adapterViewModel
+            event  = item
+            position = idx
+        }
+    }
+
+    class EventRightViewHolder(
+        private val binding: ItemEventRightBinding,
+        private val adapterViewModel: EventAdapterViewModel
+    ): EventViewHolder(binding) {
+        override fun bind(item: Event, idx: Int) = binding.run {
+            viewModel = adapterViewModel
+            event  = item
+            position = idx
+        }
+    }
+
+    companion object{
+        const val LEFT = 1
+        const val RIGHT = 0
+    }
+}
 
 class EventAdapter(
-    private val eventAdapterViewModel: EventAdapterViewModel? = null
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    private val eventAdapterViewModel: EventAdapterViewModel
+) : ListAdapter<Event, EventViewHolder>(object : DiffUtil.ItemCallback<Event>(){
+    override fun areItemsTheSame(oldItem: Event, newItem: Event) = oldItem == newItem
+    override fun areContentsTheSame(oldItem: Event, newItem: Event) = oldItem.image == newItem.image
+}) {
 
-    lateinit var eventList: List<Event>
-
-    override fun getItemViewType(position: Int): Int {
-        return position
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        when (viewType) {
-            EVENT_ITEM_MARGIN_TOP_INDEX -> {
-                val binding =
-                    ItemEventRightBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-                return EventRightViewHolder(binding)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
+        return when (viewType) {
+            LEFT -> ItemEventRightBinding.inflate(LayoutInflater.from(parent.context), parent, false).let {
+                    EventViewHolder.EventRightViewHolder(it,eventAdapterViewModel)
             }
-            else -> {
-                val binding =
-                    ItemEventLeftBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-                return EventLeftViewHolder(binding)
+            else -> ItemEventLeftBinding.inflate(LayoutInflater.from(parent.context), parent, false).let {
+                    EventViewHolder.EventLeftViewHolder(it,eventAdapterViewModel)
             }
         }
     }
 
-    override fun getItemCount(): Int {
-        return eventList.size
-    }
-
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when (position) {
-            EVENT_ITEM_MARGIN_TOP_INDEX -> {
-                holder as EventRightViewHolder
-                holder.run {
-                    binding.apply {
-                        event = eventList.get(position)
-                        viewModel = eventAdapterViewModel
-                        index = position
-                    }
-                }
-            }
-            else -> {
-                holder as EventLeftViewHolder
-                holder.run {
-                    binding.apply {
-                        event = eventList.get(position)
-                        viewModel = eventAdapterViewModel
-                        index = position
-                    }
-                }
-            }
-        }
-    }
+    override fun onBindViewHolder(holder: EventViewHolder, position: Int) = holder.bind(getItem(position),position)
+    override fun getItemViewType(position: Int) = position
 }

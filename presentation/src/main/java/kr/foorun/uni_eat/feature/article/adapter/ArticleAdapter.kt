@@ -48,14 +48,10 @@ sealed class ArticleViewHolder(
 class ArticleAdapter (
     private val itemHeight: Int = ITEM_HEIGHT,
     private val isPager: Boolean = false,
-    val viewModel: ArticleAdapterViewModel
+    private val viewModel: ArticleAdapterViewModel
 ) : ListAdapter<Article, ArticleViewHolder>(object : DiffUtil.ItemCallback<Article>(){
-    override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
-        return oldItem == newItem
-    }
-    override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean {
-        return oldItem == newItem
-    }
+    override fun areItemsTheSame(oldItem: Article, newItem: Article) = oldItem == newItem
+    override fun areContentsTheSame(oldItem: Article, newItem: Article) = oldItem == newItem
 }) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {

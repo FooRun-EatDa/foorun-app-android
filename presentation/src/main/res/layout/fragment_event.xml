@@ -32,7 +32,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="33dp"
-                    android:layout_marginTop="75dp"
+                    android:layout_marginTop="56dp"
                     android:layout_marginEnd="192dp"
                     android:layout_marginBottom="632dp"
                     android:letterSpacing="-0.05"
@@ -46,13 +46,12 @@
                     android:id="@+id/event_filter_LL"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="308dp"
-                    android:layout_marginTop="172dp"
+                    android:layout_marginTop="153dp"
                     android:layout_marginEnd="33dp"
                     android:layout_marginBottom="624dp"
                     android:onClick="@{()->viewModel.showSortMethod()}"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
 
                     <kr.foorun.uni_eat.base.view.base.BaseTextView
                         android:id="@+id/event_filter_text"
