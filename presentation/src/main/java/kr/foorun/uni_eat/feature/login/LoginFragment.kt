@@ -8,15 +8,18 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kr.foorun.presentation.databinding.FragmentLoginBinding
+import kr.foorun.social_login.KakaoLoginModule
 import kr.foorun.uni_eat.base.view.base.BaseFragment
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 
 @AndroidEntryPoint
 class LoginFragment : BaseFragment<FragmentLoginBinding,LoginViewModel>(FragmentLoginBinding::inflate) {
     override val fragmentViewModel: LoginViewModel by viewModels()
+    private val kakaoLoginModule by lazy { KakaoLoginModule(requireContext(), fragmentViewModel.kakaoLoginCallback) }
 
     override fun observeAndInitViewModel() = binding {
         viewModel = fragmentViewModel.apply {
+            kakaoLoginModule.hasToken()
             repeatOnStarted { eventFlow.collect { handleEvent(it) } }
         }
     }
@@ -26,7 +29,9 @@ class LoginFragment : BaseFragment<FragmentLoginBinding,LoginViewModel>(Fragment
     }
 
     private fun handleEvent(event: LoginViewModel.LoginEvent) = when(event){
-        is LoginViewModel.LoginEvent.KakaoLogin -> navigateToFrag(LoginFragmentDirections.actionLoginFragmentToHomeNav())
+        is LoginViewModel.LoginEvent.KakaoLogin -> kakaoLoginModule.authenticate()
+        is LoginViewModel.LoginEvent.KakaoSuccess -> navigateToFrag(LoginFragmentDirections.actionLoginFragmentToHomeNav())
+        is LoginViewModel.LoginEvent.KakaoFailure -> toast("${event.error?.message}")
     }
 
 }

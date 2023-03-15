@@ -23,9 +23,9 @@ class MyPageFragment: BaseFragment<FragmentMyPageBinding, MyPageViewModel>(Fragm
     }
 
     private fun handleEvent(event: MyPageViewModel.MyPageEvent) = when(event) {
-        is MyPageViewModel.MyPageEvent.SchoolCertification -> {log("1")}
-        is MyPageViewModel.MyPageEvent.MyPageMore -> log("2")
-        is MyPageViewModel.MyPageEvent.WriteArticle -> {log("3")}
+        is MyPageViewModel.MyPageEvent.SchoolCertification -> {}
+        is MyPageViewModel.MyPageEvent.MyPageMore -> {}
+        is MyPageViewModel.MyPageEvent.WriteArticle -> {}
     }
 
 }
