@@ -7,5 +7,24 @@
     <fragment
         android:id="@+id/event_fragment"
         android:name="kr.foorun.uni_eat.feature.event.EventFragment"
-        android:label="EventFragment" />
+        android:label="EventFragment">
+        <action
+            android:id="@+id/action_eventFragment_to_eventDetailFragment"
+            app:destination="@id/eventDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/eventDetailFragment"
+        android:name="kr.foorun.uni_eat.feature.event.event_detail.EventDetailFragment"
+        android:label="EventDetailFragment" >
+        <argument
+            android:name="eventIndex"
+            app:argType="integer"
+            android:defaultValue="0"/>
+        <argument
+            android:name="@string/hide_bottom"
+            app:argType="boolean"
+            android:defaultValue="true" />
+    </fragment>
+
 </navigation>

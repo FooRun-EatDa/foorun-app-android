@@ -74,7 +74,7 @@
             android:id="@+id/horizon_line_view"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@drawable/horizen_line"
+            android:background="@drawable/horizon_line"
             android:layout_marginTop="9dp"
             android:layout_marginStart="17dp"
             android:layout_marginEnd="32dp"

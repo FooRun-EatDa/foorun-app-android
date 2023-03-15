@@ -108,7 +108,7 @@
                     android:id="@+id/horizon_line_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/horizen_line"
+                    android:src="@drawable/horizon_line"
                     android:layout_marginTop="@dimen/margin_11"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

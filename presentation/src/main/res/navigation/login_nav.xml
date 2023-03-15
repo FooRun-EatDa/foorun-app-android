@@ -8,16 +8,18 @@
         android:id="@+id/login_fragment"
         android:name="kr.foorun.uni_eat.feature.login.LoginFragment"
         android:label="LoginFragment" >
-        <action
-            app:enterAnim="@anim/from_right"
-            app:popUpToInclusive="true"
-            app:popUpTo="@id/login_fragment"
-            android:id="@+id/action_loginFragment_to_map_nav"
-            app:destination="@id/map_nav" />
         <argument
             android:name="@string/hide_bottom"
             app:argType="boolean"
             android:defaultValue="true" />
+        <action
+            app:enterAnim="@anim/from_right"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/login_fragment"
+            android:id="@+id/action_login_fragment_to_home_nav"
+            app:destination="@id/home_nav" />
     </fragment>
-    <include app:graph="@navigation/map_nav" />
+
+    <include app:graph="@navigation/home_nav" />
+
 </navigation>

@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.core.content.ContextCompat
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
@@ -19,6 +20,7 @@ import androidx.navigation.fragment.findNavController
 import com.gun0912.tedpermission.rx3.TedPermission
 import kr.foorun.presentation.R
 import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
+import kr.foorun.uni_eat.feature.main.MainActivity
 import java.util.*
 
 typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
@@ -46,14 +48,22 @@ abstract class BaseFragment <T : ViewDataBinding, V : BaseViewModel>(private val
         _binding = null
     }
 
-    //    abstract fun onViewEvent(event : Any)
+    /**
+     * please, type here about initiating viewModel or observer that is related to viewModel only
+     */
     abstract fun observeAndInitViewModel()
     //    abstract fun updateLocale()
+
+    /**
+     * please, type here about initiating view only
+     */
     abstract fun afterBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?)
 
     protected fun binding(action: T.() -> Unit) { binding.run(action) }
 
-    // navigateToAct(act::class) { putExtra(..) }
+    /**
+     * ex) navigateToAct(act::class) { putExtra(..) }
+     */
     protected inline fun navigateToAct(
         act: Class<*>,
         crossinline body: Intent.() -> Unit
@@ -62,6 +72,10 @@ abstract class BaseFragment <T : ViewDataBinding, V : BaseViewModel>(private val
         startActivity(it)
     }
     protected fun navigateToAct(act : Class<*>) = startActivity(Intent(requireContext(),act))
+
+    /**
+     * to execute action of navigation component
+     */
     protected fun navigateToFrag(act : NavDirections) = findNavController().navigate(act)
 
     @SuppressLint("ResourceType")
@@ -121,6 +135,12 @@ abstract class BaseFragment <T : ViewDataBinding, V : BaseViewModel>(private val
     }
 
     protected fun popUpBackStack() = findNavController().popBackStack()
+
+    protected fun isVisibleBottomNav(visible: Boolean) = requireActivity().run {
+        if(this is MainActivity) this.bottomVisible(visible)
+    }
+
+    protected fun getColor(color: Int) = ContextCompat.getColor(requireActivity(),color)
 
     fun log(str: String) = Log.e("popo",str) //for test
 }

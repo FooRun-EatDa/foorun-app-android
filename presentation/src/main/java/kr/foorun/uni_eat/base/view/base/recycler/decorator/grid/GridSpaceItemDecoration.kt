@@ -2,14 +2,26 @@ package kr.foorun.uni_eat.base.view.base.recycler.decorator.grid
 
 import android.graphics.Rect
 import android.view.View
-import androidx.core.view.marginRight
 import androidx.recyclerview.widget.RecyclerView
 import kr.foorun.uni_eat.base.view.base.dp
 
-class GridSpaceItemDecoration(private val spanCount: Int, private val space: Int): RecyclerView.ItemDecoration() {
+/**
+ * please add values for int. it's gonna convert int-value you input into dp
+ *
+ * default value for articles :
+ *
+ * sideSpace == 17dp
+ * gapSpace == 7dp
+ * spanCount = 2
+ * oriental = STAGGERED
+ *
+ * but anything can be created with parameter value and it's gonna be turned into dp value automatically in this code.
+ */
 
-    private val dp = space.dp
-    private val sideDp = (space + 10).dp
+class GridSpaceItemDecoration(gapSpace: Int = ARTICLE_GAP, sideSpace: Int = ARTICLE_SIDE_SPACE, private val spanCount: Int = ARTICLE_SPAN_COUNT): RecyclerView.ItemDecoration() {
+
+    private val dp = gapSpace.dp
+    private val sideDp = sideSpace.dp
 
     override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
 
@@ -29,5 +41,11 @@ class GridSpaceItemDecoration(private val spanCount: Int, private val space: Int
         outRect.run {
             bottom = dp
         }
+    }
+
+    companion object{
+        const val ARTICLE_SPAN_COUNT = 2
+        const val ARTICLE_SIDE_SPACE = 17
+        const val ARTICLE_GAP = 7
     }
 }
