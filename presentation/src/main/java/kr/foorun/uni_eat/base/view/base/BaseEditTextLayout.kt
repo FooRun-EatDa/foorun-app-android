@@ -61,7 +61,7 @@ class BaseEditTextLayout : ConstraintLayout {
             hint = attrHint
             setHintTextColor(attrHintColor)
             setBackgroundResource(attrBackground)
-            setTextSize(TypedValue.COMPLEX_UNIT_SP, attrSize.toFloat())
+            setTextSize(TypedValue.COMPLEX_UNIT_PX, attrSize.toFloat())
         }
 
         typedArray.recycle()
