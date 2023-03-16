@@ -3,6 +3,7 @@ package kr.foorun.uni_eat.base.view.base
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.inputmethod.EditorInfo
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
@@ -20,20 +21,6 @@ class BaseEditTextView : AppCompatEditText {
 
     @SuppressLint("Recycle")
     fun init(attrs: AttributeSet?) {
-        val attributeArray = context.obtainStyledAttributes(attrs, R.styleable.BaseEditTextView)
-
-        val c = attributeArray.getColor(R.styleable.BaseTextView_android_textColor,
-            ContextCompat.getColor(context,R.color.large_text))
-        setTextColor(c)
-
-        val inputType = attributeArray.getInt(R.styleable.BaseEditTextView_android_inputType, EditorInfo.TYPE_NULL)
-
-        if(inputType != EditorInfo.TYPE_NULL) {
-            setInputType(inputType)
-        }
-
-        val hint = attributeArray.getString(R.styleable.BaseEditTextView_android_hint) ?: ""
-        setHint(hint)
 //        val font = FontEnum.values()[(attributeArray.getString(R.styleable.BaseTextView_textFont) ?: "0").toInt()].name
 //
 //        if (textLocale == Locale.KOREA) {

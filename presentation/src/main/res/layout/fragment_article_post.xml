@@ -69,14 +69,16 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/add_image"/>
 
-                <kr.foorun.uni_eat.base.view.base.BaseEditTextView
+                <kr.foorun.uni_eat.base.view.base.BaseEditTextLayout
                     android:id="@+id/title_edit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_large_25"
                     android:hint="@string/title"
+                    android:inputType="text"
                     android:textStyle="bold"
-                    android:textColor="@color/gray3"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray3"
                     android:background="@color/invisible"
                     android:layout_marginTop="85.77dp"
                     android:layout_marginStart="@dimen/margin_21"
@@ -125,12 +127,15 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/horizon_line_view"/>
 
-                <kr.foorun.uni_eat.base.view.base.BaseEditTextLayout
+                <kr.foorun.uni_eat.base.view.base.BaseEditTextView
                     android:id="@+id/content_edit"
                     android:background="@color/invisible"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/add_content_hint"
+                    android:singleLine="false"
+                    android:scrollHorizontally="false"
+                    android:inputType="textMultiLine"
                     android:textColor="@color/gray3"
                     android:textSize="@dimen/text_size_large_15"
                     android:layout_marginStart="@dimen/margin_21"
