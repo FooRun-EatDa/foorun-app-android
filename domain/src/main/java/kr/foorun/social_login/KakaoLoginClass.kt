@@ -6,17 +6,16 @@ import com.kakao.sdk.auth.AuthApiClient
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
-import com.kakao.sdk.common.model.KakaoSdkError
 import com.kakao.sdk.user.UserApiClient
 import com.kakao.sdk.user.model.User
 
-class KakaoLoginModule(
+class KakaoLoginClass(
     private val activityContext: Context,
     private val loginCallback: KakaoLoginCallback
 ) {
 
     companion object {
-        val TAG: String = KakaoLoginModule::class.java.simpleName
+        val TAG: String = KakaoLoginClass::class.java.simpleName
     }
 
     interface KakaoLoginCallback {
