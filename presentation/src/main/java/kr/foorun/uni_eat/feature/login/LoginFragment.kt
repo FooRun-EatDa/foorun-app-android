@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kr.foorun.presentation.databinding.FragmentLoginBinding
 import kr.foorun.social_login.KakaoLoginModule
 import kr.foorun.uni_eat.base.view.base.BaseFragment

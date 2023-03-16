@@ -1,5 +1,6 @@
 package kr.foorun.uni_eat.feature.login
 
+import android.util.Log
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
