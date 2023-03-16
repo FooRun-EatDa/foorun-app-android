@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.res.TypedArray
 import android.text.TextWatcher
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.inputmethod.EditorInfo
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -40,14 +41,16 @@ class BaseEditTextLayout : ConstraintLayout {
 
     private fun init(typedArray: TypedArray){
 
-        baseEditText = findViewById<BaseEditTextView>(R.id.base_edittext)
+        baseEditText = findViewById(R.id.base_edittext)
 
         val attrIsSingle = typedArray.getBoolean(R.styleable.BaseEditTextLayout_android_singleLine,true)
         val attrInputType = typedArray.getInt(R.styleable.BaseEditTextLayout_android_inputType, EditorInfo.TYPE_NULL)
         val attrHint = typedArray.getString(R.styleable.BaseEditTextLayout_android_hint) ?: ""
-        val attrColor = typedArray.getColor(R.styleable.BaseTextView_android_textColor,
+        val attrColor = typedArray.getColor(R.styleable.BaseEditTextLayout_android_textColor,
             ContextCompat.getColor(context,R.color.large_text))
         val attrBackground = typedArray.getResourceId(R.styleable.BaseEditTextLayout_android_background,R.color.invisible)
+        val attrSize = typedArray.getDimension(R.styleable.BaseEditTextLayout_android_textSize,5.toFloat())
+        val attrHintColor = typedArray.getColor(R.styleable.BaseEditTextLayout_android_textColorHint, ContextCompat.getColor(context,R.color.gray3))
 
         baseEditText.run {
             isSingleLine = attrIsSingle
@@ -56,7 +59,9 @@ class BaseEditTextLayout : ConstraintLayout {
                 inputType = attrInputType
             }
             hint = attrHint
+            setHintTextColor(attrHintColor)
             setBackgroundResource(attrBackground)
+            textSize = attrSize
         }
 
         typedArray.recycle()
