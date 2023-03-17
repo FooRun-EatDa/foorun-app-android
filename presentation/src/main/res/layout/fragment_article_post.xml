@@ -9,7 +9,6 @@
         <variable
             name="viewModel"
             type="kr.foorun.uni_eat.feature.article.post.ArticlePostViewModel" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,29 +44,44 @@
                 android:layout_marginStart="@dimen/margin_21"
                 android:layout_marginEnd="@dimen/margin_21">
 
-                <kr.foorun.uni_eat.base.view.base.BaseImageView
-                    android:id="@+id/add_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/add_image"
-                    android:layout_marginTop="116dp"
-                    android:layout_marginStart="125dp"
-                    android:layout_marginEnd="125dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/add_image_frame"
+                    android:layout_width="match_parent"
+                    android:layout_height="473dp"
+                    android:onClick="@{() -> viewModel.imageClicked()}"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <kr.foorun.uni_eat.base.view.base.BaseTextView
-                    android:id="@+id/add_image_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/add_image_text"
-                    android:textColor="@color/gray4"
-                    android:textSize="@dimen/text_size_small_12"
-                    android:layout_marginTop="@dimen/margin_30"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/add_image"/>
+                    <kr.foorun.uni_eat.base.view.base.BaseImageView
+                        android:id="@+id/add_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/add_image"
+                        android:layout_marginTop="116dp"
+                        android:layout_marginStart="125dp"
+                        android:layout_marginEnd="125dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <kr.foorun.uni_eat.base.view.base.BaseTextView
+                        android:id="@+id/add_image_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/add_image_text"
+                        android:textColor="@color/gray4"
+                        android:textSize="@dimen/text_size_small_12"
+                        android:layout_marginTop="@dimen/margin_30"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/add_image"/>
+
+                    <kr.foorun.uni_eat.base.view.base.BaseImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:glide="@{viewModel.articleImage}"
+                        app:visible="@{viewModel.articleImage == null ? false : true}"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <kr.foorun.uni_eat.base.view.base.BaseEditTextLayout
                     android:id="@+id/title_edit"
@@ -80,10 +94,10 @@
                     android:textColor="@color/black"
                     android:textColorHint="@color/gray3"
                     android:background="@color/invisible"
-                    android:layout_marginTop="85.77dp"
+                    android:layout_marginTop="11dp"
                     android:layout_marginStart="@dimen/margin_21"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/add_image_text"/>
+                    app:layout_constraintTop_toBottomOf="@+id/add_image_frame"/>
 
                 <kr.foorun.uni_eat.base.view.base.BaseImageView
                     android:id="@+id/add_address_image"
@@ -189,6 +203,7 @@
                 android:id="@+id/done_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.doneClicked()}"
                 android:src="@drawable/button_done"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

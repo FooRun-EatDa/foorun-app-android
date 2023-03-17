@@ -1,10 +1,13 @@
 package kr.foorun.uni_eat.base.view.base
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.location.LocationManager
+import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -109,10 +112,14 @@ abstract class BaseFragment <T : ViewDataBinding, V : BaseViewModel>(private val
     }
 
     @SuppressLint("CheckResult")
-    fun askPermission(vararg permissions : String, deniedMessage: String, onGranted: () -> Unit, onDenied: () -> Unit) {
-        val t = TedPermission.create()
-            .setDeniedMessage(deniedMessage)
-            .setPermissions(*permissions)
+    fun askPermission(vararg permissions: String, deniedMessage: String?, onGranted: () -> Unit, onDenied: () -> Unit) {
+        val t = if (deniedMessage.isNullOrBlank())
+            TedPermission.create()
+                .setDeniedMessage(deniedMessage)
+                .setPermissions(*permissions)
+        else
+            TedPermission.create()
+                .setPermissions(*permissions)
 
         t.request().subscribe { result ->
             when (result.isGranted) {
@@ -121,6 +128,36 @@ abstract class BaseFragment <T : ViewDataBinding, V : BaseViewModel>(private val
             }
         }
     }
+
+    protected fun imagePermission(onGranted: () -> Unit, onDenied: () -> Unit) {
+        val version = Build.VERSION.SDK_INT
+        val permissions = mutableListOf<String>()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) permissions.add(Manifest.permission.READ_MEDIA_IMAGES)
+        else if (version in Build.VERSION_CODES.Q + 1..Build.VERSION_CODES.S_V2) permissions.add(
+            Manifest.permission.READ_EXTERNAL_STORAGE
+        )
+        else permissions.addAll(listOf(
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE
+        ))
+
+        askPermission(
+            *permissions.toTypedArray(),
+            deniedMessage = getString(R.string.gallery_permission),
+            onGranted = { onGranted() },
+            onDenied = { onDenied() }
+        )
+    }
+
+    protected fun startGallery(isMultiple: Boolean = false) = Intent().apply {
+        if (isMultiple){
+            data = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+            putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
+            action = Intent.ACTION_GET_CONTENT
+        } else {
+            action = Intent.ACTION_PICK
+            setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,"image/*") }
+        }
 
     protected fun onBackPressedListener(action: () -> Unit) {
         val callback: OnBackPressedCallback =
