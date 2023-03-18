@@ -47,5 +47,7 @@
     <dimen name="search_bar_back_top_52">52dp</dimen>
     <dimen name="search_width">310dp</dimen>
     <dimen name="search_height">38dp</dimen>
+    <dimen name="article_detail_image_height">535dp</dimen>
+    <dimen name="article_post_image_height">473dp</dimen>
 
 </resources>

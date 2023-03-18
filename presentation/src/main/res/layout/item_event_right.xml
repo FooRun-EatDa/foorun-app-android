@@ -30,14 +30,14 @@
             android:layout_height="238dp"
             android:onClick="@{()->viewModel.onItemClick(position)}">
 
-            <kr.foorun.uni_eat.base.view.base.BaseImageView
+            <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
                 android:id="@+id/event_item_IV"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
                 app:glide="@{event.image}" />
 
-            <kr.foorun.uni_eat.base.view.base.BaseTextView
+            <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
                 android:id="@+id/event_title_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
                 android:textColor="@color/white"
                 android:textSize="15sp" />
 
-            <kr.foorun.uni_eat.base.view.base.BaseTextView
+            <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
                 android:id="@+id/event_duration_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
                 android:textColor="@color/white"
                 android:textSize="11sp" />
 
-            <kr.foorun.uni_eat.base.view.base.BaseImageView
+            <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
                 android:id="@+id/event_line"
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"

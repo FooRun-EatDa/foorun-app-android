@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <kr.foorun.uni_eat.base.view.base.BaseBarConstraintView
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseBarConstraintView
             android:id="@+id/bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

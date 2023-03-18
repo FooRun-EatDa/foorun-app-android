@@ -1,4 +1,4 @@
-package kr.foorun.uni_eat.base.view.base
+package kr.foorun.uni_eat.base.view.base.context_view
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -14,8 +14,6 @@ import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment

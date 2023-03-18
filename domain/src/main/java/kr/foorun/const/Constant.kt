@@ -4,6 +4,7 @@ class Constant {
 
     companion object{
         const val SPAN_COUNT = 2
+        const val INDICATOR_COUNT = 4
 
         const val TAG_ITEM_MARGIN_GAP = 11
         const val TAG_ITEM_MARGIN_BOTTOM = 16

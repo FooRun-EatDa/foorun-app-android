@@ -1,5 +1,6 @@
 package kr.foorun.uni_eat.feature.article.post
 
+import android.util.Log
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -22,8 +23,8 @@ class ArticlePostViewModel @Inject constructor(
     private val _searchTags = MutableStateFlow(listOf(SearchTag("")))
     val searchTags = _searchTags.asLiveData()
 
-    private val _articleImage = MutableStateFlow<String?>(null)
-    val articleImage = _articleImage.asLiveData()
+    private val _articleImageList = MutableStateFlow<Collection<String>?>(null)
+    val articleImageList = _articleImageList.asLiveData()
 
     init {
         loadTags()
@@ -45,7 +46,7 @@ class ArticlePostViewModel @Inject constructor(
         SearchTag("일식"))) }
 
     fun setTags(tags: List<SearchTag>) = viewModelScope.launch { _searchTags.emit(tags) }
-    fun setArticleImage(image: String) = viewModelScope.launch { _articleImage.emit(image) }
+    fun setArticleImage(image: Collection<String>) = viewModelScope.launch { _articleImageList.emit(image) }
 
     sealed class PostEvent{
         data class ImageClicked(val unit: Unit? = null): PostEvent()
@@ -54,10 +55,7 @@ class ArticlePostViewModel @Inject constructor(
 
     fun event(event: PostEvent) = viewModelScope.launch { _eventFlow.emit(event) }
 
-    fun imageClicked() = event(PostEvent.ImageClicked())
+    fun imageClicked() = event(PostEvent.ImageClicked()).let { Log.e("popo","asd") }
     fun doneClicked() = event(PostEvent.DoneClicked())
-
-
-
 
 }

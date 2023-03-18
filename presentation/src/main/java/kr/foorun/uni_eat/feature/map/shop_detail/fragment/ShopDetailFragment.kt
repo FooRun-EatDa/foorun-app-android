@@ -6,18 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import dagger.hilt.android.AndroidEntryPoint
+import kr.foorun.const.Constant.Companion.INDICATOR_COUNT
 import kr.foorun.presentation.databinding.FragmentShopDetailBinding
-import kr.foorun.uni_eat.base.view.base.BaseFragment
+import kr.foorun.uni_eat.base.view.base.context_view.BaseFragment
 import kr.foorun.uni_eat.base.view.base.recycler.decorator.TagDecorator
 import kr.foorun.uni_eat.base.view.base.recycler.decorator.grid.GridSpaceItemDecoration
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 import kr.foorun.uni_eat.feature.map.SearchTagAdapter
-import kr.foorun.uni_eat.feature.map.shop_detail.article.ShopDetailArticleAdapter
+import kr.foorun.uni_eat.feature.map.shop_detail.adapter.ShopDetailArticleAdapter
 import kr.foorun.uni_eat.feature.map.shop_detail.menu.MenuAdapter
-import kr.foorun.uni_eat.feature.map.shop_detail.viewpager.ShopImageAdapter
+import kr.foorun.uni_eat.feature.map.shop_detail.adapter.viewpager.ShopImageAdapter
 
 @AndroidEntryPoint
 class ShopDetailFragment : BaseFragment<FragmentShopDetailBinding, ShopDetailViewModel>(FragmentShopDetailBinding::inflate) {
@@ -59,15 +59,9 @@ class ShopDetailFragment : BaseFragment<FragmentShopDetailBinding, ShopDetailVie
     override fun afterBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) {
         binding {
             whiteBackButton.bringToFront()
-            viewpagerIndicator.createIndicator(4)
 
-            detailRecycler.adapter = shopImageAdapter
-            detailRecycler.registerOnPageChangeCallback(object : OnPageChangeCallback(){
-                override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-                    super.onPageScrolled(position, positionOffset, positionOffsetPixels)
-                    viewpagerIndicator.select(position)
-                }
-            })
+            pager2.setIndicator(INDICATOR_COUNT)
+            pager2.setPager(shopImageAdapter)
 
             articleRecycler.addItemDecoration(GridSpaceItemDecoration(spanCount = 2, gapSpace = 7))
             articleRecycler.adapter = shopDetailArticleAdapter

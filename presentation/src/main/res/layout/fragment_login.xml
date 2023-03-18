@@ -15,7 +15,7 @@
         android:background="@color/red"
         tools:context=".feature.login.LoginFragment">
 
-        <kr.foorun.uni_eat.base.view.base.BaseImageView
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
             android:id="@+id/logo"
             android:layout_width="98dp"
             android:layout_height="78dp"
@@ -29,7 +29,7 @@
             android:layout_marginTop="95dp"
             android:layout_marginStart="23dp"/>
 
-        <kr.foorun.uni_eat.base.view.base.BaseImageView
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
             android:id="@+id/tag"
             android:layout_width="306dp"
             android:layout_height="287dp"
@@ -42,7 +42,7 @@
             android:layout_marginBottom="60dp"
             android:layout_marginEnd="49.23dp" />
 
-        <kr.foorun.uni_eat.base.view.base.BaseImageView
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
             android:id="@+id/kakao_login_button"
             android:layout_width="300dp"
             android:layout_height="45dp"
@@ -54,7 +54,7 @@
             app:layout_constraintTop_toBottomOf="@id/tag"
             android:layout_marginBottom="40dp" />
 
-        <kr.foorun.uni_eat.base.view.base.BaseTextView
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
             android:id="@+id/explain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

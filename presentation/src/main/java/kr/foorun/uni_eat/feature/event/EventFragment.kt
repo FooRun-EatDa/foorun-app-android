@@ -6,15 +6,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import kr.foorun.const.Constant.Companion.EVENT_ITEM_MARGIN_GAP
 import kr.foorun.const.Constant.Companion.SPAN_COUNT
 import kr.foorun.const.Constant.Companion.EVENT_SORT_DEADLINE
 import kr.foorun.const.Constant.Companion.EVENT_SORT_LATEST
 import kr.foorun.presentation.databinding.FragmentEventBinding
-import kr.foorun.uni_eat.base.view.base.BaseFragment
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 import kr.foorun.uni_eat.feature.event.bottom_sheet.EventSortBottomSheetFragment
 import kr.foorun.presentation.R
+import kr.foorun.uni_eat.base.view.base.context_view.BaseFragment
 import kr.foorun.uni_eat.base.view.base.recycler.decorator.EventDecorator
 
 class EventFragment :

@@ -1,4 +1,4 @@
-package kr.foorun.uni_eat.feature.map.shop_detail.viewpager
+package kr.foorun.uni_eat.feature.map.shop_detail.adapter.viewpager
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,7 +9,9 @@ import kr.foorun.presentation.databinding.ItemDetailImageBinding
 
 class ItemDetailImageViewHolder(val binding: ItemDetailImageBinding) : RecyclerView.ViewHolder(binding.root)
 
-class ShopImageAdapter : ListAdapter<String, ItemDetailImageViewHolder>(object : DiffUtil.ItemCallback<String>(){
+class ShopImageAdapter(
+    private val ShopImageViewModel: ShopImageViewModel? = null
+) : ListAdapter<String, ItemDetailImageViewHolder>(object : DiffUtil.ItemCallback<String>(){
     override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
         return oldItem == newItem
     }
@@ -25,6 +27,7 @@ class ShopImageAdapter : ListAdapter<String, ItemDetailImageViewHolder>(object :
     override fun onBindViewHolder(holder: ItemDetailImageViewHolder, position: Int) {
         holder.run {
             binding.image = getItem(position)
+            ShopImageViewModel?.let { binding.viewModel = it }
         }
     }
 }

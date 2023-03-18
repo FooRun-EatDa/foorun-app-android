@@ -12,7 +12,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kr.foorun.model.tag.SearchTag
 import kr.foorun.presentation.R
 import kr.foorun.presentation.databinding.FragmentMapBinding
-import kr.foorun.uni_eat.base.view.base.BaseFragment
+import kr.foorun.uni_eat.base.view.base.context_view.BaseFragment
 import kr.foorun.uni_eat.base.view.base.recycler.decorator.TagDecorator
 import kr.foorun.uni_eat.base.viewmodel.nonEmptyObserver
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
