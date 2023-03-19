@@ -55,7 +55,7 @@ class ArticlePostViewModel @Inject constructor(
 
     fun event(event: PostEvent) = viewModelScope.launch { _eventFlow.emit(event) }
 
-    fun imageClicked() = event(PostEvent.ImageClicked()).let { Log.e("popo","asd") }
+    fun imageClicked() = event(PostEvent.ImageClicked())
     fun doneClicked() = event(PostEvent.DoneClicked())
 
 }

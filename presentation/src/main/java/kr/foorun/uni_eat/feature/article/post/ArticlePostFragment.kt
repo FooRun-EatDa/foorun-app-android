@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import kr.foorun.const.Constant.Companion.INDICATOR_COUNT
+import kr.foorun.const.Constant.Companion.SPAN_COUNT
 import kr.foorun.model.tag.SearchTag
 import kr.foorun.presentation.databinding.FragmentArticlePostBinding
 import kr.foorun.uni_eat.base.view.base.context_view.BaseFragment
@@ -82,7 +83,7 @@ class ArticlePostFragment: BaseFragment<FragmentArticlePostBinding, ArticlePostV
     override fun afterBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = binding {
         tagRecycler.run{
             adapter = searchTagAdapter
-            addItemDecoration(TagDecorator(spanCount = 4, oriental = GRID))
+            addItemDecoration(TagDecorator(spanCount = SPAN_COUNT, oriental = GRID))
         }
 
         addImagePager.run {
