@@ -1,6 +1,5 @@
 package kr.foorun.uni_eat.feature.main
 
-import android.view.View
 import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
