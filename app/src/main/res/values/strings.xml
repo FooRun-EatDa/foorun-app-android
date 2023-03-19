@@ -23,4 +23,6 @@
     <string name="menu">메뉴</string>
     <string name="article">아티클</string>
     <string name="notice_add">*추가할 내용이 있다면 <u>여기</u>를 눌러주세요.</string>
+    <string name="kakao_key">5fd54357215a25a942cfa3b7d999cacc</string>
+    <string name="kakao_key2">kakao5fd54357215a25a942cfa3b7d999cacc</string>
 </resources>

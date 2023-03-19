@@ -42,8 +42,8 @@ class MapSearchFragment(val searchDone : (word : String) -> Unit): DialogFragmen
                 //todo if there is only one result: pass word back ( _isNonSearch(false) )
                 //todo if there are results: show list of shops ( _isNonSearch(false) )
                 //todo if there isn't any result: show no result ( _isNonSearch(true) )
-                    searchDone(it)
-                    dismiss()
+                searchDone(it)
+                dismiss()
             }
 
             recentWords.observe(this@MapSearchFragment){

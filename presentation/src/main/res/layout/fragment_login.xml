@@ -48,6 +48,7 @@
             android:layout_height="45dp"
             android:onClick="@{() -> viewModel.clickedKakaoLogin()}"
             android:src="@drawable/kakao_login"
+            android:background="?android:selectableItemBackground"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/explain"

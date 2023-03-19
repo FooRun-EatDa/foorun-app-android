@@ -21,7 +21,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-//        buildConfigField "String", "RESET_URL", properties['api.url_reset']
+        buildConfigField "String", "KAKO_KEY", properties['kakao.key']
 //        buildConfigField "String", "RESET_KEY", properties['api.key_reset']
 //        buildConfigField "String", "CLIENT_KEY", properties['api.key_client']
     }
@@ -51,6 +51,9 @@ dependencies {
     implementation project(':domain')
     implementation project(':data')
     implementation project(':presentation')
+
+    // 카카오 로그인
+    implementation "com.kakao.sdk:v2-user:2.13.0"
 
     //hilt
     implementation "com.google.dagger:hilt-android:2.41"

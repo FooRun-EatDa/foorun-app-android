@@ -5,6 +5,7 @@
     <application>
         <activity
             android:name="kr.foorun.uni_eat.feature.main.MainActivity"
+            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
