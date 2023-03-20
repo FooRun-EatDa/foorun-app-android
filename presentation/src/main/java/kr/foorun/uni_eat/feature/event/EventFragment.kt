@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kr.foorun.const.Constant.Companion.EVENT_ITEM_MARGIN_GAP
 import kr.foorun.const.Constant.Companion.SPAN_COUNT
 import kr.foorun.const.Constant.Companion.EVENT_SORT_DEADLINE
@@ -70,7 +71,7 @@ class EventFragment :
 
     private fun showBottomSheet() {
         requireActivity().findViewById<BottomNavigationView>(R.id.bottom_nav).visibility = View.GONE
-        eventSortBottomSheetFragment = EventSortBottomSheetFragment({onBackPressed()}){ sortMethod ->
+        eventSortBottomSheetFragment = EventSortBottomSheetFragment({onBackPressed()}){sortMethod ->
             when(sortMethod){
                 EVENT_SORT_LATEST -> {
                     binding.eventFilterText.text = getString(R.string.event_sort_newest)

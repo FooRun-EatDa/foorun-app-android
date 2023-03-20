@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="17dp"
             android:layout_marginTop="14dp"
-            android:layout_marginBottom="47dp"
+            android:layout_marginBottom="37dp"
             android:background="@drawable/radius_black_24"
             android:text="@string/event_sort_button"
             android:textColor="@color/white"

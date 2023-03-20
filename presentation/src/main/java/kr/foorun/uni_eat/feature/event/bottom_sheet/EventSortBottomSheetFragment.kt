@@ -21,6 +21,8 @@ class EventSortBottomSheetFragment(
     private val eventSortViewModel: EventSortViewModel by viewModels()
 
     override fun observeAndInitViewModel() {
+        this.bottomSheetBehavior.isDraggable = false
+
         collapseBinding.viewModel=eventSortViewModel.apply{
             sortMethod.observe(this@EventSortBottomSheetFragment){ pick->
                 when(pick){
