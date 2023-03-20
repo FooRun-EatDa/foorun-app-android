@@ -17,7 +17,7 @@
        <kr.foorun.uni_eat.base.view.base.BaseBarConstraintView
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           app:titleText="@string/article"
+           app:titleText="@string/event"
            app:layout_constraintTop_toTopOf="parent"/>
 
         <kr.foorun.uni_eat.base.view.base.BaseTextView
