@@ -1,25 +1,24 @@
 package kr.foorun.uni_eat.feature.main
 
-import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.*
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kr.foorun.presentation.R
 import kr.foorun.presentation.databinding.ActivityMainBinding
 import kr.foorun.uni_eat.base.view.base.context_view.BaseActivity
-import kr.foorun.uni_eat.feature.home.HomeFragment
 import kr.foorun.uni_eat.feature.home.HomeFragmentDirections
+
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>({ActivityMainBinding.inflate(it)}){
 
     override val activityViewModel: MainViewModel by viewModels()
     private lateinit var navController: NavController
+
+    private var backPressedTime: Long = 0
 
     override fun afterBinding() = binding {
         setUpBottomNavigationView()
@@ -68,4 +67,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>({ActivityM
     }
 
     fun bottomVisible(isVisible: Boolean) = activityViewModel.setBottomVisible(isVisible)
+
+    override fun onBackPressed() {
+        if (System.currentTimeMillis() > backPressedTime + 2000) {
+            backPressedTime = System.currentTimeMillis()
+            toast("\'뒤로\' 버튼을 한번 더 누르시면 종료됩니다.")
+        } else if (System.currentTimeMillis() <= backPressedTime + 2000) finish()
+    }
 }
