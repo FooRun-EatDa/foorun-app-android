@@ -18,8 +18,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>({ActivityM
     override val activityViewModel: MainViewModel by viewModels()
     private lateinit var navController: NavController
 
-    private var backPressedTime: Long = 0
-
     override fun afterBinding() = binding {
         setUpBottomNavigationView()
     }
@@ -67,11 +65,4 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>({ActivityM
     }
 
     fun bottomVisible(isVisible: Boolean) = activityViewModel.setBottomVisible(isVisible)
-
-    override fun onBackPressed() {
-        if (System.currentTimeMillis() > backPressedTime + 2000) {
-            backPressedTime = System.currentTimeMillis()
-            toast(getString(R.string.exit_txt))
-        } else if (System.currentTimeMillis() <= backPressedTime + 2000) finish()
-    }
 }
