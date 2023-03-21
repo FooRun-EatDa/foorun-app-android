@@ -8,5 +8,15 @@
         android:id="@+id/my_page"
         android:name="kr.foorun.uni_eat.feature.mypage.MyPageFragment"
         android:label="MyFragment"
-        tools:layout="@layout/fragment_my_page" />
+        tools:layout="@layout/fragment_my_page" >
+        <action
+            android:id="@+id/action_my_page_to_myPageMoreFragment"
+            app:destination="@id/myPageMoreFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/myPageMoreFragment"
+        tools:layout="@layout/fragment_my_page_more"
+        android:name="kr.foorun.uni_eat.feature.mypage.more.MyPageMoreFragment"
+        android:label="MyPageMoreFragment" />
 </navigation>

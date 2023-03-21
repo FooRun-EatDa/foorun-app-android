@@ -3,6 +3,7 @@
     <dimen name="margin_image_29">29dp</dimen>
     <dimen name="margin_20">20dp</dimen>
     <dimen name="margin_21">21dp</dimen>
+    <dimen name="margin_22">22dp</dimen>
     <dimen name="margin_13">13.38dp</dimen>
     <dimen name="margin_88">88dp</dimen>
     <dimen name="margin_30">30dp</dimen>
@@ -49,5 +50,8 @@
     <dimen name="search_height">38dp</dimen>
     <dimen name="article_detail_image_height">535dp</dimen>
     <dimen name="article_post_image_height">473dp</dimen>
+
+    <dimen name="arrow_right_width">6dp</dimen>
+    <dimen name="arrow_right_height">11dp</dimen>
 
 </resources>

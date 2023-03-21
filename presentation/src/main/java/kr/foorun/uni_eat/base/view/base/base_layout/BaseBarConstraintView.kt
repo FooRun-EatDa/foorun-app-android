@@ -19,6 +19,7 @@ import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
 import kr.foorun.uni_eat.feature.article.entire.ArticleEntireViewModel
 import kr.foorun.uni_eat.feature.article.post.ArticlePostViewModel
 import kr.foorun.uni_eat.feature.mypage.MyPageViewModel
+import kr.foorun.uni_eat.feature.mypage.more.MyPageMoreViewModel
 
 
 class BaseBarConstraintView : ConstraintLayout{
