@@ -9,6 +9,7 @@
         android:name="kr.foorun.uni_eat.feature.mypage.MyPageFragment"
         android:label="MyFragment"
         tools:layout="@layout/fragment_my_page" >
+
         <action
             android:id="@+id/action_my_page_to_myPageMoreFragment"
             app:destination="@id/myPageMoreFragment" />
@@ -18,5 +19,28 @@
         android:id="@+id/myPageMoreFragment"
         tools:layout="@layout/fragment_my_page_more"
         android:name="kr.foorun.uni_eat.feature.mypage.more.MyPageMoreFragment"
-        android:label="MyPageMoreFragment" />
+        android:label="MyPageMoreFragment" >
+
+        <action
+            android:id="@+id/action_myPageMoreFragment_to_myPageAccountFragment"
+            app:destination="@id/myPageAccountFragment" />
+
+        <argument
+            android:name="@string/hide_bottom"
+            app:argType="boolean"
+            android:defaultValue="true" />
+    </fragment>
+
+    <fragment
+        tools:layout="@layout/fragment_my_page_account"
+        android:id="@+id/myPageAccountFragment"
+        android:name="kr.foorun.uni_eat.feature.mypage.account.MyPageAccountFragment"
+        android:label="MyPageAccountFragment" >
+
+        <argument
+            android:name="@string/hide_bottom"
+            app:argType="boolean"
+            android:defaultValue="true" />
+    </fragment>
+
 </navigation>
