@@ -5,6 +5,12 @@
 
     <data>
         <variable
+            name="user"
+            type="kr.foorun.model.user.User" />
+        <variable
+            name="isOthers"
+            type="Boolean" />
+        <variable
             name="viewModel"
             type="kr.foorun.uni_eat.feature.mypage.MyPageViewModel" />
     </data>
