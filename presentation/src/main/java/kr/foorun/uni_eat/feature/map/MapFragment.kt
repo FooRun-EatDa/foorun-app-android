@@ -127,6 +127,7 @@ class MapFragment
                 shopBottomSheetFragment?.hide()
             else if (searchBottomSheetFragment != null && searchBottomSheetFragment!!.handleBackKeyEvent())
                 searchBottomSheetFragment?.hide()
+            else popUpBackStack()
         }
     }
 

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import kr.foorun.presentation.R
 import kr.foorun.presentation.databinding.FragmentHomeBinding
 import kr.foorun.uni_eat.base.view.base.context_view.BaseFragment
 import kr.foorun.uni_eat.base.view.base.measuredHeight
@@ -24,6 +25,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(FragmentHo
         adapterViewModel = articleViewModel
     ) }
     private val eventAdapter: HomeEventAdapter by lazy { HomeEventAdapter(eventViewModel) }
+    private var backPressedTime: Long = 0
 
     @SuppressLint("NotifyDataSetChanged")
     override fun observeAndInitViewModel() = binding {
@@ -50,6 +52,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(FragmentHo
         scroll.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
             if(scrollY >= getTopHeight()) fragmentViewModel.setBarColor(true)
             else fragmentViewModel.setBarColor(false)
+        }
+
+        onBackPressedListener {
+            if (System.currentTimeMillis() > backPressedTime + 2000) {
+                backPressedTime = System.currentTimeMillis()
+                toast(getString(R.string.exit_txt))
+            } else if (System.currentTimeMillis() <= backPressedTime + 2000) requireActivity().finish()
         }
     }
 
