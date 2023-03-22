@@ -37,6 +37,7 @@
     <string name="event_sort_button">확인</string>
     <string name="latest">최신</string>
     <string name="recommend">추천</string>
+    <string name="use_coupon">쿠폰 사용하기</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="articleExplain">대학생 에디터들이 작성한\n찐 맛집 아티클을 확인해보세요!</string>
