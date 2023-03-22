@@ -20,6 +20,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <kr.foorun.uni_eat.base.view.base.BaseBarConstraintView
+                android:id="@+id/bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center"
+                android:alpha="0"
+                app:titleText="@string/event"/>
+
             <androidx.core.widget.NestedScrollView
                 android:id="@+id/event_NSV"
                 android:layout_width="match_parent"
