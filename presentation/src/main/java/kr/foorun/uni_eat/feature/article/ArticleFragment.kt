@@ -8,19 +8,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
-import androidx.viewpager2.widget.ViewPager2
-import kotlinx.coroutines.flow.collect
 import kr.foorun.const.Constant.Companion.ARTICLE_PREVIEW_MARGIN
-import kr.foorun.presentation.R
 import kr.foorun.presentation.databinding.FragmentArticleBinding
-import kr.foorun.uni_eat.base.view.base.BaseFragment
+import kr.foorun.uni_eat.base.view.base.context_view.BaseFragment
 import kr.foorun.uni_eat.base.view.base.dp
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 import kr.foorun.uni_eat.feature.article.adapter.ArticleAdapter
 import kr.foorun.uni_eat.feature.article.adapter.ArticleAdapterViewModel
 import kotlin.math.abs
 
-class ArticleFragment : BaseFragment<FragmentArticleBinding,ArticleViewModel>(FragmentArticleBinding::inflate) {
+class ArticleFragment : BaseFragment<FragmentArticleBinding, ArticleViewModel>(FragmentArticleBinding::inflate) {
     override val fragmentViewModel: ArticleViewModel by viewModels()
     private val articleAdapterViewModel: ArticleAdapterViewModel by viewModels()
     private val articleAdapter by lazy { ArticleAdapter(isPager = true, viewModel = articleAdapterViewModel.apply {

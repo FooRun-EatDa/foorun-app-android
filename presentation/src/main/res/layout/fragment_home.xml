@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:background="@color/navy">
 
-        <kr.foorun.uni_eat.base.view.base.BaseBarConstraintView
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseBarConstraintView
             android:id="@+id/bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <kr.foorun.uni_eat.base.view.base.BaseTextView
+                    <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
                         android:id="@+id/home_top_explain_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <kr.foorun.uni_eat.base.view.base.BaseImageView
+                    <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
                         android:id="@+id/home_map_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -69,7 +69,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/home_top_explain_text" />
 
-                    <kr.foorun.uni_eat.base.view.base.BaseImageView
+                    <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
                         android:id="@+id/home_icon_right"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <kr.foorun.uni_eat.base.view.base.BaseArticleContentConstraintView
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseArticleContentConstraintView
                     android:id="@+id/home_content_constraint"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -93,7 +93,7 @@
                     app:layout_constraintTop_toBottomOf="@id/top_banner"
                     app:root="@color/navy">
 
-                    <kr.foorun.uni_eat.base.view.base.BaseTextView
+                    <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
                         android:id="@+id/home_what_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -106,7 +106,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <kr.foorun.uni_eat.base.view.base.BaseImageView
+                    <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
                         android:id="@+id/home_goto_button"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -116,7 +116,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/home_what_text" />
 
-                    <kr.foorun.uni_eat.base.view.base.BaseImageView
+                    <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="31.29dp"
@@ -125,7 +125,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/home_goto_button" />
 
-                    <kr.foorun.uni_eat.base.view.base.BaseTextView
+                    <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
                         android:id="@+id/home_head_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -138,7 +138,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/home_goto_button" />
 
-                    <kr.foorun.uni_eat.base.view.base.BaseImageView
+                    <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4.53dp"
@@ -147,7 +147,7 @@
                         app:layout_constraintStart_toEndOf="@id/home_head_text"
                         app:layout_constraintTop_toBottomOf="@id/home_goto_button" />
 
-                    <kr.foorun.uni_eat.base.view.base.BaseTextView
+                    <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
                         android:id="@+id/home_sub_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -170,7 +170,7 @@
                         app:layout_constraintTop_toBottomOf="@id/home_sub_text"
                         app:spanCount="2" />
 
-                    <kr.foorun.uni_eat.base.view.base.BaseTextView
+                    <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
                         android:id="@+id/home_head_text2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -183,7 +183,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/article_recycler" />
 
-                    <kr.foorun.uni_eat.base.view.base.BaseImageView
+                    <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4.53dp"
@@ -192,7 +192,7 @@
                         app:layout_constraintStart_toEndOf="@+id/home_head_text2"
                         app:layout_constraintTop_toBottomOf="@id/article_recycler" />
 
-                    <kr.foorun.uni_eat.base.view.base.BaseTextView
+                    <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
                         android:id="@+id/home_sub_text2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -204,7 +204,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/home_head_text2" />
 
-                    <kr.foorun.uni_eat.base.view.base.BaseImageView
+                    <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="63dp"
@@ -224,7 +224,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/home_sub_text2" />
 
-                </kr.foorun.uni_eat.base.view.base.BaseArticleContentConstraintView>
+                </kr.foorun.uni_eat.base.view.base.base_layout.BaseArticleContentConstraintView>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>

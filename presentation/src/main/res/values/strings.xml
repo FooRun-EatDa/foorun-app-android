@@ -57,4 +57,5 @@
     <string name="home_head_text">여긴 어때 ~ ?</string>
     <string name="home_text">유니잇 선정한 이번주 맛집</string>
     <string name="home_head_text2">우리학교 맛집 이벤트</string>
+    <string name="gallery_permission">휴대폰 갤러리에 접근하기 위해 권한이 필요합니다. (이미지 변경시 필수권한)</string>
 </resources>

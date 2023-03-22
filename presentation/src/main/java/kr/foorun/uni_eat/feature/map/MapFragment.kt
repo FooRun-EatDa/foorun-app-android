@@ -5,16 +5,14 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.core.view.contains
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
 import kr.foorun.model.tag.SearchTag
 import kr.foorun.presentation.R
 import kr.foorun.presentation.databinding.FragmentMapBinding
-import kr.foorun.uni_eat.base.view.base.BaseFragment
+import kr.foorun.uni_eat.base.view.base.context_view.BaseFragment
 import kr.foorun.uni_eat.base.view.base.recycler.decorator.TagDecorator
 import kr.foorun.uni_eat.base.viewmodel.nonEmptyObserver
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
@@ -159,7 +157,7 @@ class MapFragment
         Manifest.permission.ACCESS_FINE_LOCATION,
         Manifest.permission.ACCESS_COARSE_LOCATION,
         deniedMessage = getString(R.string.location_permission_deniedMessage),
-        onGranted = { locateMe() }, onDenied = {  })
+        onGranted = { locateMe() }) { }
 
     private fun locateMe() { mapView?.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading }
     private fun locatePoint(lat : Double, lng: Double) {

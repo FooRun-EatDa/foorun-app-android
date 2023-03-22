@@ -7,7 +7,7 @@ import androidx.navigation.ui.*
 import dagger.hilt.android.AndroidEntryPoint
 import kr.foorun.presentation.R
 import kr.foorun.presentation.databinding.ActivityMainBinding
-import kr.foorun.uni_eat.base.view.base.BaseActivity
+import kr.foorun.uni_eat.base.view.base.context_view.BaseActivity
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>({ActivityMainBinding.inflate(it)}) {

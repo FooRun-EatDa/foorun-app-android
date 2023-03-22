@@ -1,4 +1,4 @@
-package kr.foorun.uni_eat.base.view.base
+package kr.foorun.uni_eat.base.view.base.context_view
 
 import android.annotation.SuppressLint
 import android.app.Activity

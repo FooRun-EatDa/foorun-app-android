@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <kr.foorun.uni_eat.base.view.base.BaseTextView
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
             android:id="@+id/information"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:textSize="15sp" />
 
-        <kr.foorun.uni_eat.base.view.base.BaseTextView
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
             android:id="@+id/information_value"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:textSize="15sp" />
 
-        <kr.foorun.uni_eat.base.view.base.BaseImageView
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
             android:id="@+id/information_image"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

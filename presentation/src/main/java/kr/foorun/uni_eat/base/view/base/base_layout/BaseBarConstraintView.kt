@@ -1,4 +1,4 @@
-package kr.foorun.uni_eat.base.view.base
+package kr.foorun.uni_eat.base.view.base.base_layout
 
 import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
@@ -7,7 +7,6 @@ import android.content.res.TypedArray
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.util.AttributeSet
-import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View

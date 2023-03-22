@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <kr.foorun.uni_eat.base.view.base.BaseTextView
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
             android:id="@+id/shop_name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/shop_name_text">
 
-            <kr.foorun.uni_eat.base.view.base.BaseTextView
+            <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
                 android:id="@+id/shop_nick_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent" />
 
-            <kr.foorun.uni_eat.base.view.base.BaseTextView
+            <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
                 android:id="@+id/shop_kind_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
             app:layout_constraintBottom_toTopOf="@id/content"
             app:layout_constraintTop_toBottomOf="@id/shop_info_constraint"/>
 
-        <kr.foorun.uni_eat.base.view.base.BaseTextView
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
             android:id="@+id/content"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

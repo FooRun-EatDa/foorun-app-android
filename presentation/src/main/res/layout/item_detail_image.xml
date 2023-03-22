@@ -6,11 +6,15 @@
         <variable
             name="image"
             type="String" />
+        <variable
+            name="viewModel"
+            type="kr.foorun.uni_eat.feature.map.shop_detail.adapter.viewpager.ShopImageViewModel" />
     </data>
 
-    <kr.foorun.uni_eat.base.view.base.BaseImageView
+    <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
         android:id="@+id/shop_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:onClick="@{() -> viewModel.imageClicked()}"
         app:glide="@{image}" />
 </layout>

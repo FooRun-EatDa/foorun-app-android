@@ -25,7 +25,7 @@ class ArticleViewModel: BaseViewModel() {
     private fun loadArticles() = viewModelScope.launch {
         //todo for test, need to get data from server to attach articles
         val articleList = mutableListOf<Article>()
-        for (i in 0 until 2) {
+        for (i in 0 until 1) {
             articleList.add(Article("차츰","","# 조용한 # 데이트 #술집 #asdasdasdad",List(10) { "https://picsum.photos/200" }))
         }
         articleList.add(Article("more","","",List(10) { "https://picsum.photos/200" }))
