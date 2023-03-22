@@ -1,6 +1,7 @@
 package kr.foorun.uni_eat.base.view.base
 
 import android.content.res.Resources
+import android.util.TypedValue
 import android.view.View
 
 val Int.dp: Int

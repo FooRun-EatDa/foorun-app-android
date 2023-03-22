@@ -92,7 +92,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_marginStart="8dp"
-                android:src="@drawable/right_arrow" />
+                android:src="@drawable/arrow_right" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
