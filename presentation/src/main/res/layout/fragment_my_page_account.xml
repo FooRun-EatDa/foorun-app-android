@@ -1,0 +1,68 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="kr.foorun.uni_eat.feature.mypage.account.MyPageAccountViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseBarConstraintView
+            android:id="@+id/bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:frontVisible="true"
+            app:frontImage="@drawable/arrow_left"
+            app:titleText="@string/edit_account"
+            app:layout_constraintTop_toTopOf="parent"/>
+        
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseInformation
+            android:id="@+id/change_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.changePassClicked()}"
+            app:information="@string/change_password"
+            android:textSize="@dimen/article_text_small_19"
+            app:show_arrow="true"
+            android:src="@drawable/arrow_right"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/margin_22"
+            android:layout_marginHorizontal="@dimen/margin_22"
+            app:layout_constraintTop_toBottomOf="@id/bar"/>
+
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseInformation
+            android:id="@+id/logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.logoutClicked()}"
+            app:information="@string/logout"
+            android:textSize="@dimen/article_text_small_19"
+            app:show_arrow="true"
+            android:src="@drawable/arrow_right"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/margin_22"
+            android:layout_marginHorizontal="@dimen/margin_22"
+            app:layout_constraintTop_toBottomOf="@id/change_pass"/>
+
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseInformation
+            android:id="@+id/withdraw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.withdrawClicked()}"
+            app:information="@string/withdraw"
+            android:textSize="@dimen/article_text_small_19"
+            app:show_arrow="true"
+            android:src="@drawable/arrow_right"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/margin_22"
+            android:layout_marginHorizontal="@dimen/margin_22"
+            app:layout_constraintTop_toBottomOf="@id/logout"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

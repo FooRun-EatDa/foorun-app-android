@@ -12,29 +12,4 @@
         android:label="HomeFragment">
     </fragment>
 
-    <include app:graph="@navigation/article_nav" />
-    <include app:graph="@navigation/event_nav" />
-    <include app:graph="@navigation/my_nav" />
-    <include app:graph="@navigation/map_nav" />
-
-    <action
-        android:id="@+id/action_home_fragment_to_my_nav"
-        app:popUpTo="@id/home_fragment"
-        app:popUpToInclusive="false"
-        app:destination="@id/my_nav" />
-    <action
-        android:id="@+id/action_home_fragment_to_map_nav"
-        app:popUpTo="@id/home_fragment"
-        app:popUpToInclusive="false"
-        app:destination="@id/map_nav" />
-    <action
-        android:id="@+id/action_home_fragment_to_event_nav"
-        app:popUpTo="@id/home_fragment"
-        app:popUpToInclusive="false"
-        app:destination="@id/event_nav" />
-    <action
-        android:id="@+id/action_home_fragment_to_article_nav"
-        app:popUpTo="@id/home_fragment"
-        app:popUpToInclusive="false"
-        app:destination="@id/article_nav" />
 </navigation>

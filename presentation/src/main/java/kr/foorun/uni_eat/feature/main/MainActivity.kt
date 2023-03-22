@@ -9,7 +9,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kr.foorun.presentation.R
 import kr.foorun.presentation.databinding.ActivityMainBinding
 import kr.foorun.uni_eat.base.view.base.context_view.BaseActivity
-import kr.foorun.uni_eat.feature.home.HomeFragmentDirections
+import kr.foorun.uni_eat.feature.splash.SplashFragmentDirections
 
 
 @AndroidEntryPoint
@@ -45,11 +45,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>({ActivityM
 
         bottomNav.setOnItemSelectedListener {//to make sure action works properly if you use
             when(it.itemId){
-                R.id.home_nav -> true.apply { navController.setGraph(R.navigation.home_nav) }
-                R.id.map_nav -> true.apply { navigate(HomeFragmentDirections.actionHomeFragmentToMapNav()) }
-                R.id.event_nav -> true.apply { navigate(HomeFragmentDirections.actionHomeFragmentToEventNav()) }
-                R.id.article_nav -> true.apply { navigate(HomeFragmentDirections.actionHomeFragmentToArticleNav()) }
-                R.id.my_nav -> true.apply { navigate(HomeFragmentDirections.actionHomeFragmentToMyNav()) }
+                R.id.home_nav -> true.apply { navigate(SplashFragmentDirections.actionToHomeNav()) }
+                R.id.map_nav -> true.apply { navigate(SplashFragmentDirections.actionToMapNav()) }
+                R.id.event_nav -> true.apply { navigate(SplashFragmentDirections.actionToEventNav()) }
+                R.id.article_nav -> true.apply { navigate(SplashFragmentDirections.actionToArticleNav()) }
+                R.id.my_nav -> true.apply { navigate(SplashFragmentDirections.actionToMyNav()) }
                 else -> false
             }
         }

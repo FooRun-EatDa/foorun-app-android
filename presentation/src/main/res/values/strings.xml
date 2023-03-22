@@ -68,4 +68,7 @@
     <string name="inquiry">문의 / 소통하기</string>
     <string name="edit_profile">프로필 수정</string>
     <string name="edit_account">계정 관리</string>
+    <string name="change_password">비밀번호 변경</string>
+    <string name="logout">로그아웃</string>
+    <string name="withdraw">탈퇴</string>
 </resources>
