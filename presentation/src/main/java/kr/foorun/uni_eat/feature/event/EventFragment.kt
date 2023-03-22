@@ -11,6 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import kr.foorun.const.Constant.Companion.SPAN_COUNT
 import kr.foorun.const.Constant.Companion.EVENT_SORT_DEADLINE
 import kr.foorun.const.Constant.Companion.EVENT_SORT_LATEST
+import kr.foorun.model.event.Event
 import kr.foorun.presentation.databinding.FragmentEventBinding
 import kr.foorun.uni_eat.base.view.base.BaseFragment
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
@@ -23,7 +24,7 @@ class EventFragment :
     override val fragmentViewModel: EventViewModel by viewModels()
     private var eventSortBottomSheetFragment: EventSortBottomSheetFragment? = null
     private val eventAdapter: EventAdapter by lazy { EventAdapter( EventAdapterViewModel().apply{
-        repeatOnStarted { eventFlow.collect {handleAdapterEvent(it)}}
+        repeatOnStarted { eventFlow.collect { handleAdapterEvent(it) } }
     }) }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -63,7 +64,7 @@ class EventFragment :
 
     private fun handleAdapterEvent(event: EventAdapterViewModel.EventAdapterEvent) = when (event) {
         is EventAdapterViewModel.EventAdapterEvent.ShowEventDetail -> {
-            navigateToFrag(EventFragmentDirections.actionEventFragmentToEventDetailFragment(event.index))
+            navigateToFrag(EventFragmentDirections.actionEventFragmentToEventDetailFragment(event.clickedEvent))
         }
     }
 

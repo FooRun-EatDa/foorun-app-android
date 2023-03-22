@@ -19,6 +19,7 @@ class EventDetailFragment : BaseFragment<FragmentEventDetailBinding, EventDetail
     override fun observeAndInitViewModel() {
 
         binding.apply {
+            event = args.event
             viewModel = fragmentViewModel.apply {
                 repeatOnStarted { viewEvent.collect { handleBaseViewEvent(it) } }
             }

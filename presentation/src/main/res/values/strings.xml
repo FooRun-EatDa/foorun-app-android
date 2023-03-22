@@ -37,6 +37,7 @@
     <string name="event_sort_button">확인</string>
     <string name="latest">최신</string>
     <string name="recommend">추천</string>
+    <string name="event_notice">이벤트 유의사항</string>
     <string name="use_coupon">쿠폰 사용하기</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>

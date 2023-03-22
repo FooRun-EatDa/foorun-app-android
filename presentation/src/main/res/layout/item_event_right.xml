@@ -4,10 +4,6 @@
 
     <data>
         <variable
-            name="position"
-            type="Integer" />
-
-        <variable
             name="event"
             type="kr.foorun.model.event.Event" />
 
@@ -28,7 +24,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="238dp"
-            android:onClick="@{()->viewModel.onItemClick(position)}">
+            android:onClick="@{()->viewModel.onItemClick(event)}">
 
             <kr.foorun.uni_eat.base.view.base.BaseImageView
                 android:id="@+id/event_item_IV"

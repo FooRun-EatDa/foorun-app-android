@@ -15,16 +15,15 @@ sealed class EventViewHolder(
     binding: ViewDataBinding,
 ) : RecyclerView.ViewHolder(binding.root){
 
-    abstract fun bind(item: Event, idx: Int)
+    abstract fun bind(item: Event)
 
     class EventLeftViewHolder(
         private val binding: ItemEventLeftBinding,
         private val adapterViewModel: EventAdapterViewModel
     ): EventViewHolder(binding){
-        override fun bind(item: Event, idx: Int) = binding.run {
+        override fun bind(item: Event) = binding.run {
             viewModel = adapterViewModel
             event  = item
-            position = idx
         }
     }
 
@@ -32,10 +31,9 @@ sealed class EventViewHolder(
         private val binding: ItemEventRightBinding,
         private val adapterViewModel: EventAdapterViewModel
     ): EventViewHolder(binding) {
-        override fun bind(item: Event, idx: Int) = binding.run {
+        override fun bind(item: Event) = binding.run {
             viewModel = adapterViewModel
             event  = item
-            position = idx
         }
     }
 
@@ -63,6 +61,6 @@ class EventAdapter(
         }
     }
 
-    override fun onBindViewHolder(holder: EventViewHolder, position: Int) = holder.bind(getItem(position),position)
+    override fun onBindViewHolder(holder: EventViewHolder, position: Int) = holder.bind(getItem(position))
     override fun getItemViewType(position: Int) = position
 }

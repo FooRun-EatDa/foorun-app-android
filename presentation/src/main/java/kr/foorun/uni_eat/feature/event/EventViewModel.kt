@@ -22,8 +22,11 @@ class EventViewModel : BaseViewModel() {
         viewModelScope.launch {
             _events.emit(List(10) {
                 Event(
-                    "이벤트명",
-                    "https://picsum.photos/201",
+                    "노랑통닭 1000원 할인 쿠폰",
+                    "노랑통닭 수원점",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dolor a eget maecenas ultricies. Mattis eget pretium libero sed faucibus pellentesque cursus vitae.",
+                    "· Lorem ipsum dolor sit amet\n· Lorem ipsum dolor sit amet",
+                    "https://picsum.photos/207",
                     "12.12.12",
                     "12.12.12"
                 )

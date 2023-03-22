@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="event"
             type="kr.foorun.model.event.Event" />
@@ -50,7 +49,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="501dp"
                     android:layout_gravity="center"
-                    android:src="@color/black_60" />
+                    app:glide="@{event.image}" />
 
                 <kr.foorun.uni_eat.base.view.base.BaseTextView
                     android:id="@+id/event_detail_title_TV"
@@ -58,14 +57,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:letterSpacing="-0.05"
-                    android:text="노랑통닭 2000원 할인 쿠폰"
+                    android:text="@{event.name}"
                     android:textSize="25sp"
                     android:textStyle="bold" />
 
                 <kr.foorun.uni_eat.base.view.base.BaseImageView
                     android:id="@+id/event_detail_line"
                     android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
+                    android:layout_height="1dp"
                     android:layout_marginTop="10dp"
                     android:scaleType="fitXY"
                     android:src="@drawable/black_line" />
@@ -77,7 +76,7 @@
                     android:layout_gravity="bottom"
                     android:layout_marginTop="10dp"
                     android:letterSpacing="-0.05"
-                    android:text="이벤트 기간 : 12.12.12 ~ 12.12.12"
+                    android:text="@{`이벤트 기간 `+event.startDate+` ~ `+event.endDate}"
                     android:textColor="@color/red"
                     android:textSize="15sp" />
 
@@ -87,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:layout_marginTop="10dp"
-                    android:text="[노랑통닭 수원점]"
+                    android:text="@{ '[' +event.shopName+ ']' }"
                     android:textSize="15sp" />
 
                 <kr.foorun.uni_eat.base.view.base.BaseTextView
@@ -96,7 +95,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:layout_marginTop="10dp"
-                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dolor a eget maecenas ultricies. Mattis eget pretium libero sed faucibus pellentesque cursus vitae."
+                    android:text="@{event.discription}"
                     android:textSize="15sp" />
 
                 <kr.foorun.uni_eat.base.view.base.BaseTextView
@@ -105,7 +104,7 @@
                     android:layout_gravity="bottom"
                     android:layout_marginTop="23dp"
                     android:letterSpacing="-0.05"
-                    android:text="이벤트 유의사항"
+                    android:text="@string/event_notice"
                     android:textColor="@color/gray5"
                     android:textSize="13sp" />
 
@@ -117,7 +116,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="38.05dp"
                     android:letterSpacing="-0.05"
-                    android:text="· Lorem ipsum dolor sit\n· Lorem ipsum dolor sit"
+                    android:text="@{event.Notice}"
                     android:textSize="13sp" />
         <Button
             android:id="@+id/event_detail_use_coupon_BTN"
