@@ -19,36 +19,24 @@
         android:background="@color/white"
         tools:context="kr.foorun.uni_eat.feature.event.event_detail.EventDetailFragment">
 
-        <kr.foorun.uni_eat.base.view.base.BaseImageView
-            android:id="@+id/event_detail_front_IV"
-            android:layout_width="wrap_content"
+        <kr.foorun.uni_eat.base.view.base.BaseBarConstraintView
+            android:id="@+id/bar"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="21dp"
-            android:layout_marginTop="73dp"
-            android:onClick="@{() -> viewModel.backClicked()}"
-            android:src="@drawable/arrow_left"
+            app:frontVisible="true"
+            app:setViewModel="@{viewModel}"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <kr.foorun.uni_eat.base.view.base.BaseTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="42dp"
-            android:layout_marginTop="64dp"
-            android:text="@string/event"
-            android:textSize="23sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:titleText="@string/event"/>
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="9dp"
-            android:layout_marginBottom="16dp"
             android:fillViewport="true"
-            app:layout_constraintBottom_toTopOf="@id/event_detail_use_coupon_BTN"
-            app:layout_constraintTop_toBottomOf="@id/event_detail_front_IV">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bar">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -131,19 +119,17 @@
                     android:letterSpacing="-0.05"
                     android:text="· Lorem ipsum dolor sit\n· Lorem ipsum dolor sit"
                     android:textSize="13sp" />
-            </LinearLayout>
-        </ScrollView>
-
         <Button
             android:id="@+id/event_detail_use_coupon_BTN"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="17dp"
-            android:layout_marginBottom="36.36dp"
+            android:layout_marginTop="54dp"
+            android:layout_marginBottom="36dp"
             android:background="@drawable/radius_black_24"
             android:text="@string/use_coupon"
             android:textColor="@color/white"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            android:textSize="15sp" />
+            </LinearLayout>
+        </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
