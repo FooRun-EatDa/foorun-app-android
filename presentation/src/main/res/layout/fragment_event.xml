@@ -39,7 +39,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:onClick="@{()->viewModel.clickedEventPage()}"
+                    android:onClick="@{()->viewModel.clickOutsideBottomSheet()}"
                     android:orientation="vertical"
                     tools:context=".feature.event.EventFragment">
 
@@ -102,7 +102,7 @@
                             app:layout_constraintTop_toTopOf="parent"
                             android:visible="false"
                             app:layout_constraintBottom_toBottomOf="@id/event_RV"
-                            android:onClick="@{()->viewModel.clickedEventPage()}"/>
+                            android:onClick="@{()->viewModel.clickOutsideBottomSheet()}"/>
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/event_RV"

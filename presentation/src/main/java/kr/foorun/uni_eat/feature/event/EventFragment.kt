@@ -70,7 +70,7 @@ class EventFragment :
 
     private fun handleEvent(event: EventViewModel.EventEvent) = when (event) {
         is EventViewModel.EventEvent.ShowSortMethod -> showBottomSheet()
-        is EventViewModel.EventEvent.ClickedEventPage -> onClickedEventPage()
+        is EventViewModel.EventEvent.ClickOutsideBottomSheet -> onClickOutsideBottomSheet()
     }
 
     private fun handleAdapterEvent(event: EventAdapterViewModel.EventAdapterEvent) = when (event) {
@@ -107,7 +107,7 @@ class EventFragment :
             eventSortBottomSheetFragment?.hide()
     }
 
-    private fun onClickedEventPage() {
+    private fun onClickOutsideBottomSheet() {
         if (eventSortBottomSheetFragment != null) {
             eventSortBottomSheetFragment?.hide()
             isVisibleBottomNav(true)
