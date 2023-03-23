@@ -1,11 +1,9 @@
-package kr.foorun.uni_eat.base.view.base
+package kr.foorun.uni_eat.base.view.base.base_layout
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import android.util.AttributeSet
-import android.util.TypedValue
-import android.view.inputmethod.EditorInfo
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat

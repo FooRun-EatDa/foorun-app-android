@@ -29,32 +29,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <kr.foorun.uni_eat.base.view.base.view_pager2.BaseViewPager2
+                    android:id="@+id/pager2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    app:setPagerHeight="@{@dimen/article_post_image_height}" />
 
-                    <androidx.viewpager2.widget.ViewPager2
-                        android:id="@+id/detail_recycler"
-                        android:layout_width="match_parent"
-                        android:layout_height="535dp"
-                        android:orientation="horizontal"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"/>
-
-                    <kr.foorun.uni_eat.base.view.base.recycler.indicator.CircleIndicator
-                        android:id="@+id/viewpager_indicator"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintBottom_toBottomOf="@id/detail_recycler" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <kr.foorun.uni_eat.base.view.base.BaseShopConstraintView
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseShopConstraintView
                     android:id="@+id/shopInformation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -66,7 +47,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
 
-                <kr.foorun.uni_eat.base.view.base.BaseInformation
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseInformation
                     android:layout_marginTop="29dp"
                     android:layout_marginStart="21dp"
                     android:layout_marginEnd="21dp"
@@ -75,7 +56,7 @@
                     app:information="@string/phone_number"
                     app:value="010 1234 1234" />
 
-                <kr.foorun.uni_eat.base.view.base.BaseInformation
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseInformation
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="21dp"
                     android:layout_marginEnd="21dp"
@@ -84,7 +65,7 @@
                     app:information="@string/location"
                     app:value="영일중" />
 
-                <kr.foorun.uni_eat.base.view.base.BaseInformation
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseInformation
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="21dp"
                     android:layout_marginEnd="21dp"
@@ -93,7 +74,7 @@
                     app:information="@string/price"
                     app:value="20,000원 대" />
 
-                <kr.foorun.uni_eat.base.view.base.BaseInformation
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseInformation
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="21dp"
                     android:layout_marginEnd="21dp"
@@ -102,7 +83,7 @@
                     app:information="@string/address"
                     app:value="경기 수원시 영통구" />
 
-                <kr.foorun.uni_eat.base.view.base.BaseInformation
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseInformation
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="21dp"
                     android:layout_marginEnd="21dp"
@@ -133,7 +114,7 @@
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
             
-                <kr.foorun.uni_eat.base.view.base.BaseTextView
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
                     android:layout_marginTop="16dp"
                     android:layout_marginStart="21dp"
                     android:layout_marginEnd="21dp"
@@ -143,7 +124,7 @@
                     android:textSize="15sp"
                     android:textColor="@color/small_text"/>
 
-                <kr.foorun.uni_eat.base.view.base.BaseTextView
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
                     android:layout_marginTop="41dp"
                     android:layout_marginStart="21dp"
                     android:layout_marginEnd="21dp"
@@ -165,7 +146,7 @@
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 
-        <kr.foorun.uni_eat.base.view.base.BaseImageView
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
             android:id="@+id/white_back_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -176,7 +157,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
-        <kr.foorun.uni_eat.base.view.base.BaseBottomOptionView
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseBottomOptionView
             android:id="@+id/bottom_option"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

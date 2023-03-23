@@ -8,7 +8,7 @@
             type="kr.foorun.model.article.Article" />
         <variable
             name="viewModel"
-            type="kr.foorun.uni_eat.feature.map.shop_detail.article.ShopDetailArticleViewModel" />
+            type="kr.foorun.uni_eat.feature.map.shop_detail.adapter.ShopDetailArticleViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,7 +26,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">
 
-            <kr.foorun.uni_eat.base.view.base.BaseImageView
+            <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
                 android:id="@+id/thumbnail_image"
                 app:glide="@{article.shopImages.get(0)}"
                 android:layout_width="match_parent"
@@ -40,7 +40,7 @@
                 android:layout_marginEnd="15dp"
                 android:layout_marginBottom="12dp">
 
-                <kr.foorun.uni_eat.base.view.base.BaseTextView
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
                     android:id="@+id/name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintBottom_toTopOf="@id/line" />
 
-                <kr.foorun.uni_eat.base.view.base.BaseImageView
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
                     android:id="@+id/line"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/name"/>
 
-                <kr.foorun.uni_eat.base.view.base.BaseTextView
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@{article.tags}"

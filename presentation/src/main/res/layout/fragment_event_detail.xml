@@ -18,7 +18,7 @@
         android:background="@color/white"
         tools:context="kr.foorun.uni_eat.feature.event.event_detail.EventDetailFragment">
 
-        <kr.foorun.uni_eat.base.view.base.BaseBarConstraintView
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseBarConstraintView
             android:id="@+id/bar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -44,14 +44,14 @@
                 android:layout_marginTop="16dp"
                 android:orientation="vertical">
 
-                <kr.foorun.uni_eat.base.view.base.BaseImageView
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
                     android:id="@+id/event_detail_IV"
                     android:layout_width="match_parent"
                     android:layout_height="501dp"
                     android:layout_gravity="center"
                     app:glide="@{eventCoupon.image}" />
 
-                <kr.foorun.uni_eat.base.view.base.BaseTextView
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
                     android:id="@+id/event_detail_title_TV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
                     android:textSize="25sp"
                     android:textStyle="bold" />
 
-                <kr.foorun.uni_eat.base.view.base.BaseImageView
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
                     android:id="@+id/event_detail_line"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -69,7 +69,7 @@
                     android:scaleType="fitXY"
                     android:src="@drawable/black_line" />
 
-                <kr.foorun.uni_eat.base.view.base.BaseTextView
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
                     android:id="@+id/event_detail_duration_TV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
                     android:textColor="@color/red"
                     android:textSize="15sp" />
 
-                <kr.foorun.uni_eat.base.view.base.BaseTextView
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
                     android:id="@+id/event_detail_shopName_TV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -89,7 +89,7 @@
                     android:text="@{ '[' +eventCoupon.shopName+ ']' }"
                     android:textSize="15sp" />
 
-                <kr.foorun.uni_eat.base.view.base.BaseTextView
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
                     android:id="@+id/event_detail_discription_TV"
                     android:layout_width="330.86dp"
                     android:layout_height="wrap_content"
@@ -98,7 +98,7 @@
                     android:text="@{eventCoupon.discription}"
                     android:textSize="15sp" />
 
-                <kr.foorun.uni_eat.base.view.base.BaseTextView
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
@@ -108,7 +108,7 @@
                     android:textColor="@color/gray5"
                     android:textSize="13sp" />
 
-                <kr.foorun.uni_eat.base.view.base.BaseTextView
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
                     android:id="@+id/event_detail_notice_TV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

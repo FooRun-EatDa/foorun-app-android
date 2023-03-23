@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <kr.foorun.uni_eat.base.view.base.BaseBarConstraintView
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseBarConstraintView
             android:id="@+id/bar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bar">
 
-            <kr.foorun.uni_eat.base.view.base.BaseImageView
+            <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/my_page_base_profile" />
@@ -48,7 +48,7 @@
                 android:layout_gravity="center"
                 android:visibility="gone" />
 
-            <kr.foorun.uni_eat.base.view.base.BaseImageView
+            <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
                 android:id="@+id/empty_profile_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
                 android:visibility="visible" />
         </FrameLayout>
 
-        <kr.foorun.uni_eat.base.view.base.BaseTextView
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
             android:id="@+id/name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -79,23 +79,23 @@
             app:layout_constraintStart_toEndOf="@+id/frameLayout"
             app:layout_constraintTop_toBottomOf="@+id/name_text">
 
-            <kr.foorun.uni_eat.base.view.base.BaseTextView
+            <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="13dp"
                 android:text="@string/school_certification"
                 android:textSize="15sp" />
 
-            <kr.foorun.uni_eat.base.view.base.BaseImageView
+            <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
                 android:id="@+id/right_arrow"
                 android:layout_width="5dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_marginStart="8dp"
-                android:src="@drawable/right_arrow" />
+                android:src="@drawable/arrow_right" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <kr.foorun.uni_eat.base.view.base.BaseTextView
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
             android:id="@+id/my_write_article"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -106,7 +106,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
 
-        <kr.foorun.uni_eat.base.view.base.BaseImageView
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
             android:id="@+id/empty_article"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -116,7 +116,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/my_write_article" />
 
-        <kr.foorun.uni_eat.base.view.base.BaseTextView
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
             android:id="@+id/empty_article_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -130,7 +130,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/empty_article" />
 
-        <kr.foorun.uni_eat.base.view.base.BaseImageView
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
             android:id="@+id/write_article_button"
             android:layout_width="60dp"
             android:layout_height="60dp"

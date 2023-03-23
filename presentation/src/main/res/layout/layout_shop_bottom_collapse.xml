@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <kr.foorun.uni_eat.base.view.base.BaseImageView
+            <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
                 android:id="@+id/arrow_up_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/shopInformation"/>
 
-            <kr.foorun.uni_eat.base.view.base.BaseShopConstraintView
+            <kr.foorun.uni_eat.base.view.base.base_layout.BaseShopConstraintView
                 android:id="@+id/shopInformation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
-            <kr.foorun.uni_eat.base.view.base.BaseBottomOptionView
+            <kr.foorun.uni_eat.base.view.base.base_layout.BaseBottomOptionView
                 android:id="@+id/bottom_option"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

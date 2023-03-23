@@ -11,7 +11,8 @@ import com.kakao.sdk.user.model.User
 
 class KakaoLoginClass(
     private val activityContext: Context,
-    private val loginCallback: KakaoLoginCallback
+    private val loginCallback: KakaoLoginCallback? = null,
+    private val tokenCallback: KakaoTokenCallback? = null
 ) {
 
     companion object {
@@ -19,8 +20,13 @@ class KakaoLoginClass(
     }
 
     interface KakaoLoginCallback {
-        fun onSuccess(accessToken: String, email: String?)
-        fun onFailure(error: Throwable?)
+        fun onSuccess(accessToken: String = "", email: String? = "")
+        fun onFailure(error: Throwable? = null)
+    }
+
+    interface KakaoTokenCallback {
+        fun hasToken(accessToken: String = "", email: String? = "")
+        fun noToken(error: Throwable? = null)
     }
 
     private val kakaoLoginClient = UserApiClient.instance
@@ -32,10 +38,10 @@ class KakaoLoginClass(
                 if (error == null) //토큰 유효성 체크 성공(필요 시 토큰 갱신됨)
                     kakaoLoginClient.me(callback = kakaoGetUserInfoCallback)
 //                else if (error is KakaoSdkError && error.isInvalidTokenError()) //로그인 필요(에러 혹은 토큰 만료)
-//                else  //기타 에러
+                else tokenCallback?.noToken(error)
             }
         }
-//        else //로그인 필요 (토큰 없음)
+        else tokenCallback?.noToken()
     }
 
     fun authenticate() {
@@ -46,12 +52,21 @@ class KakaoLoginClass(
         }
     }
 
+    fun logout() {
+        // 로그아웃
+        UserApiClient.instance.logout { error ->
+            Log.e("popo","logout: $error")
+            if (error != null) loginCallback?.onFailure(error)
+            else loginCallback?.onSuccess()
+        }
+    }
+
     private val kakaoTalkLoginCallback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
         if (error != null) {
             //카카오 로그인시 사용자가 의도적으로 취소할 경우 종료
             if (error is ClientError && error.reason == ClientErrorCause.Cancelled) {
                 Log.e(TAG, "KaKaoTalkLogin Fail : User cancel", error)
-                loginCallback.onFailure(error)
+                loginCallback?.onFailure(error)
             }
             else {
                 //카카오톡 로그인 실패 시 카카오계정으로 로그인 시도
@@ -65,7 +80,7 @@ class KakaoLoginClass(
     private val kakaoAccountLoginCallback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
         if (error != null) {
             Log.e(TAG, "KakaoAccountLogin Fail", error)
-            loginCallback.onFailure(error)
+            loginCallback?.onFailure(error)
         } else if (token != null) {
             accessToken = token.accessToken
             kakaoLoginClient.me(callback = kakaoGetUserInfoCallback)
@@ -74,11 +89,12 @@ class KakaoLoginClass(
 
     private val kakaoGetUserInfoCallback: (User?, Throwable?) -> Unit = { user, error ->
         if(error != null) {
-            Log.e(TAG, "KaKaoGetUserInfo Fail", error)
-            loginCallback.onFailure(error)
+            loginCallback?.onFailure(error)
+            tokenCallback?.noToken(error)
         }else {
             val email = user?.kakaoAccount?.email
-            loginCallback.onSuccess(accessToken, email)
+            loginCallback?.onSuccess(accessToken, email)
+            tokenCallback?.hasToken(accessToken, email)
         }
     }
 }

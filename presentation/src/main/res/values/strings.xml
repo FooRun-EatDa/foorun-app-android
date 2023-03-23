@@ -8,6 +8,8 @@
     <string name="previous">Previous</string>
     <string name="hide_bottom">hideBottom</string>
 
+    <string name="exit_txt">\'뒤로\' 버튼을 한번 더 누르면 종료 됩니다.</string>
+
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="searchResult">검색결과</string>
@@ -59,4 +61,16 @@
     <string name="home_head_text">여긴 어때 ~ ?</string>
     <string name="home_text">유니잇 선정한 이번주 맛집</string>
     <string name="home_head_text2">우리학교 맛집 이벤트</string>
+    <string name="gallery_permission">휴대폰 갤러리에 접근하기 위해 권한이 필요합니다. (이미지 변경시 필수권한)</string>
+    <string name="notice">공지사항</string>
+    <string name="service_info">서비스 소개</string>
+    <string name="service_terms">서비스 이용약관</string>
+    <string name="privacy_policy">개인정보 처리방침</string>
+    <string name="location_terms">위치기반 서비스 이용약관</string>
+    <string name="inquiry">문의 / 소통하기</string>
+    <string name="edit_profile">프로필 수정</string>
+    <string name="edit_account">계정 관리</string>
+    <string name="change_password">비밀번호 변경</string>
+    <string name="logout">로그아웃</string>
+    <string name="withdraw">탈퇴</string>
 </resources>

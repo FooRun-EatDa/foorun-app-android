@@ -1,4 +1,4 @@
-package kr.foorun.uni_eat.feature.map.shop_detail.article
+package kr.foorun.uni_eat.feature.map.shop_detail.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

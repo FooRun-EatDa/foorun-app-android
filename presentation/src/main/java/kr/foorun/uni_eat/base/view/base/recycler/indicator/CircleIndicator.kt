@@ -39,9 +39,9 @@ class CircleIndicator : LinearLayout {
     /**
      * 기본 점 생성
      * @param count 점의 갯수
-     * @param defaultCircle 점의 이미지
      */
     fun createIndicator(count: Int) {
+        this.removeAllViews()
         imageDot = ArrayList()
         for (i in 0 until count) {
             imageDot.add(BaseIndicatorLayout(mContext).apply { init(i+1,false) })  //todo custom imageView (context) .apply{ number(1) }
@@ -50,7 +50,8 @@ class CircleIndicator : LinearLayout {
             imageDot[i].layoutParams = params
             this.addView(imageDot[i])
         }
-//        첫인덱스 선택
+
+        //첫 인덱스 선택
         select(0)
     }
 
