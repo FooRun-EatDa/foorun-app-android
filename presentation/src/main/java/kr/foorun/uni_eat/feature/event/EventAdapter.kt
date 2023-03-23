@@ -6,7 +6,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import kr.foorun.model.event.Event
+import kr.foorun.model.event.EventCoupon
 import kr.foorun.presentation.databinding.ItemEventRightBinding
 import kr.foorun.presentation.databinding.ItemEventLeftBinding
 import kr.foorun.uni_eat.feature.event.EventViewHolder.Companion.LEFT
@@ -15,15 +15,15 @@ sealed class EventViewHolder(
     binding: ViewDataBinding,
 ) : RecyclerView.ViewHolder(binding.root){
 
-    abstract fun bind(item: Event)
+    abstract fun bind(item: EventCoupon)
 
     class EventLeftViewHolder(
         private val binding: ItemEventLeftBinding,
         private val adapterViewModel: EventAdapterViewModel
     ): EventViewHolder(binding){
-        override fun bind(item: Event) = binding.run {
+        override fun bind(item: EventCoupon) = binding.run {
             viewModel = adapterViewModel
-            event  = item
+            eventCoupon = item
         }
     }
 
@@ -31,9 +31,9 @@ sealed class EventViewHolder(
         private val binding: ItemEventRightBinding,
         private val adapterViewModel: EventAdapterViewModel
     ): EventViewHolder(binding) {
-        override fun bind(item: Event) = binding.run {
+        override fun bind(item: EventCoupon) = binding.run {
             viewModel = adapterViewModel
-            event  = item
+            eventCoupon = item
         }
     }
 
@@ -45,9 +45,9 @@ sealed class EventViewHolder(
 
 class EventAdapter(
     private val eventAdapterViewModel: EventAdapterViewModel
-) : ListAdapter<Event, EventViewHolder>(object : DiffUtil.ItemCallback<Event>(){
-    override fun areItemsTheSame(oldItem: Event, newItem: Event) = oldItem == newItem
-    override fun areContentsTheSame(oldItem: Event, newItem: Event) = oldItem.image == newItem.image
+) : ListAdapter<EventCoupon, EventViewHolder>(object : DiffUtil.ItemCallback<EventCoupon>(){
+    override fun areItemsTheSame(oldItem: EventCoupon, newItem: EventCoupon) = oldItem == newItem
+    override fun areContentsTheSame(oldItem: EventCoupon, newItem: EventCoupon) = oldItem.image == newItem.image
 }) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {

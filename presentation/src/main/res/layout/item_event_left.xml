@@ -4,8 +4,8 @@
 
     <data>
         <variable
-            name="event"
-            type="kr.foorun.model.event.Event" />
+            name="eventCoupon"
+            type="kr.foorun.model.event.EventCoupon" />
 
         <variable
             name="viewModel"
@@ -15,14 +15,14 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{()->viewModel.onItemClick(event)}">
+        android:onClick="@{()->viewModel.onItemClick(eventCoupon)}">
 
         <kr.foorun.uni_eat.base.view.base.BaseImageView
             android:id="@+id/event_item_IV"
             android:layout_width="match_parent"
             android:layout_height="238dp"
             android:scaleType="fitXY"
-            app:glide="@{event.image}" />
+            app:glide="@{eventCoupon.image}" />
 
         <kr.foorun.uni_eat.base.view.base.BaseTextView
             android:id="@+id/event_title_TV"
@@ -31,7 +31,7 @@
             android:layout_gravity="bottom"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="57dp"
-            android:text="@{event.name}"
+            android:text="@{eventCoupon.name}"
             android:textColor="@color/white"
             android:textSize="15sp" />
 
@@ -43,7 +43,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginBottom="19dp"
             android:letterSpacing="-0.05"
-            android:text="@{`이벤트 기간 `+event.startDate+` - `+event.endDate}"
+            android:text="@{`이벤트 기간 `+eventCoupon.startDate+` - `+eventCoupon.endDate}"
             android:textColor="@color/white"
             android:textSize="11sp" />
 

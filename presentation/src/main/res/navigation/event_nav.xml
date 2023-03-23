@@ -23,8 +23,8 @@
             app:argType="boolean"
             android:defaultValue="true" />
         <argument
-            android:name="event"
-            app:argType="kr.foorun.model.event.Event" />
+            android:name="eventCoupon"
+            app:argType="kr.foorun.model.event.EventCoupon" />
     </fragment>
 
 </navigation>

@@ -4,8 +4,8 @@
 
     <data>
         <variable
-            name="event"
-            type="kr.foorun.model.event.Event" />
+            name="eventCoupon"
+            type="kr.foorun.model.event.EventCoupon" />
 
         <variable
             name="viewModel"
@@ -20,7 +20,7 @@
             android:id="@+id/home_item_event_image"
             android:layout_width="match_parent"
             android:layout_height="@dimen/home_item_event_height"
-            app:glide="@{event.image}"
+            app:glide="@{eventCoupon.image}"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <kr.foorun.uni_eat.base.view.base.BaseTextView
@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_size_large_25"
-            android:text="@{event.name}"
+            android:text="@{eventCoupon.name}"
             android:textColor="@color/large_text"
             android:textStyle="bold"
             android:layout_marginTop="15dp"
@@ -49,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_size_large_15"
-            android:text="@{event.content}"
+            android:text="@{eventCoupon.content}"
             android:layout_marginTop="12dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/line"/>
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_size_large_15"
             android:layout_marginTop="16dp"
-            android:text="@{`이벤트 기간: `+event.startDate+` ~ `+event.endDate}"
+            android:text="@{`이벤트 기간: `+eventCoupon.startDate+` ~ `+eventCoupon.endDate}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/home_item_event_content"/>
 

@@ -5,7 +5,7 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
-import kr.foorun.model.event.Event
+import kr.foorun.model.event.EventCoupon
 import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
 import kr.foorun.uni_eat.base.viewmodel.MutableEventFlow
 import kr.foorun.uni_eat.base.viewmodel.asEventFlow
@@ -15,13 +15,13 @@ class EventViewModel : BaseViewModel() {
     private val _eventFlow = MutableEventFlow<EventEvent>()
     val eventFlow = _eventFlow.asEventFlow()
 
-    private val _events = MutableStateFlow<List<Event>?>(null)
+    private val _events = MutableStateFlow<List<EventCoupon>?>(null)
     val events = _events.asLiveData()
 
     init {
         viewModelScope.launch {
             _events.emit(List(10) {
-                Event(
+                EventCoupon(
                     "노랑통닭 1000원 할인 쿠폰",
                     "노랑통닭 수원점",
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dolor a eget maecenas ultricies. Mattis eget pretium libero sed faucibus pellentesque cursus vitae.",

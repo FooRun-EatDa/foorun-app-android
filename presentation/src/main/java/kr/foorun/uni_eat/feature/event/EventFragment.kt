@@ -68,12 +68,12 @@ class EventFragment :
 
     private fun handleAdapterEvent(event: EventAdapterViewModel.EventAdapterEvent) = when (event) {
         is EventAdapterViewModel.EventAdapterEvent.ShowEventDetail -> {
-            navigateToFrag(EventFragmentDirections.actionEventFragmentToEventDetailFragment(event.clickedEvent))
+            navigateToFrag(EventFragmentDirections.actionEventFragmentToEventDetailFragment(event.clickedEventCoupon))
         }
     }
 
     private fun showBottomSheet() {
-        requireActivity().findViewById<BottomNavigationView>(R.id.bottom_nav).visibility = View.GONE
+        isVisibleBottomNav(false)
         eventSortBottomSheetFragment = EventSortBottomSheetFragment({onBackPressed()}){sortMethod ->
             when(sortMethod){
                 EVENT_SORT_LATEST -> {
@@ -85,12 +85,10 @@ class EventFragment :
                     //ToDo
                 }
             }
-            requireActivity().findViewById<BottomNavigationView>(R.id.bottom_nav).visibility = View.VISIBLE
+            isVisibleBottomNav(true)
         }.show(
             requireActivity().supportFragmentManager,
             R.id.event_FL
-            //현재는 바텀네비뷰 상단에 바텀시트 뜸
-            //아직까지 명확한 요구사항이 따로 없기 때문에 수정가능성 있음
         )
     }
 
