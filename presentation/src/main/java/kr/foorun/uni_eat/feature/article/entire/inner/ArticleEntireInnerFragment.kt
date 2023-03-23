@@ -6,15 +6,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kr.foorun.const.Constant.Companion.POSITION
 import kr.foorun.presentation.databinding.LayoutArticleEntireInnerBinding
-import kr.foorun.uni_eat.base.view.base.BaseFragment
+import kr.foorun.uni_eat.base.view.base.context_view.BaseFragment
 import kr.foorun.uni_eat.base.view.base.recycler.decorator.grid.GridSpaceItemDecoration
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 import kr.foorun.uni_eat.feature.article.entire.ArticleEntireFragmentDirections
-import kr.foorun.uni_eat.feature.map.shop_detail.article.ShopDetailArticleAdapter
-import kr.foorun.uni_eat.feature.map.shop_detail.article.ShopDetailArticleViewModel
+import kr.foorun.uni_eat.feature.map.shop_detail.adapter.ShopDetailArticleAdapter
+import kr.foorun.uni_eat.feature.map.shop_detail.adapter.ShopDetailArticleViewModel
 
 @AndroidEntryPoint
 class ArticleEntireInnerFragment: BaseFragment<LayoutArticleEntireInnerBinding, ArticleEntireInnerViewModel>(LayoutArticleEntireInnerBinding::inflate) {

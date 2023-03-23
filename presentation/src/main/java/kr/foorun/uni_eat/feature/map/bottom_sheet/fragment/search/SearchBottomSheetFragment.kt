@@ -12,7 +12,7 @@ import kr.foorun.presentation.databinding.LayoutSearchBottomExpandBinding
 import kr.foorun.uni_eat.base.view.base.recycler.decorator.grid.GridSpaceItemDecoration
 import kr.foorun.uni_eat.base.view.base.bottom_sheet.BasePersistBottomSheetFragment
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
-import kr.foorun.uni_eat.feature.map.shop_detail.article.ShopDetailArticleAdapter
+import kr.foorun.uni_eat.feature.map.shop_detail.adapter.ShopDetailArticleAdapter
 
 class SearchBottomSheetFragment(
     private val searchWord: String,

@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import kr.foorun.presentation.databinding.FragmentEventDetailBinding
-import kr.foorun.uni_eat.base.view.base.BaseFragment
+import kr.foorun.uni_eat.base.view.base.context_view.BaseFragment
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 
 class EventDetailFragment : BaseFragment<FragmentEventDetailBinding, EventDetailViewModel>(

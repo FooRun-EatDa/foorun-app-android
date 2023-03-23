@@ -2,7 +2,6 @@ package kr.foorun.uni_eat.feature.event
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,11 +11,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import kr.foorun.const.Constant.Companion.SPAN_COUNT
 import kr.foorun.const.Constant.Companion.EVENT_SORT_DEADLINE
 import kr.foorun.const.Constant.Companion.EVENT_SORT_LATEST
-import kr.foorun.presentation.databinding.FragmentEventBinding
-import kr.foorun.uni_eat.base.view.base.BaseFragment
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 import kr.foorun.uni_eat.feature.event.bottom_sheet.EventSortBottomSheetFragment
 import kr.foorun.presentation.R
+import kr.foorun.presentation.databinding.FragmentEventBinding
+import kr.foorun.uni_eat.base.view.base.context_view.BaseFragment
 import kr.foorun.uni_eat.base.view.base.recycler.decorator.EventDecorator
 
 class EventFragment :
@@ -44,7 +43,6 @@ class EventFragment :
     override fun afterBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = binding {
         bar.bringToFront()
 
-
         eventRV.apply {
             adapter = eventAdapter
             layoutManager = StaggeredGridLayoutManager(SPAN_COUNT, StaggeredGridLayoutManager.VERTICAL)
@@ -55,8 +53,8 @@ class EventFragment :
             eventAdapter.notifyDataSetChanged()
             eventSRL.isRefreshing = false
         }
-        eventNSV.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
 
+        eventNSV.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
             //SwipeRefreshLayout이 최상단에 있을 때에만 동작하게 함
             eventSRL.isEnabled = (eventNSV.scrollY == 0)
             bar.alpha = (scrollY/470.0).toFloat()

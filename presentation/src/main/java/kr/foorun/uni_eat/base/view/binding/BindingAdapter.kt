@@ -1,7 +1,5 @@
 package kr.foorun.uni_eat.base.view.binding
 
-import android.animation.ArgbEvaluator
-import android.animation.ValueAnimator
 import android.text.TextWatcher
 import android.transition.Slide
 import android.transition.Transition
@@ -16,7 +14,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import kr.foorun.presentation.R
-import kr.foorun.uni_eat.base.view.base.BaseEditTextLayout
+import kr.foorun.uni_eat.base.view.base.base_layout.BaseEditTextLayout
 
 object BindingAdapter {
 

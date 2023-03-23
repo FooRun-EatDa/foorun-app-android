@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="kr.foorun.uni_eat.feature.mypage.more.MyPageMoreViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseBarConstraintView
+            android:id="@+id/bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:frontImage="@drawable/arrow_left"
+            app:frontVisible="true"
+            app:titleText="@string/my_page"
+            app:setViewModel="@{viewModel}"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseInformation
+            android:id="@+id/profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.profileClicked()}"
+            app:information="@string/edit_profile"
+            app:show_arrow="true"
+            android:src="@drawable/arrow_right"
+            android:textColor="@color/black"
+            android:textSize="@dimen/article_text_small_19"
+            android:layout_marginTop="35dp"
+            android:layout_marginHorizontal="@dimen/margin_22"
+            app:layout_constraintTop_toBottomOf="@+id/bar"/>
+
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseInformation
+            android:id="@+id/account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:information="@string/edit_account"
+            app:show_arrow="true"
+            android:onClick="@{() -> viewModel.accountClicked()}"
+            android:src="@drawable/arrow_right"
+            android:textColor="@color/black"
+            android:textSize="@dimen/article_text_small_19"
+            android:layout_marginTop="@dimen/margin_22"
+            android:layout_marginHorizontal="@dimen/margin_22"
+            app:layout_constraintTop_toBottomOf="@+id/profile"/>
+
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/horizon_line_thin"
+            app:layout_constraintTop_toBottomOf="@id/account"/>
+
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseInformation
+            android:id="@+id/notice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.noticeClicked()}"
+            app:information="@string/notice"
+            app:show_arrow="true"
+            android:src="@drawable/arrow_right"
+            android:textColor="@color/black"
+            android:textSize="@dimen/article_text_small_19"
+            android:layout_marginTop="15dp"
+            android:layout_marginHorizontal="@dimen/margin_22"
+            app:layout_constraintTop_toBottomOf="@+id/line"/>
+
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseInformation
+            android:id="@+id/service_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.serviceInfoClicked()}"
+            app:information="@string/service_info"
+            app:show_arrow="true"
+            android:src="@drawable/arrow_right"
+            android:textColor="@color/black"
+            android:textSize="@dimen/article_text_small_19"
+            android:layout_marginTop="@dimen/margin_22"
+            android:layout_marginHorizontal="@dimen/margin_22"
+            app:layout_constraintTop_toBottomOf="@+id/notice"/>
+
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseInformation
+            android:id="@+id/service_term"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.serviceTermClicked()}"
+            app:information="@string/service_terms"
+            app:show_arrow="true"
+            android:src="@drawable/arrow_right"
+            android:textColor="@color/black"
+            android:textSize="@dimen/article_text_small_19"
+            android:layout_marginTop="@dimen/margin_22"
+            android:layout_marginHorizontal="@dimen/margin_22"
+            app:layout_constraintTop_toBottomOf="@+id/service_info"/>
+
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseInformation
+            android:id="@+id/private_term"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.privateClicked()}"
+            app:information="@string/privacy_policy"
+            app:show_arrow="true"
+            android:src="@drawable/arrow_right"
+            android:textColor="@color/black"
+            android:textSize="@dimen/article_text_small_19"
+            android:layout_marginTop="@dimen/margin_22"
+            android:layout_marginHorizontal="@dimen/margin_22"
+            app:layout_constraintTop_toBottomOf="@+id/service_term"/>
+
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseInformation
+            android:id="@+id/location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.locationClicked()}"
+            app:information="@string/location_terms"
+            app:show_arrow="true"
+            android:src="@drawable/arrow_right"
+            android:textColor="@color/black"
+            android:textSize="@dimen/article_text_small_19"
+            android:layout_marginTop="@dimen/margin_22"
+            android:layout_marginHorizontal="@dimen/margin_22"
+            app:layout_constraintTop_toBottomOf="@+id/private_term"/>
+
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseInformation
+            android:id="@+id/inquiry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.inquireClicked()}"
+            app:information="@string/inquiry"
+            app:show_arrow="true"
+            android:src="@drawable/arrow_right"
+            android:textColor="@color/black"
+            android:textSize="@dimen/article_text_small_19"
+            android:layout_marginTop="@dimen/margin_22"
+            android:layout_marginHorizontal="@dimen/margin_22"
+            app:layout_constraintTop_toBottomOf="@+id/location"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

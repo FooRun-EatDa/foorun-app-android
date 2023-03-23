@@ -1,4 +1,4 @@
-package kr.foorun.uni_eat.base.view.base
+package kr.foorun.uni_eat.base.view.base.base_layout
 
 import android.content.Context
 import android.content.res.TypedArray

@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import kr.foorun.presentation.databinding.FragmentMyPageBinding
-import kr.foorun.uni_eat.base.view.base.BaseFragment
+import kr.foorun.uni_eat.base.view.base.context_view.BaseFragment
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 
 @AndroidEntryPoint
@@ -24,7 +24,7 @@ class MyPageFragment: BaseFragment<FragmentMyPageBinding, MyPageViewModel>(Fragm
 
     private fun handleEvent(event: MyPageViewModel.MyPageEvent) = when(event) {
         is MyPageViewModel.MyPageEvent.SchoolCertification -> {}
-        is MyPageViewModel.MyPageEvent.MyPageMore -> {}
+        is MyPageViewModel.MyPageEvent.MyPageMore -> navigateToFrag(MyPageFragmentDirections.actionMyPageToMyPageMoreFragment())
         is MyPageViewModel.MyPageEvent.WriteArticle -> {}
     }
 

@@ -7,6 +7,7 @@ import kr.foorun.social_login.KakaoLoginClass
 import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
 import kr.foorun.uni_eat.base.viewmodel.MutableEventFlow
 import kr.foorun.uni_eat.base.viewmodel.asEventFlow
+import kr.foorun.uni_eat.feature.splash.SplashViewModel
 import javax.inject.Inject
 
 @HiltViewModel

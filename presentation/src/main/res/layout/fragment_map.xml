@@ -26,7 +26,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <kr.foorun.uni_eat.base.view.base.BaseImageView
+            <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="21dp"
@@ -39,7 +39,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <kr.foorun.uni_eat.base.view.base.BaseImageView
+            <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
                 android:layout_width="310dp"
                 android:layout_height="38dp"
                 android:onClick="@{() -> viewModel.navigateToSearch()}"

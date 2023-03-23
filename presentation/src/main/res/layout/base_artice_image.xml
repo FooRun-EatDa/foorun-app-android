@@ -16,7 +16,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">
 
-            <kr.foorun.uni_eat.base.view.base.BaseImageView
+            <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
                 android:id="@+id/image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
@@ -29,7 +29,7 @@
                 android:layout_marginEnd="@dimen/margin_21"
                 android:layout_marginBottom="66dp">
 
-                <kr.foorun.uni_eat.base.view.base.BaseTextView
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
                     android:id="@+id/shop_area"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintBottom_toTopOf="@id/shop_name"/>
 
-                <kr.foorun.uni_eat.base.view.base.BaseTextView
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
                     android:id="@+id/shop_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

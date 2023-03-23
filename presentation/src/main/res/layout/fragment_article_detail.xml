@@ -31,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <kr.foorun.uni_eat.base.view.base.BaseArticleImage
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseArticleImage
                     android:id="@+id/shop_image"
                     android:layout_width="match_parent"
                     android:layout_height="535dp"
@@ -42,7 +42,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <kr.foorun.uni_eat.base.view.base.BaseArticleContentConstraintView
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseArticleContentConstraintView
                     android:layout_width="match_parent"
                     android:layout_height="538dp"
                     app:root="@color/invisible"
@@ -54,7 +54,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/shop_image">
 
-                    <kr.foorun.uni_eat.base.view.base.BaseImageView
+                    <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
                         android:id="@+id/icon"
                         android:layout_width="@dimen/icon_size_mini_52"
                         android:layout_height="@dimen/icon_size_mini_52"
@@ -64,7 +64,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <kr.foorun.uni_eat.base.view.base.BaseTextView
+                    <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
                         android:id="@+id/user"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
                         app:layout_constraintStart_toEndOf="@id/icon"
                         app:layout_constraintTop_toTopOf="parent"/>
 
-                    <kr.foorun.uni_eat.base.view.base.BaseImageView
+                    <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/star"
@@ -84,7 +84,7 @@
                         app:layout_constraintStart_toEndOf="@id/user"
                         app:layout_constraintTop_toTopOf="parent"/>
 
-                    <kr.foorun.uni_eat.base.view.base.BaseShopConstraintView
+                    <kr.foorun.uni_eat.base.view.base.base_layout.BaseShopConstraintView
                         android:id="@+id/information"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -98,7 +98,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"/>
 
-                    <kr.foorun.uni_eat.base.view.base.BaseTextView
+                    <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
                         android:id="@+id/date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -121,12 +121,12 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent" />
-                </kr.foorun.uni_eat.base.view.base.BaseArticleContentConstraintView>
+                </kr.foorun.uni_eat.base.view.base.base_layout.BaseArticleContentConstraintView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
 
-        <kr.foorun.uni_eat.base.view.base.BaseImageView
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
             android:id="@+id/white_back_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -137,7 +137,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
-        <kr.foorun.uni_eat.base.view.base.BaseBottomOptionView
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseBottomOptionView
             android:id="@+id/bottom_option"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

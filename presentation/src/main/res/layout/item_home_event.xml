@@ -16,14 +16,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <kr.foorun.uni_eat.base.view.base.BaseImageView
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
             android:id="@+id/home_item_event_image"
             android:layout_width="match_parent"
             android:layout_height="@dimen/home_item_event_height"
             app:glide="@{event.image}"
             app:layout_constraintTop_toTopOf="parent"/>
 
-        <kr.foorun.uni_eat.base.view.base.BaseTextView
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
             android:id="@+id/home_item_event_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/home_item_event_image"/>
 
-        <kr.foorun.uni_eat.base.view.base.BaseImageView
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
             android:id="@+id/line"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/home_item_event_title"/>
 
-        <kr.foorun.uni_eat.base.view.base.BaseTextView
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
             android:id="@+id/home_item_event_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/line"/>
 
-        <kr.foorun.uni_eat.base.view.base.BaseTextView
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
             android:id="@+id/home_item_event_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
