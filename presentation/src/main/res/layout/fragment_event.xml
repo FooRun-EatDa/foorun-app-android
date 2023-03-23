@@ -43,11 +43,17 @@
                     android:orientation="vertical"
                     tools:context=".feature.event.EventFragment">
 
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/event_CL"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
                     <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
                         android:id="@+id/typo_TV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="start|top"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
                         android:layout_marginStart="33dp"
                         android:layout_marginTop="56dp"
                         android:layout_marginEnd="192dp"
@@ -60,8 +66,10 @@
                         android:id="@+id/event_filter_LL"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="top|end"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         android:layout_marginEnd="33dp"
+                        android:layout_marginTop="153dp"
                         android:onClick="@{()->viewModel.showSortMethod()}"
                         android:orientation="horizontal">
 
@@ -80,6 +88,7 @@
                             android:layout_marginStart="3.72dp"
                             android:src="@drawable/arrow_down" />
                     </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
