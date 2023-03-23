@@ -13,8 +13,8 @@ class EventAdapterViewModel : BaseViewModel() {
 
     fun event(event: EventAdapterEvent) = viewModelScope.launch { _eventFlow.emit(event) }
 
-    fun onItemClick(clickedEventCoupon : EventCoupon) {
-        event(EventAdapterEvent.ShowEventDetail(clickedEventCoupon))
+    fun onItemClick(EventCoupon : EventCoupon) {
+        event(EventAdapterEvent.ShowEventDetail(EventCoupon))
     }
 
     sealed class EventAdapterEvent {

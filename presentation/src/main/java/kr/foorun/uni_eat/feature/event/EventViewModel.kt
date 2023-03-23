@@ -1,6 +1,7 @@
 package kr.foorun.uni_eat.feature.event
 
 
+import android.util.Log
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -35,12 +36,13 @@ class EventViewModel : BaseViewModel() {
     }
 
     fun event(event: EventEvent) = viewModelScope.launch { _eventFlow.emit(event) }
-
-    fun showSortMethod() {
-        event(EventEvent.ShowSortMethod())
-    }
+    fun showSortMethod() { event(EventEvent.ShowSortMethod()) }
+    fun clickedEventPage() {
+        event(EventEvent.ClickedEventPage())
+        Log.d("tgyuu","화면클릭")}
 
     sealed class EventEvent {
         data class ShowSortMethod(val unit: Unit? = null) : EventEvent()
+        data class ClickedEventPage(val unit: Unit? = null) : EventEvent()
     }
 }

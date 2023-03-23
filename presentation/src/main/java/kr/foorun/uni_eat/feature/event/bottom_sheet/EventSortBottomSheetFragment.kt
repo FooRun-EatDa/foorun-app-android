@@ -66,7 +66,6 @@ class EventSortBottomSheetFragment(
     }
 
     override fun onStateChanged(state: Int) {
-
     }
 
     override fun bottomSheetBackClicked() {
