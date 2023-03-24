@@ -83,7 +83,7 @@ class ArticlePostFragment: BaseFragment<FragmentArticlePostBinding, ArticlePostV
     override fun afterBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = binding {
         tagRecycler.run{
             adapter = searchTagAdapter
-            addItemDecoration(TagDecorator(spanCount = SPAN_COUNT, oriental = GRID))
+            addItemDecoration(TagDecorator(spanCount = 4, oriental = GRID))
         }
 
         addImagePager.run {
