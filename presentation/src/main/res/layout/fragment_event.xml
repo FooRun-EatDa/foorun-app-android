@@ -61,7 +61,6 @@
                         android:layout_height="wrap_content">
 
                         <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
-                            android:id="@+id/typo_TV"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="33dp"
