@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kr.foorun.presentation.R
 import kr.foorun.presentation.databinding.FragmentSplashBinding
@@ -40,15 +39,15 @@ class SplashFragment : BaseFragment<FragmentSplashBinding, SplashViewModel>(Frag
 
     private fun handleEvent(event: SplashViewModel.SplashEvent) = when (event) {
         is SplashViewModel.SplashEvent.SplashDone -> {
-            log("0")
+            log("splash done")
             kakaoLoginClass.hasToken()
         }
         is SplashViewModel.SplashEvent.HasToken -> {
-            log("1")
+            log("token check")
             navigateToFrag(SplashFragmentDirections.actionToHomeNav())
         }
         is SplashViewModel.SplashEvent.NoToken -> {
-            log("2: ${event.error}")
+            log("token err: ${event.error}")
             navigateToFrag(SplashFragmentDirections.actionToLoginFragment())
         }
     }

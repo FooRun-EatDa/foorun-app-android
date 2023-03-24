@@ -7,6 +7,7 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="hide_bottom">hideBottom</string>
+    <string name="empty"> </string>
 
     <string name="exit_txt">\'뒤로\' 버튼을 한번 더 누르면 종료 됩니다.</string>
 

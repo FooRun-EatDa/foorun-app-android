@@ -11,7 +11,6 @@ import kr.foorun.presentation.databinding.ActivityMainBinding
 import kr.foorun.uni_eat.base.view.base.context_view.BaseActivity
 import kr.foorun.uni_eat.feature.splash.SplashFragmentDirections
 
-
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>({ActivityMainBinding.inflate(it)}){
 

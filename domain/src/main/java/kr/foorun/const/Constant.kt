@@ -6,7 +6,7 @@ class Constant {
         const val SPAN_COUNT = 2
         const val INDICATOR_COUNT = 4
 
-        const val TAG_ITEM_MARGIN_GAP = 11
+        const val TAG_ITEM_MARGIN_GAP = 7
         const val TAG_ITEM_MARGIN_BOTTOM = 16
 
         const val EVENT_ITEM_MARGIN_SIDE = 21

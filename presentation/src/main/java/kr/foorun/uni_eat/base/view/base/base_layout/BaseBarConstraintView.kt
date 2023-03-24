@@ -133,6 +133,10 @@ class BaseBarConstraintView : ConstraintLayout{
         valueAnimator.start()
     }
 
+    private fun setTitle(str: String){
+        barTitle.text = str
+    }
+
     companion object {
 
         @JvmStatic
@@ -153,6 +157,12 @@ class BaseBarConstraintView : ConstraintLayout{
         @BindingAdapter("changColor")
         fun changeColor(view: BaseBarConstraintView, toWhite: Boolean?){
             toWhite?.let { view.changeBarColor(it) }
+        }
+
+        @JvmStatic
+        @BindingAdapter("titleText")
+        fun setTitle(view: BaseBarConstraintView, title: String?){
+            title?.let { view.setTitle(title) }
         }
     }
 }
