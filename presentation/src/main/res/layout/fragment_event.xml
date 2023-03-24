@@ -28,6 +28,12 @@
                 android:alpha="0"
                 app:titleText="@string/event" />
 
+            <View
+                android:id="@+id/event_View"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:onClick="@{()->viewModel.clickOutsideBottomSheet()}" />
+
             <androidx.core.widget.NestedScrollView
                 android:id="@+id/event_NSV"
                 android:layout_width="match_parent"
@@ -48,70 +54,56 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                    <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
-                        android:id="@+id/typo_TV"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:layout_marginStart="33dp"
-                        android:layout_marginTop="56dp"
-                        android:layout_marginEnd="192dp"
-                        android:letterSpacing="-0.05"
-                        android:text="@string/event_typo"
-                        android:textSize="25sp"
-                        android:textStyle="bold" />
-
-                    <LinearLayout
-                        android:id="@+id/event_filter_LL"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_marginEnd="33dp"
-                        android:layout_marginTop="153dp"
-                        android:onClick="@{()->viewModel.showSortMethod()}"
-                        android:orientation="horizontal">
-
                         <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
-                            android:id="@+id/event_filter_text"
+                            android:id="@+id/typo_TV"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/event_sort_newest"
-                            android:textColor="@color/small_text"
-                            android:textSize="13sp" />
+                            android:layout_marginStart="33dp"
+                            android:layout_marginTop="56dp"
+                            android:layout_marginEnd="192dp"
+                            android:letterSpacing="-0.05"
+                            android:text="@string/event_typo"
+                            android:textSize="25sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                        <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
+                        <LinearLayout
+                            android:id="@+id/event_filter_LL"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="3.72dp"
-                            android:src="@drawable/arrow_down" />
-                    </LinearLayout>
+                            android:layout_marginTop="153dp"
+                            android:layout_marginEnd="33dp"
+                            android:onClick="@{()->viewModel.showSortMethod()}"
+                            android:orientation="horizontal"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
+                                android:id="@+id/event_filter_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/event_sort_newest"
+                                android:textColor="@color/small_text"
+                                android:textSize="13sp" />
+
+                            <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="3.72dp"
+                                android:src="@drawable/arrow_down" />
+                        </LinearLayout>
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/event_RV"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="40dp">
-
-                        <View
-                            android:id="@+id/event_View"
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:visible="false"
-                            app:layout_constraintBottom_toBottomOf="@id/event_RV"
-                            android:onClick="@{()->viewModel.clickOutsideBottomSheet()}"/>
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/event_RV"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="bottom"
-                            android:nestedScrollingEnabled="false"
-                            app:layout_constraintTop_toTopOf="parent"/>
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                        android:layout_gravity="bottom"
+                        android:layout_marginTop="40dp"
+                        android:nestedScrollingEnabled="false"
+                        app:layout_constraintTop_toTopOf="parent" />
                 </LinearLayout>
             </androidx.core.widget.NestedScrollView>
         </FrameLayout>
