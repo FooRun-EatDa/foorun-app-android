@@ -17,15 +17,16 @@ sealed class TagViewHolder(
     binding: ViewDataBinding,
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    abstract fun bind(item: SearchTag? = null)
+    abstract fun bind(item: SearchTag? = null, index: Int?)
 
     class ItemSearchTagViewHolder(
         val binding: ItemSearchTagBinding,
         val viewModel: SearchTagViewModel?
     ) : TagViewHolder(binding) {
-        override fun bind(item: SearchTag?) {
+        override fun bind(item: SearchTag?, index: Int?) {
             viewModel?.let { binding.viewModel = it }
             item?.let { binding.searchTag = item }
+            index?.let { binding.index = it }
         }
     }
 
@@ -33,9 +34,10 @@ sealed class TagViewHolder(
         val binding: ItemIntroduceTagBinding,
         val viewModel: SearchTagViewModel?
     ) : TagViewHolder(binding) {
-        override fun bind(item: SearchTag?) {
+        override fun bind(item: SearchTag?,index: Int?) {
             viewModel?.let { binding.viewModel = it }
             item?.let { binding.searchTag = item }
+            index?.let { binding.index = it }
         }
     }
 
@@ -67,6 +69,6 @@ class SearchTagAdapter (
     }
 
     override fun onBindViewHolder(holder: TagViewHolder, position: Int) {
-        holder.run { bind(getItem(position)) }
+        holder.run { bind(getItem(position), position) }
     }
 }

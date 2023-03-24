@@ -103,13 +103,19 @@ class ArticlePostFragment: BaseFragment<FragmentArticlePostBinding, ArticlePostV
         is ShopImageViewModel.ShopImageEvent.ImageClicked -> fragmentViewModel.imageClicked()
     }
 
-    private fun tagHandleEvent(event: SearchTagViewModel.TagEvent) = when (event) {
-        is SearchTagViewModel.TagEvent.TagClick -> {
-            val tag = event.searchTag
-            val arr = ArrayList<SearchTag>()
-            fragmentViewModel.searchTags.value?.map { arr.add(it) }
-            for( i in arr.indices ) if(arr[i].tagName == tag.tagName) arr[i] = SearchTag(tag.tagName,!tag.isPicked)
-            fragmentViewModel.setTags(arr)
+    private fun tagHandleEvent(event: SearchTagViewModel.TagEvent) {
+        when (event) {
+            is SearchTagViewModel.TagEvent.TagClick -> {
+                val tag = event.searchTag
+                val index = event.idx
+                tag.isPicked = !tag.isPicked
+                searchTagAdapter.notifyItemChanged(index)
+
+//            val arr = ArrayList<SearchTag>()
+//            fragmentViewModel.searchTags.value?.map { arr.add(it) }
+//            for( i in arr.indices ) if(arr[i].tagName == tag.tagName) arr[i] = SearchTag(tag.tagName,!tag.isPicked)
+//            fragmentViewModel.setTags(arr)
+            }
         }
     }
 

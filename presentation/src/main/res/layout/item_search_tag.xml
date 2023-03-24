@@ -7,6 +7,9 @@
             name="searchTag"
             type="kr.foorun.model.tag.SearchTag" />
         <variable
+            name="index"
+            type="Integer" />
+        <variable
             name="viewModel"
             type="kr.foorun.uni_eat.feature.map.SearchTagViewModel" />
     </data>
@@ -14,7 +17,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/tag_item_constraint"
         app:setTagDrawable="@{searchTag.picked}"
-        android:onClick="@{() -> viewModel.tagClicked(searchTag)}"
+        android:onClick="@{() -> viewModel.tagClicked(searchTag, index)}"
         android:layout_width="wrap_content"
         android:layout_height="38dp">
 
