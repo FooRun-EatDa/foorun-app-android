@@ -60,12 +60,12 @@ class EventFragment :
         }
 
         eventNSV.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
-            //SwipeRefreshLayout이 최상단에 있을 때에만 동작하게 함
-            eventSRL.isEnabled = (eventNSV.scrollY == 0)
+                //SwipeRefreshLayout이 최상단에 있을 때에만 동작하게 함
+                eventSRL.isEnabled = (eventNSV.scrollY == 0)
 
-            //리사이클러뷰가 상단에 올때까지 스크롤시 이벤트 바가 서서히 보임
-            val topHeight = eventCL.measuredHeight.toFloat()
-            bar.alpha = (scrollY / topHeight)
+                //리사이클러뷰가 상단에 올때까지 스크롤시 이벤트 바가 서서히 보임
+                val topHeight = eventCL.measuredHeight.toFloat()
+                bar.alpha = (scrollY / topHeight)
         }
     }
 
@@ -96,6 +96,7 @@ class EventFragment :
                     }
                 }
                 isVisibleBottomNav(true)
+                binding.eventView.elevation = DISUSE
             }.show(
                 requireActivity().supportFragmentManager,
                 R.id.event_FL
