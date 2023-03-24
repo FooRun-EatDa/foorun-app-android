@@ -15,6 +15,7 @@ import kr.foorun.presentation.R
 import kr.foorun.presentation.databinding.FragmentEventBinding
 import kr.foorun.uni_eat.base.view.base.context_view.BaseFragment
 import kr.foorun.uni_eat.base.view.base.recycler.decorator.EventDecorator
+
 class EventFragment :
     BaseFragment<FragmentEventBinding, EventViewModel>(FragmentEventBinding::inflate) {
     override val fragmentViewModel: EventViewModel by viewModels()
@@ -81,7 +82,7 @@ class EventFragment :
 
     private fun showBottomSheet() {
         isVisibleBottomNav(false)
-        binding.eventView.elevation = 1.toFloat()
+        binding.eventView.elevation = USE
         eventSortBottomSheetFragment =
             EventSortBottomSheetFragment({ onBackPressed() }) { sortMethod ->
                 when (sortMethod) {
@@ -110,7 +111,12 @@ class EventFragment :
         if (eventSortBottomSheetFragment != null) {
             eventSortBottomSheetFragment?.hide()
             isVisibleBottomNav(true)
-            binding.eventView.elevation = 0.toFloat()
+            binding.eventView.elevation = DISUSE
         }
+    }
+
+    companion object{
+        const val USE = 1.toFloat()
+        const val DISUSE = 0.toFloat()
     }
 }
