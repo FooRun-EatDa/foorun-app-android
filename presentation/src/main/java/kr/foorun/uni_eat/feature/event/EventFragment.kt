@@ -82,11 +82,7 @@ class EventFragment :
 
     private fun showBottomSheet() {
         isVisibleBottomNav(false)
-<<<<<<< HEAD
         binding.eventView.elevation = USE
-=======
-        binding.eventView.elevation = 1.toFloat()
->>>>>>> 58702bbf7a0669439b324afacf172707fdc3e03e
         eventSortBottomSheetFragment =
             EventSortBottomSheetFragment({ onBackPressed() }) { sortMethod ->
                 when (sortMethod) {
