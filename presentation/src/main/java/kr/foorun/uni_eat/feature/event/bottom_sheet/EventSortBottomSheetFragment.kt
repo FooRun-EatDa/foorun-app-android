@@ -1,6 +1,7 @@
 package kr.foorun.uni_eat.feature.event.bottom_sheet
 
 import android.graphics.Typeface
+import android.util.Log
 import androidx.annotation.IdRes
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentManager
@@ -13,10 +14,15 @@ import kr.foorun.uni_eat.base.view.base.bottom_sheet.BaseBottomSheetFragment
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 
 class EventSortBottomSheetFragment(
-    private val backAction : () -> Unit,
-    private val eventSortMethodListener: (sortMethod : Int) -> Unit
+    private val backAction: () -> Unit,
+    private val eventSortMethodListener: (sortMethod : Int) -> Unit,
+    private val stateListener: (Int) -> Unit
 ) : BaseBottomSheetFragment<FragmentEventSortBottomSheetBinding>
-    (R.layout.fragment_event_sort_bottom_sheet) {
+    (
+    R.layout.fragment_event_sort_bottom_sheet,
+    rootClickable = true,
+    isBlur = true
+) {
 
     private val eventSortViewModel: EventSortViewModel by viewModels()
 
@@ -65,19 +71,15 @@ class EventSortBottomSheetFragment(
         }
     }
 
-    override fun onStateChanged(state: Int) {
-    }
-
-    override fun bottomSheetBackClicked() {
-        backAction()
-    }
+    override fun onStateChanged(state: Int) = stateListener(state)
+    override fun bottomSheetBackClicked() = backAction()
 
     fun show(
         fragmentManager: FragmentManager,
         @IdRes containerViewId: Int,
     ): EventSortBottomSheetFragment =
         fragmentManager.findFragmentByTag(tag) as? EventSortBottomSheetFragment
-            ?: EventSortBottomSheetFragment(backAction,eventSortMethodListener).apply {
+            ?: EventSortBottomSheetFragment(backAction,eventSortMethodListener,stateListener).apply {
                 fragmentManager.beginTransaction()
                     .replace(containerViewId, this, tag)
                     .commitAllowingStateLoss()

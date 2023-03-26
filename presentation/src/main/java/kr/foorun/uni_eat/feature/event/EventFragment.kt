@@ -2,10 +2,12 @@ package kr.foorun.uni_eat.feature.event
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kr.foorun.const.Constant.Companion.SPAN_COUNT
 import kr.foorun.const.Constant.Companion.EVENT_SORT_DEADLINE
 import kr.foorun.const.Constant.Companion.EVENT_SORT_LATEST
@@ -71,7 +73,6 @@ class EventFragment :
 
     private fun handleEvent(event: EventViewModel.EventEvent) = when (event) {
         is EventViewModel.EventEvent.ShowSortMethod -> showBottomSheet()
-        is EventViewModel.EventEvent.ClickOutsideBottomSheet -> onClickOutsideBottomSheet()
     }
 
     private fun handleAdapterEvent(event: EventAdapterViewModel.EventAdapterEvent) = when (event) {
@@ -82,42 +83,28 @@ class EventFragment :
 
     private fun showBottomSheet() {
         isVisibleBottomNav(false)
-        binding.eventView.elevation = USE
         eventSortBottomSheetFragment =
-            EventSortBottomSheetFragment({ onBackPressed() }) { sortMethod ->
-                when (sortMethod) {
-                    EVENT_SORT_LATEST -> {
-                        binding.eventFilterText.text = getString(R.string.event_sort_newest)
-                        //ToDo
+            EventSortBottomSheetFragment(backAction = { onBackPressed() },
+                eventSortMethodListener = { sortMethod ->
+                    when (sortMethod) {
+                        EVENT_SORT_LATEST -> {
+                            binding.eventFilterText.text = getString(R.string.event_sort_newest)
+                            //ToDo
+                        }
+                        EVENT_SORT_DEADLINE -> {
+                            binding.eventFilterText.text = getString(R.string.event_sort_deadline)
+                            //ToDo
+                        }
                     }
-                    EVENT_SORT_DEADLINE -> {
-                        binding.eventFilterText.text = getString(R.string.event_sort_deadline)
-                        //ToDo
-                    }
-                }
-                isVisibleBottomNav(true)
-                binding.eventView.elevation = DISUSE
-            }.show(
-                requireActivity().supportFragmentManager,
-                R.id.event_FL
-            )
+
+                }, stateListener = { state ->
+                    if(state == BottomSheetBehavior.STATE_HIDDEN) isVisibleBottomNav(true)
+                }).show(requireActivity().supportFragmentManager, R.id.event_FL)
     }
 
     private fun onBackPressed() {
-        if (eventSortBottomSheetFragment != null && eventSortBottomSheetFragment!!.handleBackKeyEvent())
+        if (eventSortBottomSheetFragment != null && eventSortBottomSheetFragment!!.handleBackKeyEvent()) {
             eventSortBottomSheetFragment?.hide()
-    }
-
-    private fun onClickOutsideBottomSheet() {
-        if (eventSortBottomSheetFragment != null) {
-            eventSortBottomSheetFragment?.hide()
-            isVisibleBottomNav(true)
-            binding.eventView.elevation = DISUSE
         }
-    }
-
-    companion object{
-        const val USE = 1.toFloat()
-        const val DISUSE = 0.toFloat()
     }
 }
