@@ -1,7 +1,6 @@
 package kr.foorun.uni_eat.feature.event
 
 
-import android.util.Log
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -37,10 +36,8 @@ class EventViewModel : BaseViewModel() {
 
     fun event(event: EventEvent) = viewModelScope.launch { _eventFlow.emit(event) }
     fun showSortMethod() { event(EventEvent.ShowSortMethod()) }
-    fun clickOutsideBottomSheet() { event(EventEvent.ClickOutsideBottomSheet())}
 
     sealed class EventEvent {
         data class ShowSortMethod(val unit: Unit? = null) : EventEvent()
-        data class ClickOutsideBottomSheet(val unit: Unit? = null) : EventEvent()
     }
 }

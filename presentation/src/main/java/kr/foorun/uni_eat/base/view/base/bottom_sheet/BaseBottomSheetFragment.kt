@@ -18,6 +18,7 @@ import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 abstract class BaseBottomSheetFragment <CollapseBinding : ViewDataBinding>(
     @LayoutRes private val collapseResId: Int,
     private val heightType: HeightType = HeightType.MATCH,
+    private val rootClickable: Boolean = false
 ) : BaseFragment<FragmentShopBottomSheetBinding, BaseViewModel>(FragmentShopBottomSheetBinding::inflate) {
 
     @Suppress("MemberVisibilityCanBePrivate")
@@ -78,8 +79,10 @@ abstract class BaseBottomSheetFragment <CollapseBinding : ViewDataBinding>(
                 binding.root,
                 binding.flContainer,
                 binding.viewContainer,
-                null
-            ){ onStateChanged(it) }
+                null,
+            { onStateChanged(it) },
+                rootClickable
+            )
 
         addBottomSheetCallback(bottomCallback)
 

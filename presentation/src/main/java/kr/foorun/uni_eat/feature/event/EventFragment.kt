@@ -71,7 +71,6 @@ class EventFragment :
 
     private fun handleEvent(event: EventViewModel.EventEvent) = when (event) {
         is EventViewModel.EventEvent.ShowSortMethod -> showBottomSheet()
-        is EventViewModel.EventEvent.ClickOutsideBottomSheet -> onClickOutsideBottomSheet()
     }
 
     private fun handleAdapterEvent(event: EventAdapterViewModel.EventAdapterEvent) = when (event) {
@@ -82,22 +81,21 @@ class EventFragment :
 
     private fun showBottomSheet() {
         isVisibleBottomNav(false)
-        binding.eventView.elevation = USE
         eventSortBottomSheetFragment =
-            EventSortBottomSheetFragment({ onBackPressed() }) { sortMethod ->
-                when (sortMethod) {
-                    EVENT_SORT_LATEST -> {
-                        binding.eventFilterText.text = getString(R.string.event_sort_newest)
-                        //ToDo
+            EventSortBottomSheetFragment(backAction = { onBackPressed() }, rootClickable = true,
+                eventSortMethodListener = { sortMethod ->
+                    when (sortMethod) {
+                        EVENT_SORT_LATEST -> {
+                            binding.eventFilterText.text = getString(R.string.event_sort_newest)
+                            //ToDo
+                        }
+                        EVENT_SORT_DEADLINE -> {
+                            binding.eventFilterText.text = getString(R.string.event_sort_deadline)
+                            //ToDo
+                        }
                     }
-                    EVENT_SORT_DEADLINE -> {
-                        binding.eventFilterText.text = getString(R.string.event_sort_deadline)
-                        //ToDo
-                    }
-                }
-                isVisibleBottomNav(true)
-                binding.eventView.elevation = DISUSE
-            }.show(
+                    isVisibleBottomNav(true)
+                }).show(
                 requireActivity().supportFragmentManager,
                 R.id.event_FL
             )
@@ -112,12 +110,6 @@ class EventFragment :
         if (eventSortBottomSheetFragment != null) {
             eventSortBottomSheetFragment?.hide()
             isVisibleBottomNav(true)
-            binding.eventView.elevation = DISUSE
         }
-    }
-
-    companion object{
-        const val USE = 1.toFloat()
-        const val DISUSE = 0.toFloat()
     }
 }

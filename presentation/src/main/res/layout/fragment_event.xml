@@ -27,14 +27,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:titleText="@string/event" />
 
-            <View
-                android:id="@+id/event_View"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/black"
-                android:alpha="0.6"
-                android:onClick="@{()->viewModel.clickOutsideBottomSheet()}" />
-
             <FrameLayout
                 android:id="@+id/event_FL"
                 android:layout_width="match_parent"
