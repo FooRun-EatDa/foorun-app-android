@@ -1,6 +1,7 @@
 package kr.foorun.uni_eat.base.view.base.bottom_sheet
 
 import android.graphics.drawable.ColorDrawable
+import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.view.isInvisible
@@ -14,7 +15,9 @@ class BaseBottomSheetCallback(
     private val containerView: View,
     private val collapseView: View,
     private val expandView: View?,
-    private val stateCallBack: (state : Int) -> Unit
+    private val stateCallBack: (state : Int) -> Unit,
+    private val rootClickable: Boolean = false,
+    private val setBlur: Boolean = false
 ) : BottomSheetBehavior.BottomSheetCallback() {
 
     private val context = rootView.context
@@ -26,20 +29,18 @@ class BaseBottomSheetCallback(
             alpha = 0f
             isInvisible = true
         }
-//        setBlur(true)
+        setBlur(setBlur)
         setupListener()
-        rootView.isClickable = false
     }
 
     private fun setupListener() {
-//        rootView.setOnClickListener {
-//            if (behavior.state == BottomSheetBehavior.STATE_COLLAPSED) {
-//                behavior.state = BottomSheetBehavior.STATE_HIDDEN
-//            }
+        if(rootClickable){
+            rootView.setOnClickListener { behavior.state = BottomSheetBehavior.STATE_HIDDEN }
+        } else rootView.isClickable = false
+
+//        containerView.setOnClickListener {
+//            // no-op
 //        }
-        containerView.setOnClickListener {
-            // no-op
-        }
     }
 
     override fun onSlide(bottomSheet: View, slideOffset: Float) {
