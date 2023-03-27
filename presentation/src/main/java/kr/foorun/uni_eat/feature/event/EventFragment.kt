@@ -42,12 +42,9 @@ class EventFragment :
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    override fun afterBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ) = binding {
+    override fun afterBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = binding {
         bar.bringToFront()
+        setDoOnBackPressed()
 
         eventRV.apply {
             adapter = eventAdapter
@@ -76,9 +73,8 @@ class EventFragment :
     }
 
     private fun handleAdapterEvent(event: EventAdapterViewModel.EventAdapterEvent) = when (event) {
-        is EventAdapterViewModel.EventAdapterEvent.ShowEventDetail -> {
+        is EventAdapterViewModel.EventAdapterEvent.ShowEventDetail ->
             navigateToFrag(EventFragmentDirections.actionEventFragmentToEventDetailFragment(event.clickedEventCoupon))
-        }
     }
 
     private fun showBottomSheet() {
@@ -98,13 +94,24 @@ class EventFragment :
                     }
 
                 }, stateListener = { state ->
-                    if(state == BottomSheetBehavior.STATE_HIDDEN) isVisibleBottomNav(true)
+                    if(state == BottomSheetBehavior.STATE_HIDDEN) {
+                        isVisibleBottomNav(true)
+                        disMissEventBottomSheet()
+                    }
                 }).show(requireActivity().supportFragmentManager, R.id.event_FL)
     }
 
     private fun onBackPressed() {
-        if (eventSortBottomSheetFragment != null && eventSortBottomSheetFragment!!.handleBackKeyEvent()) {
+        if (eventSortBottomSheetFragment != null && eventSortBottomSheetFragment!!.handleBackKeyEvent())
             eventSortBottomSheetFragment?.hide()
-        }
+        else popUpBackStack()
     }
+
+    private fun disMissEventBottomSheet() {
+        eventSortBottomSheetFragment?.dismiss(requireActivity().supportFragmentManager)
+        eventSortBottomSheetFragment = null
+    }
+
+    private fun setDoOnBackPressed() = onBackPressedListener { onBackPressed() }
+
 }
