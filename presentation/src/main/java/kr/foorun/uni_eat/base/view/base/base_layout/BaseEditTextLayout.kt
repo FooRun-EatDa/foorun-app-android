@@ -72,22 +72,21 @@ class BaseEditTextLayout : ConstraintLayout {
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
-    fun setRedUnderLine(red: Boolean){
-        backgroundTintList = if(red) ContextCompat.getColorStateList(context,R.color.red)
-        else ContextCompat.getColorStateList(context,R.color.black)
+    fun setRedUnderLine(color: Int){
+        backgroundTintList = ContextCompat.getColorStateList(context,color)
     }
 
     companion object{
         @JvmStatic
         @BindingAdapter("textWatcher")
-        fun setTextWatcher(textView: BaseEditTextLayout, textWatcher: TextWatcher) {
-            textView.setTextWatcher(textWatcher)
+        fun setTextWatcher(view: BaseEditTextLayout, textWatcher: TextWatcher) {
+            view.setTextWatcher(textWatcher)
         }
 
         @JvmStatic
         @BindingAdapter("setUnderLine")
-        fun setUnderLine(textView: BaseEditTextLayout, isRed: Boolean) {
-            textView.setRedUnderLine(isRed)
+        fun setUnderLine(view: BaseEditTextLayout, color: Int?) {
+            color?.let { view.setRedUnderLine(color) }
         }
     }
 }

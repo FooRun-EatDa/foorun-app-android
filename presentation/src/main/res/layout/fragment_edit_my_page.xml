@@ -1,13 +1,155 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="kr.foorun.uni_eat.feature.mypage.edit.EditMyPageFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+
+        <variable
+            name="viewModel"
+            type="kr.foorun.uni_eat.feature.mypage.edit.EditMyPageViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context="kr.foorun.uni_eat.feature.mypage.edit.EditMyPageFragment">
 
-</FrameLayout>
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseBarConstraintView
+            android:id="@+id/bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:frontImage="@drawable/arrow_left"
+            app:frontVisible="true"
+            app:rearVisible="true"
+            app:rearImage="@drawable/complete"
+            app:layout_constraintTop_toTopOf="parent"
+            app:titleText="@string/edit_profile" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="23dp"
+                android:layout_marginStart="@dimen/margin_21"
+                android:layout_marginEnd="@dimen/margin_21"
+                android:background="@drawable/radius_white_6">
+
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
+                    android:id="@id/image"
+                    android:layout_width="93dp"
+                    android:layout_height="93dp"
+                    android:layout_marginTop="23dp"
+                    app:glide="@{viewModel.user.image}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
+                    android:id="@+id/change_image_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="23dp"
+                    android:text="@string/change_image"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/image"
+                    app:setUnderLine="@{true}" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_21"
+                    android:layout_marginTop="51dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/change_image_text">
+
+                    <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
+                        android:id="@+id/nick"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nick"
+                        android:textColor="@color/large_text"
+                        android:textSize="@dimen/text_size_large_15"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <kr.foorun.uni_eat.base.view.base.base_layout.BaseEditTextLayout
+                        android:id="@+id/nick_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/nick_form_hint"
+                        app:setUnderLine="@{@color/black}"
+                        android:layout_marginTop="15dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/nick" />
+
+                    <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="사용 가능한 메일입니다"
+                        android:textSize="13sp"
+                        android:textColor="@color/large_text"
+                        android:layout_marginTop="@dimen/margin_11"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/nick_edit" />
+
+                    <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
+                        android:id="@+id/alert_nick"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nick"
+                        android:textColor="@color/large_text"
+                        android:textSize="@dimen/text_size_large_15"
+                        android:textStyle="bold"
+                        android:layout_marginTop="53dp"
+                        app:layout_constraintTop_toBottomOf="@id/nick_edit"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <kr.foorun.uni_eat.base.view.base.base_layout.BaseEditTextLayout
+                        android:id="@+id/introduce_edit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/introduce_hint"
+                        app:setUnderLine="@{@color/black}"
+                        android:layout_marginTop="15dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/alert_nick" />
+
+                    <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
+                        android:id="@+id/tag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hashTag"
+                        android:textColor="@color/large_text"
+                        android:textSize="@dimen/text_size_large_15"
+                        android:textStyle="bold"
+                        android:layout_marginTop="53dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/introduce_edit"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/tag_recycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:spanCount="4"
+                        android:overScrollMode="never"
+                        android:layout_marginTop="15dp"
+                        app:layout_constraintTop_toBottomOf="@id/tag"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -11,4 +11,5 @@ data class User(
     val articles: List<Article> = listOf(),
     val bookMarks: List<Article> = listOf(),
     val introduce: String = "분위기 있는 감성 카페를 소개합니다.",
+    val image: String = "https://picsum.photos/200"
 ): Serializable

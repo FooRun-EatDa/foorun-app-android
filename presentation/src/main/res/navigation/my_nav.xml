@@ -24,7 +24,9 @@
         <action
             android:id="@+id/action_myPageMoreFragment_to_myPageAccountFragment"
             app:destination="@id/myPageAccountFragment" />
-
+        <action
+            android:id="@+id/action_myPageMoreFragment_to_editMyPageFragment"
+            app:destination="@id/editMyPageFragment" />
         <argument
             android:name="@string/hide_bottom"
             app:argType="boolean"
@@ -42,5 +44,11 @@
             app:argType="boolean"
             android:defaultValue="true" />
     </fragment>
+
+    <fragment
+        tools:layout="@layout/fragment_edit_my_page"
+        android:id="@+id/editMyPageFragment"
+        android:name="kr.foorun.uni_eat.feature.mypage.edit.EditMyPageFragment"
+        android:label="EditMyPageFragment" />
 
 </navigation>

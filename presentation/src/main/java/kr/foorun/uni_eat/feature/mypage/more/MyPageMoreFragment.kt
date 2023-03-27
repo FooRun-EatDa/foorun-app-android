@@ -19,7 +19,7 @@ class MyPageMoreFragment :BaseFragment<FragmentMyPageMoreBinding,MyPageMoreViewM
     }
 
     private fun handleEvent(event: MyPageMoreViewModel.MyPageMoreEvent) = when(event){
-        is MyPageMoreViewModel.MyPageMoreEvent.ProfileClicked -> {}
+        is MyPageMoreViewModel.MyPageMoreEvent.ProfileClicked -> navigateToFrag(MyPageMoreFragmentDirections.actionMyPageMoreFragmentToEditMyPageFragment())
         is MyPageMoreViewModel.MyPageMoreEvent.AccountClicked -> navigateToFrag(MyPageMoreFragmentDirections.actionMyPageMoreFragmentToMyPageAccountFragment())
         is MyPageMoreViewModel.MyPageMoreEvent.NoticeClicked -> {}
         is MyPageMoreViewModel.MyPageMoreEvent.LocationClicked -> {}

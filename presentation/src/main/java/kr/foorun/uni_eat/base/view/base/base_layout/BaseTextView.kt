@@ -2,7 +2,9 @@ package kr.foorun.uni_eat.base.view.base.base_layout
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Paint
 import android.util.AttributeSet
+import androidx.annotation.ColorRes
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
@@ -42,11 +44,21 @@ class BaseTextView : AppCompatTextView {
 //        }
     }
 
+    fun setRedUnderLine(){
+        paintFlags = Paint.UNDERLINE_TEXT_FLAG
+    }
+
     companion object{
         @JvmStatic
         @BindingAdapter("setText")
         fun setText(view: BaseTextView, str: String?){
             str?.let { view.text = str }
+        }
+
+        @JvmStatic
+        @BindingAdapter("setUnderLine")
+        fun setUnderLine(view: BaseTextView , boolean: Boolean?){
+            boolean?.let { view.setRedUnderLine()  }
         }
     }
 }
