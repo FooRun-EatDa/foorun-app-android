@@ -4,6 +4,10 @@
 
     <data>
         <variable
+            name="eventCoupon"
+            type="kr.foorun.model.event.EventCoupon" />
+
+        <variable
             name="viewModel"
             type="kr.foorun.uni_eat.feature.event.event_detail.EventDetailViewModel" />
     </data>
@@ -14,22 +18,117 @@
         android:background="@color/white"
         tools:context="kr.foorun.uni_eat.feature.event.event_detail.EventDetailFragment">
 
-       <kr.foorun.uni_eat.base.view.base.base_layout.BaseBarConstraintView
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           app:titleText="@string/article"
-           app:layout_constraintTop_toTopOf="parent"/>
-
-        <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
-            android:id="@+id/event_detail_TV"
-            android:layout_width="wrap_content"
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseBarConstraintView
+            android:id="@+id/bar"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="23sp"
-            android:textStyle="bold"
+            app:frontVisible="true"
+            app:setViewModel="@{viewModel}"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:titleText="@string/event"/>
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="9dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bar">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="21dp"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
+
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
+                    android:id="@+id/event_detail_IV"
+                    android:layout_width="match_parent"
+                    android:layout_height="501dp"
+                    android:layout_gravity="center"
+                    app:glide="@{eventCoupon.image}" />
+
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
+                    android:id="@+id/event_detail_title_TV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:letterSpacing="-0.05"
+                    android:text="@{eventCoupon.name}"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
+                    android:id="@+id/event_detail_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/black_line" />
+
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
+                    android:id="@+id/event_detail_duration_TV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="10dp"
+                    android:letterSpacing="-0.05"
+                    android:text="@{`이벤트 기간 `+eventCoupon.startDate+` ~ `+eventCoupon.endDate}"
+                    android:textColor="@color/red"
+                    android:textSize="15sp" />
+
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
+                    android:id="@+id/event_detail_shopName_TV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="16dp"
+                    android:text="@{ '[' +eventCoupon.shopName+ ']' }"
+                    android:textSize="15sp" />
+
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
+                    android:id="@+id/event_detail_discription_TV"
+                    android:layout_width="330.86dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="10dp"
+                    android:text="@{eventCoupon.discription}"
+                    android:textSize="15sp" />
+
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="23dp"
+                    android:letterSpacing="-0.05"
+                    android:text="@string/event_notice"
+                    android:textColor="@color/gray5"
+                    android:textSize="13sp" />
+
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
+                    android:id="@+id/event_detail_notice_TV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="38.05dp"
+                    android:letterSpacing="-0.05"
+                    android:text="@{eventCoupon.Notice}"
+                    android:textSize="13sp" />
+        <Button
+            android:id="@+id/event_detail_use_coupon_BTN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="54dp"
+            android:layout_marginBottom="36dp"
+            android:background="@drawable/radius_black_24"
+            android:text="@string/use_coupon"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+            </LinearLayout>
+        </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

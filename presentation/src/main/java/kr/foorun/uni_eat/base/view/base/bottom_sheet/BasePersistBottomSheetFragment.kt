@@ -95,7 +95,8 @@ abstract class BasePersistBottomSheetFragment<CollapseBinding : ViewDataBinding,
                 binding.flContainer,
                 binding.viewCollapseContainer,
                 binding.viewExpandContainer,
-            ){ onStateChanged(it) }
+                { onStateChanged(it) }
+            )
         addBottomSheetCallback(bottomSheetCallback)
 
         collapseBinding.root.doOnLayout {
