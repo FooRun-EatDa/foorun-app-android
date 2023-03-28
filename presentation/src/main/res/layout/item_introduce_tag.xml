@@ -16,7 +16,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/tag_item_constraint"
-        app:setTagDrawable="@{searchTag.picked}"
+        android:background="@drawable/radius_white_25"
         android:onClick="@{() -> viewModel.tagClicked(searchTag, index)}"
         android:layout_width="wrap_content"
         android:layout_height="38dp">
@@ -34,7 +34,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:text="@{searchTag.tagName}"
+            android:text="@{`#` + searchTag.tagName}"
             app:setTagTextColor="@{searchTag.picked}"
             android:textSize="13sp"/>
 

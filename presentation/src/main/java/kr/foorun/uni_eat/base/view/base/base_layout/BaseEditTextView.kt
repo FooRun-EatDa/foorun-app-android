@@ -40,10 +40,4 @@ class BaseEditTextView : AppCompatEditText {
 //            typeface = Typeface.createFromAsset(context.assets, "fonts/Roboto-$font.ttf")
 //        }
     }
-
-    @SuppressLint("UseCompatLoadingForDrawables")
-    fun setRedUnderLine(red: Boolean){
-        backgroundTintList = if(red) ContextCompat.getColorStateList(context, R.color.black)
-        else ContextCompat.getColorStateList(context, R.color.black)
-    }
 }

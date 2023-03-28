@@ -1,6 +1,5 @@
 package kr.foorun.uni_eat.base.view.base.base_layout
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.TypedArray
 import android.text.TextWatcher
@@ -10,12 +9,14 @@ import android.view.LayoutInflater
 import android.view.inputmethod.EditorInfo
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import kr.foorun.presentation.R
 
 class BaseEditTextLayout : ConstraintLayout {
 
     lateinit var baseEditText: BaseEditTextView
+    lateinit var underLine: BaseImageView
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
@@ -42,6 +43,7 @@ class BaseEditTextLayout : ConstraintLayout {
     private fun init(typedArray: TypedArray){
 
         baseEditText = findViewById(R.id.base_edittext)
+        underLine = findViewById(R.id.under_line)
 
         val attrIsSingle = typedArray.getBoolean(R.styleable.BaseEditTextLayout_android_singleLine,true)
         val attrInputType = typedArray.getInt(R.styleable.BaseEditTextLayout_android_inputType, EditorInfo.TYPE_NULL)
@@ -51,6 +53,8 @@ class BaseEditTextLayout : ConstraintLayout {
         val attrBackground = typedArray.getResourceId(R.styleable.BaseEditTextLayout_android_background,R.color.invisible)
         val attrSize = typedArray.getDimensionPixelSize(R.styleable.BaseEditTextLayout_android_textSize,context.resources.getDimensionPixelSize(R.dimen.text_size_large_15))
         val attrHintColor = typedArray.getColor(R.styleable.BaseEditTextLayout_android_textColorHint, ContextCompat.getColor(context,R.color.gray3))
+        val attrIsUnderLine = typedArray.getBoolean(R.styleable.BaseEditTextLayout_underLine, false)
+        val attrText = typedArray.getString(R.styleable.BaseEditTextLayout_android_text)
 
         baseEditText.run {
             isSingleLine = attrIsSingle
@@ -62,6 +66,8 @@ class BaseEditTextLayout : ConstraintLayout {
             setHintTextColor(attrHintColor)
             setBackgroundResource(attrBackground)
             setTextSize(TypedValue.COMPLEX_UNIT_PX, attrSize.toFloat())
+            underLine.isVisible = attrIsUnderLine
+            if(!attrText.isNullOrEmpty()) setText(attrText)
         }
 
         typedArray.recycle()
@@ -71,23 +77,21 @@ class BaseEditTextLayout : ConstraintLayout {
         baseEditText.addTextChangedListener(textWatcher)
     }
 
-    @SuppressLint("UseCompatLoadingForDrawables")
-    fun setRedUnderLine(red: Boolean){
-        backgroundTintList = if(red) ContextCompat.getColorStateList(context,R.color.red)
-        else ContextCompat.getColorStateList(context,R.color.black)
+    fun setEditText(str: String){
+        baseEditText.setText(str)
     }
 
     companion object{
         @JvmStatic
         @BindingAdapter("textWatcher")
-        fun setTextWatcher(textView: BaseEditTextLayout, textWatcher: TextWatcher) {
-            textView.setTextWatcher(textWatcher)
+        fun setTextWatcher(view: BaseEditTextLayout, textWatcher: TextWatcher) {
+            view.setTextWatcher(textWatcher)
         }
 
         @JvmStatic
-        @BindingAdapter("setUnderLine")
-        fun setUnderLine(textView: BaseEditTextLayout, isRed: Boolean) {
-            textView.setRedUnderLine(isRed)
+        @BindingAdapter("setEditText")
+        fun setEditText(view: BaseEditTextLayout, str: String?){
+            str?.let { view.setEditText(it) }
         }
     }
 }

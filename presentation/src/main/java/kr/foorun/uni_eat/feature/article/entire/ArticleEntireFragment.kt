@@ -10,6 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kr.foorun.presentation.R
 import kr.foorun.presentation.databinding.FragmentArticleEntireBinding
 import kr.foorun.presentation.databinding.ItemTabItemBinding
+import kr.foorun.uni_eat.base.view.base.base_layout.BaseTab
 import kr.foorun.uni_eat.base.view.base.context_view.BaseFragment
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 import kr.foorun.uni_eat.feature.article.entire.adapter.ArticleDetailViewPagerAdapter
@@ -26,17 +27,10 @@ class ArticleEntireFragment : BaseFragment<FragmentArticleEntireBinding, Article
     }
 
     override fun afterBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = binding {
-
-        pager.adapter = ArticleDetailViewPagerAdapter(requireActivity().supportFragmentManager,lifecycle)
-
-        TabLayoutMediator(articleTab, pager) { tab, position ->
-            DataBindingUtil.bind<ItemTabItemBinding>(LayoutInflater.from(requireContext()).inflate(R.layout.item_tab_item , null)
-            )?.apply {
-                val p = getTitle(position)
-                title = p.first
-                number = p.second
-            }?.run { tab.customView = this@run.root }
-        }.attach()
+        entireTab.run {
+            pager.adapter = ArticleDetailViewPagerAdapter(requireActivity().supportFragmentManager,lifecycle)
+            setTabItem(listOf(BaseTab.CustomTabItem("추천"), BaseTab.CustomTabItem("최신")))
+        }
     }
 
     private fun handleEvent(event: ArticleEntireViewModel.EntireEvent) = when(event) {
@@ -44,9 +38,6 @@ class ArticleEntireFragment : BaseFragment<FragmentArticleEntireBinding, Article
         is ArticleEntireViewModel.EntireEvent.PostClick -> navigateToFrag(ArticleEntireFragmentDirections.actionArticleEntireFragmentToArticlePostFragment())
     }
 
-    private fun getTitle(position: Int) = when(position){
-        0 -> Pair(getString(R.string.recommend),"")
-        else -> Pair(getString(R.string.latest),"")
-    }
+
 
 }

@@ -7,6 +7,7 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="hide_bottom">hideBottom</string>
+    <string name="empty"> </string>
 
     <string name="exit_txt">\'뒤로\' 버튼을 한번 더 누르면 종료 됩니다.</string>
 
@@ -73,4 +74,9 @@
     <string name="change_password">비밀번호 변경</string>
     <string name="logout">로그아웃</string>
     <string name="withdraw">탈퇴</string>
+    <string name="change_image">사진 변경하기</string>
+    <string name="nick">닉네임</string>
+    <string name="nick_form_hint">한글 5자리 또는 영어 10글자 이하</string>
+    <string name="introduce_hint">50자 내로 자기소개를 작성해주세요</string>
+    <string name="introduce">자기소개</string>
 </resources>

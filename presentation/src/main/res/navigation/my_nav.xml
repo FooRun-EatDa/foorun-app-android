@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
     app:startDestination="@id/my_page">
+
     <fragment
         android:id="@+id/my_page"
         android:name="kr.foorun.uni_eat.feature.mypage.MyPageFragment"
@@ -24,7 +25,9 @@
         <action
             android:id="@+id/action_myPageMoreFragment_to_myPageAccountFragment"
             app:destination="@id/myPageAccountFragment" />
-
+        <action
+            android:id="@+id/action_myPageMoreFragment_to_editMyPageFragment"
+            app:destination="@id/editMyPageFragment" />
         <argument
             android:name="@string/hide_bottom"
             app:argType="boolean"
@@ -36,6 +39,18 @@
         android:id="@+id/myPageAccountFragment"
         android:name="kr.foorun.uni_eat.feature.mypage.account.MyPageAccountFragment"
         android:label="MyPageAccountFragment" >
+
+        <argument
+            android:name="@string/hide_bottom"
+            app:argType="boolean"
+            android:defaultValue="true" />
+    </fragment>
+
+    <fragment
+        tools:layout="@layout/fragment_edit_my_page"
+        android:id="@+id/editMyPageFragment"
+        android:name="kr.foorun.uni_eat.feature.mypage.edit.EditMyPageFragment"
+        android:label="EditMyPageFragment" >
 
         <argument
             android:name="@string/hide_bottom"

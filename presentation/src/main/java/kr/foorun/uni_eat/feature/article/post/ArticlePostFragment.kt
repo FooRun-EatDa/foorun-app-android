@@ -83,7 +83,7 @@ class ArticlePostFragment: BaseFragment<FragmentArticlePostBinding, ArticlePostV
     override fun afterBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = binding {
         tagRecycler.run{
             adapter = searchTagAdapter
-            addItemDecoration(TagDecorator(spanCount = SPAN_COUNT, oriental = GRID))
+            addItemDecoration(TagDecorator(spanCount = 4, oriental = GRID))
         }
 
         addImagePager.run {
@@ -103,13 +103,14 @@ class ArticlePostFragment: BaseFragment<FragmentArticlePostBinding, ArticlePostV
         is ShopImageViewModel.ShopImageEvent.ImageClicked -> fragmentViewModel.imageClicked()
     }
 
-    private fun tagHandleEvent(event: SearchTagViewModel.TagEvent) = when (event) {
-        is SearchTagViewModel.TagEvent.TagClick -> {
-            val tag = event.searchTag
-            val arr = ArrayList<SearchTag>()
-            fragmentViewModel.searchTags.value?.map { arr.add(it) }
-            for( i in arr.indices ) if(arr[i].tagName == tag.tagName) arr[i] = SearchTag(tag.tagName,!tag.isPicked)
-            fragmentViewModel.setTags(arr)
+    private fun tagHandleEvent(event: SearchTagViewModel.TagEvent) {
+        when (event) {
+            is SearchTagViewModel.TagEvent.TagClick -> {
+                val tag = event.searchTag
+                val index = event.idx
+                tag.isPicked = !tag.isPicked
+                searchTagAdapter.notifyItemChanged(index)
+            }
         }
     }
 

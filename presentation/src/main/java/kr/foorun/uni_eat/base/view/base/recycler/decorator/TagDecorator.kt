@@ -52,7 +52,7 @@ class TagDecorator (gapSpace: Int = TAG_ITEM_MARGIN_GAP, bottomSpace: Int = TAG_
         outRect.run {
             if (row != spanCount) {
                 bottom = bottomDP
-                if (column != spanCount) right = gapDP
+//                if (column != spanCount) right = gapDP
             }
         }
     }

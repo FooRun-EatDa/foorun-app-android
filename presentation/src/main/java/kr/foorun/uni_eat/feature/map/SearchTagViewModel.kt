@@ -15,11 +15,11 @@ class SearchTagViewModel @Inject constructor(): BaseViewModel() {
     private val _eventFlow = MutableEventFlow<TagEvent>()
     val eventFlow = _eventFlow.asEventFlow()
 
-    fun tagClicked(searchTag: SearchTag) = viewModelScope.launch { event(TagEvent.TagClick(searchTag)) }
+    fun tagClicked(searchTag: SearchTag, idx: Int) = viewModelScope.launch { event(TagEvent.TagClick(searchTag, idx)) }
 
     fun event (event : TagEvent) = viewModelScope.launch { _eventFlow.emit(event) }
 
     sealed class TagEvent {
-        data class TagClick(val searchTag: SearchTag) : TagEvent()
+        data class TagClick(val searchTag: SearchTag, val idx: Int) : TagEvent()
     }
 }

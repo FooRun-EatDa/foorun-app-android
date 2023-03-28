@@ -12,10 +12,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/layout_empty"
+            app:visible="@{viewModel.articles.isEmpty() == true || viewModel.articles == null ? true : false}" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/article_recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:visible="@{viewModel.articles.isEmpty() == true || viewModel.articles == null ? false : true}"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
