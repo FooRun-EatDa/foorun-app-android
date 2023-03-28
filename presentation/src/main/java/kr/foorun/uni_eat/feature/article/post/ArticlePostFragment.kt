@@ -110,11 +110,6 @@ class ArticlePostFragment: BaseFragment<FragmentArticlePostBinding, ArticlePostV
                 val index = event.idx
                 tag.isPicked = !tag.isPicked
                 searchTagAdapter.notifyItemChanged(index)
-
-//            val arr = ArrayList<SearchTag>()
-//            fragmentViewModel.searchTags.value?.map { arr.add(it) }
-//            for( i in arr.indices ) if(arr[i].tagName == tag.tagName) arr[i] = SearchTag(tag.tagName,!tag.isPicked)
-//            fragmentViewModel.setTags(arr)
             }
         }
     }

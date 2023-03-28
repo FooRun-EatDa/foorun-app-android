@@ -85,8 +85,8 @@
 
                 <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
                     android:id="@+id/rear_image"
-                    android:layout_width="23dp"
-                    android:layout_height="23dp" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
             </FrameLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 

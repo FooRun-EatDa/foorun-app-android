@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
     app:startDestination="@id/my_page">
+
     <fragment
         android:id="@+id/my_page"
         android:name="kr.foorun.uni_eat.feature.mypage.MyPageFragment"
@@ -49,6 +50,12 @@
         tools:layout="@layout/fragment_edit_my_page"
         android:id="@+id/editMyPageFragment"
         android:name="kr.foorun.uni_eat.feature.mypage.edit.EditMyPageFragment"
-        android:label="EditMyPageFragment" />
+        android:label="EditMyPageFragment" >
+
+        <argument
+            android:name="@string/hide_bottom"
+            app:argType="boolean"
+            android:defaultValue="true" />
+    </fragment>
 
 </navigation>

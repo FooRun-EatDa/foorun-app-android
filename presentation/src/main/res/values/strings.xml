@@ -76,4 +76,5 @@
     <string name="nick">닉네임</string>
     <string name="nick_form_hint">한글 5자리 또는 영어 10글자 이하</string>
     <string name="introduce_hint">50자 내로 자기소개를 작성해주세요</string>
+    <string name="introduce">자기소개</string>
 </resources>

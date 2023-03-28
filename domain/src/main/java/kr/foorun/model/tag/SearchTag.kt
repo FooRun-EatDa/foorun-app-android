@@ -4,3 +4,9 @@ data class SearchTag( //todo should be changed into interface, data class must b
     val tagName: String,
     var isPicked: Boolean = false,
 )
+
+fun List<SearchTag>.getSelectedTags(): ArrayList<SearchTag> {
+    val list = ArrayList<SearchTag>()
+    this.map { if(it.isPicked) list.add(it) }
+    return list
+}
