@@ -10,7 +10,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
-import androidx.test.core.app.launchActivity
 import kr.foorun.presentation.R
 import kr.foorun.presentation.databinding.FragmentEditMyPageBinding
 import kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
@@ -51,7 +50,7 @@ class EditMyPageFragment: BaseFragment<FragmentEditMyPageBinding, EditMyPageView
                 image?.let { setImage(it) }
             }
 
-            nickCheck.observe(this@EditMyPageFragment){
+            nickStringCheck.observe(this@EditMyPageFragment){
                 textHandle(it, binding.nickAlert)
             }
 
@@ -67,6 +66,7 @@ class EditMyPageFragment: BaseFragment<FragmentEditMyPageBinding, EditMyPageView
                 onFailure = { toast("failed") }
             )
             is EditMyPageViewModel.EditEvent.ImageClicked -> selectPictureLauncher.launch(startGallery())
+            is EditMyPageViewModel.EditEvent.DuplicateCheckClicked -> fragmentViewModel.duplicateCheck(true)
         }
     }
 
@@ -92,11 +92,13 @@ class EditMyPageFragment: BaseFragment<FragmentEditMyPageBinding, EditMyPageView
         is EditMyPageViewModel.WrongCase.OutOfSize ->
             setTextColor(view,ContextCompat.getColor(requireContext(), R.color.red),"5글자 이내로 작성해주세요.")
         is EditMyPageViewModel.WrongCase.Success ->
-            setTextColor(view,ContextCompat.getColor(requireContext(), R.color.black), "사용 가능한 닉네임입니다.")
+            setTextColor(view,ContextCompat.getColor(requireContext(), R.color.black), "")
         is EditMyPageViewModel.WrongCase.WrongFormat ->
             setTextColor(view,ContextCompat.getColor(requireContext(), R.color.red), "특수문자가 포함되어 있습니다.")
         is EditMyPageViewModel.WrongCase.Nothing ->
             setTextColor(view,ContextCompat.getColor(requireContext(), R.color.black), "")
+        is EditMyPageViewModel.WrongCase.Duplicated ->
+            setTextColor(view,ContextCompat.getColor(requireContext(), R.color.red), "이미 존재하는 닉네임입니다..")
     }
 
     private fun setTextColor(view: BaseTextView, color: Int, text: String){

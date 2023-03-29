@@ -11,6 +11,8 @@
         <attr name="android:textSize"/>
         <attr name="android:textColorHint"/>
         <attr name="underLine" format="boolean"/>
+        <attr name="editRearImage" format="reference|color"/>
+        <attr name="editRearVisible" format="boolean"/>
         <attr name="defaultValue" format="string"/>
     </declare-styleable>
 </resources>
