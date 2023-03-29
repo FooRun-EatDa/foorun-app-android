@@ -31,8 +31,11 @@ class EditMyPageViewModel: BaseViewModel() {
     private val _nickText = MutableStateFlow<String>("")
     val nickText = _nickText.asLiveData()
 
-    private val _nickCheck = MutableStateFlow<WrongCase>(WrongCase.OutOfSize())
-    val nickCheck = _nickCheck.asLiveData()
+    private val _nickStringCheck = MutableStateFlow<WrongCase>(WrongCase.OutOfSize())
+    val nickStringCheck = _nickStringCheck.asLiveData()
+
+    private val _nickDuplicateCheck = MutableStateFlow(false)
+    val nickDuplicateCheck = _nickDuplicateCheck.asLiveData()
 
     private val _introduceText = MutableStateFlow<String>("")
     val introduceText = _introduceText.asLiveData()
@@ -41,7 +44,7 @@ class EditMyPageViewModel: BaseViewModel() {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             s?.toString()?.let {
-                _nickCheck.value = isNickAvailable(it)
+                _nickStringCheck.value = isNickAvailable(it)
                 _nickText.value = it
             }
         }
@@ -70,12 +73,19 @@ class EditMyPageViewModel: BaseViewModel() {
         }
     }
 
+    fun duplicateCheck(test: Boolean) = viewModelScope.launch{ //todo
+        if(test) {
+            _nickStringCheck.emit(WrongCase.Duplicated())
+            _nickDuplicateCheck.emit(false)
+        } else _nickDuplicateCheck.emit(true)
+    }
+
     fun setImage(image: String) = viewModelScope.launch { _image.emit(image) }
 
     fun postUser(onSuccess: () -> Unit, onFailure: () -> Unit) = viewModelScope.launch {
         user.value?.let {
-            if( nickCheck.value == WrongCase.Success() ||
-                nickCheck.value == WrongCase.Nothing() ){
+            if( nickStringCheck.value == WrongCase.Success() ||
+                nickStringCheck.value == WrongCase.Nothing() ){
                 val postUser = it.copy()
                 postUser.name = _nickText.value
                 postUser.image = _image.value
@@ -109,16 +119,19 @@ class EditMyPageViewModel: BaseViewModel() {
     sealed class EditEvent{
         data class DoneClicked(val unit: Unit? = null): EditEvent()
         data class ImageClicked(val unit: Unit? = null): EditEvent()
+        data class DuplicateCheckClicked(val unit: Unit? = null): EditEvent()
     }
 
     sealed class WrongCase{
         data class OutOfSize(val unit: Unit? = null): WrongCase()
         data class Nothing(val unit: Unit? = null): WrongCase()
         data class WrongFormat(val unit: Unit? = null): WrongCase()
+        data class Duplicated(val unit: Unit? = null): WrongCase()
         data class Success(val unit: Unit? = null): WrongCase()
     }
 
     private fun event(event: EditEvent) = viewModelScope.launch { _eventFlow.emit(event) }
     fun doneClicked() = event(EditEvent.DoneClicked())
     fun imageClicked() = event(EditEvent.ImageClicked())
+    fun duplicateCheckClicked() = event(EditEvent.DuplicateCheckClicked())
 }

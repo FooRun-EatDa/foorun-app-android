@@ -22,20 +22,6 @@
             app:frontImage="@drawable/arrow_left"
             app:titleText="@string/edit_account"
             app:layout_constraintTop_toTopOf="parent"/>
-        
-        <kr.foorun.uni_eat.base.view.base.base_layout.BaseInformation
-            android:id="@+id/change_pass"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="@{() -> viewModel.changePassClicked()}"
-            app:information="@string/change_password"
-            android:textSize="@dimen/article_text_small_19"
-            app:show_arrow="true"
-            android:src="@drawable/arrow_right"
-            android:textColor="@color/black"
-            android:layout_marginTop="@dimen/margin_22"
-            android:layout_marginHorizontal="@dimen/margin_22"
-            app:layout_constraintTop_toBottomOf="@id/bar"/>
 
         <kr.foorun.uni_eat.base.view.base.base_layout.BaseInformation
             android:id="@+id/logout"
@@ -49,7 +35,7 @@
             android:textColor="@color/black"
             android:layout_marginTop="@dimen/margin_22"
             android:layout_marginHorizontal="@dimen/margin_22"
-            app:layout_constraintTop_toBottomOf="@id/change_pass"/>
+            app:layout_constraintTop_toBottomOf="@id/bar"/>
 
         <kr.foorun.uni_eat.base.view.base.base_layout.BaseInformation
             android:id="@+id/withdraw"

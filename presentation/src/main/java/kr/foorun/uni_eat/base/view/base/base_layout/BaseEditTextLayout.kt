@@ -12,11 +12,14 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import kr.foorun.presentation.R
+import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
+import kr.foorun.uni_eat.feature.mypage.edit.EditMyPageViewModel
 
 class BaseEditTextLayout : ConstraintLayout {
 
     lateinit var baseEditText: BaseEditTextView
     lateinit var underLine: BaseImageView
+    lateinit var rearImage: BaseImageView
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
@@ -44,6 +47,7 @@ class BaseEditTextLayout : ConstraintLayout {
 
         baseEditText = findViewById(R.id.base_edittext)
         underLine = findViewById(R.id.under_line)
+        rearImage = findViewById(R.id.rear_image)
 
         val attrIsSingle = typedArray.getBoolean(R.styleable.BaseEditTextLayout_android_singleLine,true)
         val attrInputType = typedArray.getInt(R.styleable.BaseEditTextLayout_android_inputType, EditorInfo.TYPE_NULL)
@@ -55,6 +59,8 @@ class BaseEditTextLayout : ConstraintLayout {
         val attrHintColor = typedArray.getColor(R.styleable.BaseEditTextLayout_android_textColorHint, ContextCompat.getColor(context,R.color.gray3))
         val attrIsUnderLine = typedArray.getBoolean(R.styleable.BaseEditTextLayout_underLine, false)
         val attrText = typedArray.getString(R.styleable.BaseEditTextLayout_android_text)
+        val attrRearVisible = typedArray.getBoolean(R.styleable.BaseEditTextLayout_editRearVisible, false)
+        val attrRearImage = typedArray.getResourceId(R.styleable.BaseEditTextLayout_editRearImage, R.drawable.check)
 
         baseEditText.run {
             isSingleLine = attrIsSingle
@@ -70,6 +76,13 @@ class BaseEditTextLayout : ConstraintLayout {
             if(!attrText.isNullOrEmpty()) setText(attrText)
         }
 
+        rearImage.run {
+            isVisible = attrRearVisible
+            setBackgroundResource(attrRearImage)
+        }
+
+        rearImage
+
         typedArray.recycle()
     }
 
@@ -79,6 +92,10 @@ class BaseEditTextLayout : ConstraintLayout {
 
     fun setEditText(str: String){
         baseEditText.setText(str)
+    }
+
+    fun setRearOnClick(action: () -> Unit){
+        rearImage.setOnClickListener { action() }
     }
 
     companion object{
@@ -92,6 +109,12 @@ class BaseEditTextLayout : ConstraintLayout {
         @BindingAdapter("setEditText")
         fun setEditText(view: BaseEditTextLayout, str: String?){
             str?.let { view.setEditText(it) }
+        }
+
+        @JvmStatic
+        @BindingAdapter("setRearOnClick")
+        fun setRearOnClick(view: BaseEditTextLayout, action: () -> Unit){
+            view.setRearOnClick(action)
         }
     }
 }
