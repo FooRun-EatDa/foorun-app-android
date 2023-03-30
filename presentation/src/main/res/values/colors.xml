@@ -15,6 +15,8 @@
 
     <color name="black_60">#99000000</color>
     <color name="red">#FD5422</color>
+    <color name="red2">#EB5757</color>
+
     <color name="gray">#F3F3F3</color>
     <color name="gray2">#BDBDBD</color>
     <color name="gray3">#E2E2E2</color>
@@ -23,4 +25,5 @@
     <color name="search_tag_non">#E5E4EC</color>
     <color name="search_tag_pick">#201F31</color>
     <color name="navy">#2D2C3C</color>
+
 </resources>

@@ -99,7 +99,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
                         android:layout_marginTop="40dp"
-                        android:nestedScrollingEnabled="false"
+                        android:nestedScrollingEnabled="true"
                         app:layout_constraintTop_toTopOf="parent" />
                 </LinearLayout>
             </androidx.core.widget.NestedScrollView>

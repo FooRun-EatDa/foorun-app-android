@@ -1,0 +1,89 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="kr.foorun.uni_eat.feature.report.ReportViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="333dp"
+        android:layout_height="330dp"
+        android:background="@drawable/radius_3"
+        tools:context="kr.foorun.uni_eat.feature.report.ReportDialogFragment">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
+                android:layout_width="14.08dp"
+                android:layout_height="14.63dp"
+                android:src="@drawable/notice" />
+
+            <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5.09dp"
+                android:text="@string/report"
+                android:textColor="@color/red2" />
+        </LinearLayout>
+
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="44dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/gray_line"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseEditTextView
+            android:layout_width="312.82dp"
+            android:layout_height="193dp"
+            android:layout_marginTop="61dp"
+            android:background="@drawable/radius_white_grayline_3"
+            android:hint="@string/report_hint"
+            android:paddingTop="15dp"
+            android:paddingStart="14.22dp"
+            android:textColorHint="@color/gray2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:layout_width="114dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="34dp"
+            android:layout_marginBottom="19dp"
+            android:background="@drawable/radius_gray_3"
+            android:text="@string/cancel"
+            android:textColor="@color/gray4"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:layout_width="114dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="34dp"
+            android:layout_marginBottom="19dp"
+            android:background="@drawable/radius_red_3"
+            android:text="@string/confirm"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
