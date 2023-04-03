@@ -33,6 +33,7 @@ class MyPageViewModel @Inject constructor(
         data class SchoolCertification(val unit: Unit? = null): MyPageEvent()
         data class MyPageMore(val unit: Unit? = null): MyPageEvent()
         data class WriteArticle(val unit: Unit? = null): MyPageEvent()
+        data class EmailClicked(val unit: Unit? = null): MyPageEvent()
     }
 
     fun event(event: MyPageEvent) = viewModelScope.launch { _eventFlow.emit(event) }
@@ -40,5 +41,5 @@ class MyPageViewModel @Inject constructor(
     fun clickedSchoolCertification() = event(MyPageEvent.SchoolCertification())
     fun clickedMyPageMore() = event(MyPageEvent.MyPageMore())
     fun clickedWriteArticle() = event(MyPageEvent.WriteArticle())
-
+    fun emailClicked() = event(MyPageEvent.EmailClicked())
 }

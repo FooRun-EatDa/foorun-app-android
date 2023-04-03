@@ -31,7 +31,7 @@ class EditMyPageViewModel: BaseViewModel() {
     private val _nickText = MutableStateFlow<String>("")
     val nickText = _nickText.asLiveData()
 
-    private val _nickStringCheck = MutableStateFlow<WrongCase>(WrongCase.OutOfSize())
+    private val _nickStringCheck = MutableStateFlow<NickWrongCase>(NickWrongCase.Nothing())
     val nickStringCheck = _nickStringCheck.asLiveData()
 
     private val _nickDuplicateCheck = MutableStateFlow(false)
@@ -75,7 +75,7 @@ class EditMyPageViewModel: BaseViewModel() {
 
     fun duplicateCheck(test: Boolean) = viewModelScope.launch{ //todo
         if(test) {
-            _nickStringCheck.emit(WrongCase.Duplicated())
+            _nickStringCheck.emit(NickWrongCase.Duplicated())
             _nickDuplicateCheck.emit(false)
         } else _nickDuplicateCheck.emit(true)
     }
@@ -84,8 +84,8 @@ class EditMyPageViewModel: BaseViewModel() {
 
     fun postUser(onSuccess: () -> Unit, onFailure: () -> Unit) = viewModelScope.launch {
         user.value?.let {
-            if( nickStringCheck.value == WrongCase.Success() ||
-                nickStringCheck.value == WrongCase.Nothing() ){
+            if( nickStringCheck.value == NickWrongCase.Success() ||
+                nickStringCheck.value == NickWrongCase.Nothing() ){
                 val postUser = it.copy()
                 postUser.name = _nickText.value
                 postUser.image = _image.value
@@ -109,11 +109,11 @@ class EditMyPageViewModel: BaseViewModel() {
         SearchTag("#중식"),
         SearchTag("일식"))) }
 
-    private fun isNickAvailable(nick: String): WrongCase {
-        return if(nick.isEmpty()) WrongCase.Nothing()
-        else if (nick.contains(" ")) WrongCase.WrongFormat()
-        else if(nick.length > 5) WrongCase.OutOfSize()
-        else WrongCase.Success()
+    private fun isNickAvailable(nick: String): NickWrongCase {
+        return if(nick.isEmpty()) NickWrongCase.Nothing()
+        else if (nick.contains(" ")) NickWrongCase.WrongFormat()
+        else if(nick.length > 5) NickWrongCase.OutOfSize()
+        else NickWrongCase.Success()
     }
 
     sealed class EditEvent{
@@ -122,12 +122,12 @@ class EditMyPageViewModel: BaseViewModel() {
         data class DuplicateCheckClicked(val unit: Unit? = null): EditEvent()
     }
 
-    sealed class WrongCase{
-        data class OutOfSize(val unit: Unit? = null): WrongCase()
-        data class Nothing(val unit: Unit? = null): WrongCase()
-        data class WrongFormat(val unit: Unit? = null): WrongCase()
-        data class Duplicated(val unit: Unit? = null): WrongCase()
-        data class Success(val unit: Unit? = null): WrongCase()
+    sealed class NickWrongCase{
+        data class OutOfSize(val unit: Unit? = null): NickWrongCase()
+        data class Nothing(val unit: Unit? = null): NickWrongCase()
+        data class WrongFormat(val unit: Unit? = null): NickWrongCase()
+        data class Duplicated(val unit: Unit? = null): NickWrongCase()
+        data class Success(val unit: Unit? = null): NickWrongCase()
     }
 
     private fun event(event: EditEvent) = viewModelScope.launch { _eventFlow.emit(event) }

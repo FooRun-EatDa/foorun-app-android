@@ -29,9 +29,10 @@
 
         <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
             android:id="@+id/under_line"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/under_line"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/base_edittext"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
