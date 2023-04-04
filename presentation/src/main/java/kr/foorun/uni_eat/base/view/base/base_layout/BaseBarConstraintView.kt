@@ -145,7 +145,7 @@ class BaseBarConstraintView : ConstraintLayout{
             view.run {
                 when(vm){
                     is ArticleEntireViewModel -> setRearOnClick { vm.searchClick() }
-                    is ArticlePostViewModel -> {}
+                    is ArticlePostViewModel -> setRearOnClick { vm.doneClicked() }
                     is MyPageViewModel -> setRearOnClick{ vm.clickedMyPageMore() }
                     is MyPageEditViewModel -> setRearOnClick { vm.doneClicked() }
                 }
