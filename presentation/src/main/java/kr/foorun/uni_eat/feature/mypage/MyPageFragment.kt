@@ -55,4 +55,9 @@ class MyPageFragment: BaseFragment<FragmentMyPageBinding, MyPageViewModel>(Fragm
         is MyPageViewModel.MyPageEvent.EmailClicked -> navigateToFrag(MyPageFragmentDirections.actionMyPageToMyPageEmailFragment())
     }
 
+    override fun onResume() {
+        super.onResume()
+        fragmentViewModel.getUser()
+    }
+
 }

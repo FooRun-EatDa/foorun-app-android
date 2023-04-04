@@ -70,6 +70,26 @@
             android:name="@string/hide_bottom"
             app:argType="boolean"
             android:defaultValue="true" />
+        <action
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/myPageEmailFragment"
+            android:id="@+id/action_myPageEmailFragment_to_emailDoneFragment"
+            app:destination="@id/emailDoneFragment" />
+    </fragment>
+
+    <fragment
+        tools:layout="@layout/fragment_email_done"
+        android:id="@+id/emailDoneFragment"
+        android:name="kr.foorun.uni_eat.feature.mypage.email.done.EmailDoneFragment"
+        android:label="EmailDoneFragment" >
+
+        <argument
+            android:name="@string/hide_bottom"
+            app:argType="boolean"
+            android:defaultValue="true" />
+        <argument
+            android:name="name"
+            app:argType="string" />
     </fragment>
 
 </navigation>

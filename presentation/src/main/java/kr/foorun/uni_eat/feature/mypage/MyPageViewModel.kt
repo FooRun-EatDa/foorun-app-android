@@ -22,10 +22,9 @@ class MyPageViewModel @Inject constructor(
     val user = _user.asLiveData()
 
     init {
-        getUser()
     }
 
-    private fun getUser() = viewModelScope.launch {
+    fun getUser() = viewModelScope.launch {
         _user.emit(User())
     }
 

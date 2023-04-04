@@ -18,20 +18,18 @@ class MyPageEmailFragment: BaseFragment<FragmentMyPageEmailBinding,MyPageEmailVi
         viewModel = fragmentViewModel.apply {
 
             emailCheck.observe(this@MyPageEmailFragment){
-                emailTextHandle(it, binding.emailAlert)
+                emailTextHandle(it)
             }
 
             repeatOnStarted { viewEvent.collect{ handleBaseViewEvent(it)} }
         }
     }
 
-    private fun emailTextHandle(event: MyPageEmailViewModel.EmailCase, view:BaseTextView) {
+    private fun emailTextHandle(event: MyPageEmailViewModel.EmailCase) {
         when (event){
-            is MyPageEmailViewModel.EmailCase.Nothing ->
-                binding.emailAlert.setTextColor("",R.color.black)
-            is MyPageEmailViewModel.EmailCase.Success -> {}
-            is MyPageEmailViewModel.EmailCase.WrongEmail ->
-                binding.emailAlert.setTextColor(getString(R.string.no_email),R.color.red)
+            is MyPageEmailViewModel.EmailCase.Nothing -> binding.emailAlert.setTextColor("",R.color.black)
+            is MyPageEmailViewModel.EmailCase.Success -> navigateToFrag(MyPageEmailFragmentDirections.actionMyPageEmailFragmentToEmailDoneFragment(""))
+            is MyPageEmailViewModel.EmailCase.WrongEmail -> binding.emailAlert.setTextColor(getString(R.string.no_email),R.color.red)
         }
     }
 
