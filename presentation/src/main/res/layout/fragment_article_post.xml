@@ -21,6 +21,8 @@
             android:layout_height="wrap_content"
             app:frontVisible="true"
             app:setViewModel="@{viewModel}"
+            app:rearVisible="true"
+            app:rearImage="@drawable/complete"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
