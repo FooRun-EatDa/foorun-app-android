@@ -5,17 +5,17 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="android.text.InputType"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <kr.foorun.uni_eat.base.view.base.base_layout.BaseEditTextView
             android:id="@+id/base_edittext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/invisible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
@@ -29,8 +29,9 @@
 
         <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
             android:id="@+id/under_line"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"
+            android:layout_marginTop="4dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/base_edittext"/>

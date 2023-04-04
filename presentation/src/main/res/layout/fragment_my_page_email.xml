@@ -19,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:frontVisible="true"
+            setViewModel="@{viewModel}"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
@@ -36,7 +37,7 @@
 
         <kr.foorun.uni_eat.base.view.base.base_layout.BaseEditTextLayout
             android:id="@+id/email_edit"
-            android:layout_width="match_parent"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
             app:setUnderLine="@{viewModel.underLine}"
             android:hint="unieat2022"
@@ -45,6 +46,17 @@
             app:textWatcher="@{viewModel.emailTextWatcher}"
             android:layout_marginTop="63dp"
             android:layout_marginHorizontal="26dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/explain"/>
+
+        <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text=" @ khu.ac.kr"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="67dp"
+            app:layout_constraintStart_toEndOf="@id/email_edit"
             app:layout_constraintTop_toBottomOf="@id/explain"/>
 
         <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView

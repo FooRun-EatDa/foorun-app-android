@@ -5,14 +5,14 @@
     <data>
         <variable
             name="viewModel"
-            type="kr.foorun.uni_eat.feature.mypage.edit.EditMyPageViewModel" />
+            type="kr.foorun.uni_eat.feature.mypage.edit.MyPageEditViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        tools:context="kr.foorun.uni_eat.feature.mypage.edit.EditMyPageFragment">
+        tools:context="kr.foorun.uni_eat.feature.mypage.edit.MyPageEditFragment">
 
         <kr.foorun.uni_eat.base.view.base.base_layout.BaseBarConstraintView
             android:id="@+id/bar"

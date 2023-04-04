@@ -50,9 +50,9 @@
     </fragment>
 
     <fragment
-        tools:layout="@layout/fragment_edit_my_page"
+        tools:layout="@layout/fragment_my_page_edit"
         android:id="@+id/editMyPageFragment"
-        android:name="kr.foorun.uni_eat.feature.mypage.edit.EditMyPageFragment"
+        android:name="kr.foorun.uni_eat.feature.mypage.edit.MyPageEditFragment"
         android:label="EditMyPageFragment" >
 
         <argument

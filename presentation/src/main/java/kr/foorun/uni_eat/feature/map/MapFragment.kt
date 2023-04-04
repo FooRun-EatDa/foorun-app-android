@@ -39,6 +39,7 @@ class MapFragment
 
     override fun afterBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) {
         doOnBackPressed()
+        adjustNothing()
         binding {
             mainSearchConstraint.bringToFront() // to put the view above mapView
             searchTagRecycler.adapter = searchTagAdapter

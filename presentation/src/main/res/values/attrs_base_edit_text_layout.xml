@@ -7,11 +7,10 @@
         <attr name="android:textStyle"/>
         <attr name="android:textColor"/>
         <attr name="android:singleLine"/>
-        <attr name="android:background"/>
         <attr name="android:textSize"/>
         <attr name="android:textColorHint"/>
         <attr name="editUnderLineVisible" format="boolean"/>
-        <attr name="underLineImage" format="color|reference"/>
+        <attr name="underLineColor" format="color|reference"/>
         <attr name="editRearImage" format="reference|color"/>
         <attr name="editRearVisible" format="boolean"/>
         <attr name="defaultValue" format="string"/>

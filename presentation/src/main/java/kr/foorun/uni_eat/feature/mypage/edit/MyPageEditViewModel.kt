@@ -14,7 +14,7 @@ import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
 import kr.foorun.uni_eat.base.viewmodel.MutableEventFlow
 import kr.foorun.uni_eat.base.viewmodel.asEventFlow
 
-class EditMyPageViewModel: BaseViewModel() {
+class MyPageEditViewModel: BaseViewModel() {
 
     private val _eventFlow = MutableEventFlow<EditEvent>()
     val eventFlow = _eventFlow.asEventFlow()

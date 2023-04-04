@@ -12,6 +12,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
@@ -26,6 +27,7 @@ import kr.foorun.uni_eat.base.view.base.loading.LoadingFragment
 import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
 import kr.foorun.uni_eat.feature.main.MainActivity
 import java.util.*
+
 
 typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
 
@@ -183,4 +185,11 @@ abstract class BaseFragment <T : ViewDataBinding, V : BaseViewModel>(private val
     fun log(str: String) = Log.e("popo",str) //for test
 
     fun showLoading() = LoadingFragment().show(requireActivity().supportFragmentManager,"")
+
+    protected fun adjustNothing() {
+        requireActivity().window.setSoftInputMode(
+            WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING or
+                    WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
+        )
+    }
 }
