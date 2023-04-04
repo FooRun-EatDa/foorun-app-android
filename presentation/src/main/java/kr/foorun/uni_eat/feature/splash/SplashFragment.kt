@@ -32,7 +32,6 @@ class SplashFragment : BaseFragment<FragmentSplashBinding, SplashViewModel>(Frag
 
     override fun observeAndInitViewModel() {
         fragmentViewModel.run {
-            timerStart()
             repeatOnStarted { eventFlow.collect{ handleEvent(it) } }
         }
     }

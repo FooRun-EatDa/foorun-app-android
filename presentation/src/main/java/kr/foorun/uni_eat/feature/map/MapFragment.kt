@@ -38,7 +38,8 @@ class MapFragment
         repeatOnStarted { eventFlow.collect{ tagHandleEvent(it)} } }) }
 
     override fun afterBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) {
-        setDoOnBackPressed()
+        doOnBackPressed()
+        adjustNothing()
         binding {
             mainSearchConstraint.bringToFront() // to put the view above mapView
             searchTagRecycler.adapter = searchTagAdapter
@@ -121,7 +122,7 @@ class MapFragment
         fragmentViewModel.setWord("")
     }
 
-    private fun setDoOnBackPressed() {
+    private fun doOnBackPressed() {
         onBackPressedListener {
             if (shopBottomSheetFragment != null && shopBottomSheetFragment!!.handleBackKeyEvent())
                 shopBottomSheetFragment?.hide()

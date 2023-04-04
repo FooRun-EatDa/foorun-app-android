@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_my_page_to_myPageMoreFragment"
             app:destination="@id/myPageMoreFragment" />
+        <action
+            android:id="@+id/action_my_page_to_myPageEmailFragment"
+            app:destination="@id/myPageEmailFragment" />
     </fragment>
 
     <fragment
@@ -47,15 +50,46 @@
     </fragment>
 
     <fragment
-        tools:layout="@layout/fragment_edit_my_page"
+        tools:layout="@layout/fragment_my_page_edit"
         android:id="@+id/editMyPageFragment"
-        android:name="kr.foorun.uni_eat.feature.mypage.edit.EditMyPageFragment"
+        android:name="kr.foorun.uni_eat.feature.mypage.edit.MyPageEditFragment"
         android:label="EditMyPageFragment" >
 
         <argument
             android:name="@string/hide_bottom"
             app:argType="boolean"
             android:defaultValue="true" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_my_page_email"
+        android:id="@+id/myPageEmailFragment"
+        android:name="kr.foorun.uni_eat.feature.mypage.email.MyPageEmailFragment"
+        android:label="MyPageEmailFragment" >
+
+        <argument
+            android:name="@string/hide_bottom"
+            app:argType="boolean"
+            android:defaultValue="true" />
+        <action
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/myPageEmailFragment"
+            android:id="@+id/action_myPageEmailFragment_to_emailDoneFragment"
+            app:destination="@id/emailDoneFragment" />
+    </fragment>
+
+    <fragment
+        tools:layout="@layout/fragment_email_done"
+        android:id="@+id/emailDoneFragment"
+        android:name="kr.foorun.uni_eat.feature.mypage.email.done.EmailDoneFragment"
+        android:label="EmailDoneFragment" >
+
+        <argument
+            android:name="@string/hide_bottom"
+            app:argType="boolean"
+            android:defaultValue="true" />
+        <argument
+            android:name="name"
+            app:argType="string" />
     </fragment>
 
 </navigation>

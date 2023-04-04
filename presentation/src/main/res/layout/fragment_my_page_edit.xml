@@ -5,14 +5,14 @@
     <data>
         <variable
             name="viewModel"
-            type="kr.foorun.uni_eat.feature.mypage.edit.EditMyPageViewModel" />
+            type="kr.foorun.uni_eat.feature.mypage.edit.MyPageEditViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        tools:context="kr.foorun.uni_eat.feature.mypage.edit.EditMyPageFragment">
+        tools:context="kr.foorun.uni_eat.feature.mypage.edit.MyPageEditFragment">
 
         <kr.foorun.uni_eat.base.view.base.base_layout.BaseBarConstraintView
             android:id="@+id/bar"
@@ -98,9 +98,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/nick_form_hint"
-                        app:underLine="true"
+                        app:editUnderLineVisible="true"
                         app:textWatcher="@{viewModel.nickTextWatcher}"
                         app:setEditText="@{viewModel.user.name}"
+                        app:setUnderLineMatch="@{true}"
                         app:editRearVisible="true"
                         app:editRearImage="@drawable/check"
                         app:setRearOnClick="@{() -> viewModel.duplicateCheckClicked()}"
@@ -132,11 +133,13 @@
 
                     <kr.foorun.uni_eat.base.view.base.base_layout.BaseEditTextLayout
                         android:id="@+id/introduce_edit"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/introduce_hint"
-                        app:underLine="true"
+                        app:editUnderLineVisible="true"
+                        android:inputType="textMultiLine"
                         android:maxLength="50"
+                        app:setUnderLineMatch="@{true}"
                         app:textWatcher="@{viewModel.introduceTextWatcher}"
                         app:setEditText="@{viewModel.user.introduce}"
                         android:layout_marginTop="15dp"
