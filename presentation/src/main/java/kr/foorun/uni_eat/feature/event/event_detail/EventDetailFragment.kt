@@ -19,12 +19,13 @@ class EventDetailFragment : BaseFragment<FragmentEventDetailBinding, EventDetail
     override fun observeAndInitViewModel() {
 
         binding.apply {
+            eventCoupon = args.eventCoupon
             viewModel = fragmentViewModel.apply {
-                repeatOnStarted { viewEvent.collect {handleBaseViewEvent(it) } }
-                eventDetailTV.text = args.eventIndex.toString()
+                repeatOnStarted { viewEvent.collect { handleBaseViewEvent(it) } }
             }
         }
     }
 
-    override fun afterBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = binding {}
+    override fun afterBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = binding {
+    }
 }

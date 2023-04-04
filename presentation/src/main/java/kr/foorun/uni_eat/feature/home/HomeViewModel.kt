@@ -6,7 +6,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import kr.foorun.model.article.Article
-import kr.foorun.model.event.Event
+import kr.foorun.model.event.EventCoupon
 import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
 import javax.inject.Inject
 
@@ -17,7 +17,7 @@ class HomeViewModel @Inject constructor(
     private val _articles = MutableStateFlow<List<Article>?>(null)
     val articles = _articles.asLiveData()
 
-    private val _events = MutableStateFlow<List<Event>?>(null)
+    private val _events = MutableStateFlow<List<EventCoupon>?>(null)
     val events = _events.asLiveData()
 
     private val _barColor = MutableStateFlow<Boolean?>(null)
@@ -38,9 +38,9 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun loadEvents() = viewModelScope.launch {
-        val eventList = mutableListOf<Event>()
+        val eventList = mutableListOf<EventCoupon>()
         for (i in 0 until ARTICLE_LIMIT) {
-            eventList.add(Event(
+            eventList.add(EventCoupon(
                 "프레시쿡 매콤한 맛 특집", "https://picsum.photos/200","12.12.12","12.12.12",
             "조용한 골목 분위기 맛집 조용한 골목 분위기 맛집\n" +
                     "조용한 골목 분위기 맛집조용한 골목 분위기 맛집\n" +

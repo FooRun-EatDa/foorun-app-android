@@ -14,7 +14,9 @@ class BaseBottomSheetCallback(
     private val containerView: View,
     private val collapseView: View,
     private val expandView: View?,
-    private val stateCallBack: (state : Int) -> Unit
+    private val stateCallBack: (state : Int) -> Unit,
+    private val rootClickable: Boolean = false,
+    private val isBlur: Boolean = false
 ) : BottomSheetBehavior.BottomSheetCallback() {
 
     private val context = rootView.context
@@ -26,20 +28,18 @@ class BaseBottomSheetCallback(
             alpha = 0f
             isInvisible = true
         }
-//        setBlur(true)
+        setBlur(isBlur)
         setupListener()
-        rootView.isClickable = false
     }
 
     private fun setupListener() {
-//        rootView.setOnClickListener {
-//            if (behavior.state == BottomSheetBehavior.STATE_COLLAPSED) {
-//                behavior.state = BottomSheetBehavior.STATE_HIDDEN
-//            }
+        if(rootClickable){
+            rootView.setOnClickListener { behavior.state = BottomSheetBehavior.STATE_HIDDEN }
+        } else rootView.isClickable = false
+
+//        containerView.setOnClickListener {
+//            // no-op
 //        }
-        containerView.setOnClickListener {
-            // no-op
-        }
     }
 
     override fun onSlide(bottomSheet: View, slideOffset: Float) {
@@ -81,10 +81,12 @@ class BaseBottomSheetCallback(
 
         val isCollapseInvisible = newState == BottomSheetBehavior.STATE_EXPANDED
         val isExpandInvisible = newState == BottomSheetBehavior.STATE_COLLAPSED
+        val isHidden = (newState == BottomSheetBehavior.STATE_HIDDEN)
 
         rootView.isClickable = newState == BottomSheetBehavior.STATE_EXPANDED
         collapseView.isInvisible = isCollapseInvisible
         expandView?.isInvisible = isExpandInvisible
+        if (isBlur) setBlur(!isHidden)
 
         stateCallBack(newState)
     }
