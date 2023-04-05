@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
+import kr.foorun.presentation.BuildConfig
 import kr.foorun.presentation.databinding.FragmentLoginBinding
 import kr.foorun.social_login.KakaoLoginClass
 import kr.foorun.uni_eat.base.view.base.context_view.BaseFragment
@@ -29,7 +30,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(Fragmen
     }
 
     private fun handleEvent(event: LoginViewModel.LoginEvent) = when(event){
-        is LoginViewModel.LoginEvent.KakaoLogin -> kakaoLoginClass.authenticate()
+        is LoginViewModel.LoginEvent.KakaoLogin -> {
+            if(BuildConfig.DEBUG) navigateToFrag(SplashFragmentDirections.actionToHomeNav())
+            else kakaoLoginClass.authenticate()
+        }
         is LoginViewModel.LoginEvent.KakaoSuccess -> navigateToFrag(SplashFragmentDirections.actionToHomeNav())
         is LoginViewModel.LoginEvent.KakaoFailure -> toast("${event.error?.message}")
     }
