@@ -1,9 +1,11 @@
 package kr.foorun.uni_eat.feature.event
 
 import android.annotation.SuppressLint
+import android.app.ProgressDialog.show
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -68,7 +70,7 @@ class EventFragment :
         }
 
         test.setOnClickListener {
-            ReportDialogFragment().show(requireActivity().supportFragmentManager,R.id.event_FL)
+            ReportDialogFragment().show(requireActivity().supportFragmentManager,"dialog")
         }
     }
 

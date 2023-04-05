@@ -1,53 +1,71 @@
 package kr.foorun.uni_eat.feature.report
 
 
+import android.app.AlertDialog
+import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.annotation.IdRes
+import android.view.*
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
+import kr.foorun.presentation.R
 import kr.foorun.presentation.databinding.FragmentReportDialogBinding
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
 
-class ReportDialogFragment() : DialogFragment() {
+
+class ReportDialogFragment : DialogFragment() {
     lateinit var binding: FragmentReportDialogBinding
     val fragmentViewModel: ReportDialogViewModel by viewModels()
+    lateinit var alertDialog: AlertDialog
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentReportDialogBinding.inflate(inflater, container, false)
-        binding.lifecycleOwner = this
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.apply {
-            viewModel = fragmentViewModel.apply {
-                repeatOnStarted { eventFlow.collect { handleEvent(it) } }
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        binding = DataBindingUtil.inflate(
+            LayoutInflater.from(requireContext()), R.layout.fragment_report_dialog, null, false
+        )
+        binding.viewModel = fragmentViewModel.apply {
+            repeatOnStarted {
+                eventFlow.collect { handleEvent(it) }
             }
         }
+        alertDialog = AlertDialog.Builder(requireActivity())
+            .setView(binding.root)
+            .create()
+
+        alertDialog.setCanceledOnTouchOutside(false)
+
+        return alertDialog
     }
 
     private fun handleEvent(event: ReportDialogViewModel.ReportEvent) = when (event) {
-        is ReportDialogViewModel.ReportEvent.clickConfirm -> { Log.d("test","확인")}
-        is ReportDialogViewModel.ReportEvent.clickCancel -> { dismiss() }
-    }
+        is ReportDialogViewModel.ReportEvent.clickConfirm -> {
+            val reportContent: String = binding.reportDialogEDT.text.toString()
 
-    fun show(
-        fragmentManager: FragmentManager,
-        @IdRes containerViewId: Int,
-    ): ReportDialogFragment =
-        fragmentManager.findFragmentByTag(tag) as? ReportDialogFragment
-            ?: ReportDialogFragment().apply {
-                fragmentManager.beginTransaction()
-                    .replace(containerViewId, this, tag)
-                    .commitAllowingStateLoss()
+            if (reportContent.length == 0) {
+                Toast.makeText(requireContext(), R.string.report_toast, Toast.LENGTH_SHORT).show()
+            } else {
+                binding.reportCompleteLL.visibility = View.VISIBLE
+                binding.reportMainLL.visibility = View.GONE
+
+                Log.d("Tgyuu", reportContent) // 신고 내용
+                alertDialog.setCanceledOnTouchOutside(true)
+                fragmentViewModel.reportDone()
             }
+        }
+        is ReportDialogViewModel.ReportEvent.reportDone -> {
+            dismiss()
+        }
+        is ReportDialogViewModel.ReportEvent.clickMainCancel -> {
+            binding.reportCancelLL.visibility = View.VISIBLE
+            binding.reportMainLL.visibility = View.GONE
+        }
+        is ReportDialogViewModel.ReportEvent.clickRealCancel -> {
+            dismiss()
+        }
+        is ReportDialogViewModel.ReportEvent.returnMain -> {
+            binding.reportMainLL.visibility = View.VISIBLE
+            binding.reportCancelLL.visibility = View.GONE
+        }
+    }
 }
