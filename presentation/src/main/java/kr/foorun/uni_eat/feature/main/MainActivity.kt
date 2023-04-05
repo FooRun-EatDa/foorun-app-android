@@ -6,10 +6,10 @@ import androidx.navigation.NavDirections
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
+import kr.foorun.presentation.MainNavDirections
 import kr.foorun.presentation.R
 import kr.foorun.presentation.databinding.ActivityMainBinding
 import kr.foorun.uni_eat.base.view.base.context_view.BaseActivity
-import kr.foorun.uni_eat.feature.splash.SplashFragmentDirections
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>({ActivityMainBinding.inflate(it)}){
@@ -44,11 +44,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>({ActivityM
 
         bottomNav.setOnItemSelectedListener {//to make sure action works properly if you use
             when(it.itemId){
-                R.id.home_nav -> true.apply { navigate(SplashFragmentDirections.actionToHomeNav()) }
-                R.id.map_nav -> true.apply { navigate(SplashFragmentDirections.actionToMapNav()) }
-                R.id.event_nav -> true.apply { navigate(SplashFragmentDirections.actionToEventNav()) }
-                R.id.article_nav -> true.apply { navigate(SplashFragmentDirections.actionToArticleNav()) }
-                R.id.my_nav -> true.apply { navigate(SplashFragmentDirections.actionToMyNav()) }
+                R.id.home_nav -> true.apply { navigate(MainNavDirections.actionToHomeNav()) }
+                R.id.map_nav -> true.apply { navigate(MainNavDirections.actionToMapNav()) }
+                R.id.event_nav -> true.apply { navigate(MainNavDirections.actionToEventNav()) }
+                R.id.article_nav -> true.apply { navigate(MainNavDirections.actionToArticleNav()) }
+                R.id.my_nav -> true.apply { navigate(MainNavDirections.actionToMyNav()) }
                 else -> false
             }
         }
