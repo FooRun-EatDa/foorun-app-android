@@ -24,7 +24,7 @@ class ReportDialogFragment : DialogFragment() {
         binding = DataBindingUtil.inflate(
             LayoutInflater.from(requireContext()), R.layout.fragment_report_dialog, null, false
         )
-        binding.lifecycleOwner = t
+        binding.lifecycleOwner = this
         binding.viewModel = fragmentViewModel.apply {
             repeatOnStarted {
                 eventFlow.collect { handleEvent(it) }
