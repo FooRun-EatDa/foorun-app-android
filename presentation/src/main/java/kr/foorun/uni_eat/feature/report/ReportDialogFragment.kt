@@ -24,6 +24,7 @@ class ReportDialogFragment : DialogFragment() {
         binding = DataBindingUtil.inflate(
             LayoutInflater.from(requireContext()), R.layout.fragment_report_dialog, null, false
         )
+        binding.lifecycleOwner = this
         binding.viewModel = fragmentViewModel.apply {
             repeatOnStarted {
                 eventFlow.collect { handleEvent(it) }
@@ -61,7 +62,7 @@ class ReportDialogFragment : DialogFragment() {
             binding.reportMainLL.visibility = View.GONE
         }
         is ReportDialogViewModel.ReportEvent.clickRealCancel -> {
-            dismiss()
+            this?.dismiss()
         }
         is ReportDialogViewModel.ReportEvent.returnMain -> {
             binding.reportMainLL.visibility = View.VISIBLE
