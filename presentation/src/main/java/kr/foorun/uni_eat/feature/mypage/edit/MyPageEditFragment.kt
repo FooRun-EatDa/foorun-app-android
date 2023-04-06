@@ -53,6 +53,10 @@ class MyPageEditFragment: BaseFragment<FragmentMyPageEditBinding, MyPageEditView
                 nickTextHandle(it, binding.nickAlert)
             }
 
+            user.observe(this@MyPageEditFragment){
+                binding.user = it
+            }
+
             repeatOnStarted { eventFlow.collect{ handleEvent(it) }}
             repeatOnStarted { viewEvent.collect{ handleBaseViewEvent(it) } }
         }

@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import kr.foorun.const.Constant.Companion.ARTICLE_PREVIEW_MARGIN
+import kr.foorun.presentation.MainNavDirections
 import kr.foorun.presentation.databinding.FragmentArticleBinding
 import kr.foorun.uni_eat.base.view.base.context_view.BaseFragment
 import kr.foorun.uni_eat.base.view.base.dp
@@ -51,7 +52,7 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding, ArticleViewModel>(F
     }
 
     private fun handleAdapterEvent(event: ArticleAdapterViewModel.ArticleEvent) = when(event) {
-        is ArticleAdapterViewModel.ArticleEvent.ArticleClick -> navigateToFrag(ArticleFragmentDirections.actionArticleFragmentToArticleDetailFragment())
+        is ArticleAdapterViewModel.ArticleEvent.ArticleClick -> navigateToFrag(MainNavDirections.actionToArticleDetailFragment())
         is ArticleAdapterViewModel.ArticleEvent.MoreClick -> navigateToFrag(ArticleFragmentDirections.actionArticleFragmentToArticleEntireFragment())
     }
 }

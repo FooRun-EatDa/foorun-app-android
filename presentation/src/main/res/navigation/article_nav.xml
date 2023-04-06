@@ -11,22 +11,8 @@
         android:label="ArticleFragment"
         tools:layout="@layout/fragment_article" >
         <action
-            android:id="@+id/action_articleFragment_to_articleDetailFragment"
-            app:destination="@id/article_detail_fragment" />
-        <action
             android:id="@+id/action_articleFragment_to_articleEntireFragment"
             app:destination="@id/article_entire_fragment" />
-    </fragment>
-
-    <fragment
-        tools:layout="@layout/fragment_article_detail"
-        android:id="@+id/article_detail_fragment"
-        android:name="kr.foorun.uni_eat.feature.article.detail.ArticleDetailFragment"
-        android:label="ArticleDetailFragment" >
-        <argument
-            android:name="@string/hide_bottom"
-            app:argType="boolean"
-            android:defaultValue="true" />
     </fragment>
 
     <fragment
@@ -34,9 +20,6 @@
         android:id="@+id/article_entire_fragment"
         android:name="kr.foorun.uni_eat.feature.article.entire.ArticleEntireFragment"
         android:label="ArticleEntireFragment" >
-        <action
-            android:id="@+id/action_article_entire_fragment_to_article_detail_fragment"
-            app:destination="@id/article_detail_fragment" />
         <action
             android:id="@+id/action_article_entire_fragment_to_articleSearchFragment"
             app:destination="@id/articleSearchFragment" />

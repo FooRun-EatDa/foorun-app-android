@@ -8,11 +8,16 @@ import kotlinx.coroutines.launch
 import kr.foorun.model.article.Article
 import kr.foorun.model.event.EventCoupon
 import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
+import kr.foorun.uni_eat.base.viewmodel.MutableEventFlow
+import kr.foorun.uni_eat.base.viewmodel.asEventFlow
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
 ): BaseViewModel() {
+
+    private val _eventFlow = MutableEventFlow<HomeEvent>()
+    val eventFlow = _eventFlow.asEventFlow()
 
     private val _articles = MutableStateFlow<List<Article>?>(null)
     val articles = _articles.asLiveData()
@@ -53,7 +58,15 @@ class HomeViewModel @Inject constructor(
         if(_barColor.value != toWhite) _barColor.emit(toWhite)
     }
 
+    sealed class HomeEvent{
+        data class HashTagClicked(val unit: Unit? = null): HomeEvent()
+    }
+
+    private fun event(event: HomeEvent) = viewModelScope.launch { _eventFlow.emit(event) }
+
+    fun hashTagClicked() = event(HomeEvent.HashTagClicked())
+
     companion object{
-        const val ARTICLE_LIMIT = 4
+        const val ARTICLE_LIMIT = 2
     }
 }
