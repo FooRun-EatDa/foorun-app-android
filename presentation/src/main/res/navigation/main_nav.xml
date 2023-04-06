@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
     app:startDestination="@id/splash_nav">
 
@@ -11,6 +12,17 @@
     <include app:graph="@navigation/login_nav" />
     <include app:graph="@navigation/home_nav" />
 
+    <fragment
+        tools:layout="@layout/fragment_article_detail"
+        android:id="@+id/article_detail_fragment"
+        android:name="kr.foorun.uni_eat.feature.article.detail.ArticleDetailFragment"
+        android:label="ArticleDetailFragment" >
+        <argument
+            android:name="@string/hide_bottom"
+            app:argType="boolean"
+            android:defaultValue="true" />
+    </fragment>
+
     <action
         app:enterAnim="@anim/from_right"
         app:exitAnim="@anim/to_left"
@@ -18,6 +30,10 @@
         app:popUpTo="@id/splash_fragment"
         android:id="@+id/action_to_loginFragment"
         app:destination="@id/login_nav" />
+
+    <action
+        android:id="@+id/action_to_articleDetailFragment"
+        app:destination="@id/article_detail_fragment" />
 
     <action
         android:id="@+id/action_to_my_nav"

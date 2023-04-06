@@ -10,6 +10,16 @@
         android:id="@+id/home_fragment"
         android:name="kr.foorun.uni_eat.feature.home.HomeFragment"
         android:label="HomeFragment">
+        <action
+            android:id="@+id/action_home_fragment_to_hashTagFragment"
+            app:destination="@id/hashTagFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/hashTagFragment"
+        android:name="kr.foorun.uni_eat.feature.home.hash_tag.HashTagFragment"
+        android:label="HashTagFragment" >
+
     </fragment>
 
 </navigation>

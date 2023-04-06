@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import kr.foorun.const.Constant.Companion.POSITION
+import kr.foorun.presentation.MainNavDirections
 import kr.foorun.presentation.databinding.LayoutArticleEntireInnerBinding
 import kr.foorun.uni_eat.base.view.base.context_view.BaseFragment
 import kr.foorun.uni_eat.base.view.base.recycler.decorator.grid.GridSpaceItemDecoration
@@ -59,7 +60,7 @@ class ArticleEntireInnerFragment: BaseFragment<LayoutArticleEntireInnerBinding, 
 
     private fun handleAdapterEvent(event: ShopDetailArticleViewModel.ArticleEvent) = when(event){
         is ShopDetailArticleViewModel.ArticleEvent.ArticleClick -> navigateToFrag(
-            ArticleEntireFragmentDirections.actionArticleEntireFragmentToArticleDetailFragment()
+            MainNavDirections.actionToArticleDetailFragment()
         )
     }
 

@@ -9,8 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import kr.foorun.model.tag.SearchTag
 import kr.foorun.presentation.databinding.ItemIntroduceTagBinding
 import kr.foorun.presentation.databinding.ItemSearchTagBinding
-import kr.foorun.presentation.databinding.LayoutEmptyBinding
-import kr.foorun.uni_eat.feature.map.TagViewHolder.Companion.INTRODUCE
 import kr.foorun.uni_eat.feature.map.TagViewHolder.Companion.SEARCH
 
 sealed class TagViewHolder(
@@ -71,4 +69,29 @@ class SearchTagAdapter (
     override fun onBindViewHolder(holder: TagViewHolder, position: Int) {
         holder.run { bind(getItem(position), position) }
     }
+
+    override fun onBindViewHolder(holder: TagViewHolder, position: Int, payloads: MutableList<Any>) {
+        if(payloads.isEmpty()) super.onBindViewHolder(holder, position, payloads)
+        else holder.run { bind(getItem(position), position) }
+    }
+
+    fun tagClicked(position: Int, atLeastOne: Boolean = false){
+        currentList.forEachIndexed { idx, searchTag ->
+            if(idx != position && searchTag.isPicked){
+                searchTag.isPicked = false
+                notifyItemChanged(idx,PAYLOAD)
+            }
+
+            if(idx == position){
+                if(atLeastOne) searchTag.isPicked = true
+                else searchTag.isPicked = !searchTag.isPicked
+                notifyItemChanged(position,PAYLOAD)
+            }
+        }
+    }
+
+    companion object{
+        const val PAYLOAD = "payload"
+    }
+
 }
