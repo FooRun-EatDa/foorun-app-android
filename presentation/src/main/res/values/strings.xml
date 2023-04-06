@@ -87,4 +87,13 @@
     <string name="nick_form_hint">한글 5자리 또는 영어 10글자 이하</string>
     <string name="introduce_hint">50자 내로 자기소개를 작성해주세요</string>
     <string name="introduce">자기소개</string>
+    <string name="email_verify_text">인증을 위해 학교 이메일을 \n입력해주세요.</string>
+    <string name="no_email">가입되지 않은 이메일입니다.</string>
+    <string name="char_limit_5">5글자 이내로 작성해주세요.</string>
+    <string name="included_sp">특수문자가 포함되어 있습니다.</string>
+    <string name="duplicated_nick">이미 존재하는 닉네임입니다.</string>
+    <string name="done_email">학교 인증 완료!</string>
+    <string name="c_text">가입을 축하합니다!</string>
+    <string name="c_text2">님, 가입을 축하합니다!</string>
+
 </resources>

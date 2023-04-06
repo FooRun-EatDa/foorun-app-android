@@ -19,8 +19,7 @@ import kr.foorun.uni_eat.base.viewmodel.BaseViewModel
 import kr.foorun.uni_eat.feature.article.entire.ArticleEntireViewModel
 import kr.foorun.uni_eat.feature.article.post.ArticlePostViewModel
 import kr.foorun.uni_eat.feature.mypage.MyPageViewModel
-import kr.foorun.uni_eat.feature.mypage.edit.EditMyPageViewModel
-import kr.foorun.uni_eat.feature.mypage.more.MyPageMoreViewModel
+import kr.foorun.uni_eat.feature.mypage.edit.MyPageEditViewModel
 
 
 class BaseBarConstraintView : ConstraintLayout{
@@ -146,9 +145,9 @@ class BaseBarConstraintView : ConstraintLayout{
             view.run {
                 when(vm){
                     is ArticleEntireViewModel -> setRearOnClick { vm.searchClick() }
-                    is ArticlePostViewModel -> {}
+                    is ArticlePostViewModel -> setRearOnClick { vm.doneClicked() }
                     is MyPageViewModel -> setRearOnClick{ vm.clickedMyPageMore() }
-                    is EditMyPageViewModel -> setRearOnClick { vm.doneClicked() }
+                    is MyPageEditViewModel -> setRearOnClick { vm.doneClicked() }
                 }
                 setFrontOnClick { vm.backClicked() }
                 setTitleImageOnClick {  }

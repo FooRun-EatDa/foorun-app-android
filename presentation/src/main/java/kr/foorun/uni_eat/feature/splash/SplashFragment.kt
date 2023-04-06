@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
+import kr.foorun.presentation.MainNavDirections
 import kr.foorun.presentation.R
 import kr.foorun.presentation.databinding.FragmentSplashBinding
 import kr.foorun.social_login.KakaoLoginClass
@@ -32,7 +33,6 @@ class SplashFragment : BaseFragment<FragmentSplashBinding, SplashViewModel>(Frag
 
     override fun observeAndInitViewModel() {
         fragmentViewModel.run {
-            timerStart()
             repeatOnStarted { eventFlow.collect{ handleEvent(it) } }
         }
     }
@@ -44,11 +44,11 @@ class SplashFragment : BaseFragment<FragmentSplashBinding, SplashViewModel>(Frag
         }
         is SplashViewModel.SplashEvent.HasToken -> {
             log("token check")
-            navigateToFrag(SplashFragmentDirections.actionToHomeNav())
+            navigateToFrag(MainNavDirections.actionToHomeNav())
         }
         is SplashViewModel.SplashEvent.NoToken -> {
             log("token err: ${event.error}")
-            navigateToFrag(SplashFragmentDirections.actionToLoginFragment())
+            navigateToFrag(MainNavDirections.actionToLoginFragment())
         }
     }
 }

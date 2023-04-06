@@ -54,5 +54,7 @@
     <dimen name="arrow_right_width">6dp</dimen>
     <dimen name="arrow_right_height">11dp</dimen>
     <dimen name="my_page_introduce_text_17">17sp</dimen>
+    <dimen name="small_explain_text_13">13sp</dimen>
+    <dimen name="large_text2">31sp</dimen>
 
 </resources>

@@ -25,6 +25,10 @@ class SplashViewModel @Inject constructor(
     val kakaoLoginCallback
         get() = _kakaoLoginCallback
 
+    init {
+        timerStart()
+    }
+
     fun timerStart(){
         viewModelScope.launch {
             delay(2000)

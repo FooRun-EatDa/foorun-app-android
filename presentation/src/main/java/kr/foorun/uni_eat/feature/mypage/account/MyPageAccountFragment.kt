@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
+import kr.foorun.presentation.MainNavDirections
 import kr.foorun.presentation.databinding.FragmentMyPageAccountBinding
 import kr.foorun.social_login.KakaoLoginClass
 import kr.foorun.uni_eat.base.view.base.context_view.BaseFragment
 import kr.foorun.uni_eat.base.viewmodel.repeatOnStarted
-import kr.foorun.uni_eat.feature.splash.SplashFragmentDirections
 
 @AndroidEntryPoint
 class MyPageAccountFragment :BaseFragment<FragmentMyPageAccountBinding,MyPageAccountViewModel>(FragmentMyPageAccountBinding::inflate){
@@ -30,7 +30,7 @@ class MyPageAccountFragment :BaseFragment<FragmentMyPageAccountBinding,MyPageAcc
         is MyPageAccountViewModel.AccountEvent.WithdrawClicked -> {}
         is MyPageAccountViewModel.AccountEvent.LogoutFailure -> {}
         is MyPageAccountViewModel.AccountEvent.LogoutSuccess ->
-            navigateToFrag(SplashFragmentDirections.actionToLoginFragment())
+            navigateToFrag(MainNavDirections.actionToLoginFragment())
     }
 
     override fun afterBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = binding{

@@ -92,6 +92,7 @@
                 <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="@{() -> viewModel.emailClicked()}"
                     android:layout_marginStart="13dp"
                     android:text="@string/school_certification"
                     android:textSize="15sp" />

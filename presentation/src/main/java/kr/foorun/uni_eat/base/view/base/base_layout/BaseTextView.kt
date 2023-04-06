@@ -48,6 +48,11 @@ class BaseTextView : AppCompatTextView {
         paintFlags = Paint.UNDERLINE_TEXT_FLAG
     }
 
+    fun setTextColor( str: String, color: Int){
+        setTextColor(ContextCompat.getColor(context,color))
+        text = str
+    }
+
     companion object{
         @JvmStatic
         @BindingAdapter("setText")

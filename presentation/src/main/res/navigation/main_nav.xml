@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_nav"
-    app:startDestination="@id/splash_fragment">
+    app:startDestination="@id/splash_nav">
 
     <include app:graph="@navigation/article_nav" />
     <include app:graph="@navigation/event_nav" />
@@ -10,16 +10,6 @@
     <include app:graph="@navigation/map_nav" />
     <include app:graph="@navigation/login_nav" />
     <include app:graph="@navigation/home_nav" />
-
-    <fragment
-        android:id="@+id/splash_fragment"
-        android:name="kr.foorun.uni_eat.feature.splash.SplashFragment"
-        android:label="SplashFragment" >
-        <argument
-            android:name="@string/hide_bottom"
-            app:argType="boolean"
-            android:defaultValue="true" />
-    </fragment>
 
     <action
         app:enterAnim="@anim/from_right"
@@ -58,4 +48,5 @@
         app:popUpTo="@id/login_fragment"
         android:id="@+id/action_to_home_nav"
         app:destination="@id/home_nav" />
+    <include app:graph="@navigation/splash_nav" />
 </navigation>

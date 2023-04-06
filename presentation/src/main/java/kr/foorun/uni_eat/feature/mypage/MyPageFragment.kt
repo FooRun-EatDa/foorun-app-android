@@ -2,6 +2,7 @@ package kr.foorun.uni_eat.feature.mypage
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
@@ -51,6 +52,12 @@ class MyPageFragment: BaseFragment<FragmentMyPageBinding, MyPageViewModel>(Fragm
         is MyPageViewModel.MyPageEvent.SchoolCertification -> {}
         is MyPageViewModel.MyPageEvent.MyPageMore -> navigateToFrag(MyPageFragmentDirections.actionMyPageToMyPageMoreFragment())
         is MyPageViewModel.MyPageEvent.WriteArticle -> {}
+        is MyPageViewModel.MyPageEvent.EmailClicked -> navigateToFrag(MyPageFragmentDirections.actionMyPageToMyPageEmailFragment())
+    }
+
+    override fun onResume() {
+        super.onResume()
+        fragmentViewModel.getUser()
     }
 
 }
