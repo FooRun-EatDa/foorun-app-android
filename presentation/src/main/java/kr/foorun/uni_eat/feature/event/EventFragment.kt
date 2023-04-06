@@ -1,10 +1,11 @@
 package kr.foorun.uni_eat.feature.event
 
 import android.annotation.SuppressLint
+import android.app.ProgressDialog.show
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -17,6 +18,7 @@ import kr.foorun.presentation.R
 import kr.foorun.presentation.databinding.FragmentEventBinding
 import kr.foorun.uni_eat.base.view.base.context_view.BaseFragment
 import kr.foorun.uni_eat.base.view.base.recycler.decorator.EventDecorator
+import kr.foorun.uni_eat.feature.report.ReportDialogFragment
 
 class EventFragment :
     BaseFragment<FragmentEventBinding, EventViewModel>(FragmentEventBinding::inflate) {
@@ -65,6 +67,10 @@ class EventFragment :
                 //리사이클러뷰가 상단에 올때까지 스크롤시 이벤트 바가 서서히 보임
                 val topHeight = eventCL.measuredHeight.toFloat()
                 bar.alpha = (scrollY / topHeight)
+        }
+
+        test.setOnClickListener {
+            ReportDialogFragment().show(requireActivity().supportFragmentManager,"dialog")
         }
     }
 

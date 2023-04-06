@@ -1,0 +1,171 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="kr.foorun.uni_eat.feature.report.ReportDialogViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="333dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/radius_3"
+            android:orientation="vertical"
+            tools:context="kr.foorun.uni_eat.feature.report.ReportDialogFragment">
+
+            <LinearLayout
+                android:id="@+id/report_main_LL"
+                android:layout_width="match_parent"
+                android:layout_height="330dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="13dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="14.63dp"
+                        android:src="@drawable/notice" />
+
+                    <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5.09dp"
+                        android:text="@string/report"
+                        android:textColor="@color/red2" />
+                </LinearLayout>
+
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="13dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/gray_line" />
+
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseEditTextView
+                    android:id="@+id/report_dialog_EDT"
+                    android:layout_width="312.82dp"
+                    android:layout_height="193dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="17dp"
+                    android:background="@drawable/radius_white_grayline_3"
+                    android:gravity="top"
+                    android:hint="@string/report_hint"
+                    android:padding="15dp"
+                    android:textColorHint="@color/gray2"
+                    android:textSize="13sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="17dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:layout_width="114dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/radius_gray_3"
+                        android:onClick="@{()->viewModel.clickMainCancel()}"
+                        android:text="@string/cancel"
+                        android:textColor="@color/gray4"
+                        android:textSize="13sp" />
+
+                    <Button
+                        android:layout_width="114dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="36.33dp"
+                        android:layout_marginBottom="19dp"
+                        android:background="@drawable/radius_red_3"
+                        android:onClick="@{()->viewModel.clickConfirm()}"
+                        android:text="@string/confirm"
+                        android:textColor="@color/white"
+                        android:textSize="13sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/report_complete_LL"
+                android:layout_width="match_parent"
+                android:layout_height="330dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
+                    android:layout_width="82dp"
+                    android:layout_height="82dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="89dp"
+                    android:src="@drawable/success_icon" />
+
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="19.81dp"
+                    android:gravity="center"
+                    android:text="@string/report_complete"
+                    android:textSize="21sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/report_cancel_LL"
+                android:layout_width="match_parent"
+                android:layout_height="172dp"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="36dp"
+                    android:text="@string/report_cancel_qes"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="44dp"
+                    android:layout_marginBottom="26dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:layout_width="114dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/radius_gray_3"
+                        android:onClick="@{()->viewModel.returnMain()}"
+                        android:text="@string/cancel"
+                        android:textColor="@color/gray4"
+                        android:textSize="13sp" />
+
+                    <Button
+                        android:layout_width="114dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="36.33dp"
+                        android:background="@drawable/radius_red_3"
+                        android:onClick="@{()->viewModel.clickRealCancel()}"
+                        android:text="@string/confirm"
+                        android:textColor="@color/white"
+                        android:textSize="13sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </FrameLayout>
+</layout>

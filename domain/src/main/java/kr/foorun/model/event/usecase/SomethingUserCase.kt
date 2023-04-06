@@ -1,4 +1,4 @@
-package kr.foorun.usecase
+package kr.foorun.model.event.usecase
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

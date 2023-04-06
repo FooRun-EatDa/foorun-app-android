@@ -15,3 +15,8 @@
 .cxx
 local.properties
 gradle.properties
+
+# IntelliJ
+misc.xml
+deploymentTargetDropDown.xml
+render.experimental.xml

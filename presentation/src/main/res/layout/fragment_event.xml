@@ -31,6 +31,7 @@
                 android:id="@+id/event_FL"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:foregroundGravity="center"
                 android:elevation="2dp" />
 
             <androidx.core.widget.NestedScrollView
@@ -63,6 +64,19 @@
                             android:textSize="25sp"
                             android:textStyle="bold"
                             app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
+                            android:id="@+id/test"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="56dp"
+                            android:layout_marginEnd="30dp"
+                            android:letterSpacing="-0.05"
+                            android:text="신고하기 테스트"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <LinearLayout
@@ -99,7 +113,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
                         android:layout_marginTop="40dp"
-                        android:nestedScrollingEnabled="false"
+                        android:nestedScrollingEnabled="true"
                         app:layout_constraintTop_toTopOf="parent" />
                 </LinearLayout>
             </androidx.core.widget.NestedScrollView>
