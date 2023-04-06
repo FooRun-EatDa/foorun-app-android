@@ -21,9 +21,13 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField "String", "KAKO_KEY", properties['kakao.key']
-//        buildConfigField "String", "RESET_KEY", properties['api.key_reset']
-//        buildConfigField "String", "CLIENT_KEY", properties['api.key_client']
+        buildConfigField("String", "KAKAO_API_KEY", "\"${properties["kakao.key"]}\"")
+
+        def KAKAO_KEY = properties.getProperty("kakao.key")
+
+        manifestPlaceholders = [
+                kakaoKey: KAKAO_KEY
+        ]
     }
 
     buildTypes {
@@ -32,6 +36,20 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions "version"
+
+    productFlavors {
+        user {
+            dimension "version"
+            applicationIdSuffix ".user"
+            versionCode 10000
+            versionName "1.0.0"
+            buildConfigField "String", "EXPLAIN", "\"This is for user application\""
+//            resValue "string", "appName", "user"
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11

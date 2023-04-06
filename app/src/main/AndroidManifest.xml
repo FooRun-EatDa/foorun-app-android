@@ -25,10 +25,11 @@
         android:theme="@style/Theme.UNIEAT"
         android:usesCleartextTraffic="true"
         tools:targetApi="33">
+
         <!-- kakao map -->
         <meta-data
             android:name="com.kakao.sdk.AppKey"
-            android:value="@string/kakao_key" />
+            android:value="${kakaoKey}"  />
 
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
@@ -40,7 +41,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data
                     android:host="oauth"
-                    android:scheme="@string/kakao_key2" />
+                    android:scheme="kakao${kakaoKey}" />
             </intent-filter>
         </activity>
     </application>
