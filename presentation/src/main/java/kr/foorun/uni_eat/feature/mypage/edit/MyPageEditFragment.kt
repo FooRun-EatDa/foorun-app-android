@@ -35,14 +35,12 @@ class MyPageEditFragment: BaseFragment<FragmentMyPageEditBinding, MyPageEditView
             }
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun observeAndInitViewModel() = binding {
         viewModel = fragmentViewModel.apply {
             initResLauncher()
 
             tags.observe(this@MyPageEditFragment){
                 tagAdapter.submitList(it)
-                tagAdapter.notifyDataSetChanged()
             }
 
             image.observe(this@MyPageEditFragment){ image ->
@@ -82,12 +80,7 @@ class MyPageEditFragment: BaseFragment<FragmentMyPageEditBinding, MyPageEditView
 
     private fun tagHandleEvent(event: SearchTagViewModel.TagEvent) {
         when (event) {
-            is SearchTagViewModel.TagEvent.TagClick -> {
-                val tag = event.searchTag
-                val index = event.idx
-                tag.isPicked = !tag.isPicked
-                tagAdapter.notifyItemChanged(index)
-            }
+            is SearchTagViewModel.TagEvent.TagClick -> tagAdapter.tagClicked(event.idx)
         }
     }
 

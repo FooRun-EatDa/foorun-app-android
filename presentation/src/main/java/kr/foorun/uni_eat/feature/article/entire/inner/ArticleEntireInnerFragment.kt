@@ -40,12 +40,10 @@ class ArticleEntireInnerFragment: BaseFragment<LayoutArticleEntireInnerBinding, 
 
     private val position by lazy { requireArguments().getInt(POSITION) }
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun observeAndInitViewModel() = binding {
         viewModel = fragmentViewModel.apply {
             articles.observe(this@ArticleEntireInnerFragment){
                 shopDetailArticleAdapter.submitList(it)
-                shopDetailArticleAdapter.notifyDataSetChanged()
             }
 
             repeatOnStarted {

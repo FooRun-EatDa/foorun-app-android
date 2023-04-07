@@ -29,17 +29,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(FragmentHo
     private val eventAdapter: HomeEventAdapter by lazy { HomeEventAdapter(eventViewModel) }
     private var backPressedTime: Long = 0
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun observeAndInitViewModel() = binding {
         viewModel = fragmentViewModel.apply {
             articles.observe(this@HomeFragment){
                 articleAdapter.submitList(it)
-                articleAdapter.notifyDataSetChanged()
             }
 
             events.observe(this@HomeFragment){
                 eventAdapter.submitList(it)
-                eventAdapter.notifyDataSetChanged()
             }
 
             repeatOnStarted { eventFlow.collect{ handleEvent(it) } }

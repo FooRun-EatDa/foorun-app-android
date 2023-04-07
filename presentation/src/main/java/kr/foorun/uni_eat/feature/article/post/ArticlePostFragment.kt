@@ -4,6 +4,7 @@ import android.Manifest.permission.*
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
@@ -56,14 +57,12 @@ class ArticlePostFragment: BaseFragment<FragmentArticlePostBinding, ArticlePostV
             }
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun observeAndInitViewModel() = binding {
         viewModel = fragmentViewModel.apply {
             initResLauncher()
 
             searchTags.observe(this@ArticlePostFragment){
-                searchTagAdapter.submitList(it)
-                searchTagAdapter.notifyDataSetChanged()
+                searchTagAdapter.submitList(it.toList())
             }
 
             articleImageList.observe(this@ArticlePostFragment){
@@ -71,7 +70,6 @@ class ArticlePostFragment: BaseFragment<FragmentArticlePostBinding, ArticlePostV
                     if (it.size > INDICATOR_COUNT) addImagePager.setIndicator(INDICATOR_COUNT)
                     else addImagePager.setIndicator(it.size)
                     articleImageAdapter.submitList(it.toList())
-                    articleImageAdapter.notifyDataSetChanged()
                 }
             }
 
@@ -105,12 +103,7 @@ class ArticlePostFragment: BaseFragment<FragmentArticlePostBinding, ArticlePostV
 
     private fun tagHandleEvent(event: SearchTagViewModel.TagEvent) {
         when (event) {
-            is SearchTagViewModel.TagEvent.TagClick -> {
-                val tag = event.searchTag
-                val index = event.idx
-                tag.isPicked = !tag.isPicked
-                searchTagAdapter.notifyItemChanged(index)
-            }
+            is SearchTagViewModel.TagEvent.TagClick -> searchTagAdapter.tagClicked(event.idx)
         }
     }
 

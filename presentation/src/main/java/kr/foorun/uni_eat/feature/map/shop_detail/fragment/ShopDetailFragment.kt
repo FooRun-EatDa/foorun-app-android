@@ -31,28 +31,23 @@ class ShopDetailFragment : BaseFragment<FragmentShopDetailBinding, ShopDetailVie
     private val menuAdapter by lazy { MenuAdapter() }
     private val searchTagAdapter by lazy { SearchTagAdapter() }
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun observeAndInitViewModel() {
         binding.viewModel = fragmentViewModel.apply {
             images.observe(this@ShopDetailFragment){
                 shopImageAdapter.submitList(it)
-                shopImageAdapter.notifyDataSetChanged()
             }
 
             articles.observe(this@ShopDetailFragment){
                 shopDetailArticleAdapter.submitList(it)
-                shopDetailArticleAdapter.notifyDataSetChanged()
                 binding.articleRecycler.visibility = View.VISIBLE
             }
 
             menus.observe(this@ShopDetailFragment){
                 menuAdapter.submitList(it)
-                menuAdapter.notifyDataSetChanged()
             }
 
             searchTags.observe(this@ShopDetailFragment){
                 searchTagAdapter.submitList(it)
-                searchTagAdapter.notifyDataSetChanged()
             }
 
             repeatOnStarted { eventFlow.collect{ handleEvent(it) } }

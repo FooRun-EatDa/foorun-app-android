@@ -65,7 +65,6 @@ class MapFragment
         mapView = null
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun observeAndInitViewModel() {
         binding.viewModel = fragmentViewModel.apply {
 

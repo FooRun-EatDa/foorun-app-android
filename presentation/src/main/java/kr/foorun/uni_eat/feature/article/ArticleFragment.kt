@@ -25,12 +25,10 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding, ArticleViewModel>(F
         repeatOnStarted {eventFlow.collect{ handleAdapterEvent(it) }}
     }) }
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun observeAndInitViewModel() = binding {
         viewModel = fragmentViewModel.apply {
             articles.observe(this@ArticleFragment){
                 articleAdapter.submitList(it)
-                articleAdapter.notifyDataSetChanged()
             }
         }
     }
