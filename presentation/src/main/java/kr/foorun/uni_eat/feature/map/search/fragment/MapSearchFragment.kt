@@ -30,7 +30,7 @@ class MapSearchFragment(val searchDone : (word : String) -> Unit): DialogFragmen
 
     override fun getTheme(): Int = R.style.FullDialogFragment
 
-    @SuppressLint("UseGetLayoutInflater", "NotifyDataSetChanged")
+    @SuppressLint("UseGetLayoutInflater")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.fragment_map_search, container, false)
         isCancelable = false
@@ -48,7 +48,6 @@ class MapSearchFragment(val searchDone : (word : String) -> Unit): DialogFragmen
 
             recentWords.observe(this@MapSearchFragment){
                 recentSearchAdapter.submitList(ArrayList(it))
-                recentSearchAdapter.notifyDataSetChanged()
             }
 
             repeatOnStarted { viewEvent.collect{ dismiss() } }

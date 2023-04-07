@@ -1,8 +1,6 @@
 package kr.foorun.uni_eat.feature.mypage
 
-import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
@@ -22,13 +20,11 @@ class MyPageFragment: BaseFragment<FragmentMyPageBinding, MyPageViewModel>(Fragm
     override val fragmentViewModel: MyPageViewModel by viewModels()
     private val tagAdapter: SearchTagAdapter by lazy { SearchTagAdapter(type = INTRODUCE) }
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun observeAndInitViewModel() = binding {
         viewModel = fragmentViewModel.apply {
 
             user.observe(this@MyPageFragment){
                 tagAdapter.submitList(it?.tags)
-                tagAdapter.notifyDataSetChanged()
                 binding.user = it
             }
 

@@ -32,7 +32,6 @@ class ShopBottomSheetFragment(
     private val collapseViewModel: ShopCollapseViewModel by viewModels()
     private val shopAdapterViewModel: ArticleAdapterViewModel by viewModels()
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun observeAndInitViewModel() {
         setRecycler()
         collapseBinding.viewModel = collapseViewModel.apply {
@@ -41,7 +40,6 @@ class ShopBottomSheetFragment(
 
             collapseViewModel.articles.observe(this@ShopBottomSheetFragment) {
                 shopAdapter.submitList(it)
-                shopAdapter.notifyDataSetChanged()
             }
 
             repeatOnStarted { eventFlow.collect{ handleEvent(it)} }

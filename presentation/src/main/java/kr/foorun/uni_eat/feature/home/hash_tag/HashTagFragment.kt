@@ -25,7 +25,6 @@ class HashTagFragment :BaseFragment<FragmentHashTagBinding, HashTagViewModel>(Fr
     private val searchTagAdapter by lazy { SearchTagAdapter(searchTagViewModel.apply {
         repeatOnStarted { eventFlow.collect{ tagHandleEvent(it)} } }) }
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun observeAndInitViewModel() = binding {
         viewModel = fragmentViewModel.apply {
 
@@ -51,7 +50,10 @@ class HashTagFragment :BaseFragment<FragmentHashTagBinding, HashTagViewModel>(Fr
 
     private fun tagHandleEvent(event: SearchTagViewModel.TagEvent) {
         when (event) {
-            is SearchTagViewModel.TagEvent.TagClick -> searchTagAdapter.tagClicked(event.idx,true)
+            is SearchTagViewModel.TagEvent.TagClick -> searchTagAdapter.tagClicked(event.idx,
+                atLeastOne = true,
+                single = true
+            )
         }
     }
 

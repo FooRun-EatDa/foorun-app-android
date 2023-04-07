@@ -30,20 +30,17 @@ class EventFragment :
         })
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun observeAndInitViewModel() = binding {
         viewModel = fragmentViewModel.apply {
 
             events.observe(this@EventFragment) {
                 eventAdapter.submitList(it)
-                eventAdapter.notifyDataSetChanged()
             }
 
             repeatOnStarted { eventFlow.collect { handleEvent(it) } }
         }
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun afterBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = binding {
         bar.bringToFront()
         setDoOnBackPressed()
@@ -56,7 +53,6 @@ class EventFragment :
         }
 
         eventSRL.setOnRefreshListener {
-            eventAdapter.notifyDataSetChanged()
             eventSRL.isRefreshing = false
         }
 
