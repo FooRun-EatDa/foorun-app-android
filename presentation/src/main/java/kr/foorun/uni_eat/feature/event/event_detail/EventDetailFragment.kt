@@ -39,6 +39,15 @@ class EventDetailFragment : BaseFragment<FragmentEventDetailBinding, EventDetail
                 }
             }
 
+            if(eventCoupon.used){
+                eventDetailUseCouponBTN.apply{
+                    text = getString(R.string.used_event)
+                    isEnabled = false
+                    setTextColor(ContextCompat.getColor(requireContext(),R.color.white))
+                    setBackgroundResource(R.drawable.radius_gray_24)
+                }
+            }
+
             viewModel = fragmentViewModel.apply {
                 repeatOnStarted { viewEvent.collect { handleBaseViewEvent(it) } }
             }
