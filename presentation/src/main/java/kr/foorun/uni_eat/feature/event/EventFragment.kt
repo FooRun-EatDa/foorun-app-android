@@ -38,11 +38,9 @@ class EventFragment :
 
             events.observe(this@EventFragment) {
                 if(it?.size == 0){
-                    log("이벤트쿠폰 0개")
                     noEventLL.visibility = View.VISIBLE
                     eventRV.visibility = View.GONE
                 } else {
-                    log("이벤트쿠폰 1개 이상")
                     eventAdapter.submitList(it)
                     eventAdapter.notifyDataSetChanged()
                 }

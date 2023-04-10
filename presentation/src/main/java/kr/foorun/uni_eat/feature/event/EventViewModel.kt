@@ -22,7 +22,7 @@ class EventViewModel : BaseViewModel() {
     init {
         Log.d("tgyuu","뷰모델 시작")
         viewModelScope.launch {
-            _events.emit(List(0) {
+            _events.emit(List(10) {
                 EventCoupon(
                     "노랑통닭 1000원 할인 쿠폰",
                     "노랑통닭 수원점",
