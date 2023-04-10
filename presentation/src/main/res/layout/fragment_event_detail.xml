@@ -96,7 +96,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:layout_marginTop="10dp"
-                    android:text="@{eventCoupon.discription}"
+                    android:text="@{eventCoupon.description}"
                     android:textSize="15sp" />
 
                 <kr.foorun.uni_eat.base.view.base.base_layout.BaseTextView
@@ -117,7 +117,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="38.05dp"
                     android:letterSpacing="-0.05"
-                    android:text="@{eventCoupon.Notice}"
+                    android:text="@{eventCoupon.notice}"
                     android:textSize="13sp" />
 
                 <Button

@@ -45,7 +45,11 @@ class ArticlePostViewModel @Inject constructor(
         SearchTag("#중식"),
         SearchTag("일식"))) }
 
-    fun setTags(tags: List<SearchTag>) = viewModelScope.launch { _searchTags.emit(tags) }
+    fun setTags(tags: List<SearchTag>) = viewModelScope.launch {
+        _searchTags.emit(tags)
+        Log.e("popo","dho? : ${_searchTags.value.hashCode()}\n" +
+                "tags: ${tags.hashCode()}")
+    }
     fun setArticleImage(image: Collection<String>) = viewModelScope.launch { _articleImageList.emit(image) }
 
     sealed class PostEvent{

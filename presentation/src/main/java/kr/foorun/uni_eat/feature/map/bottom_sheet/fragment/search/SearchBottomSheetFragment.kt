@@ -30,7 +30,6 @@ class SearchBottomSheetFragment(
 
     override fun onStateChanged(state: Int) { stateListener(state) }
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun observeAndInitViewModel() {
 
         collapseBinding.viewModel = collapseViewModel.apply {
@@ -41,7 +40,6 @@ class SearchBottomSheetFragment(
 
             articles.observe(this@SearchBottomSheetFragment){
                 articleAdapter.submitList(it)
-                articleAdapter.notifyDataSetChanged()
             }
 
             repeatOnStarted { expandViewModel.eventFlow.collect{ handleExpandEvent(it)} }
