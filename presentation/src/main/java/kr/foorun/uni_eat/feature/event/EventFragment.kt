@@ -1,13 +1,9 @@
 package kr.foorun.uni_eat.feature.event
 
-import android.annotation.SuppressLint
-import android.app.ProgressDialog.show
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -32,7 +28,6 @@ class EventFragment :
         })
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun observeAndInitViewModel() = binding {
         viewModel = fragmentViewModel.apply {
 
@@ -40,17 +35,13 @@ class EventFragment :
                 if(it?.size == 0){
                     noEventLL.visibility = View.VISIBLE
                     eventRV.visibility = View.GONE
-                } else {
-                    eventAdapter.submitList(it)
-                    eventAdapter.notifyDataSetChanged()
-                }
+                } else eventAdapter.submitList(it)
             }
 
             repeatOnStarted { eventFlow.collect { handleEvent(it) } }
         }
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun afterBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = binding {
         bar.bringToFront()
         setDoOnBackPressed()
@@ -63,7 +54,6 @@ class EventFragment :
         }
 
         eventSRL.setOnRefreshListener {
-            eventAdapter.notifyDataSetChanged()
             eventSRL.isRefreshing = false
         }
 

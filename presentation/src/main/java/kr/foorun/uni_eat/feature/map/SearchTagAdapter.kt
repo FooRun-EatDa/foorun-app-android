@@ -49,7 +49,7 @@ class SearchTagAdapter (
     private val adapterViewModel: SearchTagViewModel? = null,
     private val type: Int = SEARCH
 ) : ListAdapter<SearchTag, TagViewHolder>(object : DiffUtil.ItemCallback<SearchTag>(){
-    override fun areItemsTheSame(oldItem: SearchTag, newItem: SearchTag) = oldItem.tagName == newItem.tagName
+    override fun areItemsTheSame(oldItem: SearchTag, newItem: SearchTag) = oldItem.tagName == newItem.tagName && oldItem.isPicked == newItem.isPicked
     override fun areContentsTheSame(oldItem: SearchTag, newItem: SearchTag) = oldItem.tagName == newItem.tagName && oldItem.isPicked == newItem.isPicked
 }) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TagViewHolder {
@@ -75,9 +75,9 @@ class SearchTagAdapter (
         else holder.run { bind(getItem(position), position) }
     }
 
-    fun tagClicked(position: Int, atLeastOne: Boolean = false){
+    fun tagClicked(position: Int, atLeastOne: Boolean = false, single: Boolean = false){
         currentList.forEachIndexed { idx, searchTag ->
-            if(idx != position && searchTag.isPicked){
+            if(idx != position && searchTag.isPicked && single){
                 searchTag.isPicked = false
                 notifyItemChanged(idx,PAYLOAD)
             }

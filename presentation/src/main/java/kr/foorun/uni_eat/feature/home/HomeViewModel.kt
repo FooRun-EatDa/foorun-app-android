@@ -46,8 +46,11 @@ class HomeViewModel @Inject constructor(
         val eventList = mutableListOf<EventCoupon>()
         for (i in 0 until ARTICLE_LIMIT) {
             eventList.add(EventCoupon(
-                "프레시쿡 매콤한 맛 특집", "https://picsum.photos/200","12.12.12","12.12.12",
-            "조용한 골목 분위기 맛집 조용한 골목 분위기 맛집\n" +
+                name = "프레시쿡 매콤한 맛 특집",
+                image = "https://picsum.photos/200",
+                startDate = "12.12.12",
+                endDate = "12.12.12",
+            description = "조용한 골목 분위기 맛집 조용한 골목 분위기 맛집\n" +
                     "조용한 골목 분위기 맛집조용한 골목 분위기 맛집\n" +
                     "조용한 골목 분위기 맛집"))
         }
