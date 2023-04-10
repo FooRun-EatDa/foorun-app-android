@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="eventCoupon"
             type="kr.foorun.model.event.EventCoupon" />
@@ -23,11 +24,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:frontVisible="true"
-            app:setViewModel="@{viewModel}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:titleText="@string/event"/>
+            app:setViewModel="@{viewModel}"
+            app:titleText="@string/event" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -118,16 +119,18 @@
                     android:letterSpacing="-0.05"
                     android:text="@{eventCoupon.Notice}"
                     android:textSize="13sp" />
-        <Button
-            android:id="@+id/event_detail_use_coupon_BTN"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="54dp"
-            android:layout_marginBottom="36dp"
-            android:background="@drawable/radius_black_24"
-            android:text="@string/use_coupon"
-            android:textColor="@color/white"
-            android:textSize="15sp" />
+
+                <Button
+                    android:id="@+id/event_detail_use_coupon_BTN"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="54dp"
+                    android:layout_marginBottom="36dp"
+                    android:background="@drawable/radius_black_24"
+                    android:onClick="@{()->viewModel.useEventCoupon()}"
+                    android:text="@string/use_coupon"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
             </LinearLayout>
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>

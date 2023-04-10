@@ -20,7 +20,6 @@ class EventViewModel : BaseViewModel() {
     val events = _events.asLiveData()
 
     init {
-        Log.d("tgyuu","뷰모델 시작")
         viewModelScope.launch {
             _events.emit(List(10) {
                 EventCoupon(
@@ -30,7 +29,7 @@ class EventViewModel : BaseViewModel() {
                     "· Lorem ipsum dolor sit amet\n· Lorem ipsum dolor sit amet",
                     "https://picsum.photos/207",
                     "12.12.12",
-                    "12.12.12"
+                    "24.12.12"
                 )
             })
         }
