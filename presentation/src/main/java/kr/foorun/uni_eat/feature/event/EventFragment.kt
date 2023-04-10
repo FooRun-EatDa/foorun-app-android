@@ -4,7 +4,9 @@ import android.annotation.SuppressLint
 import android.app.ProgressDialog.show
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -35,8 +37,15 @@ class EventFragment :
         viewModel = fragmentViewModel.apply {
 
             events.observe(this@EventFragment) {
-                eventAdapter.submitList(it)
-                eventAdapter.notifyDataSetChanged()
+                if(it?.size == 0){
+                    log("이벤트쿠폰 0개")
+                    noEventLL.visibility = View.VISIBLE
+                    eventRV.visibility = View.GONE
+                } else {
+                    log("이벤트쿠폰 1개 이상")
+                    eventAdapter.submitList(it)
+                    eventAdapter.notifyDataSetChanged()
+                }
             }
 
             repeatOnStarted { eventFlow.collect { handleEvent(it) } }

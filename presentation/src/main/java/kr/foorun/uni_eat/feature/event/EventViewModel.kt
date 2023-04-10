@@ -1,6 +1,7 @@
 package kr.foorun.uni_eat.feature.event
 
 
+import android.util.Log
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,8 +20,9 @@ class EventViewModel : BaseViewModel() {
     val events = _events.asLiveData()
 
     init {
+        Log.d("tgyuu","뷰모델 시작")
         viewModelScope.launch {
-            _events.emit(List(10) {
+            _events.emit(List(0) {
                 EventCoupon(
                     "노랑통닭 1000원 할인 쿠폰",
                     "노랑통닭 수원점",
