@@ -1,11 +1,9 @@
 package kr.foorun.uni_eat.feature.event
 
-import android.annotation.SuppressLint
-import android.app.ProgressDialog.show
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -34,7 +32,10 @@ class EventFragment :
         viewModel = fragmentViewModel.apply {
 
             events.observe(this@EventFragment) {
-                eventAdapter.submitList(it)
+                if(it?.size == 0){
+                    noEventLL.visibility = View.VISIBLE
+                    eventRV.visibility = View.GONE
+                } else eventAdapter.submitList(it)
             }
 
             repeatOnStarted { eventFlow.collect { handleEvent(it) } }

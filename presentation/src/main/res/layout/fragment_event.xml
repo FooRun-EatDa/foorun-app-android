@@ -31,8 +31,8 @@
                 android:id="@+id/event_FL"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:foregroundGravity="center"
-                android:elevation="2dp" />
+                android:elevation="2dp"
+                android:foregroundGravity="center" />
 
             <androidx.core.widget.NestedScrollView
                 android:id="@+id/event_NSV"
@@ -106,6 +106,28 @@
                                 android:src="@drawable/arrow_down" />
                         </LinearLayout>
                     </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <LinearLayout
+                        android:id="@+id/no_event_LL"
+                        android:layout_marginTop="119dp"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
+
+                        <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
+                            android:layout_width="114dp"
+                            android:layout_height="114dp"
+                            android:src="@drawable/non_search_image" />
+
+                        <kr.foorun.uni_eat.base.view.base.base_layout.BaseImageView
+                            android:layout_width="64dp"
+                            android:layout_height="42dp"
+                            android:src="@drawable/no_event_text"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="18.7dp"/>
+                    </LinearLayout>
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/event_RV"

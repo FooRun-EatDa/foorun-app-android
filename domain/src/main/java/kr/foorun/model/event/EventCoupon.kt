@@ -10,4 +10,6 @@ data class EventCoupon(
     val image : String,
     val startDate : String = "12.12.12",
     val endDate : String = "12.12.12",
+    val content: String = "",
+    var used: Boolean = false
 ) : Serializable

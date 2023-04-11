@@ -39,6 +39,7 @@ class ReportDialogFragment : DialogFragment() {
         return alertDialog
     }
 
+
     private fun handleEvent(event: ReportDialogViewModel.ReportEvent) = when (event) {
         is ReportDialogViewModel.ReportEvent.clickConfirm -> {
             val reportContent: String = binding.reportDialogEDT.text.toString()

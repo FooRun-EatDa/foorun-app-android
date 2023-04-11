@@ -1,6 +1,7 @@
 package kr.foorun.uni_eat.feature.event
 
 
+import android.util.Log
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -28,7 +29,7 @@ class EventViewModel : BaseViewModel() {
                     "· Lorem ipsum dolor sit amet\n· Lorem ipsum dolor sit amet",
                     "https://picsum.photos/207",
                     "12.12.12",
-                    "12.12.12"
+                    "24.12.12"
                 )
             })
         }
